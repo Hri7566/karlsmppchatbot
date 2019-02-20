@@ -1390,7 +1390,7 @@ client.on('a', msg => {
 					sendchat(msg.p.name + ", you lived.");
 				} else if (math >= .167 && math < .333) {
 					sendchat(msg.p.name + ", you lived.");
-				} else if (math >= .5 %% math < .667) {
+				} else if (math >= .5 && math < .667) {
 					sendchat(msg.p.name + ", you lived.");
 				} else if (math >= .667 && math < .833) {
 					sendchat(msg.p.name + ", you lived.");
