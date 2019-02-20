@@ -13,7 +13,7 @@ client.on("hi", () => {
     console.log("Online");
 
     // Go into a channel
-    client.setChannel(home);
+    client.setChannel("Karl's Room");
 
     // Showing that the bot is ready
     setTimeout(() => {
@@ -22,6 +22,22 @@ client.on("hi", () => {
     }, 100)
 });
 // Start of bot
+
+// Room Lock
+var id_whitelist = ["0236f354fc5685c5bd18f152",
+
+                   ];
+
+var lock = false;
+
+if (Object.keys(client.ppl).length < 20) {
+    sendchat("Exceded 20 users, room is locked.");
+    lock = true;
+};
+
+function kickban(id, ms) {
+    MPP.client.sendArray([{m: "kickban", _id: id, ms: ms}]);
+};
 
 // Error catch
 var fs = require('fs');
@@ -56,10 +72,10 @@ String.prototype.toHHMMSS = function () {
     return time;
 }
 
-var home = "Karl's Room"; 
-
 // Math.js
 const Math = require('mathjs')
+
+
 
 // Karl's Project
 // ==UserScript==
@@ -150,17 +166,6 @@ client.on('a', msg => {
             }
         } else {
             sendchat("You can't use this command. Use/rank for more information");
-        }
-    } else if (cmd == "/sethome") {
-        if (isKing) {
-            if (argcat.length == 0) {
-                sendchat("Setting home room to " + client.channel._id);
-                home = client.channel._id
-            } else if (argcat) {
-                sendchat(argcat + " set to home room, moving to " + argcat);
-                home = argcat
-                client.setChannel(argcat);
-            }
         }
     } else if (cmd == '/kings+') { // add id to Kings
         if (isKing) {
@@ -1716,6 +1721,46 @@ client.on("a", function(msg) {
         sendchat(" " + Math.E);
     } else if (cmd == "/pi") {
         sendchat(" " + Math.PI);
+    }
+});
+
+MPP.client.on('a', function (msg) {
+    let args = msg.a.split(' ');
+    let cmd = args[0].toLowerCase();
+    let argcat = msg.a.substring(cmd.length).trim();
+    if (cmd == "/lockdown") {
+        if (isKing) {
+            if (lock == false) {
+                lock = true
+                sendchat("Room locked.");
+            } else if (lock == true) {
+                lock = false
+                sendchat("The room is now unlocked.");
+            }
+        }
+    } else if (cmd == '/whitelist') { // add name to whitelist
+        if (isKing) {
+            var idtowhitelist = prompt("Enter name to blacklist");
+            id_whitelist.push(idtowhitelist);
+            sendchat("Blacklisted name: " + idtowhitelist);
+        }
+    } else if (cmd == '/unwhitelist') { // remove id from blacklist
+        if (isKing) {
+            var id2unwhitelist = prompt("Enter _id to un-whitelist");
+            removeFromArray(id_whitelist, id2unwhitelist);
+            sendchat("Un-Blacklisted _id: " + id2unwhitelist);
+        }
+    }
+});
+
+MPP.client.on("participant added", function (part) {
+    if (!id_whitelist.includes(part._id)) {
+        if(client.isOwner()) {
+            if(lock == true) {
+                kickban(p, 30*60*1000); // ban id if on blacklist
+                window.dataBase = {"totalnames":0};
+            }
+        }
     }
 });
 
