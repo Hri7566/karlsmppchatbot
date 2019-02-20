@@ -1724,7 +1724,7 @@ client.on("a", function(msg) {
     }
 });
 
-MPP.client.on('a', function (msg) {
+client.on('a', function (msg) {
     let args = msg.a.split(' ');
     let cmd = args[0].toLowerCase();
     let argcat = msg.a.substring(cmd.length).trim();
@@ -1753,7 +1753,7 @@ MPP.client.on('a', function (msg) {
     }
 });
 
-MPP.client.on("participant added", function (part) {
+client.on("participant added", function (part) {
     if (isKnight == true || isNoble == true || isKing == true) {
         if(client.isOwner()) {
             if(lock == true) {
