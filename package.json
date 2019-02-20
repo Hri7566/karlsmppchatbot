@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "fs": "0.0.1-security",
     "https-proxy-agent": "^2.2.1",
     "mathjs": "^5.4.2",
     "ws": "^6.1.4"
