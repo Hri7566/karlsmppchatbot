@@ -13,8 +13,7 @@ client.on("hi", () => {
     console.log("Online");
 
     // Go into a channel
-    var room = "Karl's Room";
-    client.setChannel("Karl's Room");
+    client.setChannel(home);
 
     // Showing that the bot is ready
     setTimeout(() => {
@@ -22,13 +21,17 @@ client.on("hi", () => {
         client.sendArray([{ m:'a', message:"Connected" }]);
     }, 100)
 });
+// Start of bot
 
+// Error catch
 var fs = require('fs');
  fs.writeFile("Index.js", "TEST", function(err) {
       if(err) {
            return console.log(err);
          } console.log("The file was saved!");
     });
+
+
 
 // I'll just add a random comment
 client.on("a", (msg) => {
@@ -37,6 +40,9 @@ client.on("a", (msg) => {
     }
 });
 
+
+
+// Uptime
 String.prototype.toHHMMSS = function () {
     var sec_num = parseInt(this, 10); // don't forget the second param
     var hours   = Math.floor(sec_num / 3600);
@@ -50,6 +56,9 @@ String.prototype.toHHMMSS = function () {
     return time;
 }
 
+var home = "Karl's Room"; 
+
+// Math.js
 const Math = require('mathjs')
 
 // Karl's Project
@@ -141,6 +150,17 @@ client.on('a', msg => {
             }
         } else {
             sendchat("You can't use this command. Use/rank for more information");
+        }
+    } else if (cmd == "/sethome") {
+        if (isKing) {
+            if (argcat.length == 0) {
+                sendchat("Setting home room to " + client.channel._id);
+                home = client.channel._id
+            } else if (argcat) {
+                sendchat(argcat + " set to home room, moving to " + argcat);
+                home = argcat
+                client.setChannel(argcat);
+            }
         }
     } else if (cmd == '/kings+') { // add id to Kings
         if (isKing) {
