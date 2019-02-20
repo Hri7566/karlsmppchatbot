@@ -112,7 +112,7 @@ client.on('a', msg => {
 		} else {
 			sendchat("You can't use this command. Use /rank for more information.");
 		}
-	} else if (cmd == /getcrown) {
+	} else if (cmd == "/getcrown") {
 		if (client.isOwner()) {
 			sendchat("Giving ownership to " + msg.p.name);
 			client.sendArray([{ m: "chown", id: msg.p.id }]);
