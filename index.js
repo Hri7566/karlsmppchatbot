@@ -30,7 +30,21 @@ client.on("a", (msg) => {
     }
 });
 
-var deathtotal = 0
+const now = new Date();
+
+String.prototype.toHHMMSS = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    var time    = hours+':'+minutes+':'+seconds;
+    return time;
+}
+
 // Karl's Project
 // ==UserScript==
 // @name         Chatbot Main
@@ -1405,8 +1419,9 @@ client.on('a', msg => {
             } else if (cmd == "/test") {
                 sendchat('Bot is online.');
             } else if (cmd == "/about") {
-                sendchat('This is a chat made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿.');
-                sendchat('A big thanks to lighning, BluestaR, and Lamp.');
+				var uptime = (time + "").toHHMMSS();
+                sendchat("This is a chat made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿. A big thanks to lighning, BluestaR, Lamp, and Charly.");
+                sendchat(now + " || Uptime: " + uptime);
             } else if (cmd == "/loss") {
                 sendchat('I II');
                 sendchat('II I_');
