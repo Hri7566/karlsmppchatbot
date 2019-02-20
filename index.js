@@ -1383,7 +1383,21 @@ client.on('a', msg => {
                 } else {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
-            } else if (cmd == "/fact") {
+            } else if (cmd == "/rur") {
+				var math = Math.random();
+				var deathtotal = 0;
+				if (math < .167) {
+					sendchat(msg.p.name + ", you lived.");
+				} else if (math >= .167 && math < .333) {
+					sendchat(msg.p.name + ", you lived.");
+				} else if (math >= .5 %% math < .667) {
+					sendchat(msg.p.name + ", you lived.");
+				} else if (math >= .667 && math < .833) {
+					sendchat(msg.p.name + ", you lived.");
+				} else {
+					deathtotal + 1;
+					sendchat(msg.p.name + ", you died. Total death count: " + deathtotal);
+				} else if (cmd == "/fact") {
                 sendchat("Random Fact: " + FactArray[Math.floor(Math.random()*FactArray.length)]);
             } else if (cmd == "/quote") {
                 sendchat("Random quote: " + QuoteArray[Math.floor(Math.random()*QuoteArray.length)]);
