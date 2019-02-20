@@ -72,15 +72,15 @@ function removeFromArray(array, value) {
     return array;
 }
 function getPart(boop) {
-    for (const id in MPP.client.ppl) {
-        let part = MPP.client.ppl[id];
+    for (const id in client.ppl) {
+        let part = client.ppl[id];
         if (part.name.toLowerCase().indexOf(boop.toLowerCase()) !== -1) {
             return part;
             break;
         }
     }
 }
-MPP.client.on('a', msg => {
+client.on('a', msg => {
     let args = msg.a.split(' ');
     let cmd = args[0].toLowerCase();
     let argcat = msg.a.substring(cmd.length).trim();
@@ -101,49 +101,49 @@ MPP.client.on('a', msg => {
             }
         }
     } else if (msg.a == '/kings+') { // add id to Kings
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) {
+        if (msg.p._id == client.getOwnParticipant()._id) {
             var id2Kings = prompt("Enter _id to King");
             Kings.push(id2Kings);
             MPP.chat.send("Kinged _id: " + id2Kings);
         }
     } else if (msg.a == '/kings-') { // remove id from Kings
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) {
+        if (msg.p._id == client.getOwnParticipant()._id) {
             var id2unKings = prompt("Enter _id to unKings");
             removeFromArray(Kings, id2unKings);
             MPP.chat.send("Un-Kings _id: " + id2unKings);
         }
     } else if (msg.a == '/nobles+') { // add id to Nobles
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) {
+        if (msg.p._id == client.getOwnParticipant()._id) {
             var id2Nobles = prompt("Enter _id to Noble");
             Nobles.push(id2Nobles);
             MPP.chat.send("Nobled _id: " + id2Nobles);
         }
     } else if (msg.a == '/nobles-') { // remove id from Nobles
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) {
+        if (msg.p._id == client.getOwnParticipant()._id) {
             var id2unNobles = prompt("Enter _id to un-Noble");
             removeFromArray(Kings, id2unNobles);
             MPP.chat.send("Un-Noble _id: " + id2unNobles);
         }
     } else if (msg.a == '/knights+') { // add id to Knights
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) {
+        if (msg.p._id == client.getOwnParticipant()._id) {
             var id2Knights = prompt("Enter _id to Knight");
             Knights.push(id2Knights);
             MPP.chat.send("Knighted _id: " + id2Knights);
         }
     } else if (msg.a == '/knights-') { // remove id from Knights
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) {
+        if (msg.p._id == client.getOwnParticipant()._id) {
             var id2unKnights = prompt("Enter _id to un-Knights");
             removeFromArray(Knights, id2unKnights);
             MPP.chat.send("Un-Knighted _id: " + id2unKnights);
         }
     } else if (msg.a == '/blist+') { // add id to Knights
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) {
+        if (msg.p._id == client.getOwnParticipant()._id) {
             var id2Blacklist = prompt("Enter _id to Knight");
             blacklist.push(id2Blacklist);
             MPP.chat.send("Command blocked _id: " + id2Blacklist);
         }
     } else if (msg.a == '/blist-') { // remove id from Knights
-        if (msg.p._id == MPP.client.getOwnParticipant()._id) {
+        if (msg.p._id == client.getOwnParticipant()._id) {
             var id2unBlacklist = prompt("Enter _id to un-Knights");
             removeFromArray(blacklist, id2unBlacklist);
             MPP.chat.send("Un-blocked _id: " + id2Blacklist);
@@ -189,7 +189,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(msg.p.name+ " eats " + FoodArray[Math.floor(Math.random()*FoodArray.length)] + ". It " + TasteArray[Math.floor(Math.random()*TasteArray.length)] + ".");
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+' cannibalizes '+ MPP.client.ppl[part.id].name + '. It '  + TasteArray[Math.floor(Math.random()*TasteArray.length)] + ".");
+                        MPP.chat.send(msg.p.name+' cannibalizes '+ client.ppl[part.id].name + '. It '  + TasteArray[Math.floor(Math.random()*TasteArray.length)] + ".");
                     }
                 } catch (e) {
                     MPP.chat.send(msg.p.name + " ate '"+argcat+"'.  It " + TasteArray[Math.floor(Math.random()*TasteArray.length)] + ".");
@@ -199,7 +199,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(msg.p.name+ " tickles themself to try and find some joy in their lonely life.");
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+' tickles '+ MPP.client.ppl[part.id].name + '.  They laugh uncontrolably.');
+                        MPP.chat.send(msg.p.name+' tickles '+ client.ppl[part.id].name + '.  They laugh uncontrolably.');
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -209,7 +209,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(msg.p.name+ ", don't poke yourself there, nasty.");
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+' pokes '+ MPP.client.ppl[part.id].name+' in the ' +pokearray[Math.floor(Math.random()*pokearray.length)]);
+                        MPP.chat.send(msg.p.name+' pokes '+ client.ppl[part.id].name+' in the ' +pokearray[Math.floor(Math.random()*pokearray.length)]);
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -219,7 +219,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(msg.p.name+ " plays rock paper sissors alone.");
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+': '+rps[Math.floor(Math.random()*rps.length)]+' '+ MPP.client.ppl[part.id].name+':' +rps[Math.floor(Math.random()*rps.length)]);
+                        MPP.chat.send(msg.p.name+': '+rps[Math.floor(Math.random()*rps.length)]+' '+ client.ppl[part.id].name+':' +rps[Math.floor(Math.random()*rps.length)]);
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -229,7 +229,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(msg.p.name+ " said \"Why are you hitting yourself? Why are you hitting yourself? Why are you hitting yourself? Why am I hitting myself?\"");
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+' got in to a fight with '+ MPP.client.ppl[part.id].name+' *Ding Ding Ding* Match over! ' +msg.p.name +' has ' +fights[Math.floor(Math.random()*fights.length)] );
+                        MPP.chat.send(msg.p.name+' got in to a fight with '+ client.ppl[part.id].name+' *Ding Ding Ding* Match over! ' +msg.p.name +' has ' +fights[Math.floor(Math.random()*fights.length)] );
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -239,7 +239,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(msg.p.name+ " gives themself a hug, how lonely.");
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+' Gives '+ MPP.client.ppl[part.id].name+' a big hug. '+ MPP.client.ppl[part.id].name +': Help me');
+                        MPP.chat.send(msg.p.name+' Gives '+ client.ppl[part.id].name+' a big hug. '+ client.ppl[part.id].name +': Help me');
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -249,7 +249,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(' In the ancient ritual of seppuku, ' + msg.p.name + ' unsheaths their sword and runs it though their stomach.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name + ' kills '+ MPP.client.ppl[part.id].name+' with ' + kills[Math.floor(Math.random()*kills.length)] +'. How? Who knows.');
+                        MPP.chat.send(msg.p.name + ' kills '+ client.ppl[part.id].name+' with ' + kills[Math.floor(Math.random()*kills.length)] +'. How? Who knows.');
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -259,7 +259,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(msg.p.name + ' picks up a photo of themself wearing a full body red leotard.  They kiss it softly.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name + ' gives ' + MPP.client.ppl[part.id].name + ' a sloppy kiss.');
+                        MPP.chat.send(msg.p.name + ' gives ' + client.ppl[part.id].name + ' a sloppy kiss.');
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -269,7 +269,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(msg.p.name + ' looks though a list of insecurities that they will use to roast themself. ');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name + ' places ' + MPP.client.ppl[part.id].name + ' over a low burning flame');
+                        MPP.chat.send(msg.p.name + ' places ' + client.ppl[part.id].name + ' over a low burning flame');
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -279,7 +279,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(msg.p.name + ' Takes a knife and thows it at a wall.  It bounces back and takes out their left eye.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name + ' Takes a ' + knifes[Math.floor(Math.random()*knifes.length)] +' and stabs ' + MPP.client.ppl[part.id].name);
+                        MPP.chat.send(msg.p.name + ' Takes a ' + knifes[Math.floor(Math.random()*knifes.length)] +' and stabs ' + client.ppl[part.id].name);
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -289,7 +289,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send('Rest in peace ' + msg.p.name + '.  They will be missed.');
                     } else if (part) {
-                        MPP.chat.send('Rest is peace ' + MPP.client.ppl[part.id].name + '.  They will be missed.  From ' + msg.p.name);
+                        MPP.chat.send('Rest is peace ' + client.ppl[part.id].name + '.  They will be missed.  From ' + msg.p.name);
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -299,7 +299,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(msg.p.name+ ' shot themself in the head because '+sreason[Math.floor(Math.random()*sreason.length)]+'.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+' shoots '+ MPP.client.ppl[part.id].name+' because '+ureason[Math.floor(Math.random()*ureason.length)]+'.');
+                        MPP.chat.send(msg.p.name+' shoots '+ client.ppl[part.id].name+' because '+ureason[Math.floor(Math.random()*ureason.length)]+'.');
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -309,7 +309,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(msg.p.name+ ' slaps themself with a '+slapitem[Math.floor(Math.random()*slapitem.length)]+'.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+' slaps '+ MPP.client.ppl[part.id].name+' across the face with a '+slapitem[Math.floor(Math.random()*slapitem.length)]+'.');
+                        MPP.chat.send(msg.p.name+' slaps '+ client.ppl[part.id].name+' across the face with a '+slapitem[Math.floor(Math.random()*slapitem.length)]+'.');
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -319,7 +319,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(msg.p.name + ' cuddles with their body pillow.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name + ' cuddles with ' + MPP.client.ppl[part.id].name + '. They love it too.');
+                        MPP.chat.send(msg.p.name + ' cuddles with ' + client.ppl[part.id].name + '. They love it too.');
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -329,7 +329,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(msg.p.name + ' has become a victim of self-rape, aka. Masterbaiting.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name + ' rapes ' + MPP.client.ppl[part.id].name + '.  They enjoy it, but ' +msg.p.name+' was crying, so still rape.');
+                        MPP.chat.send(msg.p.name + ' rapes ' + client.ppl[part.id].name + '.  They enjoy it, but ' +msg.p.name+' was crying, so still rape.');
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -339,7 +339,7 @@ MPP.client.on('a', msg => {
                     if (!argcat || part._id == msg.p._id) {
                         MPP.chat.send(msg.p.name + ' friendzoned themself, how did it come to this.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name + ' friendzones ' + MPP.client.ppl[part.id].name + '.  They will cry for days on end.');
+                        MPP.chat.send(msg.p.name + ' friendzones ' + client.ppl[part.id].name + '.  They will cry for days on end.');
                     }
                 } catch (e) {
                     MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
@@ -386,7 +386,7 @@ MPP.client.on('a', msg => {
                 // small chat art
             } else if (cmd ==  '/bear') {
                 if (isKnight == true || isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
+                    if (client.isOwner()) {
                         MPP.chat.send('\u2500\u2500\u2500\u2584\u2580\u2580\u2580\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2580\u2580\u2580\u2584\u2500\u2500\u2500');
                         MPP.chat.send('\u2500\u2500\u2500\u2588\u2592\u2592\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2592\u2592\u2588\u2500\u2500\u2500');
                         MPP.chat.send('\u2500\u2500\u2500\u2500\u2588\u2591\u2591\u2588\u2591\u2591\u2591\u2591\u2591\u2588\u2591\u2591\u2588\u2500\u2500\u2500\u2500');
@@ -400,7 +400,7 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd ==  '/tank') {
                 if (isKnight == true || isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
+                    if (client.isOwner()) {
                         MPP.chat.send('\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2588\u2588\u2588\u2588 ]\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2583 ');
                         MPP.chat.send('\u2582\u2584\u2585\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2585\u2584\u2583\u2582 ');
                         MPP.chat.send('I\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588].');
@@ -413,7 +413,7 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd ==  '/sunglasses') {
                 if (isKnight == true || isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
+                    if (client.isOwner()) {
                         MPP.chat.send('\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584');
                         MPP.chat.send('\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2580\u2588\u2584\u2580\u2584\u2580\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2580\u2588\u2584\u2580\u2584\u2580\u2588\u2588\u2588\u2588\u2588\u2588  ');
                         MPP.chat.send('\u2591\u2591\u2591\u2591 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2580\u2588\u2584\u2588\u2584\u2588\u2588\u2588\u2580\u2591\u2591\u2591 \u2580\u2588\u2584\u2588\u2584\u2588\u2588\u2588');
@@ -425,7 +425,7 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd ==  '/hateme') {
                 if (isKnight == true || isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
+                    if (client.isOwner()) {
                         MPP.chat.send('\u2554\u2557');
                         MPP.chat.send('\u2551\u255A\u2566\u2550\u2563\u255A\u2566\u2550\u2557\u2554\u2550\u2550\u2566\u2550\u2557');
                         MPP.chat.send('\u2551\u2551\u2551\u256C\u2551\u2554\u2563\u2569\u2563\u2551\u2551\u2551\u2551\u2569\u2563');
@@ -438,7 +438,7 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd ==  '/piano') {
                 if (isKnight == true || isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
+                    if (client.isOwner()) {
                         MPP.chat.send('\u2551\u2591\u2588\u2591\u2588\u2591\u2551\u2591\u2588\u2591\u2588\u2591\u2588\u2591\u2551\u2591\u2588\u2591\u2588\u2591\u2551');
                         MPP.chat.send('\u2551\u2591\u2588\u2591\u2588\u2591\u2551\u2591\u2588\u2591\u2588\u2591\u2588\u2591\u2551\u2591\u2588\u2591\u2588\u2591\u2551');
                         MPP.chat.send('\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551');
@@ -450,7 +450,7 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/artlist') {
                 if (isKnight == true || isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
+                    if (client.isOwner()) {
                         MPP.chat.send('Type for text art: /piano, /hateme, /sunglasses, /tank, /bear, /cat, /gun, /music');
                         MPP.chat.send('Type for text art, input need: /love');
                     } else {
@@ -461,7 +461,7 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd ==  '/cat') {
                 if (isKnight == true || isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
+                    if (client.isOwner()) {
                         MPP.chat.send('\u2500\u2500\u2500\u2500\u2500\u2500\u2584\u2580\u2584\u2500\u2500\u2500\u2500\u2500\u2584\u2580\u2584');
                         MPP.chat.send('\u2500\u2500\u2500\u2500\u2500\u2584\u2588\u2591\u2591\u2580\u2580\u2580\u2580\u2580\u2591\u2591\u2588\u2584');
                         MPP.chat.send('\u2500\u2584\u2584\u2500\u2500\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2500\u2500\u2584\u2584');
@@ -474,7 +474,7 @@ MPP.client.on('a', msg => {
                 }
             } else  if (cmd ==  '/gun') {
                 if (isKnight == true || isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
+                    if (client.isOwner()) {
                         MPP.chat.send('\u2591\u2584\u258C\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2584');
                         MPP.chat.send('\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2584');
                         MPP.chat.send('\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2580\u2590\u2588\u2588\u2588\u2588');
@@ -487,7 +487,7 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd ==  '/music') {
                 if (isKnight == true || isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
+                    if (client.isOwner()) {
                         MPP.chat.send('\u2500\u2500\u2500\u2500\u2588\u2580\u2588\u2584\u2584\u2584\u2584\u2500\u2500\u2500\u2500\u2500\u2588\u2588\u2584');
                         MPP.chat.send('\u2500\u2500\u2500\u2500\u2588\u2580\u2584\u2584\u2584\u2584\u2588\u2500\u2500\u2500\u2500\u2500\u2588\u2580\u2580\u2588');
                         MPP.chat.send('\u2588\u2588\u2580\u2584\u2588\u2500\u2584\u2588\u2588\u2580\u2588\u2500\u2588\u2588\u2588\u2580\u2588');
@@ -501,17 +501,17 @@ MPP.client.on('a', msg => {
                 // Large art
             } else if (cmd == '/scream') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░█▐▄▒▒▒▌▌▒▒▌░▌▒▐▐▐▒▒▐▒▒▌▒▀▄▀▄░" }]); }, 300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█▐▒▒▀▀▌░▀▀▀░░▀▀▀░░▀▀▄▌▌▐▒▒▒▌▐░" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░▐▒▒▀▀▄▐░▀▀▄▄░░░░░░░░░░░▐▒▌▒▒▐░▌" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░▐▒▌▒▒▒▌░▄▄▄▄█▄░░░░░░░▄▄▄▐▐▄▄▀░░" }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░▌▐▒▒▒▐░░░░░░░░░░░░░▀█▄░░░░▌▌░░░" }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "▄▀▒▒▌▒▒▐░░░░░░░▄░░▄░░░░░▀▀░░▌▌░░░" }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "▄▄▀▒▐▒▒▐░░░░░░░▐▀▀▀▄▄▀░░░░░░▌▌░░░" }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░█▌▒▒▌░░░░░▐▒▒▒▒▒▌░░░░░░▐▐▒▀▀▄" }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░▄▀▒▒▒▒▐░░░░░▐▒▒▒▒▐░░░░░▄█▄▒▐▒▒▒" }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "▄▀▒▒▒▒▒▄██▀▄▄░░▀▄▄▀░░▄▄▀█▄░█▀▒▒▒▒" }]); }, 3000);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░█▐▄▒▒▒▌▌▒▒▌░▌▒▐▐▐▒▒▐▒▒▌▒▀▄▀▄░" }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█▐▒▒▀▀▌░▀▀▀░░▀▀▀░░▀▀▄▌▌▐▒▒▒▌▐░" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░▐▒▒▀▀▄▐░▀▀▄▄░░░░░░░░░░░▐▒▌▒▒▐░▌" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░▐▒▌▒▒▒▌░▄▄▄▄█▄░░░░░░░▄▄▄▐▐▄▄▀░░" }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░▌▐▒▒▒▐░░░░░░░░░░░░░▀█▄░░░░▌▌░░░" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "▄▀▒▒▌▒▒▐░░░░░░░▄░░▄░░░░░▀▀░░▌▌░░░" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "▄▄▀▒▐▒▒▐░░░░░░░▐▀▀▀▄▄▀░░░░░░▌▌░░░" }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░█▌▒▒▌░░░░░▐▒▒▒▒▒▌░░░░░░▐▐▒▀▀▄" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░▄▀▒▒▒▒▐░░░░░▐▒▒▒▒▐░░░░░▄█▄▒▐▒▒▒" }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "▄▀▒▒▒▒▒▄██▀▄▄░░▀▄▄▀░░▄▄▀█▄░█▀▒▒▒▒" }]); }, 3000);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -520,27 +520,27 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/fuckmyass') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" }]); }, 300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⣿⣿⣿⣿⣿⣿⣿⣿⡇⢀⢀⠍⠙⢿⡟⢿⣿⣿⣿⣿⣿⣿⣿⣿" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⠹⣿⣿⣿⣿⣿⣿⣿⠁⠈⢀⡤⢲⣾⣗⠲⣿⣿⣿⣿⣿⣿⣟⠻" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⡀⢙⣿⣿⣿⣿⣿⣿⢀⠰⠁⢰⣾⣿⣿⡇⢀⣿⣿⣿⣿⣿⣿⡄" }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⣇⢀⢀⠙⠷⣍⠛⠛⢀⢀⢀⢀⠙⠋⠉⢀⢀⢸⣿⣿⣿⣿⣿⣷" }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⡙⠆⢀⣀⠤⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢸⣿⣿⣿⣿⣿⣿" }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⣷⣖⠋⠁⢀⢀⢀⢀⢀⢀⣀⣀⣄⢀⢀⢀⢀⢸⠏⣿⣿⣿⢿⣿" }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⣿⣷⡀⢀⢀⢀⢀⢀⡒⠉⠉⢀⢀⢀⢀⢀⢀⢈⣴⣿⣿⡿⢀⡿" }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⣿⣿⣷⣄⢀⢀⢀⢀⠐⠄⢀⢀⢀⠈⢀⣀⣴⣿⣿⣿⡿⠁⢀⣡" }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⠻⣿⣿⣿⣿⣆⠢⣤⣄⢀⢀⣀⠠⢴⣾⣿⣿⡿⢋⠟⢡⣿⣿⣿" }]); }, 3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⢀⠘⠿⣿⣿⣿⣦⣹⣿⣀⣀⣀⣀⠘⠛⠋⠁⡀⣄⣴⣿⣿⣿⣿" }]); }, 3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⢀⢀⢀⠈⠛⣽⣿⣿⣿⣿⣿⣿⠁⢀⢀⢀⣡⣾⣿⣿⣿⡟⣹⣿" }]); }, 3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⢀⢀⢀⢀⢰⣿⣿⣿⣿⣿⣿⣿⣦⣤⣶⣿⡿⢛⢿⡇⠟⠰⣿⣿" }]); }, 3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⢀⢀⢀⢀⣿⣿⣿⡿⢉⣭⢭⠏⣿⡿⢸⡏⣼⣿⢴⡇⢸⣿⣶⣿" }]); }, 4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⢀⢀⢀⢰⣿⣿⣿⢃⣶⣶⡏⠸⠟⣱⣿⣧⣛⣣⢾⣿⣿⣿⣿⣿" }]); }, 4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⢀⢀⢀⣾⣿⣿⣿⣾⣿⣿⠟⢻⡿⡉⣷⣬⡛⣵⣿⣿⣿⣿⣿⣿" }]); }, 4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⢀⢀⣸⣿⣿⣿⣿⣿⣿⡿⢰⠘⣰⣇⣿⣿⣰⣿⣿⣿⣿⣿⣿⣿" }]); }, 5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⢀⢀⠘⢿⣿⣿⣿⣿⣿⡷⢺⣿⠟⣩⣭⣽⣇⠲⠶⣿⣿⣿⣿⣿" }]); }, 5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⢀⠐⢀⣾⣿⣿⣿⣿⠟⢐⡈⣿⣷⣶⠎⣹⡟⠟⣛⣸⣿⣿⣿⣿" }]); }, 5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "⠠⢀⣼⣿⣿⣿⣿⣯⣼⣿⣷⣿⣷⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿" }]); }, 6000);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿" }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⣿⣿⣿⣿⣿⣿⣿⣿⡇⢀⢀⠍⠙⢿⡟⢿⣿⣿⣿⣿⣿⣿⣿⣿" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⠹⣿⣿⣿⣿⣿⣿⣿⠁⠈⢀⡤⢲⣾⣗⠲⣿⣿⣿⣿⣿⣿⣟⠻" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⡀⢙⣿⣿⣿⣿⣿⣿⢀⠰⠁⢰⣾⣿⣿⡇⢀⣿⣿⣿⣿⣿⣿⡄" }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⣇⢀⢀⠙⠷⣍⠛⠛⢀⢀⢀⢀⠙⠋⠉⢀⢀⢸⣿⣿⣿⣿⣿⣷" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⡙⠆⢀⣀⠤⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢀⢸⣿⣿⣿⣿⣿⣿" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⣷⣖⠋⠁⢀⢀⢀⢀⢀⢀⣀⣀⣄⢀⢀⢀⢀⢸⠏⣿⣿⣿⢿⣿" }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⣿⣷⡀⢀⢀⢀⢀⢀⡒⠉⠉⢀⢀⢀⢀⢀⢀⢈⣴⣿⣿⡿⢀⡿" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⣿⣿⣷⣄⢀⢀⢀⢀⠐⠄⢀⢀⢀⠈⢀⣀⣴⣿⣿⣿⡿⠁⢀⣡" }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⠻⣿⣿⣿⣿⣆⠢⣤⣄⢀⢀⣀⠠⢴⣾⣿⣿⡿⢋⠟⢡⣿⣿⣿" }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⢀⠘⠿⣿⣿⣿⣦⣹⣿⣀⣀⣀⣀⠘⠛⠋⠁⡀⣄⣴⣿⣿⣿⣿" }]); }, 3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⢀⢀⢀⠈⠛⣽⣿⣿⣿⣿⣿⣿⠁⢀⢀⢀⣡⣾⣿⣿⣿⡟⣹⣿" }]); }, 3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⢀⢀⢀⢀⢰⣿⣿⣿⣿⣿⣿⣿⣦⣤⣶⣿⡿⢛⢿⡇⠟⠰⣿⣿" }]); }, 3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⢀⢀⢀⢀⣿⣿⣿⡿⢉⣭⢭⠏⣿⡿⢸⡏⣼⣿⢴⡇⢸⣿⣶⣿" }]); }, 4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⢀⢀⢀⢰⣿⣿⣿⢃⣶⣶⡏⠸⠟⣱⣿⣧⣛⣣⢾⣿⣿⣿⣿⣿" }]); }, 4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⢀⢀⢀⣾⣿⣿⣿⣾⣿⣿⠟⢻⡿⡉⣷⣬⡛⣵⣿⣿⣿⣿⣿⣿" }]); }, 4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⢀⢀⣸⣿⣿⣿⣿⣿⣿⡿⢰⠘⣰⣇⣿⣿⣰⣿⣿⣿⣿⣿⣿⣿" }]); }, 5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⢀⢀⠘⢿⣿⣿⣿⣿⣿⡷⢺⣿⠟⣩⣭⣽⣇⠲⠶⣿⣿⣿⣿⣿" }]); }, 5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⢀⠐⢀⣾⣿⣿⣿⣿⠟⢐⡈⣿⣷⣶⠎⣹⡟⠟⣛⣸⣿⣿⣿⣿" }]); }, 5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "⠠⢀⣼⣿⣿⣿⣿⣯⣼⣿⣷⣿⣷⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿" }]); }, 6000);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -549,30 +549,30 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/homer') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▓▓▓▓ " }]); }, 300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▒▒▓▓ " }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▒▒▒▒▓ " }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▒▒▒▒▒▓ " }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▒▒▒▒▒▓ " }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▒▒▒▒▒▒▓ " }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▒▒▒▒▒▒▓▓▓ " }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▓▓▓▓▓▓░░░▓ " }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▓░░░░▓░░░░▓ " }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▓░░░░░░▓░▓░▓ " }]); }, 3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▓░░░░░░▓░░░▓ " }]); }, 3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▓░░▓░░░▓▓▓▓ " }]); }, 3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▓░░░░▓▒▒▒▒▓ " }]); }, 4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▒▓▓▓▓▒▒▒▒▒▓ " }]); }, 4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▒▒▒▒▒▒▒▓▓▓▓ " }]); }, 5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▒▒▒▒▓▓▓▒▒▒▒▓ " }]); }, 5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▒▒▒▓▒▒▒▒▒▒▒▒▓ " }]); }, 5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▒▒▓▒▒▒▒▒▒▒▒▒▓ " }]); }, 6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▒▓▒▒▒▒▒▒▒▒▒▒▒▓ " }]); }, 6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▓▒▓▒▒▒▒▒▒▒▒▒▓ " }]); }, 6600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▓▒▓▓▓▓▓▓▓▓▓▓ " }]); }, 6900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▓▒▒▒▒▒▒▒▓ " }]); }, 7200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message:"▒▒▓▒▒▒▒▒▓ " }]); }, 7500);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▓▓▓▓ " }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▒▒▓▓ " }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▒▒▒▒▓ " }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▒▒▒▒▒▓ " }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▒▒▒▒▒▓ " }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▒▒▒▒▒▒▓ " }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▒▒▒▒▒▒▓▓▓ " }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▓▓▓▓▓▓░░░▓ " }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▓░░░░▓░░░░▓ " }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▓░░░░░░▓░▓░▓ " }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▓░░░░░░▓░░░▓ " }]); }, 3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▓░░▓░░░▓▓▓▓ " }]); }, 3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▓░░░░▓▒▒▒▒▓ " }]); }, 4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▒▓▓▓▓▒▒▒▒▒▓ " }]); }, 4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▒▒▒▒▒▒▒▓▓▓▓ " }]); }, 5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▒▒▒▒▓▓▓▒▒▒▒▓ " }]); }, 5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▒▒▒▓▒▒▒▒▒▒▒▒▓ " }]); }, 5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▒▒▓▒▒▒▒▒▒▒▒▒▓ " }]); }, 6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▒▓▒▒▒▒▒▒▒▒▒▒▒▓ " }]); }, 6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▓▒▓▒▒▒▒▒▒▒▒▒▓ " }]); }, 6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▓▒▓▓▓▓▓▓▓▓▓▓ " }]); }, 6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▓▒▒▒▒▒▒▒▓ " }]); }, 7200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message:"▒▒▓▒▒▒▒▒▓ " }]); }, 7500);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -581,18 +581,18 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/largelenny') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░░░░░░░░▄▄▄▄░░░░░░░░░░░░░░░░░░░░░░░▄▄▄▄▄" }]); }, 300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░░░░▄▀█▀▀▄░░▀▀▀▄░░░░▐█░░░░░░░░░▄▀█▀▀▄░░░▀█▄" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░█░░░░▀░▐▌░░▐▌░░░░░▀░░░▐█░░░░░░░░▀░▐▌░░▐▌░░░░█▀" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░▐▌░░░░░░░▀▄▄▀░░░░░░░░░░▐█▄▄░░░░░░░░░▀▄▄▀░░░░░▐▌" }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░█░░░░░░░░░░░░░░░░░░░░░░░░░▀█░░░░░░░░░░░░░░░░░░█" }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "▐█░░░░░░░░░░░░░░░░░░░░░░░░░░█▌░░░░░░░░░░░░░░░░░█" }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "▐█░░░░░░░░░░░░░░░░░░░░░░░░░░█▌░░░░░░░░░░░░░░░░░█" }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░█░░░░░░░░░░░░░░░░░░░░█▄░░░▄█░░░░░░░░░░░░░░░░░░█" }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░▐▌░░░░░░░░░░░░░░░░░░░░▀███▀░░░░░░░░░░░░░░░░░░▐▌" }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░█░░░░░░░░░░░░░░░░░▀▄░░░░░░░░░░▄▀░░░░░░░░░░░░█" }]); }, 3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░▀▄▄▄▄▄▄▄▀▀░░░░░░░░░░░░░█" }]); }, 3300);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░░░░░░░▄▄▄▄░░░░░░░░░░░░░░░░░░░░░░░▄▄▄▄▄" }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░░░░▄▀█▀▀▄░░▀▀▀▄░░░░▐█░░░░░░░░░▄▀█▀▀▄░░░▀█▄" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░█░░░░▀░▐▌░░▐▌░░░░░▀░░░▐█░░░░░░░░▀░▐▌░░▐▌░░░░█▀" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░▐▌░░░░░░░▀▄▄▀░░░░░░░░░░▐█▄▄░░░░░░░░░▀▄▄▀░░░░░▐▌" }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░█░░░░░░░░░░░░░░░░░░░░░░░░░▀█░░░░░░░░░░░░░░░░░░█" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "▐█░░░░░░░░░░░░░░░░░░░░░░░░░░█▌░░░░░░░░░░░░░░░░░█" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "▐█░░░░░░░░░░░░░░░░░░░░░░░░░░█▌░░░░░░░░░░░░░░░░░█" }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░█░░░░░░░░░░░░░░░░░░░░█▄░░░▄█░░░░░░░░░░░░░░░░░░█" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░▐▌░░░░░░░░░░░░░░░░░░░░▀███▀░░░░░░░░░░░░░░░░░░▐▌" }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░█░░░░░░░░░░░░░░░░░▀▄░░░░░░░░░░▄▀░░░░░░░░░░░░█" }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░▀▄▄▄▄▄▄▄▀▀░░░░░░░░░░░░░█" }]); }, 3300);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -601,52 +601,52 @@ MPP.client.on('a', msg => {
                 }
             } else  if (cmd == '/pinkiepie') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________________________________________▄▄████████▄" }]); }, 300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________________________________▄█▓▓▓█▓▓▓▓▓▓██▄" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________________________________█▓▓▓▓▓██▓▓▓▓▓▓▓█▄" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________________________▄█████▄_█▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓█" }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________▄▄██████████▓▓▓▓▓▓▓██▓▓▓▓▓▓▓█▓▓▓▓▓▓▓██" }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________▄█▓▓▓▓▓▓▓▓▓▓█▓██▓▓▓▓▓▓▓█▓▓▓▓▓█▓▓▓▓▓▓▓█▓█" }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________▄█▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓█▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓▓█▓▓█" }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________▄█▓▓▓▓▓▓▓▓▓▓▓▓▓▓████▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓▓██▓▓█" }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓███▓▓▓▓█" }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______█▓▓▓▓▓▓▓▓▓▓▓▓███▀▀▀▀██▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓█▓▓▓▓█__▄█████" }]); }, 3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____█▓▓▓▓▓▓▓▓▓▓█▀▀___________▀█▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓█▓▓▓███▓▓▓▓▓" }]); }, 3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____█▓▓▓▓▓▓▓▓▓█▀_______________▓▓█▓▓▓▓███████▓███▓▓▓▓▓▓▓░░░▓▓" }]); }, 3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____█▓▓▓▓▓▓▓▓█_____________▓▓▓░░░█▓██░░░░░░░███▓▓▓▓▓▓░░░░░░▓▓" }]); }, 3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____█▓▓▓▓▓▓█____________▓▓░░░░░░██░░░░░░░░░░░░███▓░░░░░░░░░▓" }]); }, 4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__█▌_█▓▓▓▓▓█___________▓░░░░░░░░░░░░░░░░░░░░░░░░▓░░░░░░░▓░░▓" }]); }, 4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_█▓█_█▓▓▓▓█__________▓▄▄░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓░░░▓" }]); }, 4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "█▓▓▓██▓▓▓█_________▓█░░▐░░░░░░░░░▄█████▄░░░░░░░░░░░░░▓░░░░▓" }]); }, 5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "█▓▓▓▓▓▓▓█________▀▄█░░░▐░░░░░░▄█▀░░░░░░▀█░░░░░░░░░░░▓░░░░▓▓" }]); }, 5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_██▓▓▓██________▀▀▄▌░░░▐░░░░░░█░░░░░░░░░░█░░░░░░░░░▓░░░░░▓▓" }]); }, 5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___▀▀▀▀__________▀▄█░░░░▐░░░░░█░░░░░░░░░░░▐▌░░░░░░░▓░░░░░▓▓▓" }]); }, 6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________▓░░▓▓▓▓░░░░░░█░░░░░░░░░░░░▐▄▄▄▅░░░░░░░░░▓██" }]); }, 6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________▓░░▀░░░░░░░░░░▀░░░░░░░░░░░░▐▀▄▄▅░░░░░░░░▓▓▓▓" }]); }, 6600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________▓░░░░░░░░░░░░░░░░░░░░░░░░░░▀▄▄░░░░░░░░█▓▓▓▓" }]); }, 6900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________▓░░░░░▓▓▓░░░░░░░░░░░░░░░░░░░░░███████▓▓▓▓▓▓" }]); }, 7200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░██▓▓▓▓▓▓▓▓▓▓▓▓" }]); }, 7500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________________▓▓▓▓▓░░░░░░░░░░░░░░░░░░█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓" }]); }, 7800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________________▓▓▓▓▓░░░░░░░░░░░░░░░░░█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓" }]); }, 8100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________________▓▓▓▓▓░░░░░░░░░░░░░░░░░█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓" }]); }, 8400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________________▓▒▒▓░░░░░░░░░░░░░░░░░░░█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓" }]); }, 8700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________________▓▓▒▓░░░░░░░░░░░░░░░░░░░████████▓▓▓▓▓▓▓▓▓▓" }]); }, 9000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________________▓▓▓▓▓░░░░░░░░░░░░░░███▓▓▓▓█▓▓▓██▓▓▓▓██▓▓" }]); }, 9300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________________________▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓▓▓█▓▓█▓▓▓▓█▓██" }]); }, 9600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________________________________█▓▓▓▓▓▓▓▓▓▓▓███▓▓▓▓█▓▓▓" }]); }, 9900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________________________________█▓▓▓▓▓▓▓▓████▓▓▓▓▓▓█▓▓▓▓" }]); }, 10200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________________█▓▓▓▓▓▓▓▓▓▓█▓▓██████▓▓▓▓▓" }]); }, 10500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________________█▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓▓▓▓▓▓" }]); }, 10800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________________________________█▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓███████" }]); }, 11100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________________________________█▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓█" }]); }, 11400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________________________________█▓▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓█" }]); }, 11700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________________________________███████████▓▓▓▓▓▓▓▓█" }]); }, 12000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________________█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█" }]); }, 12300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________________________________█▓▓▓▓▓██▓▓▓▓▓▓▓▓██" }]); }, 12600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________________█▓▓▓▓▓▓█▀▀▀▀▀▀▀" }]); }, 12900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________________________________██▓▓▓▓███▄▄" }]); }, 13200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________________________________________▀▀▀" }]); }, 13500);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________________________________▄▄████████▄" }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________________________________▄█▓▓▓█▓▓▓▓▓▓██▄" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________________________________█▓▓▓▓▓██▓▓▓▓▓▓▓█▄" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________________________▄█████▄_█▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓█" }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________▄▄██████████▓▓▓▓▓▓▓██▓▓▓▓▓▓▓█▓▓▓▓▓▓▓██" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________▄█▓▓▓▓▓▓▓▓▓▓█▓██▓▓▓▓▓▓▓█▓▓▓▓▓█▓▓▓▓▓▓▓█▓█" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________▄█▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓█▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓▓█▓▓█" }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________▄█▓▓▓▓▓▓▓▓▓▓▓▓▓▓████▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓▓██▓▓█" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓███▓▓▓▓█" }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______█▓▓▓▓▓▓▓▓▓▓▓▓███▀▀▀▀██▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓█▓▓▓▓█__▄█████" }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____█▓▓▓▓▓▓▓▓▓▓█▀▀___________▀█▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓█▓▓▓███▓▓▓▓▓" }]); }, 3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____█▓▓▓▓▓▓▓▓▓█▀_______________▓▓█▓▓▓▓███████▓███▓▓▓▓▓▓▓░░░▓▓" }]); }, 3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____█▓▓▓▓▓▓▓▓█_____________▓▓▓░░░█▓██░░░░░░░███▓▓▓▓▓▓░░░░░░▓▓" }]); }, 3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____█▓▓▓▓▓▓█____________▓▓░░░░░░██░░░░░░░░░░░░███▓░░░░░░░░░▓" }]); }, 4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__█▌_█▓▓▓▓▓█___________▓░░░░░░░░░░░░░░░░░░░░░░░░▓░░░░░░░▓░░▓" }]); }, 4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_█▓█_█▓▓▓▓█__________▓▄▄░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓░░░▓" }]); }, 4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "█▓▓▓██▓▓▓█_________▓█░░▐░░░░░░░░░▄█████▄░░░░░░░░░░░░░▓░░░░▓" }]); }, 5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "█▓▓▓▓▓▓▓█________▀▄█░░░▐░░░░░░▄█▀░░░░░░▀█░░░░░░░░░░░▓░░░░▓▓" }]); }, 5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_██▓▓▓██________▀▀▄▌░░░▐░░░░░░█░░░░░░░░░░█░░░░░░░░░▓░░░░░▓▓" }]); }, 5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___▀▀▀▀__________▀▄█░░░░▐░░░░░█░░░░░░░░░░░▐▌░░░░░░░▓░░░░░▓▓▓" }]); }, 6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________▓░░▓▓▓▓░░░░░░█░░░░░░░░░░░░▐▄▄▄▅░░░░░░░░░▓██" }]); }, 6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________▓░░▀░░░░░░░░░░▀░░░░░░░░░░░░▐▀▄▄▅░░░░░░░░▓▓▓▓" }]); }, 6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________▓░░░░░░░░░░░░░░░░░░░░░░░░░░▀▄▄░░░░░░░░█▓▓▓▓" }]); }, 6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________▓░░░░░▓▓▓░░░░░░░░░░░░░░░░░░░░░███████▓▓▓▓▓▓" }]); }, 7200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░░██▓▓▓▓▓▓▓▓▓▓▓▓" }]); }, 7500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________________▓▓▓▓▓░░░░░░░░░░░░░░░░░░█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓" }]); }, 7800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________________▓▓▓▓▓░░░░░░░░░░░░░░░░░█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓" }]); }, 8100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________________▓▓▓▓▓░░░░░░░░░░░░░░░░░█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓" }]); }, 8400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________________▓▒▒▓░░░░░░░░░░░░░░░░░░░█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓" }]); }, 8700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________▓▓▒▓░░░░░░░░░░░░░░░░░░░████████▓▓▓▓▓▓▓▓▓▓" }]); }, 9000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________________▓▓▓▓▓░░░░░░░░░░░░░░███▓▓▓▓█▓▓▓██▓▓▓▓██▓▓" }]); }, 9300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________________▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓▓▓█▓▓█▓▓▓▓█▓██" }]); }, 9600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________________________________█▓▓▓▓▓▓▓▓▓▓▓███▓▓▓▓█▓▓▓" }]); }, 9900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________________________________█▓▓▓▓▓▓▓▓████▓▓▓▓▓▓█▓▓▓▓" }]); }, 10200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________________█▓▓▓▓▓▓▓▓▓▓█▓▓██████▓▓▓▓▓" }]); }, 10500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________________█▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓▓▓▓▓▓" }]); }, 10800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________________________________█▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓███████" }]); }, 11100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________________________________█▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓█" }]); }, 11400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________________________________█▓▓▓▓▓▓▓▓▓█▓▓▓▓▓▓▓█" }]); }, 11700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________________________________███████████▓▓▓▓▓▓▓▓█" }]); }, 12000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________________█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█" }]); }, 12300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________________________________█▓▓▓▓▓██▓▓▓▓▓▓▓▓██" }]); }, 12600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________________█▓▓▓▓▓▓█▀▀▀▀▀▀▀" }]); }, 12900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________________________________██▓▓▓▓███▄▄" }]); }, 13200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________________________________________▀▀▀" }]); }, 13500);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -655,40 +655,40 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/rose') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "──────────────▒███░───░████████▒ " }]); }, 300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───────────█████▒░█████░▒▒▒▒▒▒█████ " }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "──────────██▒▒▒▒██████████████▒▒▒██░ " }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─────────██▒▒▒▒███▒██▒██▒▒█████▒░▒██ " }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─────────█░▒▒▒██▒████████████▒█▒▒▒█░ " }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─────────█▒▒▒▒██▒▒▒░▓▓▒░▓▒▒████▒▒██ " }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─────────█▒▒▒▒██▒▒▒▒▒▒▒▒▒▒▒█▒█░▒████ " }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─────███████████▒▒▒▒▒▒▒▒██████▒██▓▒███ " }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─────██▒▒▒▒▒▒█████▒▒▒▒▒▒▒▒█████▒▒▒▒▒██ " }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───────██▒▒▒▒▒▒▒▓██████▒▒▒▒▒██▒▒▒▒▒▒███ " }]); }, 3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "────█████▒▒▒▒▒▒▒▒▒▒████▒▒▒██▒▒▒▒▒▒███ " }]); }, 3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "────██▒▒▒███▒▒▒▒▒▒▒▒▒▒▓█████▒▒▒▒▒███ " }]); }, 3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "────███▒▒▒▒███▒▒▒▒▒▒▒▒▒▒▒███▓▒▒███ " }]); }, 3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "──────█████▒▒████▒▒▒▒▒▒▒▒▒▒█████ " }]); }, 4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─────────████▒▒██████▒▒▒▒█████ " }]); }, 4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "────────────███▒▒██████████ " }]); }, 4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "──────────────████▓──█▓█ " }]); }, 5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "────────────────────████ " }]); }, 5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "────────────────────█░█─────█████████ " }]); }, 5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "────────────────────█▓█───█████████████ " }]); }, 6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "──░█████████───────████──██▓███▒▓████ " }]); }, 6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─█████████████─────█░███████░██████ " }]); }, 6600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───████░▒███▒██────█▓██████████ " }]); }, 6900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─────█████▓▒█████─████ " }]); }, 7200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─────────██████████▓█ " }]); }, 7500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "──────────────────█▓█────████▒█▓▒█ " }]); }, 7800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─────────────────█▓██──█████████████ " }]); }, 8100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─────────────────█▓█──██▒████░█████ " }]); }, 8400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "────────────────██████████▒██████ " }]); }, 8700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "────────────────█▓███████████ " }]); }, 9000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───────────────████ " }]); }, 9300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───────────────█▒█ " }]); }, 9600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───────────────███ " }]); }, 9900);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "──────────────▒███░───░████████▒ " }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───────────█████▒░█████░▒▒▒▒▒▒█████ " }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "──────────██▒▒▒▒██████████████▒▒▒██░ " }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─────────██▒▒▒▒███▒██▒██▒▒█████▒░▒██ " }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─────────█░▒▒▒██▒████████████▒█▒▒▒█░ " }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─────────█▒▒▒▒██▒▒▒░▓▓▒░▓▒▒████▒▒██ " }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─────────█▒▒▒▒██▒▒▒▒▒▒▒▒▒▒▒█▒█░▒████ " }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─────███████████▒▒▒▒▒▒▒▒██████▒██▓▒███ " }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─────██▒▒▒▒▒▒█████▒▒▒▒▒▒▒▒█████▒▒▒▒▒██ " }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───────██▒▒▒▒▒▒▒▓██████▒▒▒▒▒██▒▒▒▒▒▒███ " }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "────█████▒▒▒▒▒▒▒▒▒▒████▒▒▒██▒▒▒▒▒▒███ " }]); }, 3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "────██▒▒▒███▒▒▒▒▒▒▒▒▒▒▓█████▒▒▒▒▒███ " }]); }, 3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "────███▒▒▒▒███▒▒▒▒▒▒▒▒▒▒▒███▓▒▒███ " }]); }, 3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "──────█████▒▒████▒▒▒▒▒▒▒▒▒▒█████ " }]); }, 4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─────────████▒▒██████▒▒▒▒█████ " }]); }, 4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "────────────███▒▒██████████ " }]); }, 4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "──────────────████▓──█▓█ " }]); }, 5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "────────────────────████ " }]); }, 5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "────────────────────█░█─────█████████ " }]); }, 5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "────────────────────█▓█───█████████████ " }]); }, 6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "──░█████████───────████──██▓███▒▓████ " }]); }, 6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─█████████████─────█░███████░██████ " }]); }, 6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───████░▒███▒██────█▓██████████ " }]); }, 6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─────█████▓▒█████─████ " }]); }, 7200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─────────██████████▓█ " }]); }, 7500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "──────────────────█▓█────████▒█▓▒█ " }]); }, 7800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─────────────────█▓██──█████████████ " }]); }, 8100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─────────────────█▓█──██▒████░█████ " }]); }, 8400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "────────────────██████████▒██████ " }]); }, 8700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "────────────────█▓███████████ " }]); }, 9000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───────────────████ " }]); }, 9300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───────────────█▒█ " }]); }, 9600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───────────────███ " }]); }, 9900);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -697,43 +697,43 @@ MPP.client.on('a', msg => {
                 }
             }  else if (cmd == '/dinkaleberg') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" }]); }, 300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░░░▄▄▄▄▄▄░░░░░░░░░░░░░░░░░░░" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░▄█████████▄▄░░░░░░░░▄▄░░░░░" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░███████████████▄▄░░░░▄██▄░░░" }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░▄█████████████████████████░░░" }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░▄██████████████████████████▀░░░" }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░███░░░░░░░░░░░░░░░░░░░█░░░░░░░░" }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░███░███████████████████░░░░░░░░" }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░███░░▀████───████────█▀░░░░░░░░" }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░███░░░▀▄▄▄▄▄▀░▀▄▄▄▄▄▀▀▀▄░░░░░░░" }]); }, 3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░██░░░░░░░░░░░░░░░░░░░░░▀▄░░░░░" }]); }, 3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░▄█░░░░░▄▀█▀▀▀▄▄▄░░░░░▄▀░░▀▄░░░" }]); }, 3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░█░░░░░▄▀──█───█──▀█▄▄░▀▀░░░░▀▄░" }]); }, 3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░▀▄▄░░█────█───█───█──▀▀▄░░▄▀▀▀░" }]); }, 4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░██▄▄▄▄█▄▄▄█▄▄▄█▄▄▄▄▄█▄▄▀░░░" }]); }, 4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░█████████████▄▄░░░░░░░░░░░░" }]); }, 4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░█████████████████████████▄░" }]); }, 5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░███████████████▀▀░░░░░░░░█░" }]); }, 5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░██████████▀▀░░░░░░░░░░░░░█░" }]); }, 5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░██████▀░░░░░░░░░░░░░░░░░░█░" }]); }, 6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░███▀░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░█▀░░░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 6600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░▀▄░▀▄░░░░░░░█░" }]); }, 6900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░▄▄▄▀▄▄▀░░░░░░░█░" }]); }, 7200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 7500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 7800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 8100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 8400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 8700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 9000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" }]); }, 9300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" }]); }, 9600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░█▀▄░█░█▄░█░█░█░█░░█▀░█▀▄░█▀░█▀▄░▄▀▀░█░" }]); }, 9900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░█░█░█░█▀██░█▀▄░█░░█▀░█▀▄░█▀░█▀▄░█░█░▀░" }]); }, 10200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░▀▀░░▀░▀░░▀░▀░▀░▀▀░▀▀░▀▀░░▀▀░▀░▀░░▀▀░▀░" }]); }, 10500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" }]); }, 10800);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░░▄▄▄▄▄▄░░░░░░░░░░░░░░░░░░░" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░▄█████████▄▄░░░░░░░░▄▄░░░░░" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░███████████████▄▄░░░░▄██▄░░░" }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░▄█████████████████████████░░░" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░▄██████████████████████████▀░░░" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░███░░░░░░░░░░░░░░░░░░░█░░░░░░░░" }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░███░███████████████████░░░░░░░░" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░███░░▀████───████────█▀░░░░░░░░" }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░███░░░▀▄▄▄▄▄▀░▀▄▄▄▄▄▀▀▀▄░░░░░░░" }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░██░░░░░░░░░░░░░░░░░░░░░▀▄░░░░░" }]); }, 3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░▄█░░░░░▄▀█▀▀▀▄▄▄░░░░░▄▀░░▀▄░░░" }]); }, 3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░█░░░░░▄▀──█───█──▀█▄▄░▀▀░░░░▀▄░" }]); }, 3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░▀▄▄░░█────█───█───█──▀▀▄░░▄▀▀▀░" }]); }, 4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░██▄▄▄▄█▄▄▄█▄▄▄█▄▄▄▄▄█▄▄▀░░░" }]); }, 4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░█████████████▄▄░░░░░░░░░░░░" }]); }, 4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░█████████████████████████▄░" }]); }, 5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░███████████████▀▀░░░░░░░░█░" }]); }, 5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░██████████▀▀░░░░░░░░░░░░░█░" }]); }, 5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░██████▀░░░░░░░░░░░░░░░░░░█░" }]); }, 6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░███▀░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░█▀░░░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░▀▄░▀▄░░░░░░░█░" }]); }, 6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░▄▄▄▀▄▄▀░░░░░░░█░" }]); }, 7200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 7500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 7800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 8100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 8400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 8700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░░░░░░░░░█░" }]); }, 9000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" }]); }, 9300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" }]); }, 9600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░█▀▄░█░█▄░█░█░█░█░░█▀░█▀▄░█▀░█▀▄░▄▀▀░█░" }]); }, 9900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░█░█░█░█▀██░█▀▄░█░░█▀░█▀▄░█▀░█▀▄░█░█░▀░" }]); }, 10200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░▀▀░░▀░▀░░▀░▀░▀░▀▀░▀▀░▀▀░░▀▀░▀░▀░░▀▀░▀░" }]); }, 10500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" }]); }, 10800);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -742,16 +742,16 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/pikachu') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░█░▀▄░░░░░░░░░░▄▄███▀░░" }]); }, 300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░█░░░▀▄░▄▄▄▄▄░▄▀░░░█▀░░" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░▀▄░░░▀░░░░░▀░░░▄▀░░░░" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░░░▌░▄▄░░░▄▄░▐▀▀░░░░░░" }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░░▐░░█▄░░░▄█░░▌▄▄▀▀▀▀█" }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░░▌▄▄▀▀░▄░▀▀▄▄▐░░░░░░█" }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░▄▀▀▐▀▀░░░░░░░▀▀▌▄▄▄░░░█" }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░█░░░▀▄░░░░░░░▄▀░░░░█▀▀▀" }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░▀▄░░▀░░▀▀▀░░▀░░░▄█░░░░" }]); }, 2700);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░█░▀▄░░░░░░░░░░▄▄███▀░░" }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░█░░░▀▄░▄▄▄▄▄░▄▀░░░█▀░░" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░▀▄░░░▀░░░░░▀░░░▄▀░░░░" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░░▌░▄▄░░░▄▄░▐▀▀░░░░░░" }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░▐░░█▄░░░▄█░░▌▄▄▀▀▀▀█" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░▌▄▄▀▀░▄░▀▀▄▄▐░░░░░░█" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░▄▀▀▐▀▀░░░░░░░▀▀▌▄▄▄░░░█" }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░░░▀▄░░░░░░░▄▀░░░░█▀▀▀" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░▀▄░░▀░░▀▀▀░░▀░░░▄█░░░░" }]); }, 2700);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -760,57 +760,57 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/dickbutt') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________________________.:d0XWWNNNNWNKx:." }]); }, 300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________.;d0NNX0d:,...';o0NWNO:." }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________________.....:d0NN0x:'.___________'kWMWXd." }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________________'oOKNNNWMMWx'__________________lNMMMK." }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________.oNMMMMWMMW0XK;__________________:XMMNc" }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________:NMMMMMMWMX;cN0.__________________:XMWd" }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________oWWMMMMWNO;_,NNl;;____'oO0K0Oxl,.__.kWWx" }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________cWMMMMMWkc:l0WMWNk._.dNMMMMMWNONKo._oNWd" }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________;NWX0XNNWMMWNKkc.__.kWMMMMMMMNclNWO'xWWo" }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________.OWK'__.dWMWKc;k0c__cNMMMMMMMMK,.OWKcKWNc" }]); }, 3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________'0WWk,...,dO00000Oo._dWMMMMNKOl._.xKclNMN," }]); }, 3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________:XWWWMMWNX0Oxoc;'..___.oKNMWXOdllokO,.0MM0." }]); }, 3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________:XMXc';:ldxOKKXNWWNX0kdc;;;:cldkkdo,__lNMWd" }]); }, 3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________;XMNc__________..';:ldxO0KXK0Oxl'_____.KMMN," }]); }, 4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________,KMNo______________________...',,._____dWMWk." }]); }, 4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________'0MWx._________________________________,XMMX," }]); }, 4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________'0WWx._________________________________.OWMWo" }]); }, 5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________.OWWk.__________________________________cNMWO." }]); }, 5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________lNMX'______________________.;l.________'KMWO." }]); }, 5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________oNWk______________________.xWX'_cxc___.kWWO." }]); }, 6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________oWNl______________________,XWx.;NMK.__lNM0._________________________'oOO0Od;." }]); }, 6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________.dWN:______________________dWK,.OWNl__'KMX;________________________;OWNl..cXWO." }]); }, 6600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________.dWX,_____________________.KNo.lWWx._.OWWd_______________________;OWWO,____lNN;" }]); }, 6900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________.xWX._____________________:N0.'KWO.__oWMX'_____________________'kWWKc.____.ONx." }]); }, 7200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________.dWX.____________________.kX:.OWK'__.KMWx.___________________.oXWXl._____.kNd." }]); }, 7500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________.dWX'____________________;Xx.xWX;___'XMNxcokO0KKXKK0kd:.___.lKWKl._____.cKXc" }]); }, 7800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________oWN;___________________.kK,dNNc____'XMMNKOdddolloxOXWMNO::KWKc.______:0WO'" }]); }, 8100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________lNNc___________________:Xl;XNo_____.KW0'___'0Kx.___.'lKWWW0:.______;OWNd." }]); }, 8400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________:NWx__________________,0O.:NO.______...___.'oXNxcc:;';OXk;.______;ONWX:" }]); }, 8700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________.KMK._______________,d0k'_.xKo._________;OXNNWWWMMMWWWW0:._____;OWMWO'" }]); }, 9000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________oWWl_____________,xo,.__':.:KO._________.,,,,,,;:cdOXWMWKl.___:kXWW0c." }]); }, 9300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________'KMK'____________lK0KO,'KWKlOK,_____________________.,xNWMK;____.':ld0Ko." }]); }, 9600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________oWW0.____________..oXKKNdckx,______________,O0'_______'OWMXl__.'.._.dNK;" }]); }, 9900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________.OWW0'______________'ll'___________________;od'________.0WMX,__,xKXKd;." }]); }, 10200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________.kWWXc________________________________.;'______________cNMWl____;0Xc" }]); }, 10500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________.:0WWO;.____________________________'KNx______________,XMNc_____.KN;" }]); }, 10800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________;kWWXd,__________________________.c:.______________lNMWkc;,';dNK'" }]); }, 11100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________.,.________,XWWWWKd;._______________________oKk.___________.cXWKkOKKKKK0d'" }]); }, 11400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______.0XOkc.____lXNk'.oNMWNKxl;..__________________..._________'oKN0c." }]); }, 11700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______.XO.:0Ko..kWK:_.lKKl;oONWWWNX0kdl;'.___________'Ox.____.cONNk;" }]); }, 12000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______.kX;_.lKKNNd..:0Xo.____.';lx0XNWWWWXx._'ccc:;,'':c..,lONN0o." }]); }, 12300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________;NO.__.od'.;0Xd._________.....'xWMXl_.0WXKXNWNNNXXNNXOo," }]); }, 12600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________lXd.___.c0Xx'_________.xXNNX00NWK,_.dN0'_..';:llc:.." }]); }, 12900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________cKx',xXNx,___________.OWW00NWNk'__cNK," }]); }, 13200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________'kNWNx'______________lNM0'.'.___,KN:" }]); }, 13500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________':.________________.kWWx.____'0Nl" }]); }, 13800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________.xWWd.__'KNl" }]); }, 14100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________________________.lXW0odXXc" }]); }, 14400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________________________.xNWNk." }]); }, 14700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________________________________.'." }]); }, 15000);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________________________.:d0XWWNNNNWNKx:." }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________.;d0NNX0d:,...';o0NWNO:." }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________________.....:d0NN0x:'.___________'kWMWXd." }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________'oOKNNNWMMWx'__________________lNMMMK." }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________.oNMMMMWMMW0XK;__________________:XMMNc" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________:NMMMMMMWMX;cN0.__________________:XMWd" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________oWWMMMMWNO;_,NNl;;____'oO0K0Oxl,.__.kWWx" }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________cWMMMMMWkc:l0WMWNk._.dNMMMMMWNONKo._oNWd" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________;NWX0XNNWMMWNKkc.__.kWMMMMMMMNclNWO'xWWo" }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________.OWK'__.dWMWKc;k0c__cNMMMMMMMMK,.OWKcKWNc" }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________'0WWk,...,dO00000Oo._dWMMMMNKOl._.xKclNMN," }]); }, 3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________:XWWWMMWNX0Oxoc;'..___.oKNMWXOdllokO,.0MM0." }]); }, 3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________:XMXc';:ldxOKKXNWWNX0kdc;;;:cldkkdo,__lNMWd" }]); }, 3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________;XMNc__________..';:ldxO0KXK0Oxl'_____.KMMN," }]); }, 4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________,KMNo______________________...',,._____dWMWk." }]); }, 4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________'0MWx._________________________________,XMMX," }]); }, 4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________'0WWx._________________________________.OWMWo" }]); }, 5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________.OWWk.__________________________________cNMWO." }]); }, 5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________lNMX'______________________.;l.________'KMWO." }]); }, 5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________oNWk______________________.xWX'_cxc___.kWWO." }]); }, 6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________oWNl______________________,XWx.;NMK.__lNM0._________________________'oOO0Od;." }]); }, 6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________.dWN:______________________dWK,.OWNl__'KMX;________________________;OWNl..cXWO." }]); }, 6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________.dWX,_____________________.KNo.lWWx._.OWWd_______________________;OWWO,____lNN;" }]); }, 6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________.xWX._____________________:N0.'KWO.__oWMX'_____________________'kWWKc.____.ONx." }]); }, 7200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________.dWX.____________________.kX:.OWK'__.KMWx.___________________.oXWXl._____.kNd." }]); }, 7500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________.dWX'____________________;Xx.xWX;___'XMNxcokO0KKXKK0kd:.___.lKWKl._____.cKXc" }]); }, 7800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________oWN;___________________.kK,dNNc____'XMMNKOdddolloxOXWMNO::KWKc.______:0WO'" }]); }, 8100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________lNNc___________________:Xl;XNo_____.KW0'___'0Kx.___.'lKWWW0:.______;OWNd." }]); }, 8400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________:NWx__________________,0O.:NO.______...___.'oXNxcc:;';OXk;.______;ONWX:" }]); }, 8700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________.KMK._______________,d0k'_.xKo._________;OXNNWWWMMMWWWW0:._____;OWMWO'" }]); }, 9000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________oWWl_____________,xo,.__':.:KO._________.,,,,,,;:cdOXWMWKl.___:kXWW0c." }]); }, 9300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________'KMK'____________lK0KO,'KWKlOK,_____________________.,xNWMK;____.':ld0Ko." }]); }, 9600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________oWW0.____________..oXKKNdckx,______________,O0'_______'OWMXl__.'.._.dNK;" }]); }, 9900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________.OWW0'______________'ll'___________________;od'________.0WMX,__,xKXKd;." }]); }, 10200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________.kWWXc________________________________.;'______________cNMWl____;0Xc" }]); }, 10500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________.:0WWO;.____________________________'KNx______________,XMNc_____.KN;" }]); }, 10800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________;kWWXd,__________________________.c:.______________lNMWkc;,';dNK'" }]); }, 11100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________.,.________,XWWWWKd;._______________________oKk.___________.cXWKkOKKKKK0d'" }]); }, 11400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______.0XOkc.____lXNk'.oNMWNKxl;..__________________..._________'oKN0c." }]); }, 11700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______.XO.:0Ko..kWK:_.lKKl;oONWWWNX0kdl;'.___________'Ox.____.cONNk;" }]); }, 12000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______.kX;_.lKKNNd..:0Xo.____.';lx0XNWWWWXx._'ccc:;,'':c..,lONN0o." }]); }, 12300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________;NO.__.od'.;0Xd._________.....'xWMXl_.0WXKXNWNNNXXNNXOo," }]); }, 12600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________lXd.___.c0Xx'_________.xXNNX00NWK,_.dN0'_..';:llc:.." }]); }, 12900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________cKx',xXNx,___________.OWW00NWNk'__cNK," }]); }, 13200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________'kNWNx'______________lNM0'.'.___,KN:" }]); }, 13500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________':.________________.kWWx.____'0Nl" }]); }, 13800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________.xWWd.__'KNl" }]); }, 14100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________________________.lXW0odXXc" }]); }, 14400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________________________.xNWNk." }]); }, 14700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________________________________.'." }]); }, 15000);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -819,39 +819,39 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/myfuckingballshurt') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________________________________▓▓▓" }]); },300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________________▓▒▒▒▓▓" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________▄▄▄▄▄▄▄▄▄__________▓▒▒▒▒▒▓" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___▓▓▓▓▓____▄█████▓▓▓▓▓▓░░███████▓▒▒▒▒▓▒▓" }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____▓▒▓▒▓▓▓██▓█▓▓▓▓▓▓▓░░░▓▓▓▓▓▓▓▓▒▒▒▒▒▓▒▓" }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______▓▒▒▒▓▒▒▓▓▓▓▓▓▓▓░░░▓▓▓▓▓▓▓▓█▒▒▒▒▒▒▓▒▓" }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______█▓▓▒▒▓▒▒▓▒▒▓▓▓░░░▓▓▓▓▓▓▓▓█▒▒▒▒▒▒▒▓▒▓" }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____▄█▓▓█▓▓▓▒▒▒▓▒▓▓░░░░▓▓▓▓▓▓▓▓█▒▒▒▒▒▒▓▒▒▓" }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___█▓▓▓█▓▓█▓▓▒▓▒▓▓▓░░░░▓▓▓▓▓▓▓▓▓█▒▒▒▒▓▒▒▒▓" }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__█▓▓▓█▓▓█▓▓▓▓▓▓▓▓▓░░░█████████████▒▒▒▒▒▒▓" }]); }, 3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__█▓▓▓█▓▓█▓▓▓▓▓▓██████▒▌__▓█_____▓▓▒▒▒▒▒▒▒▓" }]); }, 3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▐█▓▓█▓▓▓█▓▓████▒▒▒▒▒▒▌__▓▓█▄____▓▓▒▒▒▒▒▒▓" }]); }, 3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▐█▓█▓▓▓▓███▒▒▒▒▒▒▒▒▒▒▌__▓▓█████▓▓▒▒▒▒▒▒▓" }]); }, 3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__█▓█▓▓██_▅▄██▄▒▒▒▒▒▒▒▐___▓▓█▄_██▓▓▄▅▅▒▒▒▓" }]); }, 4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__█▓▓██__▅▄▄▄▌__▀▄▒▒▒▒▒▐___▓▓▓████▓▅▅▄▒▒▒█" }]); }, 4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__█▓█_________▓▄___▀▒▒▒▒▒▐____▓▓▓▓▓▓▅▅▄▒▒▒██" }]); }, 4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__██___________▓▓█▀█▄▒▒▒▒▒▌________▒▒▒▒▒▒█▓█▌" }]); }, 5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________▓▓███▒▒▒▒▒▐____▒▒▒██▒▒██▓██▌" }]); }, 5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒█▓▓██▓▓██▓▌" }]); }, 5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________▓▒▒▄▒▒▌▒▒▒▒▒▒▒█▓▓▓▓██▓▓▓█" }]); }, 6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________▓▒▒▒▒▒▐▒▒▒▒▒▒▒█▓███▓▓▓█▓▓█▌" }]); }, 6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________________▓▓▓▄▀▒▒▒▒▓▓▓█▓▓▓▓▓▓█▓▓▓▓██" }]); }, 6600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________▓▓▓▓▓▓____█▓▓██▀▀█▓▓▓▓░░█" }]); }, 6900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________________________________▀▀__▄█▓▓▓▓▓░░▓█" }]); }, 7200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________________________________▄██▓▓▓▓▓▓░░▓▓█" }]); }, 7500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________________________________██▓▓▓▓▓▓▓▓░░▓▓█" }]); }, 7800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________________________________█▓▓▓▓▓▓▓░░░▓▓█" }]); }, 8100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________________________________█▓▓▓▓▓░░░▓▓▓█" }]); }, 8400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________________________________█▓▓▓░░░▓▓▓▓█" }]); }, 8700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________________________________██░░░▓▓▓▓█" }]); }, 9000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________________________________________█░▓▓▓█" }]); }, 9300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________________________________________████" }]); }, 9600);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________________________________▓▓▓" }]); },300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________________▓▒▒▒▓▓" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________▄▄▄▄▄▄▄▄▄__________▓▒▒▒▒▒▓" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___▓▓▓▓▓____▄█████▓▓▓▓▓▓░░███████▓▒▒▒▒▓▒▓" }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____▓▒▓▒▓▓▓██▓█▓▓▓▓▓▓▓░░░▓▓▓▓▓▓▓▓▒▒▒▒▒▓▒▓" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______▓▒▒▒▓▒▒▓▓▓▓▓▓▓▓░░░▓▓▓▓▓▓▓▓█▒▒▒▒▒▒▓▒▓" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______█▓▓▒▒▓▒▒▓▒▒▓▓▓░░░▓▓▓▓▓▓▓▓█▒▒▒▒▒▒▒▓▒▓" }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____▄█▓▓█▓▓▓▒▒▒▓▒▓▓░░░░▓▓▓▓▓▓▓▓█▒▒▒▒▒▒▓▒▒▓" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___█▓▓▓█▓▓█▓▓▒▓▒▓▓▓░░░░▓▓▓▓▓▓▓▓▓█▒▒▒▒▓▒▒▒▓" }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__█▓▓▓█▓▓█▓▓▓▓▓▓▓▓▓░░░█████████████▒▒▒▒▒▒▓" }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__█▓▓▓█▓▓█▓▓▓▓▓▓██████▒▌__▓█_____▓▓▒▒▒▒▒▒▒▓" }]); }, 3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▐█▓▓█▓▓▓█▓▓████▒▒▒▒▒▒▌__▓▓█▄____▓▓▒▒▒▒▒▒▓" }]); }, 3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▐█▓█▓▓▓▓███▒▒▒▒▒▒▒▒▒▒▌__▓▓█████▓▓▒▒▒▒▒▒▓" }]); }, 3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__█▓█▓▓██_▅▄██▄▒▒▒▒▒▒▒▐___▓▓█▄_██▓▓▄▅▅▒▒▒▓" }]); }, 4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__█▓▓██__▅▄▄▄▌__▀▄▒▒▒▒▒▐___▓▓▓████▓▅▅▄▒▒▒█" }]); }, 4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__█▓█_________▓▄___▀▒▒▒▒▒▐____▓▓▓▓▓▓▅▅▄▒▒▒██" }]); }, 4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__██___________▓▓█▀█▄▒▒▒▒▒▌________▒▒▒▒▒▒█▓█▌" }]); }, 5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________▓▓███▒▒▒▒▒▐____▒▒▒██▒▒██▓██▌" }]); }, 5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒█▓▓██▓▓██▓▌" }]); }, 5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________▓▒▒▄▒▒▌▒▒▒▒▒▒▒█▓▓▓▓██▓▓▓█" }]); }, 6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________▓▒▒▒▒▒▐▒▒▒▒▒▒▒█▓███▓▓▓█▓▓█▌" }]); }, 6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________▓▓▓▄▀▒▒▒▒▓▓▓█▓▓▓▓▓▓█▓▓▓▓██" }]); }, 6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________▓▓▓▓▓▓____█▓▓██▀▀█▓▓▓▓░░█" }]); }, 6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________________________________▀▀__▄█▓▓▓▓▓░░▓█" }]); }, 7200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________________________________▄██▓▓▓▓▓▓░░▓▓█" }]); }, 7500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________________________██▓▓▓▓▓▓▓▓░░▓▓█" }]); }, 7800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________________________________█▓▓▓▓▓▓▓░░░▓▓█" }]); }, 8100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________________________________█▓▓▓▓▓░░░▓▓▓█" }]); }, 8400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________________________________█▓▓▓░░░▓▓▓▓█" }]); }, 8700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________________________________██░░░▓▓▓▓█" }]); }, 9000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________________________________█░▓▓▓█" }]); }, 9300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________________________________________████" }]); }, 9600);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -860,46 +860,46 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/rainbowdash') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________________▓▓▓▓▓▓" }]); },300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________▓▓▓▓▓▓░░░░░░░▓▓▓▓▓" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________________▓▓▓▒▒▒▒▒▒▒░░░░░▓▓▓▓▓▓▓▓▓" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______▒▒_________▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒░░░░░▓___▓▓▓" }]); },1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____▒▒▒▒▒___▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒░░░▓" }]); },1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▓▒▒░▓▓" }]); },1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▓▒▒▒▓▓" }]); },2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▒▒▒▓▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▓▓▒▒▒▓" }]); },2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▒▒▒▒▓▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▓▒▒▒▓" }]); },2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▒▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▓▓▓▓▓" }]); },3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▓_____▓" }]); },3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▓" }]); },3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▒▒▒▓▓▓▓▓▒▒▒▒▒▒▓" }]); },3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____▒▒▒▒▒▒▅▅▄▒▒▒▒▒▒▒▒▒▒▒▓▓▓▒▒▒▒▒▒▓▓▓▒▒▒▒▒▓▓" }]); },4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___▓░▒▒▒▒▅▅▅▅█▀▀▀▅▅▅▅▄▄▒▒▒▒▓▒█▒▒▄▒▒▒▄▅▓▒▒▒▒▒▓" }]); },4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___▓░░▒▒▒▒▄▅▅▌________▓_▀▀██▅▄█▒▒▀▀▀__█" }]); },4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▓░░░░▓▒▒▒▒▒_________▓____▐██▒▒▒▒▒▌▓__█" }]); },5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▓░░░░▓▒▒▒▒▒_________▓__▄███▌▒▒▒▒▐_▓██" }]); },5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▓░░░░░▓▒▒▒▒▒________▓▓█__██▒▒▒▒▒▒▓▌▐" }]); },5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▓▒▒░░░░░▓▒▒▒▒▒_______▓█████▒▒▒▒▒▒▒██" }]); },6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▓▒▒░░░░░░▓▓▓▒▒▒▒_____▓███▀▒▒▒▒▒▒▒▒▒▒▒" }]); },6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▓▒▒▒░░░░░░░░░▓▓▓▓▒▒__▓▒▒▒▒▒▒▒_▒▒▀▀▒▒" }]); },6600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▓▒▒▒▒░░░░░░░░░▓▓▒▒▒▒▒▒▒▒▒▒▒▒___▒▒▒▒" }]); },6900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▓▒▒▒▒▒░░░░▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒__▄▀" }]); },7200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▓▓▒▒▒▒▒░░░░░▓____▒▒▒▒▒▒▒▒▒▒▒▀" }]); },7500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___▓▓▒▒▒▒▒▒░░░░░▓" }]); },7800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___▓▓▓▒▒▒▒▒▒▒░░░░▓" }]); },8100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____▓▓▓▒▒▒▒▒▒▒░░░░▓" }]); },8400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____▓▓▓▓▓▒▒▒▒▒▒▒░░▓" }]); },8700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______▓▓▓▓▓▒▒▒▒▒▒▒░▓" }]); },9000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______▓▓▓▓▓▓▒▒▒▒__▓▓" }]); },9300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________▓▓▓▓▓▓▒▒▓___▓" }]); },9600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________▓▓▓▓▓▓▒▒▓" }]); },9900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________▓▓▓▓▓▓▒▓" }]); },10200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________▓▓▓▓▓▓▓" }]); },10500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________▓▓▓▓▓" }]); },10800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________▓▓▓▓" }]); },11100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________▓▓▓" }]); },11400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________▓▓" }]); },11700);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________________▓▓▓▓▓▓" }]); },300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________▓▓▓▓▓▓░░░░░░░▓▓▓▓▓" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________▓▓▓▒▒▒▒▒▒▒░░░░░▓▓▓▓▓▓▓▓▓" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______▒▒_________▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒░░░░░▓___▓▓▓" }]); },1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____▒▒▒▒▒___▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒░░░▓" }]); },1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▓▒▒░▓▓" }]); },1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▓▒▒▒▓▓" }]); },2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▒▒▒▓▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▓▓▒▒▒▓" }]); },2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▒▒▒▒▓▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▓▒▒▒▓" }]); },2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▒▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▓▓▓▓▓" }]); },3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▓_____▓" }]); },3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▓" }]); },3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▒▒▒▓▓▓▓▓▒▒▒▒▒▒▓" }]); },3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____▒▒▒▒▒▒▅▅▄▒▒▒▒▒▒▒▒▒▒▒▓▓▓▒▒▒▒▒▒▓▓▓▒▒▒▒▒▓▓" }]); },4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___▓░▒▒▒▒▅▅▅▅█▀▀▀▅▅▅▅▄▄▒▒▒▒▓▒█▒▒▄▒▒▒▄▅▓▒▒▒▒▒▓" }]); },4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___▓░░▒▒▒▒▄▅▅▌________▓_▀▀██▅▄█▒▒▀▀▀__█" }]); },4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▓░░░░▓▒▒▒▒▒_________▓____▐██▒▒▒▒▒▌▓__█" }]); },5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▓░░░░▓▒▒▒▒▒_________▓__▄███▌▒▒▒▒▐_▓██" }]); },5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▓░░░░░▓▒▒▒▒▒________▓▓█__██▒▒▒▒▒▒▓▌▐" }]); },5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▓▒▒░░░░░▓▒▒▒▒▒_______▓█████▒▒▒▒▒▒▒██" }]); },6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▓▒▒░░░░░░▓▓▓▒▒▒▒_____▓███▀▒▒▒▒▒▒▒▒▒▒▒" }]); },6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▓▒▒▒░░░░░░░░░▓▓▓▓▒▒__▓▒▒▒▒▒▒▒_▒▒▀▀▒▒" }]); },6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▓▒▒▒▒░░░░░░░░░▓▓▒▒▒▒▒▒▒▒▒▒▒▒___▒▒▒▒" }]); },6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▓▒▒▒▒▒░░░░▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒__▄▀" }]); },7200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▓▓▒▒▒▒▒░░░░░▓____▒▒▒▒▒▒▒▒▒▒▒▀" }]); },7500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___▓▓▒▒▒▒▒▒░░░░░▓" }]); },7800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___▓▓▓▒▒▒▒▒▒▒░░░░▓" }]); },8100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____▓▓▓▒▒▒▒▒▒▒░░░░▓" }]); },8400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____▓▓▓▓▓▒▒▒▒▒▒▒░░▓" }]); },8700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______▓▓▓▓▓▒▒▒▒▒▒▒░▓" }]); },9000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______▓▓▓▓▓▓▒▒▒▒__▓▓" }]); },9300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________▓▓▓▓▓▓▒▒▓___▓" }]); },9600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________▓▓▓▓▓▓▒▒▓" }]); },9900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________▓▓▓▓▓▓▒▓" }]); },10200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________▓▓▓▓▓▓▓" }]); },10500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________▓▓▓▓▓" }]); },10800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________▓▓▓▓" }]); },11100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________▓▓▓" }]); },11400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________▓▓" }]); },11700);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -908,51 +908,51 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/fluttershy') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________________▓▓▓▓▓▓▓▓▓▓▓▓" }]); },300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________▓▓▓▓▓▓▓▓▓▒▒▒▒▒▐▒▐▒▒▒▓▓▓▓▓__▒░░░▒" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________▓▓▓▓▒▒▒▀▀▅▅▄▄▒▒▒▒▒▒▐▒▐▒▒▒▒▒▒▒▒▒░░░░▒" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▒▐▒▐▒▒▒▒▒▒▒▒░░░░░▒▒" }]); },1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___▓▓▓▒▒▒▒▄▄▄▄▄▒▒▒▒▒▒▒▀▒▒▒▒░░░░░░░░▒▒░░░░▒░▒" }]); },1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▓▓▓▄▅▀▀▀▒▒▒▒▒▒▀▀▀▅▒▒▒░░░░░░░░░░░░░░░░░░░▒░▒" }]); },1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▓▓▀▒▒▒▒▒▒▄▄▄▄▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░▒░░▒" }]); },2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▓▓▒▒▒▒▒▅▅▀▀▒▒▒▀▅▒▒░░░░░░░░░░░░░░░░░░░░░░▒░░░▒" }]); },2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▓▓▒▒▒▅▀▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░▒░░░░▒▓" }]); },2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "▓▓▒▒▒▌▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▒▓" }]); },3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▓▒▒▒▌▒▒▒▒▒▒▒▒▒▒░░░░░▄▄▄▄░░░░░░░░░░░░░░░░░░▓▒▒▓" }]); },3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▓▒▒▒▌▒▒▒▒▒▒▒▒▒▒░░░░█▀▀▀▀▀▅▅░░░░░░░░░░░░░░░▓▒▒▒▓" }]); },3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▓▒▒▒▌▒▒▒▒▒▒▒▒▒▒░░░░█____▓▓▓█▀▅▄░░░▄░░░░░░░░▓▒▒▒▓" }]); },3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▓▒▒▒▌▒▒▒▒▒▒▒▒▒░░░░▐___▓▓▓█▌____█▀▀░░▄░░░░░▓▒▒▒▒▓" }]); },4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___▓▒▒▐▌▒▒▒▒▒▒▒▒▒░░░░▐__▓▓▓██▄____███▀▀░▄░░░▓▒▒▒▒▓" }]); },4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____▓▒▒▒▌▒▒▒▒▒▒▒▒▒░░░░___▓▓▐█__█▄▄▓░░▀▀▀░░░▓▓▒▒▒▐▒▓" }]); },4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____▓▒▒▒▌▒▒▒▒▒▒▒▒░░░░░___▓▓██████▓░░░░░░░▓▒▒▒▒▒▐▒▓" }]); },5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______▓▒▒▒▌▒▒▒▒▒▒▒░░░░░░░__▓▓▀███▀▓░░░░░░▓▒▒▒▒▒▒▐▒▓" }]); },5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______▓▒▒▒▌▒▒▒▒▒░░░░░░░░____▓▓▓▓▓_░░░░░░▓▒▒▒▒▒▒▐▒▐▓" }]); },5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________▓▒▒▒█▒▒▒░▅▀░░░░░░░░░░░░░░░░░░░░▓▒▒▒▒▒▒▐▒▐▓" }]); },6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________▓▓▒▒▌▒▒▒░░░▐░░░░░░░░░░░░░░░░▓▒▒▒▒▒▒▐▒▒▌▓" }]); },6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________▓▓▒▒▐▌▒▒▒░▀░░░░░░░░░░░▒▒░░▓▒▒▒▒▒▒▒▐▒▐▒▓" }]); },6600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________▓▐▒▒▐▒▒▒▒▒▒▒▒▒▓_______▒░░▓▒▒▒▒▒▒▒█▒▒█▒▓" }]); },6900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________▓▌▒▒▐▒▒▒▒▒▒▒▒▓______▒░▓▒▒▒▒▒▒▒█▒▒█▒▒▓" }]); },7200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________▓▐▒▒▀▌▒▒▒▒▒▒▓______▒▓▒▒▒▒▒▒▒█▒▒█▒▒▒▓" }]); },7500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________▓▒▐▒▒▐▒▒▒▒▒▓______▓▓▒▒▒▒▒█▀▒▒█▒▒▒▒▓" }]); },7800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________▓▒▐▒▒▐▒▒▒▒▓_____▓▓▒▒▒▒▄▀▒▒▄▀▒▒▒▒▒▓" }]); },8100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______▓▓▓▓▓_____▓▒▐▒▒▒▌▒▒▓_____▓▓▒▒▒▄▀▒▒▄▀▒▒▒▒▒▓▓" }]); },8400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____▓▓▒▓____▓____▓▒▐▒▒▒▐▒▒▓___▓▓▒▒▒▄▀▒▒▄▀▒▒▒▒▒▒▓" }]); },8700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____▓▒▒▓________▓▒▒▒▌▒▒▒▌▓____▓▒▒▒▄▀▒▒▄▀▒▒▒▒▒▒▒▓" }]); },9000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____▓▒▒▓______▓▒▒▒▒▌▒▒▒▌▓____▓▒▒▄▀▒▒▄▀▒▒▒▒▒▒▒▓" }]); },9300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______▓▒▒▓▓▓▓▓▒▒▒▒▐▒▒▒▒▓____▓▒▒█▒▒▒█▒▒▒▒▒▒▒▒▓" }]); },9600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________▓▒▒▒▒▒▒▒▒▒▐▒▒▒▓▓_____▓▒█▒▒▒█▒▒▒▒▒▒▒▒▓" }]); },9900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________▓▓▒▒▒▒▒▒▒▐▒▓▓▓______▓▒▌▒▒▒▌▒▒▒▒▒▒▒▒▓" }]); },10200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________▓▓▓▓▓▓▓▓▓_________▓▌▒▒▒▌▒▒▒▒▒▒▒▒▓" }]); },10500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________________________▓▓▒▒▌▒▒▒▒▒▒▒▒▓" }]); },10800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________________________▓▒▒▒▌▒▒▒▒▒▒▒▓" }]); },11100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________▓▒▒▒▌▒▒▒▒▒▒▒▓" }]); },11400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________________________▓▒▒▐▒▒▒▒▒▒▒▓____▓▓▓" }]); },11700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________________________▓▒▒▐▒▒▒▒▒▒▒▓_______" }]); },12000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________________________▓▓▒▐▒▒▒▒▒▒▒▓▓____▓▓" }]); },12300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________________________________▓▌▒▒▒▒▒▒▒▒▓▓▓▒▓" }]); },12600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________________________________▓▓▒▒▒▒▒▒▒▒▒▓" }]); },12900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________________________________▓▓▓▓▓▓▓" }]); },13200);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________________▓▓▓▓▓▓▓▓▓▓▓▓" }]); },300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________▓▓▓▓▓▓▓▓▓▒▒▒▒▒▐▒▐▒▒▒▓▓▓▓▓__▒░░░▒" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________▓▓▓▓▒▒▒▀▀▅▅▄▄▒▒▒▒▒▒▐▒▐▒▒▒▒▒▒▒▒▒░░░░▒" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▀▄▒▒▒▒▐▒▐▒▒▒▒▒▒▒▒░░░░░▒▒" }]); },1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___▓▓▓▒▒▒▒▄▄▄▄▄▒▒▒▒▒▒▒▀▒▒▒▒░░░░░░░░▒▒░░░░▒░▒" }]); },1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▓▓▓▄▅▀▀▀▒▒▒▒▒▒▀▀▀▅▒▒▒░░░░░░░░░░░░░░░░░░░▒░▒" }]); },1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▓▓▀▒▒▒▒▒▒▄▄▄▄▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░▒░░▒" }]); },2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▓▓▒▒▒▒▒▅▅▀▀▒▒▒▀▅▒▒░░░░░░░░░░░░░░░░░░░░░░▒░░░▒" }]); },2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▓▓▒▒▒▅▀▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░▒░░░░▒▓" }]); },2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "▓▓▒▒▒▌▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▒▓" }]); },3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▓▒▒▒▌▒▒▒▒▒▒▒▒▒▒░░░░░▄▄▄▄░░░░░░░░░░░░░░░░░░▓▒▒▓" }]); },3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▓▒▒▒▌▒▒▒▒▒▒▒▒▒▒░░░░█▀▀▀▀▀▅▅░░░░░░░░░░░░░░░▓▒▒▒▓" }]); },3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▓▒▒▒▌▒▒▒▒▒▒▒▒▒▒░░░░█____▓▓▓█▀▅▄░░░▄░░░░░░░░▓▒▒▒▓" }]); },3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▓▒▒▒▌▒▒▒▒▒▒▒▒▒░░░░▐___▓▓▓█▌____█▀▀░░▄░░░░░▓▒▒▒▒▓" }]); },4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___▓▒▒▐▌▒▒▒▒▒▒▒▒▒░░░░▐__▓▓▓██▄____███▀▀░▄░░░▓▒▒▒▒▓" }]); },4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____▓▒▒▒▌▒▒▒▒▒▒▒▒▒░░░░___▓▓▐█__█▄▄▓░░▀▀▀░░░▓▓▒▒▒▐▒▓" }]); },4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____▓▒▒▒▌▒▒▒▒▒▒▒▒░░░░░___▓▓██████▓░░░░░░░▓▒▒▒▒▒▐▒▓" }]); },5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______▓▒▒▒▌▒▒▒▒▒▒▒░░░░░░░__▓▓▀███▀▓░░░░░░▓▒▒▒▒▒▒▐▒▓" }]); },5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______▓▒▒▒▌▒▒▒▒▒░░░░░░░░____▓▓▓▓▓_░░░░░░▓▒▒▒▒▒▒▐▒▐▓" }]); },5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________▓▒▒▒█▒▒▒░▅▀░░░░░░░░░░░░░░░░░░░░▓▒▒▒▒▒▒▐▒▐▓" }]); },6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________▓▓▒▒▌▒▒▒░░░▐░░░░░░░░░░░░░░░░▓▒▒▒▒▒▒▐▒▒▌▓" }]); },6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________▓▓▒▒▐▌▒▒▒░▀░░░░░░░░░░░▒▒░░▓▒▒▒▒▒▒▒▐▒▐▒▓" }]); },6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________▓▐▒▒▐▒▒▒▒▒▒▒▒▒▓_______▒░░▓▒▒▒▒▒▒▒█▒▒█▒▓" }]); },6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________▓▌▒▒▐▒▒▒▒▒▒▒▒▓______▒░▓▒▒▒▒▒▒▒█▒▒█▒▒▓" }]); },7200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________▓▐▒▒▀▌▒▒▒▒▒▒▓______▒▓▒▒▒▒▒▒▒█▒▒█▒▒▒▓" }]); },7500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________▓▒▐▒▒▐▒▒▒▒▒▓______▓▓▒▒▒▒▒█▀▒▒█▒▒▒▒▓" }]); },7800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________▓▒▐▒▒▐▒▒▒▒▓_____▓▓▒▒▒▒▄▀▒▒▄▀▒▒▒▒▒▓" }]); },8100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______▓▓▓▓▓_____▓▒▐▒▒▒▌▒▒▓_____▓▓▒▒▒▄▀▒▒▄▀▒▒▒▒▒▓▓" }]); },8400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____▓▓▒▓____▓____▓▒▐▒▒▒▐▒▒▓___▓▓▒▒▒▄▀▒▒▄▀▒▒▒▒▒▒▓" }]); },8700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____▓▒▒▓________▓▒▒▒▌▒▒▒▌▓____▓▒▒▒▄▀▒▒▄▀▒▒▒▒▒▒▒▓" }]); },9000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____▓▒▒▓______▓▒▒▒▒▌▒▒▒▌▓____▓▒▒▄▀▒▒▄▀▒▒▒▒▒▒▒▓" }]); },9300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______▓▒▒▓▓▓▓▓▒▒▒▒▐▒▒▒▒▓____▓▒▒█▒▒▒█▒▒▒▒▒▒▒▒▓" }]); },9600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________▓▒▒▒▒▒▒▒▒▒▐▒▒▒▓▓_____▓▒█▒▒▒█▒▒▒▒▒▒▒▒▓" }]); },9900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________▓▓▒▒▒▒▒▒▒▐▒▓▓▓______▓▒▌▒▒▒▌▒▒▒▒▒▒▒▒▓" }]); },10200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________▓▓▓▓▓▓▓▓▓_________▓▌▒▒▒▌▒▒▒▒▒▒▒▒▓" }]); },10500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________________________▓▓▒▒▌▒▒▒▒▒▒▒▒▓" }]); },10800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________________________▓▒▒▒▌▒▒▒▒▒▒▒▓" }]); },11100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________▓▒▒▒▌▒▒▒▒▒▒▒▓" }]); },11400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________________________▓▒▒▐▒▒▒▒▒▒▒▓____▓▓▓" }]); },11700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________________________▓▒▒▐▒▒▒▒▒▒▒▓_______" }]); },12000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________________________▓▓▒▐▒▒▒▒▒▒▒▓▓____▓▓" }]); },12300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________________________▓▌▒▒▒▒▒▒▒▒▓▓▓▒▓" }]); },12600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________________________________▓▓▒▒▒▒▒▒▒▒▒▓" }]); },12900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________________________________▓▓▓▓▓▓▓" }]); },13200);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -961,61 +961,61 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/applejack') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________________▐█▄▄" }]); },300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________________________▄____________█▓▓█▄" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________________________▄█_____________█▓▓▓▓█▄" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________________________▄▓▓█_____________█▓▓▓▓▓▓█▄" }]); },1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________________█▓▓▓▓█____________█▓▓▓▓▓▓▓▓█▄" }]); },1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________________▄█▓▓▓▓▓█▄_________▄█▓▓▓▓▓▓▓▓▓▓█▄" }]); },1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________________▄█▓▓▓▓▓▓▓▓██▄▄▄▄██▓▓▓▓▓▓▓▓▓▓▓▓▓█" }]); },2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________________▄█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░▓▓▓▓▓▓▓█" }]); },2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________________█▓▓▓▓▓▓▓▓▓▓▓▓░░░░______________░░░░▓▓█" }]); },2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________▄█▓▓▓▓▓▓▓▓▓▓░░__________________________░█" }]); },2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________█▓▓▓▓▓▓▓▓▓▓░░_____░░░░░░░░_______________░░░" }]); },3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________▄█▓▓▓▓▓▓▓▓▓▓░░░░░░_____________░░░░_____░░░___░░░" }]); },3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________▄▄████▓▓▓▓▓▓▓▓░░_________________________░░_______░░░░" }]); },3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______▄█▓▓▓▓█▓▓▓▓▓▓▓▓░__░░░░░░░░░░░░░░__________░░_______░" }]); },3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____▄█▓▓▓▓██▓▓▓▓▓▓▓░░░░___________________░░░_______░░_______░" }]); },4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____█▓▓▓▓▓█▓▓▓▓▓▓▓▓░___________________________░░________░_______░____________░░░" }]); },4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___█▓▓▓▓▓█▓▓▓▓▓▓▓▓░______________________________░░_______░░_______░░░░░░░░__░" }]); },4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__█▓▓▓▓▓▓▓▓▓▓▓▓▓▓░______________________░__________░░░______░░_______________░░" }]); },5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_█▓▓▓▓▓▓▒▒▒▒▒▒▓▓▓░______░░░░░__________░____________░░░______░░░__________░" }]); },5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "█▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▓▓░░░▒▒▒▒▒▒░░░░░____░░░__░░________░░________░░░░░░░" }]); },5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "█▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░_░▒░░_░░░░______░░░_________░░" }]); },6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "█▓▓▓▓▓█▓▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░▒▒▒░░░▒░░░░░░░░░░░░░░░░" }]); },6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "█▓▓▓▓▓█▓▓▒▒▒▓▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▄▄▅▅▅▅▅▄▄▒▒▒▒▒▒▒▒▒▒▒▒█__░░░▓" }]); },6600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_█▓▓▓▓█▓▓▓▒▒▒▓▓▒▒▒▒▒▒▒▒▒█▒▒█▀__▓▓▓▄███▄▒▒▒▒▒▒▒▒▒▒▌_▐███▓" }]); },6900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__█▓▓▓█▓▓▓▓▒▒▒▒▓▓▒▒▒▒▒▄▒▒▀█____▓▓____██████▒▒▒▒▒▒▒▐▓█████▓" }]); },7200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___█▓▓█▓▓▓▓▓▒▒▒▒▒▓▓▓▒▒▒▀▄▄█_____▓_____▐██████▒▒▒▒▒▒▐▓█▄███▓" }]); },7500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______█▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▄▒▒█_____▓_____███████▓▌▒▒▒▒▒▐▓▓███▓" }]); },7800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______▀█▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▀▀▀_______▓___█▌_█████▓▌▒▒▒▒▒▒▌_▓▓▓▓▓" }]); },8100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______█▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒_______▓▓▓▓██████▓█▒▒▒▒▒▒▒▌___▓" }]); },8400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒_______▓▓▓▓▓███▓▓▐▒▒▒▒▒▒▒▒▓▓▓▓▓▓" }]); },8700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________█▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒_________▓▓▓▓▓▓___▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓" }]); },9000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________█▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒_▒▒▒▒▒________________▒▒▒▒▒▒▓▒▒▒▓▓▒▒▒▓" }]); },9300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________█▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒_▒__▒▒▒▒▒▒____________▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▓" }]); },9600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________█▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒_____▒▒▒▒▒▒▒▒▒▓█▓▓▓▓▓▓▓" }]); },9900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________█▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒██__░" }]); },10200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________█▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒█_░░" }]); },10500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________██▓▓▓▓▓▓▓▓▓█▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▌░░" }]); },10800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________██▓▓▓▓▓▓██__▓▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓__░" }]); },11100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________██▓▓▓▓█____▓▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓____░__░" }]); },11400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________████______▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒░_______________░___░" }]); },11700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________________▀________▓▒▒▒▒▒▒▒▒▒▒▒▒▒░________________░____░" }]); },12000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________________________▓▒▒▒▒▒▒▒▒▒▒▒▒░________________░_____░" }]); },12300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________________________▓▒▒▒▒▒▒▒▒▒▒▒▒░_____________░░______░" }]); },12600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________________________▓▒▒▒▒▒░░░░░░░░░__________░________░_░" }]); },12900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________________________▓▒▒░░░___________░░░▓▓▓░░________░__░" }]); },13200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________▓░░__________________░░▓▓░░░░░░░___░" }]); },13500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________░░_░░__________________░_____________░" }]); },13800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________░░░░____________________░░░_______░" }]); },14100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________░__░____________________░░__░░░░░" }]); },14400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________________________░__________░________░░" }]); },14700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________________________________░____░____░░░░░░░_░__░░░" }]); },15000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________________________________░___░░___░░_______░░░░" }]); },15300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________________________________░_░_░____░░░_____░░" }]); },15600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________________________________░___░░░░░░░░░░" }]); },15900);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________________▐█▄▄" }]); },300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________________________▄____________█▓▓█▄" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________________________▄█_____________█▓▓▓▓█▄" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________________________▄▓▓█_____________█▓▓▓▓▓▓█▄" }]); },1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________________█▓▓▓▓█____________█▓▓▓▓▓▓▓▓█▄" }]); },1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________________▄█▓▓▓▓▓█▄_________▄█▓▓▓▓▓▓▓▓▓▓█▄" }]); },1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________________▄█▓▓▓▓▓▓▓▓██▄▄▄▄██▓▓▓▓▓▓▓▓▓▓▓▓▓█" }]); },2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________________▄█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░▓▓▓▓▓▓▓█" }]); },2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________█▓▓▓▓▓▓▓▓▓▓▓▓░░░░______________░░░░▓▓█" }]); },2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________▄█▓▓▓▓▓▓▓▓▓▓░░__________________________░█" }]); },2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________█▓▓▓▓▓▓▓▓▓▓░░_____░░░░░░░░_______________░░░" }]); },3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________▄█▓▓▓▓▓▓▓▓▓▓░░░░░░_____________░░░░_____░░░___░░░" }]); },3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________▄▄████▓▓▓▓▓▓▓▓░░_________________________░░_______░░░░" }]); },3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______▄█▓▓▓▓█▓▓▓▓▓▓▓▓░__░░░░░░░░░░░░░░__________░░_______░" }]); },3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____▄█▓▓▓▓██▓▓▓▓▓▓▓░░░░___________________░░░_______░░_______░" }]); },4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____█▓▓▓▓▓█▓▓▓▓▓▓▓▓░___________________________░░________░_______░____________░░░" }]); },4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___█▓▓▓▓▓█▓▓▓▓▓▓▓▓░______________________________░░_______░░_______░░░░░░░░__░" }]); },4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__█▓▓▓▓▓▓▓▓▓▓▓▓▓▓░______________________░__________░░░______░░_______________░░" }]); },5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_█▓▓▓▓▓▓▒▒▒▒▒▒▓▓▓░______░░░░░__________░____________░░░______░░░__________░" }]); },5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "█▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▓▓░░░▒▒▒▒▒▒░░░░░____░░░__░░________░░________░░░░░░░" }]); },5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "█▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░_░▒░░_░░░░______░░░_________░░" }]); },6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "█▓▓▓▓▓█▓▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░▒▒▒░░░▒░░░░░░░░░░░░░░░░" }]); },6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "█▓▓▓▓▓█▓▓▒▒▒▓▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▄▄▅▅▅▅▅▄▄▒▒▒▒▒▒▒▒▒▒▒▒█__░░░▓" }]); },6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_█▓▓▓▓█▓▓▓▒▒▒▓▓▒▒▒▒▒▒▒▒▒█▒▒█▀__▓▓▓▄███▄▒▒▒▒▒▒▒▒▒▒▌_▐███▓" }]); },6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__█▓▓▓█▓▓▓▓▒▒▒▒▓▓▒▒▒▒▒▄▒▒▀█____▓▓____██████▒▒▒▒▒▒▒▐▓█████▓" }]); },7200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___█▓▓█▓▓▓▓▓▒▒▒▒▒▓▓▓▒▒▒▀▄▄█_____▓_____▐██████▒▒▒▒▒▒▐▓█▄███▓" }]); },7500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______█▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▄▒▒█_____▓_____███████▓▌▒▒▒▒▒▐▓▓███▓" }]); },7800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______▀█▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▀▀▀_______▓___█▌_█████▓▌▒▒▒▒▒▒▌_▓▓▓▓▓" }]); },8100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______█▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒_______▓▓▓▓██████▓█▒▒▒▒▒▒▒▌___▓" }]); },8400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒_______▓▓▓▓▓███▓▓▐▒▒▒▒▒▒▒▒▓▓▓▓▓▓" }]); },8700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________█▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒_________▓▓▓▓▓▓___▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓" }]); },9000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________█▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒_▒▒▒▒▒________________▒▒▒▒▒▒▓▒▒▒▓▓▒▒▒▓" }]); },9300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________█▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒_▒__▒▒▒▒▒▒____________▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▓" }]); },9600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________█▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒_____▒▒▒▒▒▒▒▒▒▓█▓▓▓▓▓▓▓" }]); },9900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________█▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒██__░" }]); },10200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________█▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▒█_░░" }]); },10500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________██▓▓▓▓▓▓▓▓▓█▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▌░░" }]); },10800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________██▓▓▓▓▓▓██__▓▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓__░" }]); },11100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________██▓▓▓▓█____▓▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓____░__░" }]); },11400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________████______▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒░_______________░___░" }]); },11700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________▀________▓▒▒▒▒▒▒▒▒▒▒▒▒▒░________________░____░" }]); },12000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________________________▓▒▒▒▒▒▒▒▒▒▒▒▒░________________░_____░" }]); },12300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________________________▓▒▒▒▒▒▒▒▒▒▒▒▒░_____________░░______░" }]); },12600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________________________▓▒▒▒▒▒░░░░░░░░░__________░________░_░" }]); },12900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________________________▓▒▒░░░___________░░░▓▓▓░░________░__░" }]); },13200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________▓░░__________________░░▓▓░░░░░░░___░" }]); },13500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________░░_░░__________________░_____________░" }]); },13800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________░░░░____________________░░░_______░" }]); },14100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________░__░____________________░░__░░░░░" }]); },14400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________________________░__________░________░░" }]); },14700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________________________░____░____░░░░░░░_░__░░░" }]); },15000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________________________________░___░░___░░_______░░░░" }]); },15300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________________________________░_░_░____░░░_____░░" }]); },15600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________________________________░___░░░░░░░░░░" }]); },15900);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -1024,65 +1024,65 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/rarity') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________________________________▒▒▒" }]); },300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________________________________▄██▒░░░▒█████████▄▄" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________________▄███▓▓▒░░░▒▓▓▓▓█▓▓▓▓▓████▄" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________________________▄██▓▓▓▓▓▒░▒░░▒▓▓██▓▓▓▓██▓▓▓▓▓███▄▄" }]); },1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________________███▓█▓▓▓▓▓▒░░▒░░▒█▓▓▓▓██▓▓▓▓▓██▓▓▓▓▓██▄" }]); },1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________________▐█▓▓█▓▓▓▓▓▒░░░░▒▒▒▓▓▓██▓▓████████████████▄" }]); },1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________▄█▄_█▓▓█▓▓▓▓▓▓▒▒░░░░░▒▓██▓▓███▓█▓▓▓▓█▓▓▓▓▓▓▓▓█▄" }]); },2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________▄██████▓▓█▓▓▓▓▓▓▒░▒░░░░░▒▓▓██▓▓▓█▓▓▓▓█▓▓▓▓▓▓▓▓▓█▀" }]); },2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________▄█▓▓████▓▓█▓▓▓▓▓▓▒░░▒▒░░░░▒▓█▓▓▓▓▓█▓▓▓█▓▓▓▓▓▓▓▓█▀" }]); },2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________▄█▓▓▓████▓█▓▓▓▓▓▓▒▒░░░░▒▒▒▒▒█▓▓▓▓▓█▓▓▓█▓▓▓▓▓▓▓█▀" }]); },2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________██▓▓▓▓███▓█▓▓▓▓▓▓▓▒░▒░░░░░░▒▒▓▓▓▓▓▓█▓▓█▓▓▓▓▓▓▓█" }]); },3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________██▓▓▓▓▓▓███▓█▓▓▓▓▓▓▒▒░░▒░░░░▒▒▓▓▓▓▓▓▓█▓█▓▓▓▓▓▓███_______▄▄▄▄" }]); },3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________█▓▓▓▓▓▓▓███▓█▓▓▓▓▓▓▒▒░░░░▒▒▒▒▒▓▓▓▓▓▓▓█▓█▓▓▓▓▓██▓▓█████▓▓▓▓█" }]); },3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________██▓▓▓▓▓▓▓████▓▓▓▓▓▓▒▒░░░░░░░░▒▒▓▓▓▓▓▓▓█▓█▓▓▓▓▓█▓▓▓▓██▓▓█▓▓▓▓█" }]); },3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________█▓▓█▓▓▓▓▓▓▓███▓▓▒▒▒▒░░░░░░░░░░░▒▒▒▒▒▓▓▓▓█▓█▓▓▓██▓▓▓▓████▓▓▓▓▓█" }]); },4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________██▓▓▓█▓▓▓▓▓▓██▒▒▒▒░░░░░░░░░░░░░░░░░░▒▒▒▒▓▓█▓█▓▓██████████▓▓▓▓██" }]); },4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________█▓█▓▓▓█▓▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▓█▓█▓██▓▓▓▓▓▓▓▓▓▓██" }]); },4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______█▓▓▓██▓▓██▓▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▓█▓█▓█▓▓▓▓▓▓▓▓██" }]); },5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______█▓▓▓▓▓███▓▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒██▓█▓██▓▓████" }]); },5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▒▒▒▒▒▓▓▓▓▓▓▓▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▀▀▀▀▀▀▀▀" }]); },5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▒░░░░░░▒▒▒▓▓▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒" }]); },6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_▒░░░░░░░░░▒▒▒░░░░░░░░░░░░░░░░░▄░░░▄░░░░░░░░░░░░░░░░░▒" }]); },6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▒░░░░░░░░░░▒▒░░░░░░░░░░░░░▀▄░░▀▄▄▀▄▄▄▄▄░░░░░░░░░░░░░▒▒▒▒▒▒▒" }]); },6600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▒░░░░░░░░░░░░░░░░░░░░░░▀▄▄░░██████████████▄░░░░░░░░░░░░░░░░▒" }]); },6900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__▒▒░░░░░░░░░░░░░░░░░░▄▄░░░▄████▓▓▓▓▓▓▓▓▓____▀█▄░░░░░░░░░░▅▅░░░▒" }]); },7200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___▒▒░▒▒░░░░░░░░░░░░░░░░▀███▓___▀██████▓▓▓▓▓_____▀▅░░░░░░░░░░░░▒▒" }]); },7500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____▒░░░▒▒▒░░░░░░░░░▀▀▀▀▀░░▓▓_____▀███████▓▓▓▓_____▀▅░░░░░░░░░░░▒" }]); },7800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____▒▒░░░░▒▒▒▒░░░░░░░░░░░░░▓______███▀▀███▓▓▓▓______▀░░░░▅▅▅▅▒" }]); },8100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______█▒▒░░░░░░░▒▒▒░░░░░░░░░░░_____███▄_▐███▓▓▓▓____░░░░░░░░░░░▒" }]); },8400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______█▓▓▒▒░░░░░░░░░░░░░░░░░░░░░▀█████████▓▓▓▓__░░░░░░░░░░░░▒" }]); },8700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______█▓▓▓▓▒▒░░░░░░░░░░░░░░░░░░░░░▀▀▀████▓▓▓▓_░░░░░░░░░░░░▒▒" }]); },9000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______█▓▓▓█▓▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒" }]); },9300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______█▓▓▓█▓▓▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒" }]); },9600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______██▓▓▓█▓█▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒" }]); },9900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______█▓█▓▓█▓▓█▓▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒" }]); },10200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________█▓██▓█▓▓█▓▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒" }]); },10500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________█▓▓▓███▓█▓▓▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒" }]); },10800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________█▓▓▓▓▓▓███████░░░░░░░░░░░░░░░░░░░░░▒▒▒" }]); },11100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________██████▓▓▓▓▓▓▓▓▓██████░░░░░░▒▒▒▒▒▒▒" }]); },11400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________█▓▓▓▓▓████████▓▓▓▓▓▓▓███░░░░▒" }]); },11700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________█▓▓▓▓▓▓▓▓▓███▓████▓▓▓▓▓███░░▒" }]); },12000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________█▓▓▓▓▓▓██▓▓▓▓████████▓▓▓▓███▒" }]); },12300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_____________█▓▓▓▓▓█▓▓▓▓█████████████▓▓▓█" }]); },12600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________█▓▓▓▓██▓▓▓████████▓██▓▓██▓▓█" }]); },12900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________█▓▓▓█▓██▓▓█████▓▓▓▓██▓▓▓████" }]); },13200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________█▓▓█▓▓▓███▓▓▓▓█████▓▓▓▓▓▓▓█" }]); },13500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________▀█████▓▓▓███▓▓▓█▓▓▓▓▓▓▓▓█▀" }]); },13800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________▄█▓▓█▓▓██▓▓▓████████▓▓▓█▀" }]); },14100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_______________▄██▓▓▓█▓▓▓▓███▓▓▓▓▓▓▓▓██▀" }]); },14400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________█▓█▓▓▓▓█▓▓▓▓▓▓███████▀" }]); },14700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________█▓▓██▓▓▓██▓▓▓▓▓▓▓▓█▀" }]); },15000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "_________________█▓▓▓▓██▓▓██▓▓▓▓▓█▀" }]); },15300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "__________________█▓▓▓▓▓██▓▓█████" }]); },15600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "___________________█▓▓▓▓▓▓▓████▀" }]); },15900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________▀█▓▓▓▓▓▓▓█▀" }]); },16200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "______________________▀█▓▓▓▓▓█" }]); },16500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "________________________▀▀███" }]); },16800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "____________________________▀" }]); },17100);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________________________________▒▒▒" }]); },300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________________________▄██▒░░░▒█████████▄▄" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________________▄███▓▓▒░░░▒▓▓▓▓█▓▓▓▓▓████▄" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________________▄██▓▓▓▓▓▒░▒░░▒▓▓██▓▓▓▓██▓▓▓▓▓███▄▄" }]); },1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________________███▓█▓▓▓▓▓▒░░▒░░▒█▓▓▓▓██▓▓▓▓▓██▓▓▓▓▓██▄" }]); },1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________________▐█▓▓█▓▓▓▓▓▒░░░░▒▒▒▓▓▓██▓▓████████████████▄" }]); },1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________▄█▄_█▓▓█▓▓▓▓▓▓▒▒░░░░░▒▓██▓▓███▓█▓▓▓▓█▓▓▓▓▓▓▓▓█▄" }]); },2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________▄██████▓▓█▓▓▓▓▓▓▒░▒░░░░░▒▓▓██▓▓▓█▓▓▓▓█▓▓▓▓▓▓▓▓▓█▀" }]); },2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________▄█▓▓████▓▓█▓▓▓▓▓▓▒░░▒▒░░░░▒▓█▓▓▓▓▓█▓▓▓█▓▓▓▓▓▓▓▓█▀" }]); },2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________▄█▓▓▓████▓█▓▓▓▓▓▓▒▒░░░░▒▒▒▒▒█▓▓▓▓▓█▓▓▓█▓▓▓▓▓▓▓█▀" }]); },2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________██▓▓▓▓███▓█▓▓▓▓▓▓▓▒░▒░░░░░░▒▒▓▓▓▓▓▓█▓▓█▓▓▓▓▓▓▓█" }]); },3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________██▓▓▓▓▓▓███▓█▓▓▓▓▓▓▒▒░░▒░░░░▒▒▓▓▓▓▓▓▓█▓█▓▓▓▓▓▓███_______▄▄▄▄" }]); },3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________█▓▓▓▓▓▓▓███▓█▓▓▓▓▓▓▒▒░░░░▒▒▒▒▒▓▓▓▓▓▓▓█▓█▓▓▓▓▓██▓▓█████▓▓▓▓█" }]); },3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________██▓▓▓▓▓▓▓████▓▓▓▓▓▓▒▒░░░░░░░░▒▒▓▓▓▓▓▓▓█▓█▓▓▓▓▓█▓▓▓▓██▓▓█▓▓▓▓█" }]); },3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________█▓▓█▓▓▓▓▓▓▓███▓▓▒▒▒▒░░░░░░░░░░░▒▒▒▒▒▓▓▓▓█▓█▓▓▓██▓▓▓▓████▓▓▓▓▓█" }]); },4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________██▓▓▓█▓▓▓▓▓▓██▒▒▒▒░░░░░░░░░░░░░░░░░░▒▒▒▒▓▓█▓█▓▓██████████▓▓▓▓██" }]); },4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________█▓█▓▓▓█▓▓▓▓▓▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▓█▓█▓██▓▓▓▓▓▓▓▓▓▓██" }]); },4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______█▓▓▓██▓▓██▓▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▓█▓█▓█▓▓▓▓▓▓▓▓██" }]); },5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______█▓▓▓▓▓███▓▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒██▓█▓██▓▓████" }]); },5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▒▒▒▒▒▓▓▓▓▓▓▓▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▀▀▀▀▀▀▀▀" }]); },5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▒░░░░░░▒▒▒▓▓▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒" }]); },6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_▒░░░░░░░░░▒▒▒░░░░░░░░░░░░░░░░░▄░░░▄░░░░░░░░░░░░░░░░░▒" }]); },6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▒░░░░░░░░░░▒▒░░░░░░░░░░░░░▀▄░░▀▄▄▀▄▄▄▄▄░░░░░░░░░░░░░▒▒▒▒▒▒▒" }]); },6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▒░░░░░░░░░░░░░░░░░░░░░░▀▄▄░░██████████████▄░░░░░░░░░░░░░░░░▒" }]); },6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__▒▒░░░░░░░░░░░░░░░░░░▄▄░░░▄████▓▓▓▓▓▓▓▓▓____▀█▄░░░░░░░░░░▅▅░░░▒" }]); },7200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___▒▒░▒▒░░░░░░░░░░░░░░░░▀███▓___▀██████▓▓▓▓▓_____▀▅░░░░░░░░░░░░▒▒" }]); },7500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____▒░░░▒▒▒░░░░░░░░░▀▀▀▀▀░░▓▓_____▀███████▓▓▓▓_____▀▅░░░░░░░░░░░▒" }]); },7800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____▒▒░░░░▒▒▒▒░░░░░░░░░░░░░▓______███▀▀███▓▓▓▓______▀░░░░▅▅▅▅▒" }]); },8100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______█▒▒░░░░░░░▒▒▒░░░░░░░░░░░_____███▄_▐███▓▓▓▓____░░░░░░░░░░░▒" }]); },8400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______█▓▓▒▒░░░░░░░░░░░░░░░░░░░░░▀█████████▓▓▓▓__░░░░░░░░░░░░▒" }]); },8700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______█▓▓▓▓▒▒░░░░░░░░░░░░░░░░░░░░░▀▀▀████▓▓▓▓_░░░░░░░░░░░░▒▒" }]); },9000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______█▓▓▓█▓▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒" }]); },9300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______█▓▓▓█▓▓▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒" }]); },9600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______██▓▓▓█▓█▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒" }]); },9900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______█▓█▓▓█▓▓█▓▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒" }]); },10200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________█▓██▓█▓▓█▓▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒" }]); },10500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________█▓▓▓███▓█▓▓▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▒" }]); },10800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________█▓▓▓▓▓▓███████░░░░░░░░░░░░░░░░░░░░░▒▒▒" }]); },11100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________██████▓▓▓▓▓▓▓▓▓██████░░░░░░▒▒▒▒▒▒▒" }]); },11400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________█▓▓▓▓▓████████▓▓▓▓▓▓▓███░░░░▒" }]); },11700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________█▓▓▓▓▓▓▓▓▓███▓████▓▓▓▓▓███░░▒" }]); },12000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________█▓▓▓▓▓▓██▓▓▓▓████████▓▓▓▓███▒" }]); },12300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_____________█▓▓▓▓▓█▓▓▓▓█████████████▓▓▓█" }]); },12600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________█▓▓▓▓██▓▓▓████████▓██▓▓██▓▓█" }]); },12900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________█▓▓▓█▓██▓▓█████▓▓▓▓██▓▓▓████" }]); },13200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________█▓▓█▓▓▓███▓▓▓▓█████▓▓▓▓▓▓▓█" }]); },13500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________▀█████▓▓▓███▓▓▓█▓▓▓▓▓▓▓▓█▀" }]); },13800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________▄█▓▓█▓▓██▓▓▓████████▓▓▓█▀" }]); },14100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_______________▄██▓▓▓█▓▓▓▓███▓▓▓▓▓▓▓▓██▀" }]); },14400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________█▓█▓▓▓▓█▓▓▓▓▓▓███████▀" }]); },14700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________█▓▓██▓▓▓██▓▓▓▓▓▓▓▓█▀" }]); },15000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "_________________█▓▓▓▓██▓▓██▓▓▓▓▓█▀" }]); },15300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "__________________█▓▓▓▓▓██▓▓█████" }]); },15600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "___________________█▓▓▓▓▓▓▓████▀" }]); },15900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________▀█▓▓▓▓▓▓▓█▀" }]); },16200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "______________________▀█▓▓▓▓▓█" }]); },16500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "________________________▀▀███" }]); },16800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "____________________________▀" }]); },17100);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -1091,40 +1091,40 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/cat2') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "──────────────────────────────▓▓█───────" }]); }, 300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "────────────────────────────▒██▒▒█──────" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───────────────────────────█▓▓▓░▒▓▓─────" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─────────────────────────▒█▓▒█░▒▒▒█─────" }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "────────────────────────▒█▒▒▒█▒▒▒▒▓▒────" }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─▓▓▒░──────────────────▓█▒▒▒▓██▓▒░▒█────" }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─█▓▓██▓░──────────────▓█▒▒▒▒████▒▒▒█────" }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─▓█▓▒▒▓██▓░──────────▒█▒▒▒▒▒██▓█▓░░▓▒───" }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─▓▒▓▒▒▒▒▒▓█▓░──░▒▒▓▓██▒▒▒▒▒▒█████▒▒▒▓───" }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─▓░█▒▒▒▒▒▒▒▓▓█▓█▓▓▓▓▒▒▒▒▒▒▒▒██▓██▒░▒█───" }]); }, 3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─▓░▓█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓████▒▒▒█───" }]); }, 3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─▓░▓██▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▓██░░░█───" }]); }, 3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─▓░▓███▒▒▒▒▒▒▒▒▒▒▒▓█▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▒▓▓──" }]); }, 3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─▒▒▒██▓▒▓█▓▒▒▒▒▒▒▒▓▒▒▒▒▒▒▓▓▓▒▒▒▒▒▒▒▓▒█──" }]); }, 4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "──▓▒█▓▒▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▓█▓▓▓▓█▓▒▒▒▒▒▒▒▓▒─" }]); }, 4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "──▓▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓──────▓█▓▒▒▒▒▒▓█─" }]); }, 4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "──▒▒▓▒▒▒▓▓▓▒▒▒▒▒▒▒▒▒▓▓───░▓▓───█▓▒▒▒▒▒█─" }]); }, 5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───█▒▒▓▓▓▒▒▓▓▒▒▒▒▒▒▓▓───█████▓──█▓▒▒▒▒▓▒" }]); }, 5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───▓▓█▒─────▒▓▒▒▒▒▒█───░██████──░█▒▒▒▒▓▓" }]); }, 5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───▓█▒──▒███─▒▓▒▒▒▒█────██████───▓▒▒▒▒▒▓" }]); }, 6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───██───█████─█▒▒▒▒█─────███▓────▓▓▒▒▒▒▓" }]); }, 6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───█▓───█████─▒▓▒▒▒█─────────────█▓▓▓▒▒▓" }]); }, 6600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───█▓───░███──░▓▒▒▒▓█──────────░█▓▒▒▒▓▒▓" }]); }, 6900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───██─────────▒▓▒▒▒▒▓▓──────░▒▓█▓────░▓▓" }]); }, 7200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───▓█░────────█▓██▓▒▒▓█▓▓▓▓██▓▓▒▓▒░░▒▓▒▓" }]); }, 7500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "───▒██░──────▓▒███▓▒▒▒▒▓▓▓▓▒▒▒▒▒▒▓▓▓▓▒▓─" }]); }, 7800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "────█▓█▓▓▒▒▓█▓▒░██▒▒▓▓█▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓█▒" }]); }, 8100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "────▓─░▓▓▓▓▓▒▓▓▓▓▒▓▓▓▒▓▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓" }]); }, 8400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "────▒▒▒▓▒▒▒▒▒▒▓█░─░░░─▓▓▒▒▒▒▒▒▒▒▒▒▒▓██▓▒" }]); }, 8700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─────█▓▒▒▒▒▒▒▒▒▓▓─░░░─▓▓▒▒▒▒▒▒▒▒▒▓▓▓▒▒▓▒" }]); }, 9000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "──────██▓▓▒▒▒▒▒▒█▒░░░░█▒▒▒▒▒▒▒▒▓█▓▓▒▒▒▒▒" }]); }, 9300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "─────░─▒██▓▓▒▒▒▒▒█▓▒▒▓▒▒▒▒▒▒▓███▓▒▒▒▒▒▓▓" }]); }, 9600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "──────────░▒▓▓▓▓▒▒▓▓▓▓▓▓████▓▓█▒▒▒▒▒▓▓█░" }]); }, 9900);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "──────────────────────────────▓▓█───────" }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "────────────────────────────▒██▒▒█──────" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───────────────────────────█▓▓▓░▒▓▓─────" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─────────────────────────▒█▓▒█░▒▒▒█─────" }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "────────────────────────▒█▒▒▒█▒▒▒▒▓▒────" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─▓▓▒░──────────────────▓█▒▒▒▓██▓▒░▒█────" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─█▓▓██▓░──────────────▓█▒▒▒▒████▒▒▒█────" }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─▓█▓▒▒▓██▓░──────────▒█▒▒▒▒▒██▓█▓░░▓▒───" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─▓▒▓▒▒▒▒▒▓█▓░──░▒▒▓▓██▒▒▒▒▒▒█████▒▒▒▓───" }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─▓░█▒▒▒▒▒▒▒▓▓█▓█▓▓▓▓▒▒▒▒▒▒▒▒██▓██▒░▒█───" }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─▓░▓█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓████▒▒▒█───" }]); }, 3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─▓░▓██▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▓██░░░█───" }]); }, 3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─▓░▓███▒▒▒▒▒▒▒▒▒▒▒▓█▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▒▓▓──" }]); }, 3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─▒▒▒██▓▒▓█▓▒▒▒▒▒▒▒▓▒▒▒▒▒▒▓▓▓▒▒▒▒▒▒▒▓▒█──" }]); }, 4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "──▓▒█▓▒▒▒▒▓▒▒▒▒▒▒▒▒▒▒▒▓█▓▓▓▓█▓▒▒▒▒▒▒▒▓▒─" }]); }, 4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "──▓▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓──────▓█▓▒▒▒▒▒▓█─" }]); }, 4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "──▒▒▓▒▒▒▓▓▓▒▒▒▒▒▒▒▒▒▓▓───░▓▓───█▓▒▒▒▒▒█─" }]); }, 5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───█▒▒▓▓▓▒▒▓▓▒▒▒▒▒▒▓▓───█████▓──█▓▒▒▒▒▓▒" }]); }, 5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───▓▓█▒─────▒▓▒▒▒▒▒█───░██████──░█▒▒▒▒▓▓" }]); }, 5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───▓█▒──▒███─▒▓▒▒▒▒█────██████───▓▒▒▒▒▒▓" }]); }, 6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───██───█████─█▒▒▒▒█─────███▓────▓▓▒▒▒▒▓" }]); }, 6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───█▓───█████─▒▓▒▒▒█─────────────█▓▓▓▒▒▓" }]); }, 6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───█▓───░███──░▓▒▒▒▓█──────────░█▓▒▒▒▓▒▓" }]); }, 6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───██─────────▒▓▒▒▒▒▓▓──────░▒▓█▓────░▓▓" }]); }, 7200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───▓█░────────█▓██▓▒▒▓█▓▓▓▓██▓▓▒▓▒░░▒▓▒▓" }]); }, 7500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "───▒██░──────▓▒███▓▒▒▒▒▓▓▓▓▒▒▒▒▒▒▓▓▓▓▒▓─" }]); }, 7800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "────█▓█▓▓▒▒▓█▓▒░██▒▒▓▓█▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓█▒" }]); }, 8100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "────▓─░▓▓▓▓▓▒▓▓▓▓▒▓▓▓▒▓▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓" }]); }, 8400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "────▒▒▒▓▒▒▒▒▒▒▓█░─░░░─▓▓▒▒▒▒▒▒▒▒▒▒▒▓██▓▒" }]); }, 8700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─────█▓▒▒▒▒▒▒▒▒▓▓─░░░─▓▓▒▒▒▒▒▒▒▒▒▓▓▓▒▒▓▒" }]); }, 9000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "──────██▓▓▒▒▒▒▒▒█▒░░░░█▒▒▒▒▒▒▒▒▓█▓▓▒▒▒▒▒" }]); }, 9300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "─────░─▒██▓▓▒▒▒▒▒█▓▒▒▓▒▒▒▒▒▒▓███▓▒▒▒▒▒▓▓" }]); }, 9600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "──────────░▒▓▓▓▓▒▒▓▓▓▓▓▓████▓▓█▒▒▒▒▒▓▓█░" }]); }, 9900);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -1133,18 +1133,18 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/shibe') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░░░▐█▀█▄░░░░░░░░░░▄█▀█" }]); }, 300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░░░█▐▓░█▄░░░░░░░▄█▀▄▓▐" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░░░█▐▓▓░████▄▄▄█▀▄▓▓▓▌█" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░░░▄█▌▀▄▓▓▄▄▄▄▀▀▀▄▓▓▓▓▓▌█" }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░░▄█▀▀▄▓█▓▓▓▓▓▓▓▓▓▓▓▓▀░▓▌█" }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░░█▀▄▓▓▓███▓▓▓███▓▓▓▄░░▄▓▓▐" }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "░█▌▓▓▓▀▀▓▓▓▓███▓▓▓▓▓▓▓▄▀▓▓▐" }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "▐█▐██▐░▄▓▓▓▓▓▀▄░▀▓▓▓▓▓▓▓▓▓▌" }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "█▌███▓▓▓▓▓▓▓▓▐░░▄▓▓███▓▓▓▄▀▐" }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "█▐█▓▀░░▀▓▓▓▓▓▓▓▓▓██████▓▓▓▓▐" }]); }, 3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "▌▓▄▌▀░▀░▐▀█▄▓▓██████████▓▓▓▌" }]); }, 3300);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░░▐█▀█▄░░░░░░░░░░▄█▀█" }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░░█▐▓░█▄░░░░░░░▄█▀▄▓▐" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░░█▐▓▓░████▄▄▄█▀▄▓▓▓▌█" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░▄█▌▀▄▓▓▄▄▄▄▀▀▀▄▓▓▓▓▓▌█" }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░░▄█▀▀▄▓█▓▓▓▓▓▓▓▓▓▓▓▓▀░▓▌█" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░░█▀▄▓▓▓███▓▓▓███▓▓▓▄░░▄▓▓▐" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "░█▌▓▓▓▀▀▓▓▓▓███▓▓▓▓▓▓▓▄▀▓▓▐" }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "▐█▐██▐░▄▓▓▓▓▓▀▄░▀▓▓▓▓▓▓▓▓▓▌" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "█▌███▓▓▓▓▓▓▓▓▐░░▄▓▓███▓▓▓▄▀▐" }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "█▐█▓▀░░▀▓▓▓▓▓▓▓▓▓██████▓▓▓▓▐" }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "▌▓▄▌▀░▀░▐▀█▄▓▓██████████▓▓▓▌" }]); }, 3300);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -1153,40 +1153,40 @@ MPP.client.on('a', msg => {
                 }
             }else if (cmd == '/butterfly2') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪" }]); }, 300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪████▓╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪▓███▓╪╪" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪███████▓╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪███████╪╪" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪█████████╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪█████████▓╪" }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪██████▓███╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪██▓▓██████▓╪" }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪▓█████▓▓▓▓██╪╪╪╪╪╪╪╪╪╪╪╪╪╪██▓▓▓▓█████▓╪" }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪▓████▓▓▓▓▓▓██╪╪╪╪╪╪╪╪╪╪╪╪██▓▓▓▓▓▓████▓╪" }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪▓███▓▓▓▓▓▓▓███╪╪╪╪╪╪╪╪╪╪███▓▓▓▓▓▓▓████╪" }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪▓███▓▓▓▓▓▓█████╪╪╪╪╪╪╪╪▓████▓▓▓▓▓▓▓██▓╪" }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪▓███▓▓▓▓▓███████╪╪╪╪╪╪▓██████▓▓▓▓▓▓██▓╪" }]); }, 3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪▓██▓▓▓▓▓▓███████▓╪╪╪╪▓████████▓▓▓▓▓▓█▓╪" }]); }, 3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪██▓▓▓▓▓██████▓██▓╪╪▓▓█▓▓█████▓▓▓▓▓▓█▓╪" }]); }, 3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪██▓▓▓▓██████▓▓▓█╪▓█╪▓▓▓▓▓█████▓▓▓▓▓█▓╪" }]); }, 3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪██▓▓▓██████▓▓▓▓█▓▓█▓█▓▓▓▓██████▓▓▓▓█╪╪" }]); }, 4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪▓█▓▓██████▓▓▓▓▓▓████▓▓▓▓▓▓██████▓▓▓█╪╪" }]); }, 4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪█████████▓▓▓▓▓▓█▓▓█▓▓▓▓▓▓▓██████▓█▓╪╪" }]); }, 4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪████████▓▓███▓▓█▓╪█▓▓▓█▓▓▓▓███████╪╪╪" }]); }, 5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪████▓▓████▓▓▓▓█▓█▓▓▓▓▓▓█▓█▓▓████╪╪╪╪" }]); }, 5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪╪╪████▓▓▓▓▓████▓▓▓▓▓████▓╪╪╪╪╪╪╪╪" }]); }, 5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪▓█████▓▓▓▓▓█████▓▓▓▓▓█████╪╪╪╪╪╪╪" }]); }, 6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪█████▓▓▓▓▓█▓█▓▓█▓▓▓▓▓▓████▓╪╪╪╪╪╪" }]); }, 6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪╪█████▓▓▓▓▓██▓▓▓╪██▓▓▓▓▓▓████╪╪╪╪╪╪" }]); }, 6600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪╪████▓▓▓▓▓▓██╪▓█╪██▓▓▓▓▓▓▓███▓╪╪╪╪╪" }]); }, 6900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪╪███▓▓▓▓▓▓███╪▓█╪███▓▓▓▓▓▓███▓╪╪╪╪╪" }]); }, 7200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪▓███▓▓▓▓▓████╪██╪████▓▓▓▓▓███▓╪╪╪╪╪" }]); }, 7500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪▓███▓▓▓▓▓████╪██╪▓████▓▓▓▓▓███╪╪╪╪╪" }]); }, 7800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪▓██▓▓▓▓▓████▓╪╪╪╪╪████▓▓▓▓▓██▓╪╪╪╪╪" }]); }, 8100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪╪███▓▓▓█████╪╪╪╪╪╪█████▓▓▓████╪╪╪╪╪" }]); }, 8400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪╪▓███▓██████╪╪╪╪╪╪▓█████▓▓███╪╪╪╪╪╪" }]); }, 8700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪██████▓██╪╪╪╪╪╪╪╪▓█▓▓▓████╪╪╪╪╪╪╪" }]); }, 9000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪╪▓██████╪╪╪╪╪╪╪╪╪╪██████▓╪╪╪╪╪╪╪╪" }]); }, 9300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪╪╪▓████╪╪╪╪╪╪╪╪╪╪╪╪▓████╪╪╪╪╪╪╪╪╪" }]); }, 9600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪" }]); }, 9900);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪" }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪████▓╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪▓███▓╪╪" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪███████▓╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪███████╪╪" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪█████████╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪█████████▓╪" }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪██████▓███╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪██▓▓██████▓╪" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪▓█████▓▓▓▓██╪╪╪╪╪╪╪╪╪╪╪╪╪╪██▓▓▓▓█████▓╪" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪▓████▓▓▓▓▓▓██╪╪╪╪╪╪╪╪╪╪╪╪██▓▓▓▓▓▓████▓╪" }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪▓███▓▓▓▓▓▓▓███╪╪╪╪╪╪╪╪╪╪███▓▓▓▓▓▓▓████╪" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪▓███▓▓▓▓▓▓█████╪╪╪╪╪╪╪╪▓████▓▓▓▓▓▓▓██▓╪" }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪▓███▓▓▓▓▓███████╪╪╪╪╪╪▓██████▓▓▓▓▓▓██▓╪" }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪▓██▓▓▓▓▓▓███████▓╪╪╪╪▓████████▓▓▓▓▓▓█▓╪" }]); }, 3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪██▓▓▓▓▓██████▓██▓╪╪▓▓█▓▓█████▓▓▓▓▓▓█▓╪" }]); }, 3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪██▓▓▓▓██████▓▓▓█╪▓█╪▓▓▓▓▓█████▓▓▓▓▓█▓╪" }]); }, 3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪██▓▓▓██████▓▓▓▓█▓▓█▓█▓▓▓▓██████▓▓▓▓█╪╪" }]); }, 4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪▓█▓▓██████▓▓▓▓▓▓████▓▓▓▓▓▓██████▓▓▓█╪╪" }]); }, 4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪█████████▓▓▓▓▓▓█▓▓█▓▓▓▓▓▓▓██████▓█▓╪╪" }]); }, 4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪████████▓▓███▓▓█▓╪█▓▓▓█▓▓▓▓███████╪╪╪" }]); }, 5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪████▓▓████▓▓▓▓█▓█▓▓▓▓▓▓█▓█▓▓████╪╪╪╪" }]); }, 5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪╪╪████▓▓▓▓▓████▓▓▓▓▓████▓╪╪╪╪╪╪╪╪" }]); }, 5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪▓█████▓▓▓▓▓█████▓▓▓▓▓█████╪╪╪╪╪╪╪" }]); }, 6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪█████▓▓▓▓▓█▓█▓▓█▓▓▓▓▓▓████▓╪╪╪╪╪╪" }]); }, 6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪█████▓▓▓▓▓██▓▓▓╪██▓▓▓▓▓▓████╪╪╪╪╪╪" }]); }, 6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪████▓▓▓▓▓▓██╪▓█╪██▓▓▓▓▓▓▓███▓╪╪╪╪╪" }]); }, 6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪███▓▓▓▓▓▓███╪▓█╪███▓▓▓▓▓▓███▓╪╪╪╪╪" }]); }, 7200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪▓███▓▓▓▓▓████╪██╪████▓▓▓▓▓███▓╪╪╪╪╪" }]); }, 7500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪▓███▓▓▓▓▓████╪██╪▓████▓▓▓▓▓███╪╪╪╪╪" }]); }, 7800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪▓██▓▓▓▓▓████▓╪╪╪╪╪████▓▓▓▓▓██▓╪╪╪╪╪" }]); }, 8100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪███▓▓▓█████╪╪╪╪╪╪█████▓▓▓████╪╪╪╪╪" }]); }, 8400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪▓███▓██████╪╪╪╪╪╪▓█████▓▓███╪╪╪╪╪╪" }]); }, 8700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪██████▓██╪╪╪╪╪╪╪╪▓█▓▓▓████╪╪╪╪╪╪╪" }]); }, 9000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪╪▓██████╪╪╪╪╪╪╪╪╪╪██████▓╪╪╪╪╪╪╪╪" }]); }, 9300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪╪╪▓████╪╪╪╪╪╪╪╪╪╪╪╪▓████╪╪╪╪╪╪╪╪╪" }]); }, 9600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪" }]); }, 9900);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -1195,36 +1195,36 @@ MPP.client.on('a', msg => {
                 }
             }else if (cmd == '/elk') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111111111111111111111111111111111111111111" }]); }, 300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "1¶1¶11111¶¶11111111111¶¶111111¶¶¶¶11111111111" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "1¶¶¶111111¶¶1111111111¶¶¶11111¶¶¶111111111111" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "11¶¶¶¶¶¶¶11¶¶¶¶¶111¶¶1¶¶11¶¶¶¶¶¶1111111111111" }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111¶¶¶¶¶¶¶¶¶¶¶11¶¶¶¶¶¶¶1111111111111111111" }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111111111¶¶¶¶¶¶¶¶¶¶¶1111111111111111111111" }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "1111111111111¶¶¶¶¶¶11¶¶1111111111111111111111" }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶111111111111111111" }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "1111111111¶¶¶¶¶¶11111111¶¶¶111111111111111111" }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "1111111111¶¶¶¶11¶¶¶¶¶¶¶¶¶¶¶111111111111111111" }]); }, 3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111111¶¶¶¶1¶¶¶¶¶11111111111111111111111111" }]); }, 3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111111¶¶¶¶1¶¶¶¶111111111111111111111111111" }]); }, 3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111111¶¶¶¶1¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111" }]); }, 3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "1111111111¶¶¶¶1¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶11" }]); }, 4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "1111111111¶¶¶¶¶11¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1¶11" }]); }, 4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "11111111111¶¶¶¶¶1111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111" }]); }, 4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111111111¶¶¶¶¶1111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111" }]); }, 5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "11111111111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111" }]); }, 5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111111111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111" }]); }, 5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "11111111111111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111" }]); }, 6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "11111111111111111¶¶¶¶¶¶¶¶11111111¶¶¶¶¶¶¶11111" }]); }, 6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "11111111111111111¶¶¶¶¶¶¶¶11111111¶¶¶1¶¶¶11111" }]); }, 6600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111111111111111¶¶1¶¶¶1111111111¶¶1¶¶¶11111" }]); }, 6900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111111111111111¶¶1¶¶¶1111111111¶¶1¶¶¶11111" }]); }, 7100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "1111111111111111111¶¶1¶¶1111111111¶¶1¶¶¶11111" }]); }, 7500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111111111111111¶¶¶1¶¶1111111111¶¶1¶¶¶11111" }]); }, 7800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111111111111111¶¶11¶¶111111111¶¶11¶¶111111" }]); }, 8100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111111111111111¶¶1¶¶1111111111¶¶1¶¶¶111111" }]); }, 8400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "111111111111111111111111111111111111111111111" }]); }, 8700);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111111111111111111111111111111111111" }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "1¶1¶11111¶¶11111111111¶¶111111¶¶¶¶11111111111" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "1¶¶¶111111¶¶1111111111¶¶¶11111¶¶¶111111111111" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "11¶¶¶¶¶¶¶11¶¶¶¶¶111¶¶1¶¶11¶¶¶¶¶¶1111111111111" }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111¶¶¶¶¶¶¶¶¶¶¶11¶¶¶¶¶¶¶1111111111111111111" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111¶¶¶¶¶¶¶¶¶¶¶1111111111111111111111" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "1111111111111¶¶¶¶¶¶11¶¶1111111111111111111111" }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶111111111111111111" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "1111111111¶¶¶¶¶¶11111111¶¶¶111111111111111111" }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "1111111111¶¶¶¶11¶¶¶¶¶¶¶¶¶¶¶111111111111111111" }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111111¶¶¶¶1¶¶¶¶¶11111111111111111111111111" }]); }, 3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111111¶¶¶¶1¶¶¶¶111111111111111111111111111" }]); }, 3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111111¶¶¶¶1¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111" }]); }, 3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "1111111111¶¶¶¶1¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶11" }]); }, 4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "1111111111¶¶¶¶¶11¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1¶11" }]); }, 4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "11111111111¶¶¶¶¶1111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111" }]); }, 4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111¶¶¶¶¶1111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111" }]); }, 5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "11111111111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111" }]); }, 5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111" }]); }, 5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "11111111111111111¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶1111" }]); }, 6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "11111111111111111¶¶¶¶¶¶¶¶11111111¶¶¶¶¶¶¶11111" }]); }, 6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "11111111111111111¶¶¶¶¶¶¶¶11111111¶¶¶1¶¶¶11111" }]); }, 6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111111111¶¶1¶¶¶1111111111¶¶1¶¶¶11111" }]); }, 6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111111111¶¶1¶¶¶1111111111¶¶1¶¶¶11111" }]); }, 7100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "1111111111111111111¶¶1¶¶1111111111¶¶1¶¶¶11111" }]); }, 7500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111111111¶¶¶1¶¶1111111111¶¶1¶¶¶11111" }]); }, 7800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111111111¶¶11¶¶111111111¶¶11¶¶111111" }]); }, 8100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111111111¶¶1¶¶1111111111¶¶1¶¶¶111111" }]); }, 8400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111111111111111111111111111111111111" }]); }, 8700);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -1233,98 +1233,98 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/mario') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ___________________▄▄▄▀▀▀▀▀▀▀▄" }]); }, 360);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _______________▄▀▀____▀▀▀▀▄____█" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ___________▄▀▀__▀▀▀▀▀▀▄___▀▄___█" }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " __________█▄▄▄▄▄▄_______▀▄__▀▄__█" }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _________█_________▀▄______█____█_█" }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ______▄█_____________▀▄_____▐___▐_▌" }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ______██_______________▀▄___▐_▄▀▀▀▄" }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ______█________██_______▌__▐▄▀______█" }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ______█_________█_______▌__▐▐________▐" }]); }, 3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _____▐__________▌_____▄▀▀▀__▌_______▐_____________▄▄▄▄▄▄" }]); }, 3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ______▌__________▀▀▀▀________▀▀▄▄▄▀______▄▄████▓▓▓▓▓▓▓███▄" }]); }, 3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ______▌____________________________▄▀__▄▄█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄" }]); }, 3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ______▐__________________________▄▀_▄█▓▓▓▓▓▓▓▓▓▓_____▓▓____▓▓█▄" }]); }, 4200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _______▌______________________▄▀_▄█▓▓▓▓▓▓▓▓▓▓▓____▓▓_▓▓_▓▓__▓▓█" }]); }, 4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _____▄▀▄_________________▄▀▀▌██▓▓▓▓▓▓▓▓▓▓▓▓▓__▓▓▓___▓▓_▓▓__▓▓█" }]); }, 4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ____▌____▀▀▀▄▄▄▄▄▄▄▄▀▀___▌█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓__▓________▓▓___▓▓▓█" }]); }, 5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _____▀▄_________________▄▀▀▓▓▓▓▓▓▓▓█████████████▄▄_____▓▓__▓▓▓█" }]); }, 5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _______█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▄▄___▓▓▓▓▓█" }]); }, 5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _______█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓███▓▓▓▓████▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓█" }]); }, 6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ________█▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓█▓▓██░░███████░██▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓█" }]); }, 6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ________█▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓░░░░░█░░░░░██░░░░██▓▓▓▓▓▓▓▓▓██▓▓▓▓▌" }]); }, 6600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ________█▓▓▓▓▓▓▓▓▓▓▓▓▓▓███░░░░░░░░____░██░░░░░░░██▓▓▓▓▓▓▓██▓▓▌" }]); }, 6900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ________▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓██░░░░░░░________░░░░░░░░░██████▓▓▓▓▓█▓▌" }]); }, 7200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ________▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓██░░░░░░___▓▓▓▓▓░░░░░░░███░░███▓▓▓▓▓█▓▌" }]); }, 7500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _________█▓▓▓▓▓▓▓▓▓▓▓▓▓██░░░░░___▓▓█▄▄▓░░░░░░░░___░░░░█▓▓▓▓▓█▓▌" }]); }, 7800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _________█▓▓▓▓▓▓▓▓▓▓▓▓▓█░░█░░░___▓▓██░░░░░░░░▓▓▓▓__░░░░█▓▓▓▓██" }]); }, 8100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _________█▓▓▓▓▓▓▓▓▓▓▓▓▓█░███░░____▓░░░░░░░░░░░█▄█▓__░░░░█▓▓█▓█" }]); }, 8400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _________▐▓▓▓▓▓▓▓▓▓▓▓▓▓█░█████░░░░░░░░░░░░░░░░░█▓__░░░░███▓█" }]); }, 8700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " __________█▓▓▓▓▓▓▓▓▓▓▓▓█░░███████░░░░░░░░░░░░░░░▓_░░░░░██▓█" }]); }, 9000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " __________█▓▓▓▓▓▓▓▓▓▓▓▓█░░░███████░░░░░░░░░░░░░░_░░░░░██▓█" }]); }, 9300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " __________█▓▓▓▓▓▓▓▓▓▓▓▓█░░░███████░░░░░░░░░░░░░░░░░░░██▓█" }]); }, 9600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ___________█▓▓▓▓▓▓▓▓▓▓▓▓█░░░░███████░░░░░░░░░░░█████░██░░░" }]); }, 9900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ___________█▓▓▓▓▓▓▓▓▓▓▓▓█░░░░░░__███████░░░░░███████░░█░░░░" }]); }, 10200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ___________█▓▓▓▓▓▓▓▓▓▓▓▓▓█░░░░░░█▄▄▄▀▀▀▀████████████░░█░░░░" }]); }, 10500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ___________▐▓▓▓▓▓▓▓▓▓▓▓▓█░░░░░░██████▄__▀▀░░░███░░░░░█░░░" }]); }, 10800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ___________▐▓▓▓▓▓▓▓▓▓▓▓█▒█░░░░░░▓▓▓▓▓███▄░░░░░░░░░░░░░░░______▄▄▄" }]); }, 11100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ___________█▓▓▓▓▓▓▓▓▓█▒▒▒▒█░░░░░░▓▓▓▓▓█░░░░░░░░░░░░░░░▄▄▄_▄▀▀____▀▄" }]); }, 11400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " __________█▓▓▓▓▓▓▓▓▓█▒▒▒▒█▓▓░░░░░░░░░░░░░░░░░░░░░____▄▀____▀▄_________▀▄" }]); }, 11700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _________█▓▓▓▓▓▓▓▓▓█▒▒▒▒█▓▓▓▓░░░░░░░░░░░░░░░░░______▐▄________█▄▄▀▀▀▄__█" }]); }, 12000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ________█▓▓▓▓▓▓▓▓█▒▒▒▒▒▒█▓▓▓▓▓▓▓░░░░░░░░░____________█_█______▐_________▀▄▌" }]); }, 12300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _______█▓▓▓▓▓▓▓▓█▒▒▒▒▒▒███▓▓▓▓▓▓▓▓▓▓▓█▒▒▄___________█__▀▄____█____▄▄▄____▐" }]); }, 12600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ______█▓▓▓▓▓▓▓█_______▒▒█▒▒██▓▓▓▓▓▓▓▓▓▓█▒▒▒▄_________█____▀▀█▀▄▀▀▀___▀▀▄▄▐" }]); }, 12900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _____█▓▓▓▓▓██▒_________▒█▒▒▒▒▒███▓▓▓▓▓▓█▒▒▒██________▐_______▀█_____________█" }]); }, 13200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ____█▓▓████▒█▒_________▒█▒▒▒▒▒▒▒▒███████▒▒▒▒██_______█_______▐______▄▄▄_____█" }]); }, 13500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " __█▒██▒▒▒▒▒▒█▒▒____▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒____▒█▓█__▄█__█______▀▄▄▀▀____▀▀▄▄█" }]); }, 13800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " __█▒▒▒▒▒▒▒▒▒▒█▒▒▒████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█_______█▓▓█▓▓▌_▐________▐____________▐" }]); }, 14100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " __█▒▒▒▒▒▒▒▒▒▒▒███▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒_______█▓▓▓█▓▌__▌_______▐_____▄▄____▐" }]); }, 14400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒_____█▓▓▓█▓▓▌__▌_______▀▄▄▀______▐" }]); }, 14700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒███████▓▓█▓▓▓▌__▀▄_______________▄▀" }]); }, 15000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒███▒▒▒▒▒▒▒██▓▓▓▓▓▌___▀▄_________▄▀▀" }]); }, 15300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒█▓▓▓▓▓▀▄__▀▄▄█▀▀▀" }]); }, 15600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▓▓▓▓██▄▄▄▀" }]); }, 15900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒████" }]); }, 16200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 16500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▄▄▄▄▄" }]); }, 16800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒███▒▒▒▒▒▒██▄▄" }]); }, 17100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " __█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒███▒▒▒▒▒▒▒▒▒▒▒▒▒█▄" }]); }, 17400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " __█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 17700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " __█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒█▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 18000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ___█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒█▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▒▒▌" }]); }, 18300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ____█▒▒▒▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒▒█▒▒▒▒█▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░▒▒▌" }]); }, 18600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ____█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█████████████▒▒▒▒▒█▒▒▒▒▒▒▒▒░░░░▒▒▒▒▒▒▒▒▒▒▒░▒▌" }]); }, 18900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _____█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█_______▐▒▒▒▒█▒▒▒▒▒▒▒░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▌" }]); }, 19200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ______█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█________█▒▒█▒▒▒▒▒▒░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌" }]); }, 19500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _______█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█________█▒█▒▒▒▒▒▒░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌" }]); }, 19800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█________█▒▒▒▒▒▒░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 20100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█________█▒▒▒▒░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 20400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█________█▒▒▒░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▀" }]); }, 20700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " __________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█_______█▒░░░▒▒▒▒▒░░░░░░░░▒▒▒█▀▀▀" }]); }, 21000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ___________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█_______█░▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░█▀" }]); }, 21300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ____________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█_______█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▀" }]); }, 21600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _____________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█_______█▒▒▒▒▒▒▒▒▒▒▒▒█▀" }]); }, 21900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _____________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█_______▀▀▀███████▀▀" }]); }, 22200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ______________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 22500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _______________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 22800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 23100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 23400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " __________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▒█" }]); }, 23700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ___________________█▒▒▒▒▒▒▒▒▒▒▒▒▒██▒▒▒▒█" }]); }, 24000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ___________________█▒▒▒▒▒▒▒▒████▒▒▒▒▒▒▒█" }]); }, 24300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ___________________█████████▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 24600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ____________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 24900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ____________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 25200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _____________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▌" }]); }, 25500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _____________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▌" }]); }, 25800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ______________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░▌" }]); }, 26100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _______________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░█" }]); }, 26400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " ________________________█▒▒▒▒▒▒▒▒▒▒▒░░░█" }]); }, 26700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " __________________________██▒▒▒▒▒▒░░░█▀" }]); }, 27000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _____________________________█░░░░░█▀" }]); }, 27300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: " _______________________________▀▀▀▀" }]); }, 27600);
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ___________________▄▄▄▀▀▀▀▀▀▀▄" }]); }, 360);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _______________▄▀▀____▀▀▀▀▄____█" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ___________▄▀▀__▀▀▀▀▀▀▄___▀▄___█" }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " __________█▄▄▄▄▄▄_______▀▄__▀▄__█" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _________█_________▀▄______█____█_█" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ______▄█_____________▀▄_____▐___▐_▌" }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ______██_______________▀▄___▐_▄▀▀▀▄" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ______█________██_______▌__▐▄▀______█" }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ______█_________█_______▌__▐▐________▐" }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _____▐__________▌_____▄▀▀▀__▌_______▐_____________▄▄▄▄▄▄" }]); }, 3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ______▌__________▀▀▀▀________▀▀▄▄▄▀______▄▄████▓▓▓▓▓▓▓███▄" }]); }, 3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ______▌____________________________▄▀__▄▄█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▄" }]); }, 3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ______▐__________________________▄▀_▄█▓▓▓▓▓▓▓▓▓▓_____▓▓____▓▓█▄" }]); }, 4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _______▌______________________▄▀_▄█▓▓▓▓▓▓▓▓▓▓▓____▓▓_▓▓_▓▓__▓▓█" }]); }, 4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _____▄▀▄_________________▄▀▀▌██▓▓▓▓▓▓▓▓▓▓▓▓▓__▓▓▓___▓▓_▓▓__▓▓█" }]); }, 4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ____▌____▀▀▀▄▄▄▄▄▄▄▄▀▀___▌█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓__▓________▓▓___▓▓▓█" }]); }, 5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _____▀▄_________________▄▀▀▓▓▓▓▓▓▓▓█████████████▄▄_____▓▓__▓▓▓█" }]); }, 5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _______█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▄▄___▓▓▓▓▓█" }]); }, 5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _______█▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓███▓▓▓▓████▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓█" }]); }, 6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ________█▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓█▓▓██░░███████░██▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓█" }]); }, 6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ________█▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓░░░░░█░░░░░██░░░░██▓▓▓▓▓▓▓▓▓██▓▓▓▓▌" }]); }, 6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ________█▓▓▓▓▓▓▓▓▓▓▓▓▓▓███░░░░░░░░____░██░░░░░░░██▓▓▓▓▓▓▓██▓▓▌" }]); }, 6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ________▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓██░░░░░░░________░░░░░░░░░██████▓▓▓▓▓█▓▌" }]); }, 7200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ________▐▓▓▓▓▓▓▓▓▓▓▓▓▓▓██░░░░░░___▓▓▓▓▓░░░░░░░███░░███▓▓▓▓▓█▓▌" }]); }, 7500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _________█▓▓▓▓▓▓▓▓▓▓▓▓▓██░░░░░___▓▓█▄▄▓░░░░░░░░___░░░░█▓▓▓▓▓█▓▌" }]); }, 7800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _________█▓▓▓▓▓▓▓▓▓▓▓▓▓█░░█░░░___▓▓██░░░░░░░░▓▓▓▓__░░░░█▓▓▓▓██" }]); }, 8100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _________█▓▓▓▓▓▓▓▓▓▓▓▓▓█░███░░____▓░░░░░░░░░░░█▄█▓__░░░░█▓▓█▓█" }]); }, 8400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _________▐▓▓▓▓▓▓▓▓▓▓▓▓▓█░█████░░░░░░░░░░░░░░░░░█▓__░░░░███▓█" }]); }, 8700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " __________█▓▓▓▓▓▓▓▓▓▓▓▓█░░███████░░░░░░░░░░░░░░░▓_░░░░░██▓█" }]); }, 9000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " __________█▓▓▓▓▓▓▓▓▓▓▓▓█░░░███████░░░░░░░░░░░░░░_░░░░░██▓█" }]); }, 9300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " __________█▓▓▓▓▓▓▓▓▓▓▓▓█░░░███████░░░░░░░░░░░░░░░░░░░██▓█" }]); }, 9600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ___________█▓▓▓▓▓▓▓▓▓▓▓▓█░░░░███████░░░░░░░░░░░█████░██░░░" }]); }, 9900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ___________█▓▓▓▓▓▓▓▓▓▓▓▓█░░░░░░__███████░░░░░███████░░█░░░░" }]); }, 10200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ___________█▓▓▓▓▓▓▓▓▓▓▓▓▓█░░░░░░█▄▄▄▀▀▀▀████████████░░█░░░░" }]); }, 10500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ___________▐▓▓▓▓▓▓▓▓▓▓▓▓█░░░░░░██████▄__▀▀░░░███░░░░░█░░░" }]); }, 10800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ___________▐▓▓▓▓▓▓▓▓▓▓▓█▒█░░░░░░▓▓▓▓▓███▄░░░░░░░░░░░░░░░______▄▄▄" }]); }, 11100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ___________█▓▓▓▓▓▓▓▓▓█▒▒▒▒█░░░░░░▓▓▓▓▓█░░░░░░░░░░░░░░░▄▄▄_▄▀▀____▀▄" }]); }, 11400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " __________█▓▓▓▓▓▓▓▓▓█▒▒▒▒█▓▓░░░░░░░░░░░░░░░░░░░░░____▄▀____▀▄_________▀▄" }]); }, 11700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _________█▓▓▓▓▓▓▓▓▓█▒▒▒▒█▓▓▓▓░░░░░░░░░░░░░░░░░______▐▄________█▄▄▀▀▀▄__█" }]); }, 12000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ________█▓▓▓▓▓▓▓▓█▒▒▒▒▒▒█▓▓▓▓▓▓▓░░░░░░░░░____________█_█______▐_________▀▄▌" }]); }, 12300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _______█▓▓▓▓▓▓▓▓█▒▒▒▒▒▒███▓▓▓▓▓▓▓▓▓▓▓█▒▒▄___________█__▀▄____█____▄▄▄____▐" }]); }, 12600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ______█▓▓▓▓▓▓▓█_______▒▒█▒▒██▓▓▓▓▓▓▓▓▓▓█▒▒▒▄_________█____▀▀█▀▄▀▀▀___▀▀▄▄▐" }]); }, 12900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _____█▓▓▓▓▓██▒_________▒█▒▒▒▒▒███▓▓▓▓▓▓█▒▒▒██________▐_______▀█_____________█" }]); }, 13200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ____█▓▓████▒█▒_________▒█▒▒▒▒▒▒▒▒███████▒▒▒▒██_______█_______▐______▄▄▄_____█" }]); }, 13500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " __█▒██▒▒▒▒▒▒█▒▒____▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒____▒█▓█__▄█__█______▀▄▄▀▀____▀▀▄▄█" }]); }, 13800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " __█▒▒▒▒▒▒▒▒▒▒█▒▒▒████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█_______█▓▓█▓▓▌_▐________▐____________▐" }]); }, 14100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " __█▒▒▒▒▒▒▒▒▒▒▒███▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒_______█▓▓▓█▓▌__▌_______▐_____▄▄____▐" }]); }, 14400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒_____█▓▓▓█▓▓▌__▌_______▀▄▄▀______▐" }]); }, 14700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒███████▓▓█▓▓▓▌__▀▄_______________▄▀" }]); }, 15000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒███▒▒▒▒▒▒▒██▓▓▓▓▓▌___▀▄_________▄▀▀" }]); }, 15300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒█▓▓▓▓▓▀▄__▀▄▄█▀▀▀" }]); }, 15600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▓▓▓▓██▄▄▄▀" }]); }, 15900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒████" }]); }, 16200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " █▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 16500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▄▄▄▄▄" }]); }, 16800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒███▒▒▒▒▒▒██▄▄" }]); }, 17100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " __█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒███▒▒▒▒▒▒▒▒▒▒▒▒▒█▄" }]); }, 17400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " __█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 17700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " __█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒█▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 18000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ___█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒█▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▒▒▌" }]); }, 18300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ____█▒▒▒▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒▒█▒▒▒▒█▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░▒▒▌" }]); }, 18600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ____█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█████████████▒▒▒▒▒█▒▒▒▒▒▒▒▒░░░░▒▒▒▒▒▒▒▒▒▒▒░▒▌" }]); }, 18900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _____█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█_______▐▒▒▒▒█▒▒▒▒▒▒▒░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▌" }]); }, 19200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ______█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█________█▒▒█▒▒▒▒▒▒░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌" }]); }, 19500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _______█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█________█▒█▒▒▒▒▒▒░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▌" }]); }, 19800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█________█▒▒▒▒▒▒░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 20100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█________█▒▒▒▒░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 20400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█________█▒▒▒░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▀" }]); }, 20700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " __________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█_______█▒░░░▒▒▒▒▒░░░░░░░░▒▒▒█▀▀▀" }]); }, 21000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ___________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█_______█░▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░█▀" }]); }, 21300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ____________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█_______█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▀" }]); }, 21600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _____________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█_______█▒▒▒▒▒▒▒▒▒▒▒▒█▀" }]); }, 21900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _____________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█_______▀▀▀███████▀▀" }]); }, 22200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ______________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 22500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _______________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 22800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 23100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 23400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " __________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██▒█" }]); }, 23700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ___________________█▒▒▒▒▒▒▒▒▒▒▒▒▒██▒▒▒▒█" }]); }, 24000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ___________________█▒▒▒▒▒▒▒▒████▒▒▒▒▒▒▒█" }]); }, 24300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ___________________█████████▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 24600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ____________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 24900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ____________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█" }]); }, 25200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _____________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▌" }]); }, 25500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _____________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▌" }]); }, 25800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ______________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░▌" }]); }, 26100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _______________________█▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░█" }]); }, 26400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ________________________█▒▒▒▒▒▒▒▒▒▒▒░░░█" }]); }, 26700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " __________________________██▒▒▒▒▒▒░░░█▀" }]); }, 27000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _____________________________█░░░░░█▀" }]); }, 27300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " _______________________________▀▀▀▀" }]); }, 27600);
                     } else {
                         MPP.chat.send("I need the crown for you to use large chat art.");
                     }
@@ -1867,30 +1867,30 @@ MPP.client.on('a', msg => {
                 }
             } else if (cmd == '/clearchat') {
                 if (isNoble == true || isKing == true) {
-                    if (MPP.client.isOwner()) {
-                        MPP.client.sendArray([{ m: "userset", set: { name: "\ufffc" } }]);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 1200);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 1500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 1800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 2100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 2400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 2700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 3000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 3300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 3600);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 3900);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 4200)
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 4500);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 4800);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 5100);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 5400);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 5700);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 6000);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 6300);
-                        setTimeout(function() { MPP.client.sendArray([{ m: "a", message: "Chat cleared" }]); }, 6600);
+                    if (client.isOwner()) {
+                        client.sendArray([{ m: "userset", set: { name: "\ufffc" } }]);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 4200)
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "Chat cleared" }]); }, 6600);
                     } else {
                         MPP.chat.send("I need the crown for you to clear the chat.");
                     }
@@ -1943,13 +1943,13 @@ MPP.client.on('a', msg => {
             } else if (cmd == "/loss") {
                 MPP.chat.send('I II');
                 MPP.chat.send('II I_');
-            } else if ((cmd ==  '/namenorm')&&msg.p.id==MPP.client.participantId) {
-                MPP.client.sendArray([{ m: "userset", set: { name: "✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿" } }]);
-            } else  if (cmd == "/afk"&&msg.p.id==MPP.client.participantId) {
+            } else if ((cmd ==  '/namenorm')&&msg.p.id==client.participantId) {
+                client.sendArray([{ m: "userset", set: { name: "✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿" } }]);
+            } else  if (cmd == "/afk"&&msg.p.id==client.participantId) {
                 if(!msg.p.name.includes('[AFK]')) {
                     MPP .client.sendArray([{m:"userset", set:{name:msg.p.name + "        [AFK]"}}])
                 } else {
-                    MPP.client.sendArray([{m:"userset", set:{name:msg.p.name.split('[AFK]').join('')}}])
+                    client.sendArray([{m:"userset", set:{name:msg.p.name.split('[AFK]').join('')}}])
 
                 }
             }
@@ -1958,26 +1958,26 @@ MPP.client.on('a', msg => {
 });
 
 function findParticipantByName(name) {
-    for (let part in MPP.client.ppl) {
-        part = MPP.client.ppl[part];
+    for (let part in client.ppl) {
+        part = client.ppl[part];
         if (part.name.toLowerCase() == name.toLowerCase()) return part;
     }
 }
-MPP.client.on("a", function(msg){
+client.on("a", function(msg){
     if (!msg.a.toLowerCase().startsWith("/kickban")) return;
     if(Nobles.includes(msg.p._id) || Kings.includes(msg.p._id)) {
         var input = msg.a.split(" ").slice(1).join(" ");
         if (!input) return MPP.chat.send("Kickban who?");
-        var target = MPP.client.ppl[input] || findParticipantByName(input);
+        var target = client.ppl[input] || findParticipantByName(input);
         if (!target) return MPP.chat.send("Person not found.");
-        MPP.client.sendArray([{m:"kickban", _id: target._id, ms: 20 * 60 * 1000}]);
+        client.sendArray([{m:"kickban", _id: target._id, ms: 20 * 60 * 1000}]);
     } else return MPP.chat.send("You can\'t use this command. Type /rank for more information.");
 });
 /*
-MPP.client.on('participant added', function(part) {
+client.on('participant added', function(part) {
     if (chatbot == true) {
         if(Kings.includes(part._id) || Nobles.includes(part._id) || Knights.includes(part._id)) {
-            if (MPP.client.isOwner()) {
+            if (client.isOwner()) {
                 if(part._id == "6e87976a11eaffcb2bdc7314") {
                     MPP.chat.send(part.name + " has entered the room. The child sacrifice begins.");
                 } else if (part._id == "9c42aae508d2b93a6036a7c7") {
@@ -1992,7 +1992,7 @@ MPP.client.on('participant added', function(part) {
     }
 });
 */
-MPP.client.on("a", function(msg) {
+client.on("a", function(msg) {
     let args = msg.a.split(' ');
     let cmd = args[0].toLowerCase();
     let a,b;
@@ -2668,3 +2668,4 @@ TasteArray = ["tasted like dirt",
               "was covered in may-o"
              ]
 document.getElementById("piano").style.opacity = 0.1;
+
