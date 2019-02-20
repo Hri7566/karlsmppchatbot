@@ -13,7 +13,7 @@ client.on("hi", () => {
 	console.log("Online");
 
 	// Go into a channel
-	client.setChannel("whats up I'm bored");
+	client.setChannel("Karl's Room");
 
 	// Showing that the bot is ready
 	setTimeout(() => {
