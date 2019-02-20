@@ -1773,7 +1773,6 @@ client.on("participant added", function (part) {
         if(client.isOwner()) {
             if(lock == true) {
                 client.sendArray([{m:"kickban", _id: part._id, ms: 30 * 60 * 1000}]);
-                window.dataBase = {"totalnames":0};
             }
         }
     }
