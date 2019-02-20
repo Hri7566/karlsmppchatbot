@@ -1755,9 +1755,9 @@ client.on('a', function (msg) {
 });
 
 client.on("participant added", function (part) {
-    var isKing = (Kings.indexOf(msg.p._id) !== -1);
-    var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
-    var isKnight = (Knights.indexOf(msg.p._id) !== -1);
+    var isKing = (Kings.indexOf(part._id) !== -1);
+    var isNoble = (Nobles.indexOf(part._id) !== -1);
+    var isKnight = (Knights.indexOf(part._id) !== -1);
     if (isKnight == true || isNoble == true || isKing == true) {
         if(client.isOwner()) {
             if(lock == true) {
