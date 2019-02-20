@@ -44,6 +44,8 @@ function sendchat(string){
     client.sendArray([{ m:'a', message:string }]);
 }
 
+var room = "Karl's Room";
+
 var Kings = [
     "0236f354fc5685c5bd18f152", // Karl Marx
     "6e87976a11eaffcb2bdc7314" // Lyssa
@@ -103,7 +105,14 @@ client.on('a', msg => {
                 sendchat("The chat-bot is now on.");
             }
         }
-    } else if (cmd == '/kings+') { // add id to Kings
+	} else if (cmd == "/goto") {
+		if (isKing) {
+			sendchat("Moving to room: " + args[1] + ". If the room does not exist the bot will create it.");
+			room = args[1];
+		} else {
+			sendchat("You can't use this command. Use /rank for more information.");
+		}
+	} else if (cmd == '/kings+') { // add id to Kings
         if (isKing) {
             var id2Kings = args[1];
             Kings.push(id2Kings);
