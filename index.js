@@ -1678,7 +1678,7 @@ client.on("a", function(msg) {
         } else if(!a) {
             sendchat("Invalid Usage. Need help? Use /string help");
         } else {
-            sendchat(`Answer: ${Math.eval(parseInt(a))}`);
+            sendchat(`Answer: ${Math.eval(a)}`);
         }
     } else if (cmd == "/e") {
         sendchat(" " + Math.E);
