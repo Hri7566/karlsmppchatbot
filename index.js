@@ -20,3 +20,9 @@ client.on("hi", () => {
 		client.sendArray([{ m:'a', message:"Connected" }]);
 	}, 100)
 });
+
+client.on("a", (msg) => {
+	if(msg.a.toLowerCase() == "ping"){
+		client.sendArray([{ m:'a', message:"pong" }]);
+	}
+});
