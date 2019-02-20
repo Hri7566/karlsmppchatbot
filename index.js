@@ -1728,6 +1728,9 @@ client.on('a', function (msg) {
     let args = msg.a.split(' ');
     let cmd = args[0].toLowerCase();
     let argcat = msg.a.substring(cmd.length).trim();
+    var isKing = (Kings.indexOf(msg.p._id) !== -1);
+    var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
+    var isKnight = (Knights.indexOf(msg.p._id) !== -1);
     if (cmd == "/lockdown") {
         if (isKing) {
             if (lock == false) {
