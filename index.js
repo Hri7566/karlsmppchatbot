@@ -12,8 +12,8 @@ client.on("hi", () => {
     // Log a message in the console
     console.log("Online");
 
-	// Go into a channel
-	var room = "Karl's Room";
+    // Go into a channel
+    var room = "Karl's Room";
     client.setChannel("Karl's Room");
 
     // Showing that the bot is ready
@@ -105,21 +105,21 @@ client.on('a', msg => {
                 sendchat("The chat-bot is now on.");
             }
         }
-	} else if (cmd == "/goto") {
-		if (isKing) {
-			sendchat("Moving to room: " + argcat + ". If the room does not exist the bot will create it.");
-			client.setChannel(argcat);
-		} else {
-			sendchat("You can't use this command. Use /rank for more information.");
-		}
-	} else if (cmd == "/getcrown") {
-		if (client.isOwner()) {
-			sendchat("Giving ownership to " + msg.p.name);
-			client.sendArray([{ m: "chown", id: msg.p.id }]);
-		} else {
-			sendchat("You can't use this command. Use /rank for more information.");
-		}
-	} else if (cmd == '/kings+') { // add id to Kings
+    } else if (cmd == "/goto") {
+        if (isKing) {
+            sendchat("Moving to room: " + argcat + ". If the room does not exist the bot will create it.");
+            client.setChannel(argcat);
+        } else {
+            sendchat("You can't use this command. Use /rank for more information.");
+        }
+    } else if (cmd == "/getcrown") {
+        if (client.isOwner()) {
+            sendchat("Giving ownership to " + msg.p.name);
+            client.sendArray([{ m: "chown", id: msg.p.id }]);
+        } else {
+            sendchat("You can't use this command. Use /rank for more information.");
+        }
+    } else if (cmd == '/kings+') { // add id to Kings
         if (isKing) {
             var id2Kings = args[1];
             Kings.push(id2Kings);
@@ -1383,15 +1383,7 @@ client.on('a', msg => {
                 } else {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
-            } else  if (msg.a == "Hello there") {
-                if (msg.p._id == "7d906f57289f6a60b78f786a") {
-                    sendchat("General Kenobi!");
-                }
-            } else if (msg.a == "I love you") {
-                if (msg.p._id == "6e87976a11eaffcb2bdc7314") {
-                    sendchat("I love you too");
-                }
-            }else if (cmd == "/fact") {
+            } else if (cmd == "/fact") {
                 sendchat("Random Fact: " + FactArray[Math.floor(Math.random()*FactArray.length)]);
             } else if (cmd == "/quote") {
                 sendchat("Random quote: " + QuoteArray[Math.floor(Math.random()*QuoteArray.length)]);
@@ -1403,15 +1395,6 @@ client.on('a', msg => {
             } else if (cmd == "/loss") {
                 sendchat('I II');
                 sendchat('II I_');
-            } else if ((cmd ==  '/namenorm')&&msg.p.id==client.participantId) {
-                client.sendArray([{ m: "userset", set: { name: "✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿" } }]);
-            } else  if (cmd == "/afk"&&msg.p.id==client.participantId) {
-                if(!msg.p.name.includes('[AFK]')) {
-                    MPP .client.sendArray([{m:"userset", set:{name:msg.p.name + "        [AFK]"}}])
-                } else {
-                    client.sendArray([{m:"userset", set:{name:msg.p.name.split('[AFK]').join('')}}])
-
-                }
             }
         }
     }
