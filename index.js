@@ -1395,7 +1395,7 @@ client.on('a', msg => {
 				} else if (math >= .667 && math < .833) {
 					sendchat(msg.p.name + ", you lived.");
 				} else {
-					deathtotal + 1;
+					(deathtotal+1);
 					sendchat(msg.p.name + ", you died. Total death count: " + deathtotal);
 					}
 				} else if (cmd == "/fact") {
