@@ -1675,7 +1675,7 @@ client.on("a", function(msg) {
         let a = args[1]
         if (args[1] == "help") {
             sendchat("Solves strings, such as (1+2(2*2)). Restrictions: No spaces in x . Usage : /string x");
-        } else if(!a) {
+        } else if(!a || isNaN(a)) {
             sendchat("Invalid Usage. Need help? Use /string help");
         } else {
             sendchat(`Answer: ${Math.eval(a)}`);
