@@ -9,24 +9,24 @@ client.start();
 
 // When the bot is connected...
 client.on("hi", () => {
-	// Log a message in the console
-	console.log("Online");
+    // Log a message in the console
+    console.log("Online");
 
-	// Go into a channel
-	client.setChannel("Karl's Room");
+    // Go into a channel
+    client.setChannel("Karl's Room");
 
-	// Showing that the bot is ready
-	setTimeout(() => {
-		client.sendArray([{ m:'userset', set:{name:"The Ṃᾄʀẋ☭ bot ❤"} }]);
-		client.sendArray([{ m:'a', message:"Connected" }]);
-	}, 100)
+    // Showing that the bot is ready
+    setTimeout(() => {
+        client.sendArray([{ m:'userset', set:{name:"The Ṃᾄʀẋ☭ bot ❤"} }]);
+        client.sendArray([{ m:'a', message:"Connected" }]);
+    }, 100)
 });
 
 // I'll just add a random comment
 client.on("a", (msg) => {
-	if(msg.a.toLowerCase() == "ping"){
-		client.sendArray([{ m:'a', message:"pooooong" }]);
-	}
+    if(msg.a.toLowerCase() == "ping"){
+        client.sendArray([{ m:'a', message:"pooooong" }]);
+    }
 });
 
 // Karl's Project
@@ -92,7 +92,7 @@ client.on('a', msg => {
     var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
     var isKnight = (Knights.indexOf(msg.p._id) !== -1);
     var isBlocked = (blacklist.indexOf(msg.p._id) !== -1);
-	// bot toggle
+    // bot toggle
     if (cmd == "/chatbot") {
         if (isKing) {
             if (chatbot == true) {
@@ -103,7 +103,7 @@ client.on('a', msg => {
                 sendchat("The chat-bot is now on.");
             }
         }
-	} else if (cmd == '/kings+') { // add id to Kings
+    } else if (cmd == '/kings+') { // add id to Kings
         if (isKing) {
             var id2Kings = args[1];
             Kings.push(id2Kings);
@@ -151,7 +151,7 @@ client.on('a', msg => {
             removeFromArray(blacklist, id2unBlacklist);
             sendchat("Un-blocked _id: " + id2Blacklist);
         }
-	} else if (chatbot == true) {
+    } else if (chatbot == true) {
         if (!isBlocked) {
             // Help, art list, and info
             if (cmd == "/help") {
@@ -1902,26 +1902,26 @@ client.on('a', msg => {
                 }
             } else if (cmd == '/wave') {
                 if (isNoble == true || isKing == true) {
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 70)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 65)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 60)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 55)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 50)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 70)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 65)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 60)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 55)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 50)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 70)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 65)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 60)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 55)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 50)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 70)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 65)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 60)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 55)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 50)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 70)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 65)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 60)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 55)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 50)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 70)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 65)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 60)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 55)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 50)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 70)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 65)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 60)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 55)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 50)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 70)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 65)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 60)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 55)});
+                    t=0; Object.keys(client.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 50)});
                 } else {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
