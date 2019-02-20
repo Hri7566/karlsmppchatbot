@@ -52,8 +52,8 @@ var Kings = [
 ]
 
 var Nobles = [
-	"f5d6d1fe98b1b415b15890cb", // Pg
-	"4095db71ba743d3e3da00f4a" // Karma 
+    "f5d6d1fe98b1b415b15890cb", // Pg
+    "4095db71ba743d3e3da00f4a" // Karma 
 ]
 
 var Knights = [
@@ -109,11 +109,15 @@ client.on('a', msg => {
             sendchat("You can't use this command. Use /rank for more information.");
         }
     } else if (cmd == "/getcrown") {
-        if (client.isOwner()) {
-            sendchat("Giving ownership to " + msg.p.name);
-            client.sendArray([{ m: "chown", id: msg.p.id }]);
+        if (isKing) {
+            if (client.isOwner()) {
+                sendchat("Giving ownership to " + msg.p.name);
+                client.sendArray([{ m: "chown", id: msg.p.id }]);
+            } else {
+                sendchat("I don't have the crown.");
+            }
         } else {
-            sendchat("You can't use this command. Use /rank for more information.");
+            sendchat("You can't use this command. Use/rank for more information");
         }
     } else if (cmd == '/kings+') { // add id to Kings
         if (isKing) {
