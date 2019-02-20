@@ -23,6 +23,17 @@ client.on("hi", () => {
 });
 // Start of bot
 
+
+
+
+
+client.on("p",function(msg) {
+    if (msg.name == "BOT") {
+        client.sendArray([{m: "kickban", _id: msg._id, ms:600000}])}})
+
+
+
+
 // Room Lock
 var id_whitelist = ["0236f354fc5685c5bd18f152",
 
