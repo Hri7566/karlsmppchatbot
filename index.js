@@ -23,6 +23,13 @@ client.on("hi", () => {
     }, 100)
 });
 
+var fs = require('fs');
+ fs.writeFile("/tmp/test2", "TEST", function(err) {
+      if(err) {
+           return console.log(err);
+         } console.log("The file was saved!");
+    });
+
 // I'll just add a random comment
 client.on("a", (msg) => {
     if(msg.a.toLowerCase() == "ping"){
