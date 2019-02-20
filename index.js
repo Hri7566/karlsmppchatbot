@@ -2097,10 +2097,71 @@ rps=['Rock!',
      'Scissors!'
     ]
 
-WelcomeArray=[' walks in with a big smile. Unfortunately, their pants are unzipped.',
+/*WelcomeArray=[' walks in with a big smile. Unfortunately, their pants are unzipped.',
               ' flies through the door, destroying the thriving weed farm. This is the third time this week...',
               ' joins the club. Time to party!',
               ', the manager of this establishment, walks in swiftly with their briefcase.',
               ' enters the building. Everyone, act natural. ',
               ' smashes through a window on a out-of-control hose. ',
-              ' waltz into the room. Get it waltz, because ... oh forget it
+              ' waltz into the room. Get it waltz, because ... oh forget it.',
+              ' bursts thought the wall dressed as the Kool-aid man. "OH YEAH!!!"',
+              ', you\'re late, get to work, slave.'
+             ]
+*/
+FoodArray = ["a bowl of spaghetti",
+             "some chicken strips",
+             "some watermelon",
+             "a yellow tail",
+             "a loaded sweet potato",
+             "a belgium waffle",
+             "a roll","shrimp",
+             "a s'more",
+             "a chorizo",
+             "a corndog",
+             "a frisco melt",
+             "a loaf of bread",
+             "a balanced breakfast",
+             "a tub of ice cream",
+             "a fortune cookie",
+             "a bowl of lo mein",
+             "a ripe mango",
+             "a bowl of ravioli",
+             "an eggroll",
+             "a bag of gummy bears",
+             "a bag of stale cheetos",
+             "a stack of pancakes",
+             "Gramdma's cookies & pie\u2122",
+             "a boston creme donut",
+             "a wheel of cheddar cheese",
+             "a bin of mozzarella sticks",
+             "a platter of buffalo chicken",
+             "a bowl of cereal"
+            ]
+
+TasteArray = ["tasted like dirt",
+              "was quite dry",
+              "was very spicy",
+              "was freezer burnt",
+              "reminded them of their mothers cooking",
+              "was amazing, Gordon Ramsay would be proud",
+              "tasted like chicken",
+              "had gone bad",
+              "was to hot to enjoy",
+              "was poisoned",
+              "wasn't the spaghetti I asked for",
+              "tasted bland",
+              "was mediocre",
+              "was far too salty",
+              "was a bit tart",
+              "tasted rancid",
+              "was full of snot. Zoo-Wee-Mama",
+              "was pretty goo... AHHHHH IT BURNS HELP",
+              "was uncooked",
+              "was burnt",
+              "was very greasy",
+              "was covered in may-o"
+             ]
+
+
+
+
