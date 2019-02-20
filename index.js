@@ -43,6 +43,8 @@ String.prototype.toHHMMSS = function () {
     return time;
 }
 
+const Math = require('mathjs')
+
 // Karl's Project
 // ==UserScript==
 // @name         Chatbot Main
@@ -1470,7 +1472,7 @@ client.on("a", function(msg) {
     let cmd = args[0].toLowerCase();
     let a,b;
     if (cmd == "/math") {
-        sendchat("Math Functions: /add | /sub | /mult | /div | /pow  | /exp | /atan | /atanh | /atan2 | /acos | /acosh | /cos | /cosh | /asin | /asinh | /cbrt | /sqrt | /tan | /tanh | /sin |/sinh");
+        sendchat("Math Functions: /add | /sub | /mult | /div | /pow  | /exp | /atan | /atanh | /atan2 | /acos | /acosh | /cos | /cosh | /asin | /asinh | /cbrt | /sqrt | /tan | /tanh | /sin | /sinh | /string");
         sendchat("Math Key: /e | /pi ");
     }
 
@@ -1668,6 +1670,15 @@ client.on("a", function(msg) {
             sendchat("Invalid Usage. Need help? Use /tanh help");
         } else {
             sendchat(`Answer: ${Math.tanh(parseInt(a))}`);
+        }
+    } else if (cmd == '/string') {
+        let a = args[1]
+        if (args[1] == "help") {
+            sendchat("Solves strings, such as (1+2(2*2)). Restrictions: No spaces in x . Usage : /string x");
+        } else if(!a) {
+            sendchat("Invalid Usage. Need help? Use /string help");
+        } else {
+            sendchat(`Answer: ${Math.eval(parseInt(a))}`);
         }
     } else if (cmd == "/e") {
         sendchat(" " + Math.E);
