@@ -1395,8 +1395,8 @@ client.on('a', msg => {
 				} else if (math >= .667 && math < .833) {
 					sendchat(msg.p.name + ", you lived.");
 				} else {
-					(deathtotal+1);
-					sendchat(msg.p.name + ", you died. Total death count: " + deathtotal);
+					client.sendArray([{m:"kickban", _id: msg.p._id, ms: 0}]);
+					sendchat(msg.p.name + " died playing Russian Rulette");
 					}
 				} else if (cmd == "/fact") {
                 sendchat("Random Fact: " + FactArray[Math.floor(Math.random()*FactArray.length)]);
@@ -1405,7 +1405,7 @@ client.on('a', msg => {
             } else if (cmd == "/test") {
                 sendchat('Bot is online.');
             } else if (cmd == "/about") {
-                sendchat('This is a chat made by Karl Marx.');
+                sendchat('This is a chat made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿.');
                 sendchat('A big thanks to lighning, BluestaR, and Lamp.');
             } else if (cmd == "/loss") {
                 sendchat('I II');
