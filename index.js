@@ -172,13 +172,13 @@ client.on('a', msg => {
             // Help, art list, and info
             if (cmd == "/help") {
                 if (isKing) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art | /clearchat | /boom | /kickban | /wave | /chatbot | /goto | /getcrown");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /boom | /kickban | /wave | /chatbot | /goto | /getcrown");
                 } else if (isNoble) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art | /clearchat | /boom | /kickban | /wave ");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /boom | /kickban | /wave ");
                 } else if (isKnight) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art | /math ");
                 } else {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank.");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art. | /math ");
                 }
             } else if (cmd == "/art") {
                 if (isKing) {
