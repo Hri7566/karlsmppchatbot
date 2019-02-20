@@ -40,6 +40,9 @@ client.on("a", (msg) => {
 // @match        http://ourworldofpixels.com/piano/*
 // @grant        none
 // ==/UserScript==
+function sendchat(string){
+    client.sendArray([{ m:'a', message:string }]);
+}
 
 var Kings = [
     "0236f354fc5685c5bd18f152", // Karl Marx
@@ -94,409 +97,409 @@ client.on('a', msg => {
         if (isKing) {
             if (chatbot == true) {
                 chatbot = false
-                MPP.chat.send("The chat-bot is now off");
+                sendchat("The chat-bot is now off");
             } else if (chatbot == false) {
                 chatbot = true
-                MPP.chat.send("The chat-bot is now on.");
+                sendchat("The chat-bot is now on.");
             }
         }
     } else if (msg.a == '/kings+') { // add id to Kings
         if (msg.p._id == client.getOwnParticipant()._id) {
             var id2Kings = prompt("Enter _id to King");
             Kings.push(id2Kings);
-            MPP.chat.send("Kinged _id: " + id2Kings);
+            sendchat("Kinged _id: " + id2Kings);
         }
     } else if (msg.a == '/kings-') { // remove id from Kings
         if (msg.p._id == client.getOwnParticipant()._id) {
             var id2unKings = prompt("Enter _id to unKings");
             removeFromArray(Kings, id2unKings);
-            MPP.chat.send("Un-Kings _id: " + id2unKings);
+            sendchat("Un-Kings _id: " + id2unKings);
         }
     } else if (msg.a == '/nobles+') { // add id to Nobles
         if (msg.p._id == client.getOwnParticipant()._id) {
             var id2Nobles = prompt("Enter _id to Noble");
             Nobles.push(id2Nobles);
-            MPP.chat.send("Nobled _id: " + id2Nobles);
+            sendchat("Nobled _id: " + id2Nobles);
         }
     } else if (msg.a == '/nobles-') { // remove id from Nobles
         if (msg.p._id == client.getOwnParticipant()._id) {
             var id2unNobles = prompt("Enter _id to un-Noble");
             removeFromArray(Kings, id2unNobles);
-            MPP.chat.send("Un-Noble _id: " + id2unNobles);
+            sendchat("Un-Noble _id: " + id2unNobles);
         }
     } else if (msg.a == '/knights+') { // add id to Knights
         if (msg.p._id == client.getOwnParticipant()._id) {
             var id2Knights = prompt("Enter _id to Knight");
             Knights.push(id2Knights);
-            MPP.chat.send("Knighted _id: " + id2Knights);
+            sendchat("Knighted _id: " + id2Knights);
         }
     } else if (msg.a == '/knights-') { // remove id from Knights
         if (msg.p._id == client.getOwnParticipant()._id) {
             var id2unKnights = prompt("Enter _id to un-Knights");
             removeFromArray(Knights, id2unKnights);
-            MPP.chat.send("Un-Knighted _id: " + id2unKnights);
+            sendchat("Un-Knighted _id: " + id2unKnights);
         }
     } else if (msg.a == '/blist+') { // add id to Knights
         if (msg.p._id == client.getOwnParticipant()._id) {
             var id2Blacklist = prompt("Enter _id to Knight");
             blacklist.push(id2Blacklist);
-            MPP.chat.send("Command blocked _id: " + id2Blacklist);
+            sendchat("Command blocked _id: " + id2Blacklist);
         }
     } else if (msg.a == '/blist-') { // remove id from Knights
         if (msg.p._id == client.getOwnParticipant()._id) {
             var id2unBlacklist = prompt("Enter _id to un-Knights");
             removeFromArray(blacklist, id2unBlacklist);
-            MPP.chat.send("Un-blocked _id: " + id2Blacklist);
+            sendchat("Un-blocked _id: " + id2Blacklist);
         }
     } else if (chatbot == true) {
         if (!isBlocked) {
             // Help, art list, and info
             if (cmd == "/help") {
                 if (isKing) {
-                    MPP.chat.send("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art | /clearchat | /boom | /kickban | /wave | /chatbot");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art | /clearchat | /boom | /kickban | /wave | /chatbot");
                 } else if (isNoble) {
-                    MPP.chat.send("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art | /clearchat | /boom | /kickban | /wave ");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art | /clearchat | /boom | /kickban | /wave ");
                 } else if (isKnight) {
-                    MPP.chat.send("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art");
                 } else {
-                    MPP.chat.send("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank.");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank.");
                 }
             } else if (cmd == "/art") {
                 if (isKing) {
-                    MPP.chat.send("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance || Small Art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music");
-                    MPP.chat.send("|| Large Arts (Crown needed): /scream | /fuckmyass | /home |, /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.");
+                    sendchat("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance || Small Art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music");
+                    sendchat("|| Large Arts (Crown needed): /scream | /fuckmyass | /home |, /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.");
                 } else if (isNoble) {
-                    MPP.chat.send("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance || Small Art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music");
-                    MPP.chat.send("|| Large Arts (Crown needed): /scream | /fuckmyass | /home |, /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.");
+                    sendchat("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance || Small Art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music");
+                    sendchat("|| Large Arts (Crown needed): /scream | /fuckmyass | /home |, /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.");
                 } else if (isKnight) {
-                    MPP.chat.send("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance || Small Art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music");
+                    sendchat("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance || Small Art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music");
                 } else {
-                    MPP.chat.send("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance");
+                    sendchat("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance");
                 }
             } else if (cmd == "/rank") {
                 if (isKing) {
-                    MPP.chat.send("Ranks are classed into three types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is King.")
+                    sendchat("Ranks are classed into three types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is King.")
                 } else if (isNoble) {
-                    MPP.chat.send("Ranks are classed into three types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is Noble.")
+                    sendchat("Ranks are classed into three types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is Noble.")
                 } else if (isKnight) {
-                    MPP.chat.send("Ranks are classed into three types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is  Knight.")
+                    sendchat("Ranks are classed into three types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is  Knight.")
                 } else {
-                    MPP.chat.send("Ranks are classed into three types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is Peasants.")
+                    sendchat("Ranks are classed into three types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is Peasants.")
                 }
                 //command [user] stuff
             } else if (cmd == "/eat") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(msg.p.name+ " eats " + FoodArray[Math.floor(Math.random()*FoodArray.length)] + ". It " + TasteArray[Math.floor(Math.random()*TasteArray.length)] + ".");
+                        sendchat(msg.p.name+ " eats " + FoodArray[Math.floor(Math.random()*FoodArray.length)] + ". It " + TasteArray[Math.floor(Math.random()*TasteArray.length)] + ".");
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+' cannibalizes '+ client.ppl[part.id].name + '. It '  + TasteArray[Math.floor(Math.random()*TasteArray.length)] + ".");
+                        sendchat(msg.p.name+' cannibalizes '+ client.ppl[part.id].name + '. It '  + TasteArray[Math.floor(Math.random()*TasteArray.length)] + ".");
                     }
                 } catch (e) {
-                    MPP.chat.send(msg.p.name + " ate '"+argcat+"'.  It " + TasteArray[Math.floor(Math.random()*TasteArray.length)] + ".");
+                    sendchat(msg.p.name + " ate '"+argcat+"'.  It " + TasteArray[Math.floor(Math.random()*TasteArray.length)] + ".");
                 }
             } else if (cmd == "/tickle") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(msg.p.name+ " tickles themself to try and find some joy in their lonely life.");
+                        sendchat(msg.p.name+ " tickles themself to try and find some joy in their lonely life.");
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+' tickles '+ client.ppl[part.id].name + '.  They laugh uncontrolably.');
+                        sendchat(msg.p.name+' tickles '+ client.ppl[part.id].name + '.  They laugh uncontrolably.');
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
             } else if (cmd == "/poke") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(msg.p.name+ ", don't poke yourself there, nasty.");
+                        sendchat(msg.p.name+ ", don't poke yourself there, nasty.");
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+' pokes '+ client.ppl[part.id].name+' in the ' +pokearray[Math.floor(Math.random()*pokearray.length)]);
+                        sendchat(msg.p.name+' pokes '+ client.ppl[part.id].name+' in the ' +pokearray[Math.floor(Math.random()*pokearray.length)]);
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
             } else if (cmd == "/rps") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(msg.p.name+ " plays rock paper sissors alone.");
+                        sendchat(msg.p.name+ " plays rock paper sissors alone.");
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+': '+rps[Math.floor(Math.random()*rps.length)]+' '+ client.ppl[part.id].name+':' +rps[Math.floor(Math.random()*rps.length)]);
+                        sendchat(msg.p.name+': '+rps[Math.floor(Math.random()*rps.length)]+' '+ client.ppl[part.id].name+':' +rps[Math.floor(Math.random()*rps.length)]);
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
             } else if (cmd == "/fight") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(msg.p.name+ " said \"Why are you hitting yourself? Why are you hitting yourself? Why are you hitting yourself? Why am I hitting myself?\"");
+                        sendchat(msg.p.name+ " said \"Why are you hitting yourself? Why are you hitting yourself? Why are you hitting yourself? Why am I hitting myself?\"");
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+' got in to a fight with '+ client.ppl[part.id].name+' *Ding Ding Ding* Match over! ' +msg.p.name +' has ' +fights[Math.floor(Math.random()*fights.length)] );
+                        sendchat(msg.p.name+' got in to a fight with '+ client.ppl[part.id].name+' *Ding Ding Ding* Match over! ' +msg.p.name +' has ' +fights[Math.floor(Math.random()*fights.length)] );
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
             } else if (cmd == "/hug") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(msg.p.name+ " gives themself a hug, how lonely.");
+                        sendchat(msg.p.name+ " gives themself a hug, how lonely.");
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+' Gives '+ client.ppl[part.id].name+' a big hug. '+ client.ppl[part.id].name +': Help me');
+                        sendchat(msg.p.name+' Gives '+ client.ppl[part.id].name+' a big hug. '+ client.ppl[part.id].name +': Help me');
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
             } else if (cmd == "/kill") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(' In the ancient ritual of seppuku, ' + msg.p.name + ' unsheaths their sword and runs it though their stomach.');
+                        sendchat(' In the ancient ritual of seppuku, ' + msg.p.name + ' unsheaths their sword and runs it though their stomach.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name + ' kills '+ client.ppl[part.id].name+' with ' + kills[Math.floor(Math.random()*kills.length)] +'. How? Who knows.');
+                        sendchat(msg.p.name + ' kills '+ client.ppl[part.id].name+' with ' + kills[Math.floor(Math.random()*kills.length)] +'. How? Who knows.');
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
             } else if (cmd == "/kiss") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(msg.p.name + ' picks up a photo of themself wearing a full body red leotard.  They kiss it softly.');
+                        sendchat(msg.p.name + ' picks up a photo of themself wearing a full body red leotard.  They kiss it softly.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name + ' gives ' + client.ppl[part.id].name + ' a sloppy kiss.');
+                        sendchat(msg.p.name + ' gives ' + client.ppl[part.id].name + ' a sloppy kiss.');
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
             } else if (cmd == "/roast") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(msg.p.name + ' looks though a list of insecurities that they will use to roast themself. ');
+                        sendchat(msg.p.name + ' looks though a list of insecurities that they will use to roast themself. ');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name + ' places ' + client.ppl[part.id].name + ' over a low burning flame');
+                        sendchat(msg.p.name + ' places ' + client.ppl[part.id].name + ' over a low burning flame');
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
             } else if (cmd == "/stab") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(msg.p.name + ' Takes a knife and thows it at a wall.  It bounces back and takes out their left eye.');
+                        sendchat(msg.p.name + ' Takes a knife and thows it at a wall.  It bounces back and takes out their left eye.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name + ' Takes a ' + knifes[Math.floor(Math.random()*knifes.length)] +' and stabs ' + client.ppl[part.id].name);
+                        sendchat(msg.p.name + ' Takes a ' + knifes[Math.floor(Math.random()*knifes.length)] +' and stabs ' + client.ppl[part.id].name);
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
             } else if (cmd == "/rip") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send('Rest in peace ' + msg.p.name + '.  They will be missed.');
+                        sendchat('Rest in peace ' + msg.p.name + '.  They will be missed.');
                     } else if (part) {
-                        MPP.chat.send('Rest is peace ' + client.ppl[part.id].name + '.  They will be missed.  From ' + msg.p.name);
+                        sendchat('Rest is peace ' + client.ppl[part.id].name + '.  They will be missed.  From ' + msg.p.name);
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
             } else if (cmd == "/shoot") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(msg.p.name+ ' shot themself in the head because '+sreason[Math.floor(Math.random()*sreason.length)]+'.');
+                        sendchat(msg.p.name+ ' shot themself in the head because '+sreason[Math.floor(Math.random()*sreason.length)]+'.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+' shoots '+ client.ppl[part.id].name+' because '+ureason[Math.floor(Math.random()*ureason.length)]+'.');
+                        sendchat(msg.p.name+' shoots '+ client.ppl[part.id].name+' because '+ureason[Math.floor(Math.random()*ureason.length)]+'.');
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
             } else if (cmd == "/slap") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(msg.p.name+ ' slaps themself with a '+slapitem[Math.floor(Math.random()*slapitem.length)]+'.');
+                        sendchat(msg.p.name+ ' slaps themself with a '+slapitem[Math.floor(Math.random()*slapitem.length)]+'.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name+' slaps '+ client.ppl[part.id].name+' across the face with a '+slapitem[Math.floor(Math.random()*slapitem.length)]+'.');
+                        sendchat(msg.p.name+' slaps '+ client.ppl[part.id].name+' across the face with a '+slapitem[Math.floor(Math.random()*slapitem.length)]+'.');
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
             } else if (cmd == "/cuddle") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(msg.p.name + ' cuddles with their body pillow.');
+                        sendchat(msg.p.name + ' cuddles with their body pillow.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name + ' cuddles with ' + client.ppl[part.id].name + '. They love it too.');
+                        sendchat(msg.p.name + ' cuddles with ' + client.ppl[part.id].name + '. They love it too.');
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
             } else if (cmd == "/rape") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(msg.p.name + ' has become a victim of self-rape, aka. Masterbaiting.');
+                        sendchat(msg.p.name + ' has become a victim of self-rape, aka. Masterbaiting.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name + ' rapes ' + client.ppl[part.id].name + '.  They enjoy it, but ' +msg.p.name+' was crying, so still rape.');
+                        sendchat(msg.p.name + ' rapes ' + client.ppl[part.id].name + '.  They enjoy it, but ' +msg.p.name+' was crying, so still rape.');
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
             } else if (cmd == "/friendzone") {
                 try {
                     if (!argcat || part._id == msg.p._id) {
-                        MPP.chat.send(msg.p.name + ' friendzoned themself, how did it come to this.');
+                        sendchat(msg.p.name + ' friendzoned themself, how did it come to this.');
                     } else if (part) {
-                        MPP.chat.send(msg.p.name + ' friendzones ' + client.ppl[part.id].name + '.  They will cry for days on end.');
+                        sendchat(msg.p.name + ' friendzones ' + client.ppl[part.id].name + '.  They will cry for days on end.');
                     }
                 } catch (e) {
-                    MPP.chat.send("The user '"+argcat+"' was not found.  Try using part of their username.");
+                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
                 // Lennys
             } else if (cmd == '/lenny') {
-                MPP.chat.send('( ͡° ͜ʖ ͡°)');
+                sendchat('( ͡° ͜ʖ ͡°)');
             } else if (cmd == '/guns') {
-                MPP.chat.send('̿̿ ̿̿ ̿̿ ̿\'̿\'\̵͇̿̿\з= ( ▀ ͜͞ʖ▀) =ε/̵͇̿̿/’̿’̿ ̿ ̿̿ ̿̿ ̿̿');
+                sendchat('̿̿ ̿̿ ̿̿ ̿\'̿\'\̵͇̿̿\з= ( ▀ ͜͞ʖ▀) =ε/̵͇̿̿/’̿’̿ ̿ ̿̿ ̿̿ ̿̿');
             } else if (cmd == '/bear2') {
-                MPP.chat.send('ʕ•ᴥ•ʔ');
+                sendchat('ʕ•ᴥ•ʔ');
             } else if (cmd == '/army') {
-                MPP.chat.send('( ͡°( ͡° ͜ʖ( ͡° ͜ʖ ͡°)ʖ ͡°) ͡°)');
+                sendchat('( ͡°( ͡° ͜ʖ( ͡° ͜ʖ ͡°)ʖ ͡°) ͡°)');
             } else if (cmd == '/hug2') {
-                MPP.chat.send('(づ｡◕‿‿◕｡)づ');
+                sendchat('(づ｡◕‿‿◕｡)づ');
             } else if (cmd == '/magic') {
-                MPP.chat.send('(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ ✧ﾟ･: *ヽ(◕ヮ◕��)');
+                sendchat('(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧ ✧ﾟ･: *ヽ(◕ヮ◕��)');
             } else if (cmd == '/sneak') {
-                MPP.chat.send('┬┴┬┴┤ ͜ʖ ͡°) ├┬┴┬┴');
+                sendchat('┬┴┬┴┤ ͜ʖ ͡°) ├┬┴┬┴');
             } else if (cmd == '/table') {
-                MPP.chat.send('(ノಠ益ಠ)ノ彡┻━┻');
+                sendchat('(ノಠ益ಠ)ノ彡┻━┻');
             } else if (cmd == '/hearteyes') {
-                MPP.chat.send('♥‿♥');
+                sendchat('♥‿♥');
             } else if (cmd == '/table2') {
-                MPP.chat.send('┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻');
+                sendchat('┻━┻ ︵ヽ(`Д´)ﾉ︵ ┻━┻');
             } else if (cmd == '/smile') {
-                MPP.chat.send('｡◕‿‿◕｡');
+                sendchat('｡◕‿‿◕｡');
             } else if (cmd == '/smile2') {
-                MPP.chat.send('｡◕‿◕｡');
+                sendchat('｡◕‿◕｡');
             } else if (cmd == '/trump') {
-                MPP.chat.send('ლ,ᔑ•ﺪ͟͠•ᔐ.ლ');
+                sendchat('ლ,ᔑ•ﺪ͟͠•ᔐ.ლ');
             } else if (cmd == '/butterfly') {
-                MPP.chat.send('Ƹ̵̡Ӝ̵̨̄Ʒ');
+                sendchat('Ƹ̵̡Ӝ̵̨̄Ʒ');
             } else if (cmd == '/wink') {
-                MPP.chat.send('ಠ‿↼');
+                sendchat('ಠ‿↼');
             } else if (cmd == '/blush') {
-                MPP.chat.send('(▰˘◡˘▰)');
+                sendchat('(▰˘◡˘▰)');
             } else if (cmd == '/smile3') {
-                MPP.chat.send('^̮^');
+                sendchat('^̮^');
             } else if (cmd == '/smile4') {
-                MPP.chat.send('(ᵔᴥᵔ)');
+                sendchat('(ᵔᴥᵔ)');
             } else if (cmd == '/dance') {
-                MPP.chat.send('(づ￣ ³￣)づ');
+                sendchat('(づ￣ ³￣)づ');
                 // small chat art
             } else if (cmd ==  '/bear') {
                 if (isKnight == true || isNoble == true || isKing == true) {
                     if (client.isOwner()) {
-                        MPP.chat.send('\u2500\u2500\u2500\u2584\u2580\u2580\u2580\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2580\u2580\u2580\u2584\u2500\u2500\u2500');
-                        MPP.chat.send('\u2500\u2500\u2500\u2588\u2592\u2592\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2592\u2592\u2588\u2500\u2500\u2500');
-                        MPP.chat.send('\u2500\u2500\u2500\u2500\u2588\u2591\u2591\u2588\u2591\u2591\u2591\u2591\u2591\u2588\u2591\u2591\u2588\u2500\u2500\u2500\u2500');
-                        MPP.chat.send('\u2500\u2584\u2584\u2500\u2500\u2588\u2591\u2591\u2591\u2580\u2588\u2580\u2591\u2591\u2591\u2588\u2500\u2500\u2584\u2584\u2500');
-                        MPP.chat.send('\u2588\u2591\u2591\u2588\u2500\u2580\u2584\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2584\u2580\u2500\u2588\u2591\u2591\u2588');
+                        sendchat('\u2500\u2500\u2500\u2584\u2580\u2580\u2580\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2580\u2580\u2580\u2584\u2500\u2500\u2500');
+                        sendchat('\u2500\u2500\u2500\u2588\u2592\u2592\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2592\u2592\u2588\u2500\u2500\u2500');
+                        sendchat('\u2500\u2500\u2500\u2500\u2588\u2591\u2591\u2588\u2591\u2591\u2591\u2591\u2591\u2588\u2591\u2591\u2588\u2500\u2500\u2500\u2500');
+                        sendchat('\u2500\u2584\u2584\u2500\u2500\u2588\u2591\u2591\u2591\u2580\u2588\u2580\u2591\u2591\u2591\u2588\u2500\u2500\u2584\u2584\u2500');
+                        sendchat('\u2588\u2591\u2591\u2588\u2500\u2580\u2584\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2584\u2580\u2500\u2588\u2591\u2591\u2588');
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd ==  '/tank') {
                 if (isKnight == true || isNoble == true || isKing == true) {
                     if (client.isOwner()) {
-                        MPP.chat.send('\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2588\u2588\u2588\u2588 ]\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2583 ');
-                        MPP.chat.send('\u2582\u2584\u2585\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2585\u2584\u2583\u2582 ');
-                        MPP.chat.send('I\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588].');
-                        MPP.chat.send('\u25E5\u2299\u25B2\u2299\u25B2\u2299\u25B2\u2299\u25B2\u2299\u25B2\u2299\u25B2\u2299\u25E4 ');
+                        sendchat('\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2588\u2588\u2588\u2588\u2588\u2588 ]\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2583 ');
+                        sendchat('\u2582\u2584\u2585\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2585\u2584\u2583\u2582 ');
+                        sendchat('I\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588].');
+                        sendchat('\u25E5\u2299\u25B2\u2299\u25B2\u2299\u25B2\u2299\u25B2\u2299\u25B2\u2299\u25B2\u2299\u25E4 ');
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd ==  '/sunglasses') {
                 if (isKnight == true || isNoble == true || isKing == true) {
                     if (client.isOwner()) {
-                        MPP.chat.send('\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584');
-                        MPP.chat.send('\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2580\u2588\u2584\u2580\u2584\u2580\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2580\u2588\u2584\u2580\u2584\u2580\u2588\u2588\u2588\u2588\u2588\u2588  ');
-                        MPP.chat.send('\u2591\u2591\u2591\u2591 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2580\u2588\u2584\u2588\u2584\u2588\u2588\u2588\u2580\u2591\u2591\u2591 \u2580\u2588\u2584\u2588\u2584\u2588\u2588\u2588');
+                        sendchat('\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584\u2584');
+                        sendchat('\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2580\u2588\u2584\u2580\u2584\u2580\u2588\u2588\u2588\u2588\u2588\u2588\u2591\u2580\u2588\u2584\u2580\u2584\u2580\u2588\u2588\u2588\u2588\u2588\u2588  ');
+                        sendchat('\u2591\u2591\u2591\u2591 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2580\u2588\u2584\u2588\u2584\u2588\u2588\u2588\u2580\u2591\u2591\u2591 \u2580\u2588\u2584\u2588\u2584\u2588\u2588\u2588');
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd ==  '/hateme') {
                 if (isKnight == true || isNoble == true || isKing == true) {
                     if (client.isOwner()) {
-                        MPP.chat.send('\u2554\u2557');
-                        MPP.chat.send('\u2551\u255A\u2566\u2550\u2563\u255A\u2566\u2550\u2557\u2554\u2550\u2550\u2566\u2550\u2557');
-                        MPP.chat.send('\u2551\u2551\u2551\u256C\u2551\u2554\u2563\u2569\u2563\u2551\u2551\u2551\u2551\u2569\u2563');
-                        MPP.chat.send('\u255A\u2569\u2569\u2569\u2569\u2550\u2569\u2550\u255D\u255A\u2569\u2569\u2569\u2550\u255D');
+                        sendchat('\u2554\u2557');
+                        sendchat('\u2551\u255A\u2566\u2550\u2563\u255A\u2566\u2550\u2557\u2554\u2550\u2550\u2566\u2550\u2557');
+                        sendchat('\u2551\u2551\u2551\u256C\u2551\u2554\u2563\u2569\u2563\u2551\u2551\u2551\u2551\u2569\u2563');
+                        sendchat('\u255A\u2569\u2569\u2569\u2569\u2550\u2569\u2550\u255D\u255A\u2569\u2569\u2569\u2550\u255D');
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd ==  '/piano') {
                 if (isKnight == true || isNoble == true || isKing == true) {
                     if (client.isOwner()) {
-                        MPP.chat.send('\u2551\u2591\u2588\u2591\u2588\u2591\u2551\u2591\u2588\u2591\u2588\u2591\u2588\u2591\u2551\u2591\u2588\u2591\u2588\u2591\u2551');
-                        MPP.chat.send('\u2551\u2591\u2588\u2591\u2588\u2591\u2551\u2591\u2588\u2591\u2588\u2591\u2588\u2591\u2551\u2591\u2588\u2591\u2588\u2591\u2551');
-                        MPP.chat.send('\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551');
+                        sendchat('\u2551\u2591\u2588\u2591\u2588\u2591\u2551\u2591\u2588\u2591\u2588\u2591\u2588\u2591\u2551\u2591\u2588\u2591\u2588\u2591\u2551');
+                        sendchat('\u2551\u2591\u2588\u2591\u2588\u2591\u2551\u2591\u2588\u2591\u2588\u2591\u2588\u2591\u2551\u2591\u2588\u2591\u2588\u2591\u2551');
+                        sendchat('\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551\u2591\u2551');
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/artlist') {
                 if (isKnight == true || isNoble == true || isKing == true) {
                     if (client.isOwner()) {
-                        MPP.chat.send('Type for text art: /piano, /hateme, /sunglasses, /tank, /bear, /cat, /gun, /music');
-                        MPP.chat.send('Type for text art, input need: /love');
+                        sendchat('Type for text art: /piano, /hateme, /sunglasses, /tank, /bear, /cat, /gun, /music');
+                        sendchat('Type for text art, input need: /love');
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd ==  '/cat') {
                 if (isKnight == true || isNoble == true || isKing == true) {
                     if (client.isOwner()) {
-                        MPP.chat.send('\u2500\u2500\u2500\u2500\u2500\u2500\u2584\u2580\u2584\u2500\u2500\u2500\u2500\u2500\u2584\u2580\u2584');
-                        MPP.chat.send('\u2500\u2500\u2500\u2500\u2500\u2584\u2588\u2591\u2591\u2580\u2580\u2580\u2580\u2580\u2591\u2591\u2588\u2584');
-                        MPP.chat.send('\u2500\u2584\u2584\u2500\u2500\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2500\u2500\u2584\u2584');
-                        MPP.chat.send('\u2588\u2584\u2584\u2588\u2500\u2588\u2591\u2591\u2580\u2591\u2591\u252C\u2591\u2591\u2580\u2591\u2591\u2588\u2500\u2588\u2584\u2584\u2588');
+                        sendchat('\u2500\u2500\u2500\u2500\u2500\u2500\u2584\u2580\u2584\u2500\u2500\u2500\u2500\u2500\u2584\u2580\u2584');
+                        sendchat('\u2500\u2500\u2500\u2500\u2500\u2584\u2588\u2591\u2591\u2580\u2580\u2580\u2580\u2580\u2591\u2591\u2588\u2584');
+                        sendchat('\u2500\u2584\u2584\u2500\u2500\u2588\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2588\u2500\u2500\u2584\u2584');
+                        sendchat('\u2588\u2584\u2584\u2588\u2500\u2588\u2591\u2591\u2580\u2591\u2591\u252C\u2591\u2591\u2580\u2591\u2591\u2588\u2500\u2588\u2584\u2584\u2588');
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else  if (cmd ==  '/gun') {
                 if (isKnight == true || isNoble == true || isKing == true) {
                     if (client.isOwner()) {
-                        MPP.chat.send('\u2591\u2584\u258C\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2584');
-                        MPP.chat.send('\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2584');
-                        MPP.chat.send('\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2580\u2590\u2588\u2588\u2588\u2588');
-                        MPP.chat.send('\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2590\u2588\u2588\u258C');
+                        sendchat('\u2591\u2584\u258C\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2584');
+                        sendchat('\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2584');
+                        sendchat('\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2580\u2590\u2588\u2588\u2588\u2588');
+                        sendchat('\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2590\u2588\u2588\u258C');
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd ==  '/music') {
                 if (isKnight == true || isNoble == true || isKing == true) {
                     if (client.isOwner()) {
-                        MPP.chat.send('\u2500\u2500\u2500\u2500\u2588\u2580\u2588\u2584\u2584\u2584\u2584\u2500\u2500\u2500\u2500\u2500\u2588\u2588\u2584');
-                        MPP.chat.send('\u2500\u2500\u2500\u2500\u2588\u2580\u2584\u2584\u2584\u2584\u2588\u2500\u2500\u2500\u2500\u2500\u2588\u2580\u2580\u2588');
-                        MPP.chat.send('\u2588\u2588\u2580\u2584\u2588\u2500\u2584\u2588\u2588\u2580\u2588\u2500\u2588\u2588\u2588\u2580\u2588');
-                        MPP.chat.send('\u2500\u2580\u2580\u2580\u2500\u2500\u2580\u2588\u2584\u2588\u2580\u2500\u2580\u2588\u2584\u2588\u2580');
+                        sendchat('\u2500\u2500\u2500\u2500\u2588\u2580\u2588\u2584\u2584\u2584\u2584\u2500\u2500\u2500\u2500\u2500\u2588\u2588\u2584');
+                        sendchat('\u2500\u2500\u2500\u2500\u2588\u2580\u2584\u2584\u2584\u2584\u2588\u2500\u2500\u2500\u2500\u2500\u2588\u2580\u2580\u2588');
+                        sendchat('\u2588\u2588\u2580\u2584\u2588\u2500\u2584\u2588\u2588\u2580\u2588\u2500\u2588\u2588\u2588\u2580\u2588');
+                        sendchat('\u2500\u2580\u2580\u2580\u2500\u2500\u2580\u2588\u2584\u2588\u2580\u2500\u2580\u2588\u2584\u2588\u2580');
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
                 // Large art
             } else if (cmd == '/scream') {
@@ -513,10 +516,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "░░▄▀▒▒▒▒▐░░░░░▐▒▒▒▒▐░░░░░▄█▄▒▐▒▒▒" }]); }, 2700);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "▄▀▒▒▒▒▒▄██▀▄▄░░▀▄▄▀░░▄▄▀█▄░█▀▒▒▒▒" }]); }, 3000);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/fuckmyass') {
                 if (isNoble == true || isKing == true) {
@@ -542,10 +545,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "⢀⠐⢀⣾⣿⣿⣿⣿⠟⢐⡈⣿⣷⣶⠎⣹⡟⠟⣛⣸⣿⣿⣿⣿" }]); }, 5700);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "⠠⢀⣼⣿⣿⣿⣿⣯⣼⣿⣷⣿⣷⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿" }]); }, 6000);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/homer') {
                 if (isNoble == true || isKing == true) {
@@ -574,10 +577,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message:"▒▓▒▒▒▒▒▒▒▓ " }]); }, 7200);
                         setTimeout(function() { client.sendArray([{ m: "a", message:"▒▒▓▒▒▒▒▒▓ " }]); }, 7500);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/largelenny') {
                 if (isNoble == true || isKing == true) {
@@ -594,10 +597,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "░░█░░░░░░░░░░░░░░░░░▀▄░░░░░░░░░░▄▀░░░░░░░░░░░░█" }]); }, 3000);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░░░░░░░░░░░░░░░░░░▀▄▄▄▄▄▄▄▀▀░░░░░░░░░░░░░█" }]); }, 3300);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else  if (cmd == '/pinkiepie') {
                 if (isNoble == true || isKing == true) {
@@ -648,10 +651,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "___________________________________________██▓▓▓▓███▄▄" }]); }, 13200);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "______________________________________________▀▀▀" }]); }, 13500);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/rose') {
                 if (isNoble == true || isKing == true) {
@@ -690,10 +693,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "───────────────█▒█ " }]); }, 9600);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "───────────────███ " }]); }, 9900);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             }  else if (cmd == '/dinkaleberg') {
                 if (isNoble == true || isKing == true) {
@@ -735,10 +738,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "░▀▀░░▀░▀░░▀░▀░▀░▀▀░▀▀░▀▀░░▀▀░▀░▀░░▀▀░▀░" }]); }, 10500);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░" }]); }, 10800);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/pikachu') {
                 if (isNoble == true || isKing == true) {
@@ -753,10 +756,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "░░░█░░░▀▄░░░░░░░▄▀░░░░█▀▀▀" }]); }, 2400);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░▀▄░░▀░░▀▀▀░░▀░░░▄█░░░░" }]); }, 2700);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/dickbutt') {
                 if (isNoble == true || isKing == true) {
@@ -812,10 +815,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "____________________________________.xNWNk." }]); }, 14700);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "______________________________________.'." }]); }, 15000);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/myfuckingballshurt') {
                 if (isNoble == true || isKing == true) {
@@ -853,10 +856,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "_____________________________________________█░▓▓▓█" }]); }, 9300);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "_______________________________________________████" }]); }, 9600);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/rainbowdash') {
                 if (isNoble == true || isKing == true) {
@@ -901,10 +904,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "___________▓▓▓" }]); },11400);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "__________▓▓" }]); },11700);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/fluttershy') {
                 if (isNoble == true || isKing == true) {
@@ -954,10 +957,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "______________________________________▓▓▒▒▒▒▒▒▒▒▒▓" }]); },12900);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "___________________________________________▓▓▓▓▓▓▓" }]); },13200);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/applejack') {
                 if (isNoble == true || isKing == true) {
@@ -1017,10 +1020,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "________________________________________░_░_░____░░░_____░░" }]); },15600);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "__________________________________________░___░░░░░░░░░░" }]); },15900);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/rarity') {
                 if (isNoble == true || isKing == true) {
@@ -1084,10 +1087,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "________________________▀▀███" }]); },16800);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "____________________________▀" }]); },17100);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/cat2') {
                 if (isNoble == true || isKing == true) {
@@ -1126,10 +1129,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "─────░─▒██▓▓▒▒▒▒▒█▓▒▒▓▒▒▒▒▒▒▓███▓▒▒▒▒▒▓▓" }]); }, 9600);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "──────────░▒▓▓▓▓▒▒▓▓▓▓▓▓████▓▓█▒▒▒▒▒▓▓█░" }]); }, 9900);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/shibe') {
                 if (isNoble == true || isKing == true) {
@@ -1146,10 +1149,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "█▐█▓▀░░▀▓▓▓▓▓▓▓▓▓██████▓▓▓▓▐" }]); }, 3000);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "▌▓▄▌▀░▀░▐▀█▄▓▓██████████▓▓▓▌" }]); }, 3300);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             }else if (cmd == '/butterfly2') {
                 if (isNoble == true || isKing == true) {
@@ -1188,10 +1191,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪╪╪▓████╪╪╪╪╪╪╪╪╪╪╪╪▓████╪╪╪╪╪╪╪╪╪" }]); }, 9600);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪╪" }]); }, 9900);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             }else if (cmd == '/elk') {
                 if (isNoble == true || isKing == true) {
@@ -1226,10 +1229,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111111111¶¶1¶¶1111111111¶¶1¶¶¶111111" }]); }, 8400);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111111111111111111111111111111111111" }]); }, 8700);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/mario') {
                 if (isNoble == true || isKing == true) {
@@ -1326,10 +1329,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: " _____________________________█░░░░░█▀" }]); }, 27300);
                         setTimeout(function() { client.sendArray([{ m: "a", message: " _______________________________▀▀▀▀" }]); }, 27600);
                     } else {
-                        MPP.chat.send("I need the crown for you to use large chat art.");
+                        sendchat("I need the crown for you to use large chat art.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
                 //spamming
             } else if (cmd ==  '/boom') {
@@ -1863,7 +1866,7 @@ client.on('a', msg => {
                     {setTimeout(function() { MPP.press("b6")}, 0);}
                     {setTimeout(function() { MPP.press("c7")}, 0);}
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/clearchat') {
                 if (isNoble == true || isKing == true) {
@@ -1892,10 +1895,10 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ" }]); }, 6300);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "Chat cleared" }]); }, 6600);
                     } else {
-                        MPP.chat.send("I need the crown for you to clear the chat.");
+                        sendchat("I need the crown for you to clear the chat.");
                     }
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/wave') {
                 if (isNoble == true || isKing == true) {
@@ -1920,29 +1923,29 @@ client.on('a', msg => {
                     t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 55)});
                     t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 50)});
                 } else {
-                    MPP.chat.send('You can\'t use this command. Type /rank for more information.');
+                    sendchat('You can\'t use this command. Type /rank for more information.');
                 }
                 // random stuff
             } else if (msg.a == "Hello there") {
                 if (msg.p._id == "7d906f57289f6a60b78f786a") {
-                    MPP.chat.send("General Kenobi!");
+                    sendchat("General Kenobi!");
                 }
             } else if (msg.a == "I love you") {
                 if (msg.p._id == "6e87976a11eaffcb2bdc7314") {
-                    MPP.chat.send("I love you too");
+                    sendchat("I love you too");
                 }
             }else if (cmd == "/fact") {
-                MPP.chat.send("Random Fact: " + FactArray[Math.floor(Math.random()*FactArray.length)]);
+                sendchat("Random Fact: " + FactArray[Math.floor(Math.random()*FactArray.length)]);
             } else if (cmd == "/quote") {
-                MPP.chat.send("Random quote: " + QuoteArray[Math.floor(Math.random()*QuoteArray.length)]);
+                sendchat("Random quote: " + QuoteArray[Math.floor(Math.random()*QuoteArray.length)]);
             } else if (cmd == "/test") {
-                MPP.chat.send('Bot is online.');
+                sendchat('Bot is online.');
             } else if (cmd == "/about") {
-                MPP.chat.send('This is a chat made by Karl Marx.');
-                MPP.chat.send('A big thanks to lighning, BluestaR, and Lamp.');
+                sendchat('This is a chat made by Karl Marx.');
+                sendchat('A big thanks to lighning, BluestaR, and Lamp.');
             } else if (cmd == "/loss") {
-                MPP.chat.send('I II');
-                MPP.chat.send('II I_');
+                sendchat('I II');
+                sendchat('II I_');
             } else if ((cmd ==  '/namenorm')&&msg.p.id==client.participantId) {
                 client.sendArray([{ m: "userset", set: { name: "✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿" } }]);
             } else  if (cmd == "/afk"&&msg.p.id==client.participantId) {
@@ -1967,11 +1970,11 @@ client.on("a", function(msg){
     if (!msg.a.toLowerCase().startsWith("/kickban")) return;
     if(Nobles.includes(msg.p._id) || Kings.includes(msg.p._id)) {
         var input = msg.a.split(" ").slice(1).join(" ");
-        if (!input) return MPP.chat.send("Kickban who?");
+        if (!input) return sendchat("Kickban who?");
         var target = client.ppl[input] || findParticipantByName(input);
-        if (!target) return MPP.chat.send("Person not found.");
+        if (!target) return sendchat("Person not found.");
         client.sendArray([{m:"kickban", _id: target._id, ms: 20 * 60 * 1000}]);
-    } else return MPP.chat.send("You can\'t use this command. Type /rank for more information.");
+    } else return sendchat("You can\'t use this command. Type /rank for more information.");
 });
 /*
 client.on('participant added', function(part) {
@@ -1979,13 +1982,13 @@ client.on('participant added', function(part) {
         if(Kings.includes(part._id) || Nobles.includes(part._id) || Knights.includes(part._id)) {
             if (client.isOwner()) {
                 if(part._id == "6e87976a11eaffcb2bdc7314") {
-                    MPP.chat.send(part.name + " has entered the room. The child sacrifice begins.");
+                    sendchat(part.name + " has entered the room. The child sacrifice begins.");
                 } else if (part._id == "9c42aae508d2b93a6036a7c7") {
-                    MPP.chat.send("Your leader " + part.name + " has returned. Bow down to your leader." );
+                    sendchat("Your leader " + part.name + " has returned. Bow down to your leader." );
                 } else if (part._id == "ff63f2c918ef9cff72b057ad") {
-                    MPP.chat.send(part.name + " came in my mansion and robbed it. Lets welcome that lil shit.");
+                    sendchat(part.name + " came in my mansion and robbed it. Lets welcome that lil shit.");
                 } else {
-                    MPP.chat.send(part.name+''+WelcomeArray[Math.floor(Math.random()*WelcomeArray.length)]+' Lets welcome them.');
+                    sendchat(part.name+''+WelcomeArray[Math.floor(Math.random()*WelcomeArray.length)]+' Lets welcome them.');
                 }
             }
         }
@@ -1997,209 +2000,209 @@ client.on("a", function(msg) {
     let cmd = args[0].toLowerCase();
     let a,b;
     if (cmd == "/math") {
-        MPP.chat.send("Math Functions: /add | /sub | /mult | /div | /pow  | /exp | /atan | /atanh | /atan2 | /acos | /acosh | /cos | /cosh | /asin | /asinh | /cbrt | /sqrt | /tan | /tanh | /sin |/sinh");
-        MPP.chat.send("Math Key: /e | /pi ");
+        sendchat("Math Functions: /add | /sub | /mult | /div | /pow  | /exp | /atan | /atanh | /atan2 | /acos | /acosh | /cos | /cosh | /asin | /asinh | /cbrt | /sqrt | /tan | /tanh | /sin |/sinh");
+        sendchat("Math Key: /e | /pi ");
     }
 
     if (cmd == '/add'){
         let a = args[1]
         let b = args[2]
         if (args[1] == "help") {
-            MPP.chat.send("Adds two numbers together. Usage : /add x y");
+            sendchat("Adds two numbers together. Usage : /add x y");
         } else if(!a || !b || isNaN(a) || isNaN(b)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /add help");
+            sendchat("Invalid Usage. Need help? Use /add help");
         } else {
-            MPP.chat.send(`Answer: ${parseInt(a) + parseInt(b)}`);
+            sendchat(`Answer: ${parseInt(a) + parseInt(b)}`);
         }
     } else if (cmd == '/sub'){
         let a = args[1]
         let b = args[2]
         if (args[1] == "help") {
-            MPP.chat.send("Subtracts two numbers together. Usage : /sub x y");
+            sendchat("Subtracts two numbers together. Usage : /sub x y");
         } else if(!a || !b || isNaN(a) || isNaN(b)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /sub help");
+            sendchat("Invalid Usage. Need help? Use /sub help");
         } else {
-            MPP.chat.send(`Answer: ${parseInt(a) - parseInt(b)}`);
+            sendchat(`Answer: ${parseInt(a) - parseInt(b)}`);
         }
     } else if (cmd == '/div') {
         let a = args[1]
         let b = args[2]
         if (args[1] == "help") {
-            MPP.chat.send("Divides two numbers from eachother. Usage : /div x y");
+            sendchat("Divides two numbers from eachother. Usage : /div x y");
         } else  if(!a || !b || isNaN(a) || isNaN(b)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /div help");
+            sendchat("Invalid Usage. Need help? Use /div help");
         } else {
-            MPP.chat.send(`Answer: ${parseInt(a) / parseInt(b)}`);
+            sendchat(`Answer: ${parseInt(a) / parseInt(b)}`);
         }
     } else if (cmd == '/mult') {
         let a = args[1]
         let b = args[2]
         if (args[1] == "help") {
-            MPP.chat.send("Multiples two numbers together. Usage : /mult x y");
+            sendchat("Multiples two numbers together. Usage : /mult x y");
         } else if(!a || !b || isNaN(a) || isNaN(b)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /mult help");
+            sendchat("Invalid Usage. Need help? Use /mult help");
         } else {
-            MPP.chat.send(`Answer: ${parseInt(a) * parseInt(b)}`);
+            sendchat(`Answer: ${parseInt(a) * parseInt(b)}`);
         }
     } else if (cmd == '/pow') {
         let a = args[1]
         let b = args[2]
         if (args[1] == "help") {
-            MPP.chat.send("	Returns the value of x to the power of y. Usage : /pow x y");
+            sendchat("	Returns the value of x to the power of y. Usage : /pow x y");
         } else if(!a || !b || isNaN(a) || isNaN(b)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /pow help");
+            sendchat("Invalid Usage. Need help? Use /pow help");
         } else {
-            MPP.chat.send(`Answer: ${Math.pow(parseInt(a) + parseInt(b))}`);
+            sendchat(`Answer: ${Math.pow(parseInt(a) + parseInt(b))}`);
         }
     } else if (cmd == '/atan2') {
         let a = args[1]
         let b = args[2]
         if (args[1] == "help") {
-            MPP.chat.send("	Returns the arctangent of the quotient of its arguments. Usage : /atan2 x y");
+            sendchat("	Returns the arctangent of the quotient of its arguments. Usage : /atan2 x y");
         } else if(!a || !b || isNaN(a) || isNaN(b)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /atan2 help");
+            sendchat("Invalid Usage. Need help? Use /atan2 help");
         } else {
-            MPP.chat.send(`Answer: ${Math.atan2(parseInt(a) + parseInt(b))}`);
+            sendchat(`Answer: ${Math.atan2(parseInt(a) + parseInt(b))}`);
         }
     } else if (cmd == '/acos') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send("Returns the arccosine of x, in radians. Restrictions: x must be less then or equal to 1  Usage : /acos x");
+            sendchat("Returns the arccosine of x, in radians. Restrictions: x must be less then or equal to 1  Usage : /acos x");
         } else if(!a || isNaN(a) || a > 1) {
-            MPP.chat.send("Invalid Usage. Need help? Use /acos help");
+            sendchat("Invalid Usage. Need help? Use /acos help");
         } else {
-            MPP.chat.send(`Answer: ${Math.acos(parseInt(a))}`);
+            sendchat(`Answer: ${Math.acos(parseInt(a))}`);
         }
     } else if (cmd == '/asin') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send("The asin() method returns the arcsine of a number as a value between -PI/2 and PI/2 radians. Restrictions: x must be within the range -1, 1  Usage : /acos x");
+            sendchat("The asin() method returns the arcsine of a number as a value between -PI/2 and PI/2 radians. Restrictions: x must be within the range -1, 1  Usage : /acos x");
         } else if(!a || isNaN(a) || a > 1 || a < -1) {
-            MPP.chat.send("Invalid Usage. Need help? Use /acos help");
+            sendchat("Invalid Usage. Need help? Use /acos help");
         } else {
-            MPP.chat.send(`Answer: ${Math.asin(parseInt(a))}`);
+            sendchat(`Answer: ${Math.asin(parseInt(a))}`);
         }
     } else if (cmd == '/asinh') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send("	Returns the hyperbolic arcsine of x. Usage : /acos x");
+            sendchat("	Returns the hyperbolic arcsine of x. Usage : /acos x");
         } else if(!a || isNaN(a)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /asinh help");
+            sendchat("Invalid Usage. Need help? Use /asinh help");
         } else {
-            MPP.chat.send(`Answer: ${Math.asinh(parseInt(a))}`);
+            sendchat(`Answer: ${Math.asinh(parseInt(a))}`);
         }
     } else if (cmd == '/atan') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send(" Returns the arctangent of a number as a value between -PI/2 and PI/2 radians. Usage : /atan x");
+            sendchat(" Returns the arctangent of a number as a value between -PI/2 and PI/2 radians. Usage : /atan x");
         } else if(!a || isNaN(a)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /atan help");
+            sendchat("Invalid Usage. Need help? Use /atan help");
         } else {
-            MPP.chat.send(`Answer: ${Math.atan(parseInt(a))}`);
+            sendchat(`Answer: ${Math.atan(parseInt(a))}`);
         }
     } else if (cmd == '/atanh') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send("Returns the hyperbolic arctangent of x. Restrictions: x must be within the range -1, 1 Usage : /atanh x");
+            sendchat("Returns the hyperbolic arctangent of x. Restrictions: x must be within the range -1, 1 Usage : /atanh x");
         } else if(!a || isNaN(a) || a > 1 || a < -1) {
-            MPP.chat.send("Invalid Usage. Need help? Use /atanh help");
+            sendchat("Invalid Usage. Need help? Use /atanh help");
         } else {
-            MPP.chat.send(`Answer: ${Math.atanh(parseInt(a))}`);
+            sendchat(`Answer: ${Math.atanh(parseInt(a))}`);
         }
     } else if (cmd == '/cbrt') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send("Returns the cubic root of x. Usage : /cbrt x");
+            sendchat("Returns the cubic root of x. Usage : /cbrt x");
         } else if(!a || isNaN(a)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /cbrt help");
+            sendchat("Invalid Usage. Need help? Use /cbrt help");
         } else {
-            MPP.chat.send(`Answer: ${Math.cbrt(parseInt(a))}`);
+            sendchat(`Answer: ${Math.cbrt(parseInt(a))}`);
         }
     } else if (cmd == '/cos') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send("	Returns the cosine of x (x is in radians). Usage : /cos x");
+            sendchat("	Returns the cosine of x (x is in radians). Usage : /cos x");
         } else if(!a || isNaN(a)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /cos help");
+            sendchat("Invalid Usage. Need help? Use /cos help");
         } else {
-            MPP.chat.send(`Answer: ${Math.cos(parseInt(a))}`);
+            sendchat(`Answer: ${Math.cos(parseInt(a))}`);
         }
     } else if (cmd == '/cosh') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send("	Returns the hyperbolic cosine of x. Usage : /cosh x");
+            sendchat("	Returns the hyperbolic cosine of x. Usage : /cosh x");
         } else  if(!a || isNaN(a)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /cosh help");
+            sendchat("Invalid Usage. Need help? Use /cosh help");
         } else {
-            MPP.chat.send(`Answer: ${Math.cosh(parseInt(a))}`);
+            sendchat(`Answer: ${Math.cosh(parseInt(a))}`);
         }
     } else if (cmd == '/exp') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send("	Returns the value of E^x. Usage : /exp x");
+            sendchat("	Returns the value of E^x. Usage : /exp x");
         } else if(!a || isNaN(a)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /exp help");
+            sendchat("Invalid Usage. Need help? Use /exp help");
         } else {
-            MPP.chat.send(`Answer: ${Math.exp(parseInt(a))}`);
+            sendchat(`Answer: ${Math.exp(parseInt(a))}`);
         }
     } else if (cmd == '/log') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send("Returns the natural logarithm (base E) of x. Usage : /log x");
+            sendchat("Returns the natural logarithm (base E) of x. Usage : /log x");
         } else if(!a || isNaN(a)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /log help");
+            sendchat("Invalid Usage. Need help? Use /log help");
         } else {
-            MPP.chat.send(`Answer: ${Math.log(parseInt(a))}`);
+            sendchat(`Answer: ${Math.log(parseInt(a))}`);
         }
     } else if (cmd == '/sin') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send("	Returns the sine of x (x is in radians). Usage : /sin x");
+            sendchat("	Returns the sine of x (x is in radians). Usage : /sin x");
         } else if(!a || isNaN(a)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /sin help");
+            sendchat("Invalid Usage. Need help? Use /sin help");
         } else {
-            MPP.chat.send(`Answer: ${Math.sin(parseInt(a))}`);
+            sendchat(`Answer: ${Math.sin(parseInt(a))}`);
         }
     } else if (cmd == '/sinh') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send("	Returns the hyperbolic sine of x. Usage : /sinh x");
+            sendchat("	Returns the hyperbolic sine of x. Usage : /sinh x");
         } else if(!a || isNaN(a)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /sinh help");
+            sendchat("Invalid Usage. Need help? Use /sinh help");
         } else {
-            MPP.chat.send(`Answer: ${Math.sinh(parseInt(a))}`);
+            sendchat(`Answer: ${Math.sinh(parseInt(a))}`);
         }
     } else if (cmd == '/sqrt') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send("	Returns the square root of x. Usage : /sqrt x");
+            sendchat("	Returns the square root of x. Usage : /sqrt x");
         } else if(!a || isNaN(a)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /sqrt help");
+            sendchat("Invalid Usage. Need help? Use /sqrt help");
         } else {
-            MPP.chat.send(`Answer: ${Math.sqrt(parseInt(a))}`);
+            sendchat(`Answer: ${Math.sqrt(parseInt(a))}`);
         }
     } else if (cmd == '/tan') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send("	Returns the tangent of an angle. Usage : /tan x");
+            sendchat("	Returns the tangent of an angle. Usage : /tan x");
         } else if(!a || isNaN(a)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /tan help");
+            sendchat("Invalid Usage. Need help? Use /tan help");
         } else {
-            MPP.chat.send(`Answer: ${Math.tan(parseInt(a))}`);
+            sendchat(`Answer: ${Math.tan(parseInt(a))}`);
         }
     } else if (cmd == '/tanh') {
         let a = args[1]
         if (args[1] == "help") {
-            MPP.chat.send("	Returns the hyperbolic tangent of a number. Usage : /tanh x");
+            sendchat("	Returns the hyperbolic tangent of a number. Usage : /tanh x");
         } else if(!a || isNaN(a)) {
-            MPP.chat.send("Invalid Usage. Need help? Use /tanh help");
+            sendchat("Invalid Usage. Need help? Use /tanh help");
         } else {
-            MPP.chat.send(`Answer: ${Math.tanh(parseInt(a))}`);
+            sendchat(`Answer: ${Math.tanh(parseInt(a))}`);
         }
     } else if (cmd == "/e") {
-        MPP.chat.send(" " + Math.E);
+        sendchat(" " + Math.E);
     } else if (cmd == "/pi") {
-        MPP.chat.send(" " + Math.PI);
+        sendchat(" " + Math.PI);
     }
 });
 
@@ -2667,5 +2670,7 @@ TasteArray = ["tasted like dirt",
               "was very greasy",
               "was covered in may-o"
              ]
+document.getElementById("piano").style.opacity = 0.1;
+
 
 
