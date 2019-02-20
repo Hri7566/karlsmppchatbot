@@ -34,10 +34,6 @@ client.on("p",function(msg) {
 
 
 
-// Room Lock
-var id_whitelist = ["0236f354fc5685c5bd18f152",
-
-                   ];
 
 var lock = false;
 
@@ -1770,8 +1766,10 @@ client.on("participant added", function (part) {
     var isNoble = (Nobles.indexOf(part._id) !== -1);
     var isKnight = (Knights.indexOf(part._id) !== -1);
      if (!Kings.includes(part._id) || !Knights.includes(part._id) || !Nobles.includes(part._id)) {
-        if(client.isOwner()) {
-            if(lock == true) {
+        if (client.isOwner()) {
+            if (part._id == client.getOwnParticipant()._id) {
+    return;
+} else if (lock == true) {
                 client.sendArray([{m:"kickban", _id: part._id, ms: 30 * 60 * 1000}]);
             }
         }
