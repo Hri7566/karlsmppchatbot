@@ -1397,6 +1397,7 @@ client.on('a', msg => {
 				} else {
 					deathtotal + 1;
 					sendchat(msg.p.name + ", you died. Total death count: " + deathtotal);
+					}
 				} else if (cmd == "/fact") {
                 sendchat("Random Fact: " + FactArray[Math.floor(Math.random()*FactArray.length)]);
             } else if (cmd == "/quote") {
