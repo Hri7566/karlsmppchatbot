@@ -92,7 +92,7 @@ client.on('a', msg => {
     var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
     var isKnight = (Knights.indexOf(msg.p._id) !== -1);
     var isBlocked = (blacklist.indexOf(msg.p._id) !== -1);
-    // bot toggle
+	// bot toggle
     if (cmd == "/chatbot") {
         if (isKing) {
             if (chatbot == true) {
@@ -103,9 +103,13 @@ client.on('a', msg => {
                 sendchat("The chat-bot is now on.");
             }
         }
-    } else if (msg.a == '/kings+') { // add id to Kings
-        if (msg.p._id == client.getOwnParticipant()._id) {
-            var id2Kings = prompt("Enter _id to King");
+	}
+	
+	
+	
+	else if (cmd == '/kings+') { // add id to Kings
+        if (isKing) {
+            var id2Kings = args[1];
             Kings.push(id2Kings);
             sendchat("Kinged _id: " + id2Kings);
         }
@@ -151,7 +155,12 @@ client.on('a', msg => {
             removeFromArray(blacklist, id2unBlacklist);
             sendchat("Un-blocked _id: " + id2Blacklist);
         }
-    } else if (chatbot == true) {
+	}
+	
+	
+	
+	
+	else if (chatbot == true) {
         if (!isBlocked) {
             // Help, art list, and info
             if (cmd == "/help") {
