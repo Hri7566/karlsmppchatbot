@@ -75,7 +75,8 @@ var Kings = [
 
 var Nobles = [
     "f5d6d1fe98b1b415b15890cb", // Pg
-    "4095db71ba743d3e3da00f4a" // Karma 
+    "4095db71ba743d3e3da00f4a", // Karma 
+    "94ad18f384333e29978e33e4" // Charly
 ]
 
 var Knights = [
@@ -1688,8 +1689,7 @@ client.on("a", function(msg) {
             try{
                 sendchat(`Answer: ${Math.eval(a)}`);
             }
-            catch(err) {
-                
+            catch(err) { 
             }
         }
     } else if (cmd == "/e") {
