@@ -18,7 +18,7 @@ client.on("hi", () => {
 
     // Showing that the bot is ready
     setTimeout(() => {
-        client.sendArray([{ m:'userset', set:{name:"The Ṃᾄʀẋ☭ bot ❤"} }]);
+        client.sendArray([{ m:'userset', set:{name:"Ṃᾄʀẋ☭Bot ❤"} }]);
         client.sendArray([{ m:'a', message:"Connected" }]);
     }, 100)
 });
