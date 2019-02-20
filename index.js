@@ -48,20 +48,16 @@ function sendchat(string){
 
 var Kings = [
     "0236f354fc5685c5bd18f152", // Karl Marx
-    "6e87976a11eaffcb2bdc7314" // Lyssa
+    "470ba9eaa66583fb5ee24f67" // hri
 ]
 
 var Nobles = [
-    "7d906f57289f6a60b78f786a", // sindall
-    "134cb5cbde1a8ca5e2a24442", // sindall #2
-    "ff63f2c918ef9cff72b057ad", // Miko Da Kitteh
+	"f5d6d1fe98b1b415b15890cb", // Pg
+	"4095db71ba743d3e3da00f4a" // Karma 
 ]
 
 var Knights = [
-    "cc8bdf7cff7e362110495a6c", //Neo
-    "ca2255a7e1d0901ff83b583a", // Rascal
-    "406d277953f1d0b8b4bd8fd9", //./3
-    "78cf7b91bfe59137b8b45851" // Dionister
+
 ]
 
 var blacklist = [
