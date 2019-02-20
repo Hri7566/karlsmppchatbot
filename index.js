@@ -107,8 +107,8 @@ client.on('a', msg => {
         }
 	} else if (cmd == "/goto") {
 		if (isKing) {
-			sendchat("Moving to room: " + args[1] + ". If the room does not exist the bot will create it.");
-			client.setChannel(args[1]);
+			sendchat("Moving to room: " + argcat + ". If the room does not exist the bot will create it.");
+			client.setChannel(argcat);
 		} else {
 			sendchat("You can't use this command. Use /rank for more information.");
 		}
