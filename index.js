@@ -93,7 +93,7 @@ function sendchat(string){
 }
 
 
-var Kings = [
+var Kings = [client.getOwnParticipant()._id,
     "0236f354fc5685c5bd18f152", // Karl Marx
     "470ba9eaa66583fb5ee24f67" // hri
 ]
