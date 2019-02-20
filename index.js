@@ -103,64 +103,55 @@ client.on('a', msg => {
                 sendchat("The chat-bot is now on.");
             }
         }
-	}
-	
-	
-	
-	else if (cmd == '/kings+') { // add id to Kings
+	} else if (cmd == '/kings+') { // add id to Kings
         if (isKing) {
             var id2Kings = args[1];
             Kings.push(id2Kings);
             sendchat("Kinged _id: " + id2Kings);
         }
-    } else if (msg.a == '/kings-') { // remove id from Kings
-        if (msg.p._id == client.getOwnParticipant()._id) {
-            var id2unKings = prompt("Enter _id to unKings");
+    } else if (cmd == '/kings-') { // remove id from Kings
+        if (isKing) {
+            var id2unKings = args[1];
             removeFromArray(Kings, id2unKings);
             sendchat("Un-Kings _id: " + id2unKings);
         }
-    } else if (msg.a == '/nobles+') { // add id to Nobles
-        if (msg.p._id == client.getOwnParticipant()._id) {
-            var id2Nobles = prompt("Enter _id to Noble");
+    } else if (cmd == '/nobles+') { // add id to Nobles
+        if (isKing) {
+            var id2Nobles = args[1];
             Nobles.push(id2Nobles);
             sendchat("Nobled _id: " + id2Nobles);
         }
-    } else if (msg.a == '/nobles-') { // remove id from Nobles
-        if (msg.p._id == client.getOwnParticipant()._id) {
-            var id2unNobles = prompt("Enter _id to un-Noble");
+    } else if (cmd == '/nobles-') { // remove id from Nobles
+        if (isKing) {
+            var id2unNobles = args[1];
             removeFromArray(Kings, id2unNobles);
             sendchat("Un-Noble _id: " + id2unNobles);
         }
-    } else if (msg.a == '/knights+') { // add id to Knights
-        if (msg.p._id == client.getOwnParticipant()._id) {
-            var id2Knights = prompt("Enter _id to Knight");
+    } else if (cmd == '/knights+') { // add id to Knights
+        if (isKing) {
+            var id2Knights = args[1];
             Knights.push(id2Knights);
             sendchat("Knighted _id: " + id2Knights);
         }
-    } else if (msg.a == '/knights-') { // remove id from Knights
-        if (msg.p._id == client.getOwnParticipant()._id) {
-            var id2unKnights = prompt("Enter _id to un-Knights");
+    } else if (cmd == '/knights-') { // remove id from Knights
+        if (isKing) {
+            var id2unKnights = args[1];
             removeFromArray(Knights, id2unKnights);
             sendchat("Un-Knighted _id: " + id2unKnights);
         }
-    } else if (msg.a == '/blist+') { // add id to Knights
-        if (msg.p._id == client.getOwnParticipant()._id) {
-            var id2Blacklist = prompt("Enter _id to Knight");
+    } else if (cmd == '/blist+') { // add id to Knights
+        if (isKing) {
+            var id2Blacklist = args[1];
             blacklist.push(id2Blacklist);
             sendchat("Command blocked _id: " + id2Blacklist);
         }
-    } else if (msg.a == '/blist-') { // remove id from Knights
-        if (msg.p._id == client.getOwnParticipant()._id) {
-            var id2unBlacklist = prompt("Enter _id to un-Knights");
+    } else if (cmd == '/blist-') { // remove id from Knights
+        if (isKing) {
+            var id2unBlacklist = args[1];
             removeFromArray(blacklist, id2unBlacklist);
             sendchat("Un-blocked _id: " + id2Blacklist);
         }
-	}
-	
-	
-	
-	
-	else if (chatbot == true) {
+	} else if (chatbot == true) {
         if (!isBlocked) {
             // Help, art list, and info
             if (cmd == "/help") {
@@ -1346,534 +1337,534 @@ client.on('a', msg => {
                 //spamming
             } else if (cmd ==  '/boom') {
                 if (isNoble == true || isKing == true) {
-                    {setTimeout(function() { MPP.press("a-1")}, 0);}
-                    {setTimeout(function() { MPP.press("as-1")}, 0);}
-                    {setTimeout(function() { MPP.press("b-1")}, 0);}
-                    {setTimeout(function() { MPP.press("c0")}, 0);}
-                    {setTimeout(function() { MPP.press("cs0")}, 0);}
-                    {setTimeout(function() { MPP.press("d0")}, 0);}
-                    {setTimeout(function() { MPP.press("ds0")}, 0);}
-                    {setTimeout(function() { MPP.press("e0")}, 0);}
-                    {setTimeout(function() { MPP.press("f0")}, 0);}
-                    {setTimeout(function() { MPP.press("fs0")}, 0);}
-                    {setTimeout(function() { MPP.press("g0")}, 0);}
-                    {setTimeout(function() { MPP.press("gs0")}, 0);}
-                    {setTimeout(function() { MPP.press("a0")}, 0);}
-                    {setTimeout(function() { MPP.press("as0")}, 0);}
-                    {setTimeout(function() { MPP.press("b0")}, 0);}
-                    {setTimeout(function() { MPP.press("c1")}, 0);}
-                    {setTimeout(function() { MPP.press("cs1")}, 0);}
-                    {setTimeout(function() { MPP.press("d1")}, 0);}
-                    {setTimeout(function() { MPP.press("ds1")}, 0);}
-                    {setTimeout(function() { MPP.press("e1")}, 0);}
-                    {setTimeout(function() { MPP.press("f1")}, 0);}
-                    {setTimeout(function() { MPP.press("fs1")}, 0);}
-                    {setTimeout(function() { MPP.press("g1")}, 0);}
-                    {setTimeout(function() { MPP.press("gs1")}, 0);}
-                    {setTimeout(function() { MPP.press("a1")}, 0);}
-                    {setTimeout(function() { MPP.press("as1")}, 0);}
-                    {setTimeout(function() { MPP.press("b1")}, 0);}
-                    {setTimeout(function() { MPP.press("c2")}, 0);}
-                    {setTimeout(function() { MPP.press("cs2")}, 0);}
-                    {setTimeout(function() { MPP.press("d2")}, 0);}
-                    {setTimeout(function() { MPP.press("ds2")}, 0);}
-                    {setTimeout(function() { MPP.press("e2")}, 0);}
-                    {setTimeout(function() { MPP.press("f2")}, 0);}
-                    {setTimeout(function() { MPP.press("fs2")}, 0);}
-                    {setTimeout(function() { MPP.press("g2")}, 0);}
-                    {setTimeout(function() { MPP.press("gs2")}, 0);}
-                    {setTimeout(function() { MPP.press("a2")}, 0);}
-                    {setTimeout(function() { MPP.press("as2")}, 0);}
-                    {setTimeout(function() { MPP.press("b2")}, 0);}
-                    {setTimeout(function() { MPP.press("c3")}, 0);}
-                    {setTimeout(function() { MPP.press("cs3")}, 0);}
-                    {setTimeout(function() { MPP.press("d3")}, 0);}
-                    {setTimeout(function() { MPP.press("ds3")}, 0);}
-                    {setTimeout(function() { MPP.press("e3")}, 0);}
-                    {setTimeout(function() { MPP.press("f3")}, 0);}
-                    {setTimeout(function() { MPP.press("fs3")}, 0);}
-                    {setTimeout(function() { MPP.press("g3")}, 0);}
-                    {setTimeout(function() { MPP.press("gs3")}, 0);}
-                    {setTimeout(function() { MPP.press("a3")}, 0);}
-                    {setTimeout(function() { MPP.press("as3")}, 0);}
-                    {setTimeout(function() { MPP.press("b3")}, 0);}
-                    {setTimeout(function() { MPP.press("c4")}, 0);}
-                    {setTimeout(function() { MPP.press("cs4")}, 0);}
-                    {setTimeout(function() { MPP.press("d4")}, 0);}
-                    {setTimeout(function() { MPP.press("ds4")}, 0);}
-                    {setTimeout(function() { MPP.press("e4")}, 0);}
-                    {setTimeout(function() { MPP.press("f4")}, 0);}
-                    {setTimeout(function() { MPP.press("fs4")}, 0);}
-                    {setTimeout(function() { MPP.press("g4")}, 0);}
-                    {setTimeout(function() { MPP.press("gs4")}, 0);}
-                    {setTimeout(function() { MPP.press("a4")}, 0);}
-                    {setTimeout(function() { MPP.press("as4")}, 0);}
-                    {setTimeout(function() { MPP.press("b4")}, 0);}
-                    {setTimeout(function() { MPP.press("c5")}, 0);}
-                    {setTimeout(function() { MPP.press("cs5")}, 0);}
-                    {setTimeout(function() { MPP.press("d5")}, 0);}
-                    {setTimeout(function() { MPP.press("ds5")}, 0);}
-                    {setTimeout(function() { MPP.press("e5")}, 0);}
-                    {setTimeout(function() { MPP.press("f5")}, 0);}
-                    {setTimeout(function() { MPP.press("fs5")}, 0);}
-                    {setTimeout(function() { MPP.press("g5")}, 0);}
-                    {setTimeout(function() { MPP.press("gs5")}, 0);}
-                    {setTimeout(function() { MPP.press("a5")}, 0);}
-                    {setTimeout(function() { MPP.press("as5")}, 0);}
-                    {setTimeout(function() { MPP.press("b5")}, 0);}
-                    {setTimeout(function() { MPP.press("c6")}, 0);}
-                    {setTimeout(function() { MPP.press("cs6")}, 0);}
-                    {setTimeout(function() { MPP.press("d6")}, 0);}
-                    {setTimeout(function() { MPP.press("ds6")}, 0);}
-                    {setTimeout(function() { MPP.press("e6")}, 0);}
-                    {setTimeout(function() { MPP.press("f6")}, 0);}
-                    {setTimeout(function() { MPP.press("fs6")}, 0);}
-                    {setTimeout(function() { MPP.press("g6")}, 0);}
-                    {setTimeout(function() { MPP.press("gs6")}, 0);}
-                    {setTimeout(function() { MPP.press("a6")}, 0);}
-                    {setTimeout(function() { MPP.press("as6")}, 0);}
-                    {setTimeout(function() { MPP.press("b6")}, 0);}
-                    {setTimeout(function() { MPP.press("c7")}, 0);}
-                    {setTimeout(function() { MPP.press("a-1")}, 0);}
-                    {setTimeout(function() { MPP.press("as-1")}, 0);}
-                    {setTimeout(function() { MPP.press("b-1")}, 0);}
-                    {setTimeout(function() { MPP.press("c0")}, 0);}
-                    {setTimeout(function() { MPP.press("cs0")}, 0);}
-                    {setTimeout(function() { MPP.press("d0")}, 0);}
-                    {setTimeout(function() { MPP.press("ds0")}, 0);}
-                    {setTimeout(function() { MPP.press("e0")}, 0);}
-                    {setTimeout(function() { MPP.press("f0")}, 0);}
-                    {setTimeout(function() { MPP.press("fs0")}, 0);}
-                    {setTimeout(function() { MPP.press("g0")}, 0);}
-                    {setTimeout(function() { MPP.press("gs0")}, 0);}
-                    {setTimeout(function() { MPP.press("a0")}, 0);}
-                    {setTimeout(function() { MPP.press("as0")}, 0);}
-                    {setTimeout(function() { MPP.press("b0")}, 0);}
-                    {setTimeout(function() { MPP.press("c1")}, 0);}
-                    {setTimeout(function() { MPP.press("cs1")}, 0);}
-                    {setTimeout(function() { MPP.press("d1")}, 0);}
-                    {setTimeout(function() { MPP.press("ds1")}, 0);}
-                    {setTimeout(function() { MPP.press("e1")}, 0);}
-                    {setTimeout(function() { MPP.press("f1")}, 0);}
-                    {setTimeout(function() { MPP.press("fs1")}, 0);}
-                    {setTimeout(function() { MPP.press("g1")}, 0);}
-                    {setTimeout(function() { MPP.press("gs1")}, 0);}
-                    {setTimeout(function() { MPP.press("a1")}, 0);}
-                    {setTimeout(function() { MPP.press("as1")}, 0);}
-                    {setTimeout(function() { MPP.press("b1")}, 0);}
-                    {setTimeout(function() { MPP.press("c2")}, 0);}
-                    {setTimeout(function() { MPP.press("cs2")}, 0);}
-                    {setTimeout(function() { MPP.press("d2")}, 0);}
-                    {setTimeout(function() { MPP.press("ds2")}, 0);}
-                    {setTimeout(function() { MPP.press("e2")}, 0);}
-                    {setTimeout(function() { MPP.press("f2")}, 0);}
-                    {setTimeout(function() { MPP.press("fs2")}, 0);}
-                    {setTimeout(function() { MPP.press("g2")}, 0);}
-                    {setTimeout(function() { MPP.press("gs2")}, 0);}
-                    {setTimeout(function() { MPP.press("a2")}, 0);}
-                    {setTimeout(function() { MPP.press("as2")}, 0);}
-                    {setTimeout(function() { MPP.press("b2")}, 0);}
-                    {setTimeout(function() { MPP.press("c3")}, 0);}
-                    {setTimeout(function() { MPP.press("cs3")}, 0);}
-                    {setTimeout(function() { MPP.press("d3")}, 0);}
-                    {setTimeout(function() { MPP.press("ds3")}, 0);}
-                    {setTimeout(function() { MPP.press("e3")}, 0);}
-                    {setTimeout(function() { MPP.press("f3")}, 0);}
-                    {setTimeout(function() { MPP.press("fs3")}, 0);}
-                    {setTimeout(function() { MPP.press("g3")}, 0);}
-                    {setTimeout(function() { MPP.press("gs3")}, 0);}
-                    {setTimeout(function() { MPP.press("a3")}, 0);}
-                    {setTimeout(function() { MPP.press("as3")}, 0);}
-                    {setTimeout(function() { MPP.press("b3")}, 0);}
-                    {setTimeout(function() { MPP.press("c4")}, 0);}
-                    {setTimeout(function() { MPP.press("cs4")}, 0);}
-                    {setTimeout(function() { MPP.press("d4")}, 0);}
-                    {setTimeout(function() { MPP.press("ds4")}, 0);}
-                    {setTimeout(function() { MPP.press("e4")}, 0);}
-                    {setTimeout(function() { MPP.press("f4")}, 0);}
-                    {setTimeout(function() { MPP.press("fs4")}, 0);}
-                    {setTimeout(function() { MPP.press("g4")}, 0);}
-                    {setTimeout(function() { MPP.press("gs4")}, 0);}
-                    {setTimeout(function() { MPP.press("a4")}, 0);}
-                    {setTimeout(function() { MPP.press("as4")}, 0);}
-                    {setTimeout(function() { MPP.press("b4")}, 0);}
-                    {setTimeout(function() { MPP.press("c5")}, 0);}
-                    {setTimeout(function() { MPP.press("cs5")}, 0);}
-                    {setTimeout(function() { MPP.press("d5")}, 0);}
-                    {setTimeout(function() { MPP.press("ds5")}, 0);}
-                    {setTimeout(function() { MPP.press("e5")}, 0);}
-                    {setTimeout(function() { MPP.press("f5")}, 0);}
-                    {setTimeout(function() { MPP.press("fs5")}, 0);}
-                    {setTimeout(function() { MPP.press("g5")}, 0);}
-                    {setTimeout(function() { MPP.press("gs5")}, 0);}
-                    {setTimeout(function() { MPP.press("a5")}, 0);}
-                    {setTimeout(function() { MPP.press("as5")}, 0);}
-                    {setTimeout(function() { MPP.press("b5")}, 0);}
-                    {setTimeout(function() { MPP.press("c6")}, 0);}
-                    {setTimeout(function() { MPP.press("cs6")}, 0);}
-                    {setTimeout(function() { MPP.press("d6")}, 0);}
-                    {setTimeout(function() { MPP.press("ds6")}, 0);}
-                    {setTimeout(function() { MPP.press("e6")}, 0);}
-                    {setTimeout(function() { MPP.press("f6")}, 0);}
-                    {setTimeout(function() { MPP.press("fs6")}, 0);}
-                    {setTimeout(function() { MPP.press("g6")}, 0);}
-                    {setTimeout(function() { MPP.press("gs6")}, 0);}
-                    {setTimeout(function() { MPP.press("a6")}, 0);}
-                    {setTimeout(function() { MPP.press("as6")}, 0);}
-                    {setTimeout(function() { MPP.press("b6")}, 0);}
-                    {setTimeout(function() { MPP.press("c7")}, 0);}
-                    {setTimeout(function() { MPP.press("a-1")}, 0);}
-                    {setTimeout(function() { MPP.press("as-1")}, 0);}
-                    {setTimeout(function() { MPP.press("b-1")}, 0);}
-                    {setTimeout(function() { MPP.press("c0")}, 0);}
-                    {setTimeout(function() { MPP.press("cs0")}, 0);}
-                    {setTimeout(function() { MPP.press("d0")}, 0);}
-                    {setTimeout(function() { MPP.press("ds0")}, 0);}
-                    {setTimeout(function() { MPP.press("e0")}, 0);}
-                    {setTimeout(function() { MPP.press("f0")}, 0);}
-                    {setTimeout(function() { MPP.press("fs0")}, 0);}
-                    {setTimeout(function() { MPP.press("g0")}, 0);}
-                    {setTimeout(function() { MPP.press("gs0")}, 0);}
-                    {setTimeout(function() { MPP.press("a0")}, 0);}
-                    {setTimeout(function() { MPP.press("as0")}, 0);}
-                    {setTimeout(function() { MPP.press("b0")}, 0);}
-                    {setTimeout(function() { MPP.press("c1")}, 0);}
-                    {setTimeout(function() { MPP.press("cs1")}, 0);}
-                    {setTimeout(function() { MPP.press("d1")}, 0);}
-                    {setTimeout(function() { MPP.press("ds1")}, 0);}
-                    {setTimeout(function() { MPP.press("e1")}, 0);}
-                    {setTimeout(function() { MPP.press("f1")}, 0);}
-                    {setTimeout(function() { MPP.press("fs1")}, 0);}
-                    {setTimeout(function() { MPP.press("g1")}, 0);}
-                    {setTimeout(function() { MPP.press("gs1")}, 0);}
-                    {setTimeout(function() { MPP.press("a1")}, 0);}
-                    {setTimeout(function() { MPP.press("as1")}, 0);}
-                    {setTimeout(function() { MPP.press("b1")}, 0);}
-                    {setTimeout(function() { MPP.press("c2")}, 0);}
-                    {setTimeout(function() { MPP.press("cs2")}, 0);}
-                    {setTimeout(function() { MPP.press("d2")}, 0);}
-                    {setTimeout(function() { MPP.press("ds2")}, 0);}
-                    {setTimeout(function() { MPP.press("e2")}, 0);}
-                    {setTimeout(function() { MPP.press("f2")}, 0);}
-                    {setTimeout(function() { MPP.press("fs2")}, 0);}
-                    {setTimeout(function() { MPP.press("g2")}, 0);}
-                    {setTimeout(function() { MPP.press("gs2")}, 0);}
-                    {setTimeout(function() { MPP.press("a2")}, 0);}
-                    {setTimeout(function() { MPP.press("as2")}, 0);}
-                    {setTimeout(function() { MPP.press("b2")}, 0);}
-                    {setTimeout(function() { MPP.press("c3")}, 0);}
-                    {setTimeout(function() { MPP.press("cs3")}, 0);}
-                    {setTimeout(function() { MPP.press("d3")}, 0);}
-                    {setTimeout(function() { MPP.press("ds3")}, 0);}
-                    {setTimeout(function() { MPP.press("e3")}, 0);}
-                    {setTimeout(function() { MPP.press("f3")}, 0);}
-                    {setTimeout(function() { MPP.press("fs3")}, 0);}
-                    {setTimeout(function() { MPP.press("g3")}, 0);}
-                    {setTimeout(function() { MPP.press("gs3")}, 0);}
-                    {setTimeout(function() { MPP.press("a3")}, 0);}
-                    {setTimeout(function() { MPP.press("as3")}, 0);}
-                    {setTimeout(function() { MPP.press("b3")}, 0);}
-                    {setTimeout(function() { MPP.press("c4")}, 0);}
-                    {setTimeout(function() { MPP.press("cs4")}, 0);}
-                    {setTimeout(function() { MPP.press("d4")}, 0);}
-                    {setTimeout(function() { MPP.press("ds4")}, 0);}
-                    {setTimeout(function() { MPP.press("e4")}, 0);}
-                    {setTimeout(function() { MPP.press("f4")}, 0);}
-                    {setTimeout(function() { MPP.press("fs4")}, 0);}
-                    {setTimeout(function() { MPP.press("g4")}, 0);}
-                    {setTimeout(function() { MPP.press("gs4")}, 0);}
-                    {setTimeout(function() { MPP.press("a4")}, 0);}
-                    {setTimeout(function() { MPP.press("as4")}, 0);}
-                    {setTimeout(function() { MPP.press("b4")}, 0);}
-                    {setTimeout(function() { MPP.press("c5")}, 0);}
-                    {setTimeout(function() { MPP.press("cs5")}, 0);}
-                    {setTimeout(function() { MPP.press("d5")}, 0);}
-                    {setTimeout(function() { MPP.press("ds5")}, 0);}
-                    {setTimeout(function() { MPP.press("e5")}, 0);}
-                    {setTimeout(function() { MPP.press("f5")}, 0);}
-                    {setTimeout(function() { MPP.press("fs5")}, 0);}
-                    {setTimeout(function() { MPP.press("g5")}, 0);}
-                    {setTimeout(function() { MPP.press("gs5")}, 0);}
-                    {setTimeout(function() { MPP.press("a5")}, 0);}
-                    {setTimeout(function() { MPP.press("as5")}, 0);}
-                    {setTimeout(function() { MPP.press("b5")}, 0);}
-                    {setTimeout(function() { MPP.press("c6")}, 0);}
-                    {setTimeout(function() { MPP.press("cs6")}, 0);}
-                    {setTimeout(function() { MPP.press("d6")}, 0);}
-                    {setTimeout(function() { MPP.press("ds6")}, 0);}
-                    {setTimeout(function() { MPP.press("e6")}, 0);}
-                    {setTimeout(function() { MPP.press("f6")}, 0);}
-                    {setTimeout(function() { MPP.press("fs6")}, 0);}
-                    {setTimeout(function() { MPP.press("g6")}, 0);}
-                    {setTimeout(function() { MPP.press("gs6")}, 0);}
-                    {setTimeout(function() { MPP.press("a6")}, 0);}
-                    {setTimeout(function() { MPP.press("as6")}, 0);}
-                    {setTimeout(function() { MPP.press("b6")}, 0);}
-                    {setTimeout(function() { MPP.press("c7")}, 0);}
-                    {setTimeout(function() { MPP.press("a-1")}, 0);}
-                    {setTimeout(function() { MPP.press("as-1")}, 0);}
-                    {setTimeout(function() { MPP.press("b-1")}, 0);}
-                    {setTimeout(function() { MPP.press("c0")}, 0);}
-                    {setTimeout(function() { MPP.press("cs0")}, 0);}
-                    {setTimeout(function() { MPP.press("d0")}, 0);}
-                    {setTimeout(function() { MPP.press("ds0")}, 0);}
-                    {setTimeout(function() { MPP.press("e0")}, 0);}
-                    {setTimeout(function() { MPP.press("f0")}, 0);}
-                    {setTimeout(function() { MPP.press("fs0")}, 0);}
-                    {setTimeout(function() { MPP.press("g0")}, 0);}
-                    {setTimeout(function() { MPP.press("gs0")}, 0);}
-                    {setTimeout(function() { MPP.press("a0")}, 0);}
-                    {setTimeout(function() { MPP.press("as0")}, 0);}
-                    {setTimeout(function() { MPP.press("b0")}, 0);}
-                    {setTimeout(function() { MPP.press("c1")}, 0);}
-                    {setTimeout(function() { MPP.press("cs1")}, 0);}
-                    {setTimeout(function() { MPP.press("d1")}, 0);}
-                    {setTimeout(function() { MPP.press("ds1")}, 0);}
-                    {setTimeout(function() { MPP.press("e1")}, 0);}
-                    {setTimeout(function() { MPP.press("f1")}, 0);}
-                    {setTimeout(function() { MPP.press("fs1")}, 0);}
-                    {setTimeout(function() { MPP.press("g1")}, 0);}
-                    {setTimeout(function() { MPP.press("gs1")}, 0);}
-                    {setTimeout(function() { MPP.press("a1")}, 0);}
-                    {setTimeout(function() { MPP.press("as1")}, 0);}
-                    {setTimeout(function() { MPP.press("b1")}, 0);}
-                    {setTimeout(function() { MPP.press("c2")}, 0);}
-                    {setTimeout(function() { MPP.press("cs2")}, 0);}
-                    {setTimeout(function() { MPP.press("d2")}, 0);}
-                    {setTimeout(function() { MPP.press("ds2")}, 0);}
-                    {setTimeout(function() { MPP.press("e2")}, 0);}
-                    {setTimeout(function() { MPP.press("f2")}, 0);}
-                    {setTimeout(function() { MPP.press("fs2")}, 0);}
-                    {setTimeout(function() { MPP.press("g2")}, 0);}
-                    {setTimeout(function() { MPP.press("gs2")}, 0);}
-                    {setTimeout(function() { MPP.press("a2")}, 0);}
-                    {setTimeout(function() { MPP.press("as2")}, 0);}
-                    {setTimeout(function() { MPP.press("b2")}, 0);}
-                    {setTimeout(function() { MPP.press("c3")}, 0);}
-                    {setTimeout(function() { MPP.press("cs3")}, 0);}
-                    {setTimeout(function() { MPP.press("d3")}, 0);}
-                    {setTimeout(function() { MPP.press("ds3")}, 0);}
-                    {setTimeout(function() { MPP.press("e3")}, 0);}
-                    {setTimeout(function() { MPP.press("f3")}, 0);}
-                    {setTimeout(function() { MPP.press("fs3")}, 0);}
-                    {setTimeout(function() { MPP.press("g3")}, 0);}
-                    {setTimeout(function() { MPP.press("gs3")}, 0);}
-                    {setTimeout(function() { MPP.press("a3")}, 0);}
-                    {setTimeout(function() { MPP.press("as3")}, 0);}
-                    {setTimeout(function() { MPP.press("b3")}, 0);}
-                    {setTimeout(function() { MPP.press("c4")}, 0);}
-                    {setTimeout(function() { MPP.press("cs4")}, 0);}
-                    {setTimeout(function() { MPP.press("d4")}, 0);}
-                    {setTimeout(function() { MPP.press("ds4")}, 0);}
-                    {setTimeout(function() { MPP.press("e4")}, 0);}
-                    {setTimeout(function() { MPP.press("f4")}, 0);}
-                    {setTimeout(function() { MPP.press("fs4")}, 0);}
-                    {setTimeout(function() { MPP.press("g4")}, 0);}
-                    {setTimeout(function() { MPP.press("gs4")}, 0);}
-                    {setTimeout(function() { MPP.press("a4")}, 0);}
-                    {setTimeout(function() { MPP.press("as4")}, 0);}
-                    {setTimeout(function() { MPP.press("b4")}, 0);}
-                    {setTimeout(function() { MPP.press("c5")}, 0);}
-                    {setTimeout(function() { MPP.press("cs5")}, 0);}
-                    {setTimeout(function() { MPP.press("d5")}, 0);}
-                    {setTimeout(function() { MPP.press("ds5")}, 0);}
-                    {setTimeout(function() { MPP.press("e5")}, 0);}
-                    {setTimeout(function() { MPP.press("f5")}, 0);}
-                    {setTimeout(function() { MPP.press("fs5")}, 0);}
-                    {setTimeout(function() { MPP.press("g5")}, 0);}
-                    {setTimeout(function() { MPP.press("gs5")}, 0);}
-                    {setTimeout(function() { MPP.press("a5")}, 0);}
-                    {setTimeout(function() { MPP.press("as5")}, 0);}
-                    {setTimeout(function() { MPP.press("b5")}, 0);}
-                    {setTimeout(function() { MPP.press("c6")}, 0);}
-                    {setTimeout(function() { MPP.press("cs6")}, 0);}
-                    {setTimeout(function() { MPP.press("d6")}, 0);}
-                    {setTimeout(function() { MPP.press("ds6")}, 0);}
-                    {setTimeout(function() { MPP.press("e6")}, 0);}
-                    {setTimeout(function() { MPP.press("f6")}, 0);}
-                    {setTimeout(function() { MPP.press("fs6")}, 0);}
-                    {setTimeout(function() { MPP.press("g6")}, 0);}
-                    {setTimeout(function() { MPP.press("gs6")}, 0);}
-                    {setTimeout(function() { MPP.press("a6")}, 0);}
-                    {setTimeout(function() { MPP.press("as6")}, 0);}
-                    {setTimeout(function() { MPP.press("b6")}, 0);}
-                    {setTimeout(function() { MPP.press("c7")}, 0);}
-                    {setTimeout(function() { MPP.press("a-1")}, 0);}
-                    {setTimeout(function() { MPP.press("as-1")}, 0);}
-                    {setTimeout(function() { MPP.press("b-1")}, 0);}
-                    {setTimeout(function() { MPP.press("c0")}, 0);}
-                    {setTimeout(function() { MPP.press("cs0")}, 0);}
-                    {setTimeout(function() { MPP.press("d0")}, 0);}
-                    {setTimeout(function() { MPP.press("ds0")}, 0);}
-                    {setTimeout(function() { MPP.press("e0")}, 0);}
-                    {setTimeout(function() { MPP.press("f0")}, 0);}
-                    {setTimeout(function() { MPP.press("fs0")}, 0);}
-                    {setTimeout(function() { MPP.press("g0")}, 0);}
-                    {setTimeout(function() { MPP.press("gs0")}, 0);}
-                    {setTimeout(function() { MPP.press("a0")}, 0);}
-                    {setTimeout(function() { MPP.press("as0")}, 0);}
-                    {setTimeout(function() { MPP.press("b0")}, 0);}
-                    {setTimeout(function() { MPP.press("c1")}, 0);}
-                    {setTimeout(function() { MPP.press("cs1")}, 0);}
-                    {setTimeout(function() { MPP.press("d1")}, 0);}
-                    {setTimeout(function() { MPP.press("ds1")}, 0);}
-                    {setTimeout(function() { MPP.press("e1")}, 0);}
-                    {setTimeout(function() { MPP.press("f1")}, 0);}
-                    {setTimeout(function() { MPP.press("fs1")}, 0);}
-                    {setTimeout(function() { MPP.press("g1")}, 0);}
-                    {setTimeout(function() { MPP.press("gs1")}, 0);}
-                    {setTimeout(function() { MPP.press("a1")}, 0);}
-                    {setTimeout(function() { MPP.press("as1")}, 0);}
-                    {setTimeout(function() { MPP.press("b1")}, 0);}
-                    {setTimeout(function() { MPP.press("c2")}, 0);}
-                    {setTimeout(function() { MPP.press("cs2")}, 0);}
-                    {setTimeout(function() { MPP.press("d2")}, 0);}
-                    {setTimeout(function() { MPP.press("ds2")}, 0);}
-                    {setTimeout(function() { MPP.press("e2")}, 0);}
-                    {setTimeout(function() { MPP.press("f2")}, 0);}
-                    {setTimeout(function() { MPP.press("fs2")}, 0);}
-                    {setTimeout(function() { MPP.press("g2")}, 0);}
-                    {setTimeout(function() { MPP.press("gs2")}, 0);}
-                    {setTimeout(function() { MPP.press("a2")}, 0);}
-                    {setTimeout(function() { MPP.press("as2")}, 0);}
-                    {setTimeout(function() { MPP.press("b2")}, 0);}
-                    {setTimeout(function() { MPP.press("c3")}, 0);}
-                    {setTimeout(function() { MPP.press("cs3")}, 0);}
-                    {setTimeout(function() { MPP.press("d3")}, 0);}
-                    {setTimeout(function() { MPP.press("ds3")}, 0);}
-                    {setTimeout(function() { MPP.press("e3")}, 0);}
-                    {setTimeout(function() { MPP.press("f3")}, 0);}
-                    {setTimeout(function() { MPP.press("fs3")}, 0);}
-                    {setTimeout(function() { MPP.press("g3")}, 0);}
-                    {setTimeout(function() { MPP.press("gs3")}, 0);}
-                    {setTimeout(function() { MPP.press("a3")}, 0);}
-                    {setTimeout(function() { MPP.press("as3")}, 0);}
-                    {setTimeout(function() { MPP.press("b3")}, 0);}
-                    {setTimeout(function() { MPP.press("c4")}, 0);}
-                    {setTimeout(function() { MPP.press("cs4")}, 0);}
-                    {setTimeout(function() { MPP.press("d4")}, 0);}
-                    {setTimeout(function() { MPP.press("ds4")}, 0);}
-                    {setTimeout(function() { MPP.press("e4")}, 0);}
-                    {setTimeout(function() { MPP.press("f4")}, 0);}
-                    {setTimeout(function() { MPP.press("fs4")}, 0);}
-                    {setTimeout(function() { MPP.press("g4")}, 0);}
-                    {setTimeout(function() { MPP.press("gs4")}, 0);}
-                    {setTimeout(function() { MPP.press("a4")}, 0);}
-                    {setTimeout(function() { MPP.press("as4")}, 0);}
-                    {setTimeout(function() { MPP.press("b4")}, 0);}
-                    {setTimeout(function() { MPP.press("c5")}, 0);}
-                    {setTimeout(function() { MPP.press("cs5")}, 0);}
-                    {setTimeout(function() { MPP.press("d5")}, 0);}
-                    {setTimeout(function() { MPP.press("ds5")}, 0);}
-                    {setTimeout(function() { MPP.press("e5")}, 0);}
-                    {setTimeout(function() { MPP.press("f5")}, 0);}
-                    {setTimeout(function() { MPP.press("fs5")}, 0);}
-                    {setTimeout(function() { MPP.press("g5")}, 0);}
-                    {setTimeout(function() { MPP.press("gs5")}, 0);}
-                    {setTimeout(function() { MPP.press("a5")}, 0);}
-                    {setTimeout(function() { MPP.press("as5")}, 0);}
-                    {setTimeout(function() { MPP.press("b5")}, 0);}
-                    {setTimeout(function() { MPP.press("c6")}, 0);}
-                    {setTimeout(function() { MPP.press("cs6")}, 0);}
-                    {setTimeout(function() { MPP.press("d6")}, 0);}
-                    {setTimeout(function() { MPP.press("ds6")}, 0);}
-                    {setTimeout(function() { MPP.press("e6")}, 0);}
-                    {setTimeout(function() { MPP.press("f6")}, 0);}
-                    {setTimeout(function() { MPP.press("fs6")}, 0);}
-                    {setTimeout(function() { MPP.press("g6")}, 0);}
-                    {setTimeout(function() { MPP.press("gs6")}, 0);}
-                    {setTimeout(function() { MPP.press("a6")}, 0);}
-                    {setTimeout(function() { MPP.press("as6")}, 0);}
-                    {setTimeout(function() { MPP.press("b6")}, 0);}
-                    {setTimeout(function() { MPP.press("c7")}, 0);}
-                    {setTimeout(function() { MPP.press("a-1")}, 0);}
-                    {setTimeout(function() { MPP.press("as-1")}, 0);}
-                    {setTimeout(function() { MPP.press("b-1")}, 0);}
-                    {setTimeout(function() { MPP.press("c0")}, 0);}
-                    {setTimeout(function() { MPP.press("cs0")}, 0);}
-                    {setTimeout(function() { MPP.press("d0")}, 0);}
-                    {setTimeout(function() { MPP.press("ds0")}, 0);}
-                    {setTimeout(function() { MPP.press("e0")}, 0);}
-                    {setTimeout(function() { MPP.press("f0")}, 0);}
-                    {setTimeout(function() { MPP.press("fs0")}, 0);}
-                    {setTimeout(function() { MPP.press("g0")}, 0);}
-                    {setTimeout(function() { MPP.press("gs0")}, 0);}
-                    {setTimeout(function() { MPP.press("a0")}, 0);}
-                    {setTimeout(function() { MPP.press("as0")}, 0);}
-                    {setTimeout(function() { MPP.press("b0")}, 0);}
-                    {setTimeout(function() { MPP.press("c1")}, 0);}
-                    {setTimeout(function() { MPP.press("cs1")}, 0);}
-                    {setTimeout(function() { MPP.press("d1")}, 0);}
-                    {setTimeout(function() { MPP.press("ds1")}, 0);}
-                    {setTimeout(function() { MPP.press("e1")}, 0);}
-                    {setTimeout(function() { MPP.press("f1")}, 0);}
-                    {setTimeout(function() { MPP.press("fs1")}, 0);}
-                    {setTimeout(function() { MPP.press("g1")}, 0);}
-                    {setTimeout(function() { MPP.press("gs1")}, 0);}
-                    {setTimeout(function() { MPP.press("a1")}, 0);}
-                    {setTimeout(function() { MPP.press("as1")}, 0);}
-                    {setTimeout(function() { MPP.press("b1")}, 0);}
-                    {setTimeout(function() { MPP.press("c2")}, 0);}
-                    {setTimeout(function() { MPP.press("cs2")}, 0);}
-                    {setTimeout(function() { MPP.press("d2")}, 0);}
-                    {setTimeout(function() { MPP.press("ds2")}, 0);}
-                    {setTimeout(function() { MPP.press("e2")}, 0);}
-                    {setTimeout(function() { MPP.press("f2")}, 0);}
-                    {setTimeout(function() { MPP.press("fs2")}, 0);}
-                    {setTimeout(function() { MPP.press("g2")}, 0);}
-                    {setTimeout(function() { MPP.press("gs2")}, 0);}
-                    {setTimeout(function() { MPP.press("a2")}, 0);}
-                    {setTimeout(function() { MPP.press("as2")}, 0);}
-                    {setTimeout(function() { MPP.press("b2")}, 0);}
-                    {setTimeout(function() { MPP.press("c3")}, 0);}
-                    {setTimeout(function() { MPP.press("cs3")}, 0);}
-                    {setTimeout(function() { MPP.press("d3")}, 0);}
-                    {setTimeout(function() { MPP.press("ds3")}, 0);}
-                    {setTimeout(function() { MPP.press("e3")}, 0);}
-                    {setTimeout(function() { MPP.press("f3")}, 0);}
-                    {setTimeout(function() { MPP.press("fs3")}, 0);}
-                    {setTimeout(function() { MPP.press("g3")}, 0);}
-                    {setTimeout(function() { MPP.press("gs3")}, 0);}
-                    {setTimeout(function() { MPP.press("a3")}, 0);}
-                    {setTimeout(function() { MPP.press("as3")}, 0);}
-                    {setTimeout(function() { MPP.press("b3")}, 0);}
-                    {setTimeout(function() { MPP.press("c4")}, 0);}
-                    {setTimeout(function() { MPP.press("cs4")}, 0);}
-                    {setTimeout(function() { MPP.press("d4")}, 0);}
-                    {setTimeout(function() { MPP.press("ds4")}, 0);}
-                    {setTimeout(function() { MPP.press("e4")}, 0);}
-                    {setTimeout(function() { MPP.press("f4")}, 0);}
-                    {setTimeout(function() { MPP.press("fs4")}, 0);}
-                    {setTimeout(function() { MPP.press("g4")}, 0);}
-                    {setTimeout(function() { MPP.press("gs4")}, 0);}
-                    {setTimeout(function() { MPP.press("a4")}, 0);}
-                    {setTimeout(function() { MPP.press("as4")}, 0);}
-                    {setTimeout(function() { MPP.press("b4")}, 0);}
-                    {setTimeout(function() { MPP.press("c5")}, 0);}
-                    {setTimeout(function() { MPP.press("cs5")}, 0);}
-                    {setTimeout(function() { MPP.press("d5")}, 0);}
-                    {setTimeout(function() { MPP.press("ds5")}, 0);}
-                    {setTimeout(function() { MPP.press("e5")}, 0);}
-                    {setTimeout(function() { MPP.press("f5")}, 0);}
-                    {setTimeout(function() { MPP.press("fs5")}, 0);}
-                    {setTimeout(function() { MPP.press("g5")}, 0);}
-                    {setTimeout(function() { MPP.press("gs5")}, 0);}
-                    {setTimeout(function() { MPP.press("a5")}, 0);}
-                    {setTimeout(function() { MPP.press("as5")}, 0);}
-                    {setTimeout(function() { MPP.press("b5")}, 0);}
-                    {setTimeout(function() { MPP.press("c6")}, 0);}
-                    {setTimeout(function() { MPP.press("cs6")}, 0);}
-                    {setTimeout(function() { MPP.press("d6")}, 0);}
-                    {setTimeout(function() { MPP.press("ds6")}, 0);}
-                    {setTimeout(function() { MPP.press("e6")}, 0);}
-                    {setTimeout(function() { MPP.press("f6")}, 0);}
-                    {setTimeout(function() { MPP.press("fs6")}, 0);}
-                    {setTimeout(function() { MPP.press("g6")}, 0);}
-                    {setTimeout(function() { MPP.press("gs6")}, 0);}
-                    {setTimeout(function() { MPP.press("a6")}, 0);}
-                    {setTimeout(function() { MPP.press("as6")}, 0);}
-                    {setTimeout(function() { MPP.press("b6")}, 0);}
-                    {setTimeout(function() { MPP.press("c7")}, 0);}
+                    {setTimeout(function() { client.press("a-1")}, 0);}
+                    {setTimeout(function() { client.press("as-1")}, 0);}
+                    {setTimeout(function() { client.press("b-1")}, 0);}
+                    {setTimeout(function() { client.press("c0")}, 0);}
+                    {setTimeout(function() { client.press("cs0")}, 0);}
+                    {setTimeout(function() { client.press("d0")}, 0);}
+                    {setTimeout(function() { client.press("ds0")}, 0);}
+                    {setTimeout(function() { client.press("e0")}, 0);}
+                    {setTimeout(function() { client.press("f0")}, 0);}
+                    {setTimeout(function() { client.press("fs0")}, 0);}
+                    {setTimeout(function() { client.press("g0")}, 0);}
+                    {setTimeout(function() { client.press("gs0")}, 0);}
+                    {setTimeout(function() { client.press("a0")}, 0);}
+                    {setTimeout(function() { client.press("as0")}, 0);}
+                    {setTimeout(function() { client.press("b0")}, 0);}
+                    {setTimeout(function() { client.press("c1")}, 0);}
+                    {setTimeout(function() { client.press("cs1")}, 0);}
+                    {setTimeout(function() { client.press("d1")}, 0);}
+                    {setTimeout(function() { client.press("ds1")}, 0);}
+                    {setTimeout(function() { client.press("e1")}, 0);}
+                    {setTimeout(function() { client.press("f1")}, 0);}
+                    {setTimeout(function() { client.press("fs1")}, 0);}
+                    {setTimeout(function() { client.press("g1")}, 0);}
+                    {setTimeout(function() { client.press("gs1")}, 0);}
+                    {setTimeout(function() { client.press("a1")}, 0);}
+                    {setTimeout(function() { client.press("as1")}, 0);}
+                    {setTimeout(function() { client.press("b1")}, 0);}
+                    {setTimeout(function() { client.press("c2")}, 0);}
+                    {setTimeout(function() { client.press("cs2")}, 0);}
+                    {setTimeout(function() { client.press("d2")}, 0);}
+                    {setTimeout(function() { client.press("ds2")}, 0);}
+                    {setTimeout(function() { client.press("e2")}, 0);}
+                    {setTimeout(function() { client.press("f2")}, 0);}
+                    {setTimeout(function() { client.press("fs2")}, 0);}
+                    {setTimeout(function() { client.press("g2")}, 0);}
+                    {setTimeout(function() { client.press("gs2")}, 0);}
+                    {setTimeout(function() { client.press("a2")}, 0);}
+                    {setTimeout(function() { client.press("as2")}, 0);}
+                    {setTimeout(function() { client.press("b2")}, 0);}
+                    {setTimeout(function() { client.press("c3")}, 0);}
+                    {setTimeout(function() { client.press("cs3")}, 0);}
+                    {setTimeout(function() { client.press("d3")}, 0);}
+                    {setTimeout(function() { client.press("ds3")}, 0);}
+                    {setTimeout(function() { client.press("e3")}, 0);}
+                    {setTimeout(function() { client.press("f3")}, 0);}
+                    {setTimeout(function() { client.press("fs3")}, 0);}
+                    {setTimeout(function() { client.press("g3")}, 0);}
+                    {setTimeout(function() { client.press("gs3")}, 0);}
+                    {setTimeout(function() { client.press("a3")}, 0);}
+                    {setTimeout(function() { client.press("as3")}, 0);}
+                    {setTimeout(function() { client.press("b3")}, 0);}
+                    {setTimeout(function() { client.press("c4")}, 0);}
+                    {setTimeout(function() { client.press("cs4")}, 0);}
+                    {setTimeout(function() { client.press("d4")}, 0);}
+                    {setTimeout(function() { client.press("ds4")}, 0);}
+                    {setTimeout(function() { client.press("e4")}, 0);}
+                    {setTimeout(function() { client.press("f4")}, 0);}
+                    {setTimeout(function() { client.press("fs4")}, 0);}
+                    {setTimeout(function() { client.press("g4")}, 0);}
+                    {setTimeout(function() { client.press("gs4")}, 0);}
+                    {setTimeout(function() { client.press("a4")}, 0);}
+                    {setTimeout(function() { client.press("as4")}, 0);}
+                    {setTimeout(function() { client.press("b4")}, 0);}
+                    {setTimeout(function() { client.press("c5")}, 0);}
+                    {setTimeout(function() { client.press("cs5")}, 0);}
+                    {setTimeout(function() { client.press("d5")}, 0);}
+                    {setTimeout(function() { client.press("ds5")}, 0);}
+                    {setTimeout(function() { client.press("e5")}, 0);}
+                    {setTimeout(function() { client.press("f5")}, 0);}
+                    {setTimeout(function() { client.press("fs5")}, 0);}
+                    {setTimeout(function() { client.press("g5")}, 0);}
+                    {setTimeout(function() { client.press("gs5")}, 0);}
+                    {setTimeout(function() { client.press("a5")}, 0);}
+                    {setTimeout(function() { client.press("as5")}, 0);}
+                    {setTimeout(function() { client.press("b5")}, 0);}
+                    {setTimeout(function() { client.press("c6")}, 0);}
+                    {setTimeout(function() { client.press("cs6")}, 0);}
+                    {setTimeout(function() { client.press("d6")}, 0);}
+                    {setTimeout(function() { client.press("ds6")}, 0);}
+                    {setTimeout(function() { client.press("e6")}, 0);}
+                    {setTimeout(function() { client.press("f6")}, 0);}
+                    {setTimeout(function() { client.press("fs6")}, 0);}
+                    {setTimeout(function() { client.press("g6")}, 0);}
+                    {setTimeout(function() { client.press("gs6")}, 0);}
+                    {setTimeout(function() { client.press("a6")}, 0);}
+                    {setTimeout(function() { client.press("as6")}, 0);}
+                    {setTimeout(function() { client.press("b6")}, 0);}
+                    {setTimeout(function() { client.press("c7")}, 0);}
+                    {setTimeout(function() { client.press("a-1")}, 0);}
+                    {setTimeout(function() { client.press("as-1")}, 0);}
+                    {setTimeout(function() { client.press("b-1")}, 0);}
+                    {setTimeout(function() { client.press("c0")}, 0);}
+                    {setTimeout(function() { client.press("cs0")}, 0);}
+                    {setTimeout(function() { client.press("d0")}, 0);}
+                    {setTimeout(function() { client.press("ds0")}, 0);}
+                    {setTimeout(function() { client.press("e0")}, 0);}
+                    {setTimeout(function() { client.press("f0")}, 0);}
+                    {setTimeout(function() { client.press("fs0")}, 0);}
+                    {setTimeout(function() { client.press("g0")}, 0);}
+                    {setTimeout(function() { client.press("gs0")}, 0);}
+                    {setTimeout(function() { client.press("a0")}, 0);}
+                    {setTimeout(function() { client.press("as0")}, 0);}
+                    {setTimeout(function() { client.press("b0")}, 0);}
+                    {setTimeout(function() { client.press("c1")}, 0);}
+                    {setTimeout(function() { client.press("cs1")}, 0);}
+                    {setTimeout(function() { client.press("d1")}, 0);}
+                    {setTimeout(function() { client.press("ds1")}, 0);}
+                    {setTimeout(function() { client.press("e1")}, 0);}
+                    {setTimeout(function() { client.press("f1")}, 0);}
+                    {setTimeout(function() { client.press("fs1")}, 0);}
+                    {setTimeout(function() { client.press("g1")}, 0);}
+                    {setTimeout(function() { client.press("gs1")}, 0);}
+                    {setTimeout(function() { client.press("a1")}, 0);}
+                    {setTimeout(function() { client.press("as1")}, 0);}
+                    {setTimeout(function() { client.press("b1")}, 0);}
+                    {setTimeout(function() { client.press("c2")}, 0);}
+                    {setTimeout(function() { client.press("cs2")}, 0);}
+                    {setTimeout(function() { client.press("d2")}, 0);}
+                    {setTimeout(function() { client.press("ds2")}, 0);}
+                    {setTimeout(function() { client.press("e2")}, 0);}
+                    {setTimeout(function() { client.press("f2")}, 0);}
+                    {setTimeout(function() { client.press("fs2")}, 0);}
+                    {setTimeout(function() { client.press("g2")}, 0);}
+                    {setTimeout(function() { client.press("gs2")}, 0);}
+                    {setTimeout(function() { client.press("a2")}, 0);}
+                    {setTimeout(function() { client.press("as2")}, 0);}
+                    {setTimeout(function() { client.press("b2")}, 0);}
+                    {setTimeout(function() { client.press("c3")}, 0);}
+                    {setTimeout(function() { client.press("cs3")}, 0);}
+                    {setTimeout(function() { client.press("d3")}, 0);}
+                    {setTimeout(function() { client.press("ds3")}, 0);}
+                    {setTimeout(function() { client.press("e3")}, 0);}
+                    {setTimeout(function() { client.press("f3")}, 0);}
+                    {setTimeout(function() { client.press("fs3")}, 0);}
+                    {setTimeout(function() { client.press("g3")}, 0);}
+                    {setTimeout(function() { client.press("gs3")}, 0);}
+                    {setTimeout(function() { client.press("a3")}, 0);}
+                    {setTimeout(function() { client.press("as3")}, 0);}
+                    {setTimeout(function() { client.press("b3")}, 0);}
+                    {setTimeout(function() { client.press("c4")}, 0);}
+                    {setTimeout(function() { client.press("cs4")}, 0);}
+                    {setTimeout(function() { client.press("d4")}, 0);}
+                    {setTimeout(function() { client.press("ds4")}, 0);}
+                    {setTimeout(function() { client.press("e4")}, 0);}
+                    {setTimeout(function() { client.press("f4")}, 0);}
+                    {setTimeout(function() { client.press("fs4")}, 0);}
+                    {setTimeout(function() { client.press("g4")}, 0);}
+                    {setTimeout(function() { client.press("gs4")}, 0);}
+                    {setTimeout(function() { client.press("a4")}, 0);}
+                    {setTimeout(function() { client.press("as4")}, 0);}
+                    {setTimeout(function() { client.press("b4")}, 0);}
+                    {setTimeout(function() { client.press("c5")}, 0);}
+                    {setTimeout(function() { client.press("cs5")}, 0);}
+                    {setTimeout(function() { client.press("d5")}, 0);}
+                    {setTimeout(function() { client.press("ds5")}, 0);}
+                    {setTimeout(function() { client.press("e5")}, 0);}
+                    {setTimeout(function() { client.press("f5")}, 0);}
+                    {setTimeout(function() { client.press("fs5")}, 0);}
+                    {setTimeout(function() { client.press("g5")}, 0);}
+                    {setTimeout(function() { client.press("gs5")}, 0);}
+                    {setTimeout(function() { client.press("a5")}, 0);}
+                    {setTimeout(function() { client.press("as5")}, 0);}
+                    {setTimeout(function() { client.press("b5")}, 0);}
+                    {setTimeout(function() { client.press("c6")}, 0);}
+                    {setTimeout(function() { client.press("cs6")}, 0);}
+                    {setTimeout(function() { client.press("d6")}, 0);}
+                    {setTimeout(function() { client.press("ds6")}, 0);}
+                    {setTimeout(function() { client.press("e6")}, 0);}
+                    {setTimeout(function() { client.press("f6")}, 0);}
+                    {setTimeout(function() { client.press("fs6")}, 0);}
+                    {setTimeout(function() { client.press("g6")}, 0);}
+                    {setTimeout(function() { client.press("gs6")}, 0);}
+                    {setTimeout(function() { client.press("a6")}, 0);}
+                    {setTimeout(function() { client.press("as6")}, 0);}
+                    {setTimeout(function() { client.press("b6")}, 0);}
+                    {setTimeout(function() { client.press("c7")}, 0);}
+                    {setTimeout(function() { client.press("a-1")}, 0);}
+                    {setTimeout(function() { client.press("as-1")}, 0);}
+                    {setTimeout(function() { client.press("b-1")}, 0);}
+                    {setTimeout(function() { client.press("c0")}, 0);}
+                    {setTimeout(function() { client.press("cs0")}, 0);}
+                    {setTimeout(function() { client.press("d0")}, 0);}
+                    {setTimeout(function() { client.press("ds0")}, 0);}
+                    {setTimeout(function() { client.press("e0")}, 0);}
+                    {setTimeout(function() { client.press("f0")}, 0);}
+                    {setTimeout(function() { client.press("fs0")}, 0);}
+                    {setTimeout(function() { client.press("g0")}, 0);}
+                    {setTimeout(function() { client.press("gs0")}, 0);}
+                    {setTimeout(function() { client.press("a0")}, 0);}
+                    {setTimeout(function() { client.press("as0")}, 0);}
+                    {setTimeout(function() { client.press("b0")}, 0);}
+                    {setTimeout(function() { client.press("c1")}, 0);}
+                    {setTimeout(function() { client.press("cs1")}, 0);}
+                    {setTimeout(function() { client.press("d1")}, 0);}
+                    {setTimeout(function() { client.press("ds1")}, 0);}
+                    {setTimeout(function() { client.press("e1")}, 0);}
+                    {setTimeout(function() { client.press("f1")}, 0);}
+                    {setTimeout(function() { client.press("fs1")}, 0);}
+                    {setTimeout(function() { client.press("g1")}, 0);}
+                    {setTimeout(function() { client.press("gs1")}, 0);}
+                    {setTimeout(function() { client.press("a1")}, 0);}
+                    {setTimeout(function() { client.press("as1")}, 0);}
+                    {setTimeout(function() { client.press("b1")}, 0);}
+                    {setTimeout(function() { client.press("c2")}, 0);}
+                    {setTimeout(function() { client.press("cs2")}, 0);}
+                    {setTimeout(function() { client.press("d2")}, 0);}
+                    {setTimeout(function() { client.press("ds2")}, 0);}
+                    {setTimeout(function() { client.press("e2")}, 0);}
+                    {setTimeout(function() { client.press("f2")}, 0);}
+                    {setTimeout(function() { client.press("fs2")}, 0);}
+                    {setTimeout(function() { client.press("g2")}, 0);}
+                    {setTimeout(function() { client.press("gs2")}, 0);}
+                    {setTimeout(function() { client.press("a2")}, 0);}
+                    {setTimeout(function() { client.press("as2")}, 0);}
+                    {setTimeout(function() { client.press("b2")}, 0);}
+                    {setTimeout(function() { client.press("c3")}, 0);}
+                    {setTimeout(function() { client.press("cs3")}, 0);}
+                    {setTimeout(function() { client.press("d3")}, 0);}
+                    {setTimeout(function() { client.press("ds3")}, 0);}
+                    {setTimeout(function() { client.press("e3")}, 0);}
+                    {setTimeout(function() { client.press("f3")}, 0);}
+                    {setTimeout(function() { client.press("fs3")}, 0);}
+                    {setTimeout(function() { client.press("g3")}, 0);}
+                    {setTimeout(function() { client.press("gs3")}, 0);}
+                    {setTimeout(function() { client.press("a3")}, 0);}
+                    {setTimeout(function() { client.press("as3")}, 0);}
+                    {setTimeout(function() { client.press("b3")}, 0);}
+                    {setTimeout(function() { client.press("c4")}, 0);}
+                    {setTimeout(function() { client.press("cs4")}, 0);}
+                    {setTimeout(function() { client.press("d4")}, 0);}
+                    {setTimeout(function() { client.press("ds4")}, 0);}
+                    {setTimeout(function() { client.press("e4")}, 0);}
+                    {setTimeout(function() { client.press("f4")}, 0);}
+                    {setTimeout(function() { client.press("fs4")}, 0);}
+                    {setTimeout(function() { client.press("g4")}, 0);}
+                    {setTimeout(function() { client.press("gs4")}, 0);}
+                    {setTimeout(function() { client.press("a4")}, 0);}
+                    {setTimeout(function() { client.press("as4")}, 0);}
+                    {setTimeout(function() { client.press("b4")}, 0);}
+                    {setTimeout(function() { client.press("c5")}, 0);}
+                    {setTimeout(function() { client.press("cs5")}, 0);}
+                    {setTimeout(function() { client.press("d5")}, 0);}
+                    {setTimeout(function() { client.press("ds5")}, 0);}
+                    {setTimeout(function() { client.press("e5")}, 0);}
+                    {setTimeout(function() { client.press("f5")}, 0);}
+                    {setTimeout(function() { client.press("fs5")}, 0);}
+                    {setTimeout(function() { client.press("g5")}, 0);}
+                    {setTimeout(function() { client.press("gs5")}, 0);}
+                    {setTimeout(function() { client.press("a5")}, 0);}
+                    {setTimeout(function() { client.press("as5")}, 0);}
+                    {setTimeout(function() { client.press("b5")}, 0);}
+                    {setTimeout(function() { client.press("c6")}, 0);}
+                    {setTimeout(function() { client.press("cs6")}, 0);}
+                    {setTimeout(function() { client.press("d6")}, 0);}
+                    {setTimeout(function() { client.press("ds6")}, 0);}
+                    {setTimeout(function() { client.press("e6")}, 0);}
+                    {setTimeout(function() { client.press("f6")}, 0);}
+                    {setTimeout(function() { client.press("fs6")}, 0);}
+                    {setTimeout(function() { client.press("g6")}, 0);}
+                    {setTimeout(function() { client.press("gs6")}, 0);}
+                    {setTimeout(function() { client.press("a6")}, 0);}
+                    {setTimeout(function() { client.press("as6")}, 0);}
+                    {setTimeout(function() { client.press("b6")}, 0);}
+                    {setTimeout(function() { client.press("c7")}, 0);}
+                    {setTimeout(function() { client.press("a-1")}, 0);}
+                    {setTimeout(function() { client.press("as-1")}, 0);}
+                    {setTimeout(function() { client.press("b-1")}, 0);}
+                    {setTimeout(function() { client.press("c0")}, 0);}
+                    {setTimeout(function() { client.press("cs0")}, 0);}
+                    {setTimeout(function() { client.press("d0")}, 0);}
+                    {setTimeout(function() { client.press("ds0")}, 0);}
+                    {setTimeout(function() { client.press("e0")}, 0);}
+                    {setTimeout(function() { client.press("f0")}, 0);}
+                    {setTimeout(function() { client.press("fs0")}, 0);}
+                    {setTimeout(function() { client.press("g0")}, 0);}
+                    {setTimeout(function() { client.press("gs0")}, 0);}
+                    {setTimeout(function() { client.press("a0")}, 0);}
+                    {setTimeout(function() { client.press("as0")}, 0);}
+                    {setTimeout(function() { client.press("b0")}, 0);}
+                    {setTimeout(function() { client.press("c1")}, 0);}
+                    {setTimeout(function() { client.press("cs1")}, 0);}
+                    {setTimeout(function() { client.press("d1")}, 0);}
+                    {setTimeout(function() { client.press("ds1")}, 0);}
+                    {setTimeout(function() { client.press("e1")}, 0);}
+                    {setTimeout(function() { client.press("f1")}, 0);}
+                    {setTimeout(function() { client.press("fs1")}, 0);}
+                    {setTimeout(function() { client.press("g1")}, 0);}
+                    {setTimeout(function() { client.press("gs1")}, 0);}
+                    {setTimeout(function() { client.press("a1")}, 0);}
+                    {setTimeout(function() { client.press("as1")}, 0);}
+                    {setTimeout(function() { client.press("b1")}, 0);}
+                    {setTimeout(function() { client.press("c2")}, 0);}
+                    {setTimeout(function() { client.press("cs2")}, 0);}
+                    {setTimeout(function() { client.press("d2")}, 0);}
+                    {setTimeout(function() { client.press("ds2")}, 0);}
+                    {setTimeout(function() { client.press("e2")}, 0);}
+                    {setTimeout(function() { client.press("f2")}, 0);}
+                    {setTimeout(function() { client.press("fs2")}, 0);}
+                    {setTimeout(function() { client.press("g2")}, 0);}
+                    {setTimeout(function() { client.press("gs2")}, 0);}
+                    {setTimeout(function() { client.press("a2")}, 0);}
+                    {setTimeout(function() { client.press("as2")}, 0);}
+                    {setTimeout(function() { client.press("b2")}, 0);}
+                    {setTimeout(function() { client.press("c3")}, 0);}
+                    {setTimeout(function() { client.press("cs3")}, 0);}
+                    {setTimeout(function() { client.press("d3")}, 0);}
+                    {setTimeout(function() { client.press("ds3")}, 0);}
+                    {setTimeout(function() { client.press("e3")}, 0);}
+                    {setTimeout(function() { client.press("f3")}, 0);}
+                    {setTimeout(function() { client.press("fs3")}, 0);}
+                    {setTimeout(function() { client.press("g3")}, 0);}
+                    {setTimeout(function() { client.press("gs3")}, 0);}
+                    {setTimeout(function() { client.press("a3")}, 0);}
+                    {setTimeout(function() { client.press("as3")}, 0);}
+                    {setTimeout(function() { client.press("b3")}, 0);}
+                    {setTimeout(function() { client.press("c4")}, 0);}
+                    {setTimeout(function() { client.press("cs4")}, 0);}
+                    {setTimeout(function() { client.press("d4")}, 0);}
+                    {setTimeout(function() { client.press("ds4")}, 0);}
+                    {setTimeout(function() { client.press("e4")}, 0);}
+                    {setTimeout(function() { client.press("f4")}, 0);}
+                    {setTimeout(function() { client.press("fs4")}, 0);}
+                    {setTimeout(function() { client.press("g4")}, 0);}
+                    {setTimeout(function() { client.press("gs4")}, 0);}
+                    {setTimeout(function() { client.press("a4")}, 0);}
+                    {setTimeout(function() { client.press("as4")}, 0);}
+                    {setTimeout(function() { client.press("b4")}, 0);}
+                    {setTimeout(function() { client.press("c5")}, 0);}
+                    {setTimeout(function() { client.press("cs5")}, 0);}
+                    {setTimeout(function() { client.press("d5")}, 0);}
+                    {setTimeout(function() { client.press("ds5")}, 0);}
+                    {setTimeout(function() { client.press("e5")}, 0);}
+                    {setTimeout(function() { client.press("f5")}, 0);}
+                    {setTimeout(function() { client.press("fs5")}, 0);}
+                    {setTimeout(function() { client.press("g5")}, 0);}
+                    {setTimeout(function() { client.press("gs5")}, 0);}
+                    {setTimeout(function() { client.press("a5")}, 0);}
+                    {setTimeout(function() { client.press("as5")}, 0);}
+                    {setTimeout(function() { client.press("b5")}, 0);}
+                    {setTimeout(function() { client.press("c6")}, 0);}
+                    {setTimeout(function() { client.press("cs6")}, 0);}
+                    {setTimeout(function() { client.press("d6")}, 0);}
+                    {setTimeout(function() { client.press("ds6")}, 0);}
+                    {setTimeout(function() { client.press("e6")}, 0);}
+                    {setTimeout(function() { client.press("f6")}, 0);}
+                    {setTimeout(function() { client.press("fs6")}, 0);}
+                    {setTimeout(function() { client.press("g6")}, 0);}
+                    {setTimeout(function() { client.press("gs6")}, 0);}
+                    {setTimeout(function() { client.press("a6")}, 0);}
+                    {setTimeout(function() { client.press("as6")}, 0);}
+                    {setTimeout(function() { client.press("b6")}, 0);}
+                    {setTimeout(function() { client.press("c7")}, 0);}
+                    {setTimeout(function() { client.press("a-1")}, 0);}
+                    {setTimeout(function() { client.press("as-1")}, 0);}
+                    {setTimeout(function() { client.press("b-1")}, 0);}
+                    {setTimeout(function() { client.press("c0")}, 0);}
+                    {setTimeout(function() { client.press("cs0")}, 0);}
+                    {setTimeout(function() { client.press("d0")}, 0);}
+                    {setTimeout(function() { client.press("ds0")}, 0);}
+                    {setTimeout(function() { client.press("e0")}, 0);}
+                    {setTimeout(function() { client.press("f0")}, 0);}
+                    {setTimeout(function() { client.press("fs0")}, 0);}
+                    {setTimeout(function() { client.press("g0")}, 0);}
+                    {setTimeout(function() { client.press("gs0")}, 0);}
+                    {setTimeout(function() { client.press("a0")}, 0);}
+                    {setTimeout(function() { client.press("as0")}, 0);}
+                    {setTimeout(function() { client.press("b0")}, 0);}
+                    {setTimeout(function() { client.press("c1")}, 0);}
+                    {setTimeout(function() { client.press("cs1")}, 0);}
+                    {setTimeout(function() { client.press("d1")}, 0);}
+                    {setTimeout(function() { client.press("ds1")}, 0);}
+                    {setTimeout(function() { client.press("e1")}, 0);}
+                    {setTimeout(function() { client.press("f1")}, 0);}
+                    {setTimeout(function() { client.press("fs1")}, 0);}
+                    {setTimeout(function() { client.press("g1")}, 0);}
+                    {setTimeout(function() { client.press("gs1")}, 0);}
+                    {setTimeout(function() { client.press("a1")}, 0);}
+                    {setTimeout(function() { client.press("as1")}, 0);}
+                    {setTimeout(function() { client.press("b1")}, 0);}
+                    {setTimeout(function() { client.press("c2")}, 0);}
+                    {setTimeout(function() { client.press("cs2")}, 0);}
+                    {setTimeout(function() { client.press("d2")}, 0);}
+                    {setTimeout(function() { client.press("ds2")}, 0);}
+                    {setTimeout(function() { client.press("e2")}, 0);}
+                    {setTimeout(function() { client.press("f2")}, 0);}
+                    {setTimeout(function() { client.press("fs2")}, 0);}
+                    {setTimeout(function() { client.press("g2")}, 0);}
+                    {setTimeout(function() { client.press("gs2")}, 0);}
+                    {setTimeout(function() { client.press("a2")}, 0);}
+                    {setTimeout(function() { client.press("as2")}, 0);}
+                    {setTimeout(function() { client.press("b2")}, 0);}
+                    {setTimeout(function() { client.press("c3")}, 0);}
+                    {setTimeout(function() { client.press("cs3")}, 0);}
+                    {setTimeout(function() { client.press("d3")}, 0);}
+                    {setTimeout(function() { client.press("ds3")}, 0);}
+                    {setTimeout(function() { client.press("e3")}, 0);}
+                    {setTimeout(function() { client.press("f3")}, 0);}
+                    {setTimeout(function() { client.press("fs3")}, 0);}
+                    {setTimeout(function() { client.press("g3")}, 0);}
+                    {setTimeout(function() { client.press("gs3")}, 0);}
+                    {setTimeout(function() { client.press("a3")}, 0);}
+                    {setTimeout(function() { client.press("as3")}, 0);}
+                    {setTimeout(function() { client.press("b3")}, 0);}
+                    {setTimeout(function() { client.press("c4")}, 0);}
+                    {setTimeout(function() { client.press("cs4")}, 0);}
+                    {setTimeout(function() { client.press("d4")}, 0);}
+                    {setTimeout(function() { client.press("ds4")}, 0);}
+                    {setTimeout(function() { client.press("e4")}, 0);}
+                    {setTimeout(function() { client.press("f4")}, 0);}
+                    {setTimeout(function() { client.press("fs4")}, 0);}
+                    {setTimeout(function() { client.press("g4")}, 0);}
+                    {setTimeout(function() { client.press("gs4")}, 0);}
+                    {setTimeout(function() { client.press("a4")}, 0);}
+                    {setTimeout(function() { client.press("as4")}, 0);}
+                    {setTimeout(function() { client.press("b4")}, 0);}
+                    {setTimeout(function() { client.press("c5")}, 0);}
+                    {setTimeout(function() { client.press("cs5")}, 0);}
+                    {setTimeout(function() { client.press("d5")}, 0);}
+                    {setTimeout(function() { client.press("ds5")}, 0);}
+                    {setTimeout(function() { client.press("e5")}, 0);}
+                    {setTimeout(function() { client.press("f5")}, 0);}
+                    {setTimeout(function() { client.press("fs5")}, 0);}
+                    {setTimeout(function() { client.press("g5")}, 0);}
+                    {setTimeout(function() { client.press("gs5")}, 0);}
+                    {setTimeout(function() { client.press("a5")}, 0);}
+                    {setTimeout(function() { client.press("as5")}, 0);}
+                    {setTimeout(function() { client.press("b5")}, 0);}
+                    {setTimeout(function() { client.press("c6")}, 0);}
+                    {setTimeout(function() { client.press("cs6")}, 0);}
+                    {setTimeout(function() { client.press("d6")}, 0);}
+                    {setTimeout(function() { client.press("ds6")}, 0);}
+                    {setTimeout(function() { client.press("e6")}, 0);}
+                    {setTimeout(function() { client.press("f6")}, 0);}
+                    {setTimeout(function() { client.press("fs6")}, 0);}
+                    {setTimeout(function() { client.press("g6")}, 0);}
+                    {setTimeout(function() { client.press("gs6")}, 0);}
+                    {setTimeout(function() { client.press("a6")}, 0);}
+                    {setTimeout(function() { client.press("as6")}, 0);}
+                    {setTimeout(function() { client.press("b6")}, 0);}
+                    {setTimeout(function() { client.press("c7")}, 0);}
+                    {setTimeout(function() { client.press("a-1")}, 0);}
+                    {setTimeout(function() { client.press("as-1")}, 0);}
+                    {setTimeout(function() { client.press("b-1")}, 0);}
+                    {setTimeout(function() { client.press("c0")}, 0);}
+                    {setTimeout(function() { client.press("cs0")}, 0);}
+                    {setTimeout(function() { client.press("d0")}, 0);}
+                    {setTimeout(function() { client.press("ds0")}, 0);}
+                    {setTimeout(function() { client.press("e0")}, 0);}
+                    {setTimeout(function() { client.press("f0")}, 0);}
+                    {setTimeout(function() { client.press("fs0")}, 0);}
+                    {setTimeout(function() { client.press("g0")}, 0);}
+                    {setTimeout(function() { client.press("gs0")}, 0);}
+                    {setTimeout(function() { client.press("a0")}, 0);}
+                    {setTimeout(function() { client.press("as0")}, 0);}
+                    {setTimeout(function() { client.press("b0")}, 0);}
+                    {setTimeout(function() { client.press("c1")}, 0);}
+                    {setTimeout(function() { client.press("cs1")}, 0);}
+                    {setTimeout(function() { client.press("d1")}, 0);}
+                    {setTimeout(function() { client.press("ds1")}, 0);}
+                    {setTimeout(function() { client.press("e1")}, 0);}
+                    {setTimeout(function() { client.press("f1")}, 0);}
+                    {setTimeout(function() { client.press("fs1")}, 0);}
+                    {setTimeout(function() { client.press("g1")}, 0);}
+                    {setTimeout(function() { client.press("gs1")}, 0);}
+                    {setTimeout(function() { client.press("a1")}, 0);}
+                    {setTimeout(function() { client.press("as1")}, 0);}
+                    {setTimeout(function() { client.press("b1")}, 0);}
+                    {setTimeout(function() { client.press("c2")}, 0);}
+                    {setTimeout(function() { client.press("cs2")}, 0);}
+                    {setTimeout(function() { client.press("d2")}, 0);}
+                    {setTimeout(function() { client.press("ds2")}, 0);}
+                    {setTimeout(function() { client.press("e2")}, 0);}
+                    {setTimeout(function() { client.press("f2")}, 0);}
+                    {setTimeout(function() { client.press("fs2")}, 0);}
+                    {setTimeout(function() { client.press("g2")}, 0);}
+                    {setTimeout(function() { client.press("gs2")}, 0);}
+                    {setTimeout(function() { client.press("a2")}, 0);}
+                    {setTimeout(function() { client.press("as2")}, 0);}
+                    {setTimeout(function() { client.press("b2")}, 0);}
+                    {setTimeout(function() { client.press("c3")}, 0);}
+                    {setTimeout(function() { client.press("cs3")}, 0);}
+                    {setTimeout(function() { client.press("d3")}, 0);}
+                    {setTimeout(function() { client.press("ds3")}, 0);}
+                    {setTimeout(function() { client.press("e3")}, 0);}
+                    {setTimeout(function() { client.press("f3")}, 0);}
+                    {setTimeout(function() { client.press("fs3")}, 0);}
+                    {setTimeout(function() { client.press("g3")}, 0);}
+                    {setTimeout(function() { client.press("gs3")}, 0);}
+                    {setTimeout(function() { client.press("a3")}, 0);}
+                    {setTimeout(function() { client.press("as3")}, 0);}
+                    {setTimeout(function() { client.press("b3")}, 0);}
+                    {setTimeout(function() { client.press("c4")}, 0);}
+                    {setTimeout(function() { client.press("cs4")}, 0);}
+                    {setTimeout(function() { client.press("d4")}, 0);}
+                    {setTimeout(function() { client.press("ds4")}, 0);}
+                    {setTimeout(function() { client.press("e4")}, 0);}
+                    {setTimeout(function() { client.press("f4")}, 0);}
+                    {setTimeout(function() { client.press("fs4")}, 0);}
+                    {setTimeout(function() { client.press("g4")}, 0);}
+                    {setTimeout(function() { client.press("gs4")}, 0);}
+                    {setTimeout(function() { client.press("a4")}, 0);}
+                    {setTimeout(function() { client.press("as4")}, 0);}
+                    {setTimeout(function() { client.press("b4")}, 0);}
+                    {setTimeout(function() { client.press("c5")}, 0);}
+                    {setTimeout(function() { client.press("cs5")}, 0);}
+                    {setTimeout(function() { client.press("d5")}, 0);}
+                    {setTimeout(function() { client.press("ds5")}, 0);}
+                    {setTimeout(function() { client.press("e5")}, 0);}
+                    {setTimeout(function() { client.press("f5")}, 0);}
+                    {setTimeout(function() { client.press("fs5")}, 0);}
+                    {setTimeout(function() { client.press("g5")}, 0);}
+                    {setTimeout(function() { client.press("gs5")}, 0);}
+                    {setTimeout(function() { client.press("a5")}, 0);}
+                    {setTimeout(function() { client.press("as5")}, 0);}
+                    {setTimeout(function() { client.press("b5")}, 0);}
+                    {setTimeout(function() { client.press("c6")}, 0);}
+                    {setTimeout(function() { client.press("cs6")}, 0);}
+                    {setTimeout(function() { client.press("d6")}, 0);}
+                    {setTimeout(function() { client.press("ds6")}, 0);}
+                    {setTimeout(function() { client.press("e6")}, 0);}
+                    {setTimeout(function() { client.press("f6")}, 0);}
+                    {setTimeout(function() { client.press("fs6")}, 0);}
+                    {setTimeout(function() { client.press("g6")}, 0);}
+                    {setTimeout(function() { client.press("gs6")}, 0);}
+                    {setTimeout(function() { client.press("a6")}, 0);}
+                    {setTimeout(function() { client.press("as6")}, 0);}
+                    {setTimeout(function() { client.press("b6")}, 0);}
+                    {setTimeout(function() { client.press("c7")}, 0);}
                 } else {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
@@ -1911,26 +1902,26 @@ client.on('a', msg => {
                 }
             } else if (cmd == '/wave') {
                 if (isNoble == true || isKing == true) {
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 70)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 65)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 60)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 55)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 50)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 70)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 65)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 60)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 55)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 50)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 70)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 65)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 60)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 55)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 50)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 70)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 65)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 60)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 55)});
-                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {MPP.press(key,1)}, t++ * 50)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 70)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 65)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 60)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 55)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 50)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 70)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 65)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 60)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 55)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 50)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 70)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 65)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 60)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 55)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 50)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 70)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 65)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 60)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 55)});
+                    t=0; Object.keys(MPP.piano.keys).forEach(function(key) {setTimeout(function () {client.press(key,1)}, t++ * 50)});
                 } else {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
