@@ -12,8 +12,9 @@ client.on("hi", () => {
     // Log a message in the console
     console.log("Online");
 
-    // Go into a channel
-    client.setChannel("Karl's Room");
+	// Go into a channel
+	var room = "Karl's Room";
+    client.setChannel(room);
 
     // Showing that the bot is ready
     setTimeout(() => {
@@ -44,7 +45,6 @@ function sendchat(string){
     client.sendArray([{ m:'a', message:string }]);
 }
 
-var room = "Karl's Room";
 
 var Kings = [
     "0236f354fc5685c5bd18f152", // Karl Marx
