@@ -1758,10 +1758,10 @@ client.on("participant added", function (part) {
     var isKing = (Kings.indexOf(part._id) !== -1);
     var isNoble = (Nobles.indexOf(part._id) !== -1);
     var isKnight = (Knights.indexOf(part._id) !== -1);
-    if (isKnight == true || isNoble == true || isKing == true) {
+     if (!Kings.includes(part._id) || !Knights.includes(part._id) || !Nobles.includes(part._id)) {
         if(client.isOwner()) {
             if(lock == true) {
-                kickban(p, 30*60*1000); // ban id if on blacklist
+                client.sendArray([{m:"kickban", _id: part._id, ms: 30 * 60 * 1000}]);
                 window.dataBase = {"totalnames":0};
             }
         }
