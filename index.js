@@ -30,7 +30,7 @@ var id_whitelist = ["0236f354fc5685c5bd18f152",
 
 var lock = false;
 
-if (Object.keys(client.ppl).length < 20) {
+if (Object.keys(client.ppl).length > 20) {
     sendchat("Exceded 20 users, room is locked.");
     lock = true;
 };
