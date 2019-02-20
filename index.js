@@ -2667,5 +2667,5 @@ TasteArray = ["tasted like dirt",
               "was very greasy",
               "was covered in may-o"
              ]
-document.getElementById("piano").style.opacity = 0.1;
+
 
