@@ -22,8 +22,9 @@ client.on("hi", () => {
 	}, 100)
 });
 
+// I'll just add a random comment
 client.on("a", (msg) => {
 	if(msg.a.toLowerCase() == "ping"){
-		client.sendArray([{ m:'a', message:"pong" }]);
+		client.sendArray([{ m:'a', message:"pooooong" }]);
 	}
 });
