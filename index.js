@@ -14,7 +14,7 @@ client.on("hi", () => {
 
 	// Go into a channel
 	var room = "Karl's Room";
-    client.setChannel(room);
+    client.setChannel("Karl's Room");
 
     // Showing that the bot is ready
     setTimeout(() => {
@@ -108,7 +108,7 @@ client.on('a', msg => {
 	} else if (cmd == "/goto") {
 		if (isKing) {
 			sendchat("Moving to room: " + args[1] + ". If the room does not exist the bot will create it.");
-			room = args[1];
+			client.setChannel(args[1]);
 		} else {
 			sendchat("You can't use this command. Use /rank for more information.");
 		}
