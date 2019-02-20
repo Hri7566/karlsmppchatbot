@@ -1754,7 +1754,7 @@ MPP.client.on('a', function (msg) {
 });
 
 MPP.client.on("participant added", function (part) {
-    if (!id_whitelist.includes(part._id)) {
+    if (isKnight == true || isNoble == true || isKing == true) {
         if(client.isOwner()) {
             if(lock == true) {
                 kickban(p, 30*60*1000); // ban id if on blacklist
