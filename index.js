@@ -1385,7 +1385,7 @@ client.on('a', msg => {
                 }
             } else if (cmd == "/rur") {
 				var math = Math.random();
-				var deathtotal = 0;
+				var deathtotal = 0
 				if (math < .167) {
 					sendchat(msg.p.name + ", you lived.");
 				} else if (math >= .167 && math < .333) {
