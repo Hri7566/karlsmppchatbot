@@ -1,5 +1,5 @@
 // Import Client.js
-const MPPClient = require("./Client.js");
+const MPPClient = require("./client.js");
 
 // Creation of the bot that will connect to MPP
 client = new MPPClient('ws://multiplayerpiano.com', undefined);
