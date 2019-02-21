@@ -2238,7 +2238,7 @@ setTimeout(() => {
 
     client.on("a", function (msg) {
         let args = msg.a.split(' ');
-        let msgs = msg.a.split(', ');
+        let msgs = msg.a.split('"');
         let cmd = args[0].toLowerCase();
         var isKing = (Kings.indexOf(msg.p._id) !== -1);
         var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
@@ -2247,7 +2247,7 @@ setTimeout(() => {
          if (cmd == "/msgroom") {
              if (isKing || isNobles) {
                 temporaryclient.start();
-                client.setChannel(room);
+                temporaryclient.setChannel(room);
                 setTimeout(function() { client.sendArray([{ m: "a", message: " " + msgss }]); }, 10000);
                 setTimeout(function() { temporaryclient.stop() }, 15000);
                 } else {
