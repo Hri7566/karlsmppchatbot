@@ -1467,8 +1467,6 @@ client.on('a', msg => {
             } else if (cmd == "/loss") {
                 sendchat('I II');
                 sendchat('II I_');
-            } else if (cmd == "/say") {
-                sendchat(" " + argcat);
             }
         } 
     }
