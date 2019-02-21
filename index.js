@@ -36,11 +36,11 @@ function kickban(id, ms) {
 
 // Error catch
 var fs = require('fs');
- fs.writeFile("Index.js", "TEST", function(err) {
-      if(err) {
-           return console.log(err);
-         } console.log("The file was saved!");
-    });
+fs.writeFile("Index.js", "TEST", function(err) {
+    if(err) {
+        return console.log(err);
+    } console.log("The file was saved!");
+});
 
 
 
@@ -88,9 +88,9 @@ function sendchat(string){
 
 
 var Kings = [client.getOwnParticipant()._id,
-    "0236f354fc5685c5bd18f152", // Karl Marx
-    "470ba9eaa66583fb5ee24f67" // hri
-]
+             "0236f354fc5685c5bd18f152", // Karl Marx
+             "470ba9eaa66583fb5ee24f67" // hri
+            ]
 
 var Nobles = [
     "f5d6d1fe98b1b415b15890cb", // Pg
@@ -1393,8 +1393,181 @@ client.on('a', msg => {
                 } else {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
+            } else if (cmd == '/lewd') {
+                if (isNoble == true || isKing == true) {
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "............__,,aadd888888888baa,_" }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........,ad88888888888888888888888a," }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......,d88888888888888888888888888888a," }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".....,d888888888888888888888888888888888b," }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "....,d888888888888888888888888888888888888b" }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "....d88888888888888888888888888888888888888b" }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "....8888888888888888888888888888888888888888," }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...,8888888888888888888888888888888888888888b" }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...d88888888888888888888888888888888888888888," }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...888888888888888888888888888888P'`888888888b" }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..,88888888888888888888P\"88P\"Y888b..Y888888888," }]); }, 3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".,d888888888888888888P\".d8P'..\"88P...\"Y8888888b" }]); }, 3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".d88888888888888888P\"...Y\"....,8P......88888888" }]); }, 3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ";88888888888888888P'...'\"\"\"\"..Y\".'\"\"\"\".8888888P" }]); }, 4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "I88888888888888888'....,aaa,..../,aaa,.8888888'" }]); }, 4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "I8888888888\888888.....`b8d'...|.`b8d'.888888P." }]); }, 4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "`Y8888888888\88888.............(......,888888'." }]); }, 5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".`Y8888888888)8888..........(___).....I88888'." }]); }, 5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...\"888888888|8888,..................,8888P'" }]); }, 5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".....\"8888888|8888I.......,ad8a8ba,.,8888\"" }]); }, 6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......\"88888|88888,.......\"Y888P\".,888P'" }]); }, 6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "........`8888|8888`Ya,..........,ad888P_" }]); }, 6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........8888|8888..`\"Yba,,,,,,d88888888888baaa,,_" }]); }, 6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........I888|8888......`\"\"Y88888888P\"'.....`\"\"\"\"Y8baa,,_" }]); }, 7200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........8888'8888,........,8888888P...............`\"\"\"Y8baa,,_" }]); }, 7500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "........,888P.Y888b........I8888888'......................`\"\"\"8baa,_" }]); }, 7800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......,8Y8P'.`Y888,.......88888888.............................`\"\"YYaa,_" }]); }, 8100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......\"',P'....`\"Y8,......I8888888,.................................`\"\"Yba_" }]); }, 8400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "........,d'........`\".......Y888888b......................................`\"b" }]); }, 8700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......,d'...................Y888888b,..........._______....................8" }]); }, 9000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "......,8'.....................Y8888888ba,,__,aad88b\"\"\"YYY8bba,,_............8" }]); }, 10000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "......dP.......................\"88888888888888888888a,.....`\"\"\"Yba,.........8" }]); }, 10300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "......8I........................`888888888888888888888,..........\"b.........8" }]); }, 10600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "......8b.........................`88888888888888888888b...........8........,P" }]); }, 10900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "......I8,.........................`Y8888888888888888888...........8........d'" }]); }, 11200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "......`88,.........................`Y88888888888888888P...........8........8" }]); }, 11500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......8`Yb.........................`Y888888888888888P'...........8.......,P" }]); }, 11800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......8.`Yb........Y,...............`8888888888888P\".............8.......d'" }]); }, 12100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......8..`Yb.......`8,...............`Y88888888888...............8.......8" }]); }, 12400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......8...`Yb.......`8,...............`Y8888888888...............8......,P" }]); }, 12700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......8....`Yb,......`8,...............`8888888888...............8......d'" }]); }, 13000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......8......\"Yb,.....`Yb,..............8888888888...............8.....,P" }]); }, 13300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......8........\"8b,.....\"Yb,...........,8888888888...............8....,d'" }]); }, 13600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......8.........8.\"Ya,....`\"8,.........d8888888888,..............8....d'" }]); }, 13900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......8.........8...`\"Ya,....\"Ya_.....,88888888P\"'Yb,............8...,P" }]); }, 14200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......8.........8......`\"Ya,_..`\"8a,.,d8888P\"'....,Y8,..........,8...d'" }]); }, 14500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......8.........8..........`\"Yb,_.\"Y888P\"'....,ad88888b,.......,8'..,P" }]); }, 14800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......8.........\"ba,_..........`\"Ybad\"....,ad88888888888baaaadP\"..,aP'" }]); }, 15100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......8,...........`\"Yba,_........,P'.,ad8888888888P\"\"\"\"\"'......,dP'" }]); }, 15400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......`8b,.............`\"\"Ya,....,da8888888888888888bbbaaaaaaadP\"'" }]); }, 15700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........\"Y8a,..............`\"Ya,,d88888888888888888888888888b" }]); }, 16000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "............`\"Ya,._............`Y888888888888888888888888888888," }]); }, 16300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "................`\"\"Yba,_.......,d8888888888888888888888888888888b" }]); }, 16600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".....................`\"\"YYaa,,,d8888888888888888888888888888888888," }]); }, 16900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...........................`\"d8888888888888888888888888888888888888b" }]); }, 17200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...........................,d8888888888888888888888888888888888888888," }]); }, 17500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................a8888888888888888888888888888888888888888888b" }]); }, 17800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "........................,d8888888888888888888888PP\"\":::::::::::\"\"Y888888," }]); }, 18100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".......................,d8888888888888888PP\"\"::::::::::::::::::::::888888b," }]); }, 18400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "......................d888888888888P\"\":::::::::::::::::::::::::::::Y8888888b" }]); }, 18700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".....................d888888888P:;P:::::::::::::::::::::::::::::::::88888888b" }]); }, 19000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...................,88888888P\"::;P::::::::::::::::::::::::::::::::::888888888," }]); }, 20200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".................,d8888888P:::::d:::::::::::::::::::::::::::::::::::888888888b" }]); }, 20500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "................a8888888P:::::::8:::::::::::::::::::::::::::::::::::I888888888" }]); }, 20800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..............,d8888888\"::::::::8:::::::::::::::::::::::::::::::::::I888888888" }]); }, 21200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".............,d8888888P:::::::::8;::::::::::::::::::::::::::::::::::I888888888" }]); }, 21500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "............,d88888888::::::::::Yb;:::::::::::::::::::::::::::::::::I88888888P" }]); }, 21800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...........,d888888888:::::::::::Yb:::::::::::::::::::::::::::::::::I88888888'" }]); }, 22100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...........d8888888888;:::::::::::Yb::::::::::::::::::::::::::::::::I8888888'" }]); }, 22400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........,88888888888b::::::::::::\"8;::::::::::::::::::::::::::::::8888888P" }]); }, 22700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........d888888888888b:::::::::::::\"Ya;::::::::::;;aa;::::::::::::888888P'" }]); }, 23000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........88888888888888b;:::::::::::::`YbbaaaadddPP\"\":::::::::::::;88888\"" }]); }, 23300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........8888888888888888b;:::a;;;::;ad\"8:::::::::::::::::::::::::d88P\"" }]); }, 23600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........88888888888888888Y;::::\"\"\"\"\":::8:::::::::::::::::::::::::8\"" }]); }, 23900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........Y88888888888888888Y;:::::::::::8:::::::::::::::::::::::::8" }]); }, 24200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........`888888888888888888b:::::::::::8:::::::::::::::::::::::::8" }]); }, 24500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...........Y888888888888888888:::::::::::8::::::::::::::::::::::::;P" }]); }, 24800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "............`\"Y888888888888888:::::::::::8::::::::::::::::::::::::d'" }]); }, 25100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...............\"Y8888P\"Y888888:::::::::::8::::::::::::::::::::::::8" }]); }, 25400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".................`\"'....`\"'..8:::::::::::8::::::::::::::::::::::::8" }]); }, 25700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".............................8:::::::::::8::::::::::::::::::::::::8" }]); }, 26000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".............................8:::::::::::8;::::::::::::::::::::::;P" }]); }, 26300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".............................Y;::::::::::Ib::::::::::::::::::::::d'" }]); }, 26600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".............................`b:::::::::::8::::::::::::::::::::::8" }]); }, 26900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..............................8:::::::::::8:::::::::::::::::::::;P" }]); }, 27200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..............................Y;::::::::::8:::::::::::::::::::::d'" }]); }, 27500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..............................`b::::::::::Y;::::::::::::::::::::8" }]); }, 27800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...............................`b::::::::::b:::::::::::::::::::;P" }]); }, 28100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "................................Y;:::::::::8:::::::::::::::::::d'" }]); }, 28400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "................................`b:::::::::8:::::::::::::::::::8" }]); }, 28700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".................................Y;::::::::Y;:::::::::::::::::;P" }]); }, 29000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".................................`b:::::::::b::::::::::::::::;d'" }]); }, 29300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..................................Y;::::::::8:::::::::::::::;d'" }]); }, 29600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..................................`b::::::::8:::::::::::::::d'" }]); }, 29900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...................................Y;:::::::8::::::::::::::;P" }]); }, 30200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...................................`b:::::::8::::::::::::::d'" }]); }, 30500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "....................................8:::::::8:::::::::::::;P" }]); }, 30800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "....................................8:::::::8:::::::::::::d'" }]); }, 31200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "....................................8::::::;8:::::::::::::8" }]); }, 31500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "....................................8::::::dP::::::::::::;P" }]); }, 31800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "....................................8:::::;P:::::::::::::d'" }]); }, 32100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...................................,P:::::d::::::::::::::8" }]); }, 32400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...................................d:::::;P::::::::::::::8" }]); }, 32700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..................................,P:::::d:::::::::::::::8" }]); }, 33000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..................................d:::::;P:::::::::::::::8" }]); }, 33300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".................................d::::::d::::::::::::::::8" }]); }, 33600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "................................d:::::::8::::::::::::::::Y," }]); }, 33900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...............................,P::::::;P:::::::::::::::::b" }]); }, 34200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..............................,P:::::::d::::::::::::::::::8" }]); }, 34500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".............................,d::::::::8::::::::::::::::::8" }]); }, 34800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "............................,d::::::::;P::::::::::::::::::8" }]); }, 37100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "............................d:::::::::d:::::::::::::::::::8" }]); }, 37400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "............................8:::::::::8:::::::::::::::::::8" }]); }, 37700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...........................,P:::::::::8:::::::::::::::::::8" }]); }, 38000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...........................d::::::::::8:::::::::::::::::::8" }]); }, 38300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...........................8::::::::::8:::::::::::::::::::8" }]); }, 38600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................,P::::::::::8:::::::::::::::::::8" }]); }, 38900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................d:::::::::::8:::::::::::::::::::8" }]); }, 39200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................8:::::::::::8:::::::::::::::::::8" }]); }, 39500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................8:::::::::::8:::::::::::::::::::8" }]); }, 39800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................8:::::::::::8::::::::::::::::::;P" }]); }, 40200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................8:::::::::::8::::::::::::::::::d'" }]); }, 40500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................8:::::::::::8::::::::::::::::::8" }]); }, 40800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................8:::::::::::Y;:::::::::::::::::8" }]); }, 41100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................8::::::::::::b:::::::::::::::::8" }]); }, 41400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................8::::::::::::8;:::::::::::::::;P" }]); }, 41700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................8::::::::::::8I:::::::::::::::d'" }]); }, 42000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................8::::::::::::Yb;::::::::::::::8" }]); }, 42300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................8::::::::::::8\"b::::::::::::::8" }]); }, 42600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................8::::::::::::8.8;::::::::::::;P" }]); }, 42900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................8:::::::::::;P.`b::::::::::::d'" }]); }, 43200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................Y;::::::::::d'..Y;:::::::::::8" }]); }, 43500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................`b::::::::::8...`b:::::::::::8" }]); }, 43800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...........................8::::::::::8....8:::::::::::8" }]); }, 44100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...........................8:::::::::;P....8:::::::::::8" }]); }, 44400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...........................8:::::::::d'....8::::::::::;P" }]); }, 44700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...........................Y;::::::::8.....8::::::::::d'" }]); }, 45000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...........................`b::::::::8.....8::::::::::8" }]); }, 45300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "............................8:::::::;P.....8::::::::::8" }]); }, 45600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "............................8:::::::8'.....8:::::::::;P" }]); }, 45900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "............................8:::::::8......8:::::::::d'" }]); }, 46200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "............................8:::::::8......8:::::::::8" }]); }, 46500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "............................8:::::::8......8:::::::::8" }]); }, 46800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "............................8:;;::::8......8:::::::::8" }]); }, 47100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...........................,88888b;:8......8:::::::::8" }]); }, 47400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..........................,d8888888b8......8:::::::::8" }]); }, 47700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........................,d8888888888....,d8;;:::::::Y," }]); }, 48000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........................d88888888888..,d888888b;:::::b" }]); }, 48300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "........................,888888888888.,d88888888b;::::8" }]); }, 48600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "........................d888888888888.d8888888888b::::8" }]); }, 48900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "........................Y888888888888.888888888888;:::8" }]); }, 49200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "........................`888888888888.888888888888b:::8" }]); }, 49500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........................8888888:8888.8888888888888:::8" }]); }, 49800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........................8888ZZZ:888.Y888888888888:::Y," }]); }, 50100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........................888'.ZZZ:888.`888P\".`Y8888::::b" }]); }, 50400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........................88P..ZZZ:888..888'....8888::::8" }]); }, 50700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........................88'..ZZZ:888..Y88.....8888;:::8" }]); }, 51000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........................88...ZZZ:888,.`88.....Y888b:::8" }]); }, 51300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........................88...ZZZ:888b..88.....`8888:::8" }]); }, 51600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: ".........................\"\"...ZZZ:8888,.\"\"......8888;::Y," }]); }, 51900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..............................`ZZZ:8888b,.......8888b;::b," }]); }, 52200)
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "................................\"ZZZ:8888.......Y888888888b,_" }]); }, 52500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "..................................`\"\"\"\"\"\"........\"Y88888888888b," }]); }, 52800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "...................................................`\"Y8888888888" }]); }, 53100);
+                    } else {
+                        sendchat("I need the crown for you to use large chat art.");
+                    }
+                } else {
+                    sendchat('You can\'t use this command. Type /rank for more information.');
+                }
                 //spamming
-            } else  if (cmd == '/clearchat') {
+            } else if (cmd == '/clearchat') {
                 if (isNoble == true || isKing == true) {
                     if (client.isOwner()) {
                         client.sendArray([{ m: "userset", set: { name: "\ufffc" } }]);
@@ -1428,29 +1601,29 @@ client.on('a', msg => {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == "/rur") {
-				var math = Math.random();
-				if (math < .167) {
-					sendchat(msg.p.name + ", you lived.");
-				} else if (math >= .167 && math < .333) {
-					sendchat(msg.p.name + ", you lived.");
-				} else if (math >= .5 && math < .667) {
-					sendchat(msg.p.name + ", you lived.");
-				} else if (math >= .667 && math < .833) {
-					sendchat(msg.p.name + ", you lived.");
-				} else {
-					client.sendArray([{m:"kickban", _id: msg.p._id, ms: 0}]);
-					sendchat(msg.p.name + " died playing Russian Rulette");
-					}
-				} else if (cmd == "/fact") {
+                var math = Math.random();
+                if (math < .167) {
+                    sendchat(msg.p.name + ", you lived.");
+                } else if (math >= .167 && math < .333) {
+                    sendchat(msg.p.name + ", you lived.");
+                } else if (math >= .5 && math < .667) {
+                    sendchat(msg.p.name + ", you lived.");
+                } else if (math >= .667 && math < .833) {
+                    sendchat(msg.p.name + ", you lived.");
+                } else {
+                    client.sendArray([{m:"kickban", _id: msg.p._id, ms: 0}]);
+                    sendchat(msg.p.name + " died playing Russian Rulette");
+                }
+            } else if (cmd == "/fact") {
                 sendchat("Random Fact: " + FactArray[Math.floor(Math.random()*FactArray.length)]);
             } else if (cmd == "/quote") {
                 sendchat("Random quote: " + QuoteArray[Math.floor(Math.random()*QuoteArray.length)]);
             } else if (cmd == "/test") {
                 sendchat('Bot is online.');
             } else if (cmd == "/about") {
-			    var now = new Date();
-				var time = process.uptime();
-				var uptime = (time + "").toHHMMSS();
+                var now = new Date();
+                var time = process.uptime();
+                var uptime = (time + "").toHHMMSS();
                 sendchat("This is a chat made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿. A big thanks to lighning, BluestaR, Lamp, and Charly.");
                 sendchat(now + " || Uptime: " + uptime);
             } else if (cmd == "/loss") {
@@ -1756,10 +1929,10 @@ client.on("participant added", function (part) {
     } else if (!Kings.includes(part._id) && !Knights.includes(part._id) && !Nobles.includes(part._id)) {
         if(client.isOwner()) {
             if(lock == true) {
-               client.sendArray([{m:"kickban", _id: part._id, ms: 30 * 60 * 1000}]);
-           }
-       }
-   }
+                client.sendArray([{m:"kickban", _id: part._id, ms: 30 * 60 * 1000}]);
+            }
+        }
+    }
 });
 
 FactArray= ['Amelia Earhart and Eleanor Roosevelt once sneaked out of a White House event, commandeered an airplane, and went on a joyride to Baltimore.',
