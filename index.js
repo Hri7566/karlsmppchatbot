@@ -1468,7 +1468,7 @@ client.on("a", function (msg) {
     let msgs = msg.a.split(', ');
     let cmd = args[0].toLowerCase();
     var room = args[1];
-    var message = msgs[0];
+    var msgss = msgs[1];
     var isKing = (Kings.indexOf(msg.p._id) !== -1);
     var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
      if (cmd == "/msgroom") {
@@ -1476,6 +1476,9 @@ client.on("a", function (msg) {
              home = client.channel._id
              client.setChannel(room);
              sendchat(" " + message);
+             setTimeout(function() { client.sendArray([{ m: "a", message: " " + msgss }]); }, 500);
+            } else {
+                sendchat("You can't use this command. Use /rank for more information.")
             }
       }
 });
