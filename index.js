@@ -2227,14 +2227,7 @@ TasteArray = ["tasted like dirt",
               "was covered in may-o"
              ]
 
-const tempclient = require("./Tempclient.js")
 
-var temporaryclient = new MPPClient('ws://multiplayerpiano.com', undefined);
-
- 
-setTimeout(() => {
-        client.sendArray([{ m:'userset', set:{name:"Ṃᾄʀẋ☭Bot ❤"} }]);
-    }, 100);
     client.on("a", function (msg) {
         let args = msg.a.split(' ');
         let msgs = msg.a.split('"');
@@ -2243,7 +2236,7 @@ setTimeout(() => {
         var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
          if (cmd == "/msgroom") {
              if (isKing || isNobles) {
-                tempclient.msgroom
+                tempclient.msgroom();
                 } else {
                     sendchat("You can't use this command. Use /rank for more information.");
                 }
