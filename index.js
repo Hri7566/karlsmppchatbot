@@ -106,6 +106,10 @@ var Knights = [
 var blacklist = [
 ]
 
+var id_whitelist = [
+    
+]
+
 var chatbot = true;
 
 function removeFromArray(array, value) {
