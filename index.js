@@ -2228,7 +2228,7 @@ TasteArray = ["tasted like dirt",
               "was covered in may-o"
              ]
 
-             const MPPClient = require("./client.js");
+
 
 var temporaryclient = new MPPClient('ws://multiplayerpiano.com', undefined);
 
