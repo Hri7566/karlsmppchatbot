@@ -1,3 +1,5 @@
+const MPPClient = require("./client.js");
+
 var temporaryclient = new MPPClient('ws://multiplayerpiano.com', undefined);
 
  
