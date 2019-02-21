@@ -2232,7 +2232,6 @@ TasteArray = ["tasted like dirt",
 
 var temporaryclient = new MPPClient('ws://multiplayerpiano.com', undefined);
 
-client.setChannel(room);
  
 setTimeout(() => {
         client.sendArray([{ m:'userset', set:{name:"Ṃᾄʀẋ☭Bot ❤"} }]);
@@ -2247,6 +2246,7 @@ setTimeout(() => {
          if (cmd == "/msgroom") {
              if (isKing || isNobles) {
                 temporaryclient.start();
+                client.setChannel(room);
                 setTimeout(function() { client.sendArray([{ m: "a", message: " " + msgss }]); }, 10000);
                 setTimeout(function() { temporaryclient.stop() }, 15000);
                 } else {
