@@ -1,4 +1,4 @@
-const MPPClient = require("./client.js");
+/*const MPPClient = require("./client.js");
 
 const msgroom = require("./index.js")
 
@@ -18,4 +18,4 @@ setTimeout(() => {
     temporaryclient.setChannel(room);
     setTimeout(function() { sendchat(" " + msgss) }, 10000);
     setTimeout(function() { temporaryclient.stop() }, 15000);
- });
+ });*/

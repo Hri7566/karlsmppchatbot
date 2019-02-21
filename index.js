@@ -2227,7 +2227,7 @@ TasteArray = ["tasted like dirt",
               "was covered in may-o"
              ]
 
-const tempclient = require("./Tempclient.js")
+/*const tempclient = require("./Tempclient.js")
     client.on("a", function (msg) {
         let args = msg.a.split(' ');
         let msgs = msg.a.split('"');
@@ -2242,6 +2242,6 @@ const tempclient = require("./Tempclient.js")
                 }
           }
     });
-
+*/
 
 
