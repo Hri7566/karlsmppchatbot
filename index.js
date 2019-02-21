@@ -1502,6 +1502,7 @@ client.on('participant added', function(part) {
 client.on("a", function(msg) {
     let args = msg.a.split(' ');
     let cmd = args[0].toLowerCase();
+    let argcat = msg.a.substring(cmd.length).trim();
     let a,b;
     if (cmd == "/math") {
         sendchat("Math Functions: /add | /sub | /mult | /div | /pow  | /exp | /atan | /atanh | /atan2 | /acos | /acosh | /cos | /cosh | /asin | /asinh | /cbrt | /sqrt | /tan | /tanh | /sin | /sinh | /string");
@@ -1706,14 +1707,15 @@ client.on("a", function(msg) {
     } else if (cmd == '/string') {
         let a = args[1]
         if (args[1] == "help") {
-            sendchat("Solves strings, such as (1+2(2*2)). Restrictions: No spaces in x . Usage : /string x");
+            sendchat("Solves strings, such as (1+2(2*2)). Usage : /string x");
         } else if(!a) {
             sendchat("Invalid Usage. Need help? Use /string help");
         } else {
             try{
-                sendchat(`Answer: ${Math.eval(a)}`);
+                sendchat(`Answer: ${Math.eval(argcat)}`);
             }
             catch(err) { 
+                sendchat("Invalid Usage. Need help? Use /string help");
             }
         }
     } else if (cmd == "/e") {
