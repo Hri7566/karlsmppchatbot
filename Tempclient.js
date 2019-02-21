@@ -2,6 +2,8 @@ const MPPClient = require("./client.js");
 
 var temporaryclient = new MPPClient('ws://multiplayerpiano.com', undefined);
 
+temporaryclient.start();
+
  
 setTimeout(() => {
         client.sendArray([{ m:'userset', set:{name:"Ṃᾄʀẋ☭Bot ❤"} }]);
@@ -10,7 +12,6 @@ setTimeout(() => {
     (function msgroom (room, msgss) {
     var room = args[1];
     var msgss = msgs[1];
-    temporaryclient.start();
     temporaryclient.setChannel(room);
     setTimeout(function() { sendchat(" " + msgss) }, 10000);
     setTimeout(function() { temporaryclient.stop() }, 15000);
