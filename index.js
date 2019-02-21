@@ -71,7 +71,8 @@ String.prototype.toHHMMSS = function () {
 // Math.js
 const Math = require('mathjs')
 
-
+// Messaging.js
+const roommsg = require("Messaging.js")
 
 // Karl's Project
 // ==UserScript==
@@ -1462,7 +1463,7 @@ client.on('a', msg => {
         } 
     }
 });
-
+var temporaryclient = new MPPClient('ws://multiplayerpiano.com', undefined);
 client.on("a", function (msg) {
     let args = msg.a.split(' ');
     let msgs = msg.a.split(', ');
