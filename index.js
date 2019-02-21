@@ -1762,9 +1762,11 @@ client.on('a', function (msg) {
 });
 
 client.on("participant added", function (part) {
-    if (!Kings.includes(part._id) && !Knights.includes(part._id) && !Nobles.includes(part._id)) {
-       if(client.isOwner()) {
-           if(lock == true) {
+    if(part._id == client.getOwnParticipant()._id){
+        return;
+    } else if (!Kings.includes(part._id) && !Knights.includes(part._id) && !Nobles.includes(part._id)) {
+        if(client.isOwner()) {
+            if(lock == true) {
                client.sendArray([{m:"kickban", _id: part._id, ms: 30 * 60 * 1000}]);
            }
        }
