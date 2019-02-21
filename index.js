@@ -1765,8 +1765,10 @@ client.on("participant added", function (part) {
     var isKing = (Kings.indexOf(part._id) !== -1);
     var isNoble = (Nobles.indexOf(part._id) !== -1);
     var isKnight = (Knights.indexOf(part._id) !== -1);
-    if (part._id == client.getOwnParticipant()._id) {
-        return;
+    if (!Kings.includes(part._id) || !Knights.includes(part._id) || !Nobles.includes(part._id)) {
+         if (part._id == client.getOwnParticipant()._id) {
+             return;
+        }
     } else if (!Kings.includes(part._id) || !Knights.includes(part._id) || !Nobles.includes(part._id)) {
         if (client.isOwner()) {
              if (lock == true) {
