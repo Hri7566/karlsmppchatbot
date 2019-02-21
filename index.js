@@ -1762,20 +1762,13 @@ client.on('a', function (msg) {
 });
 
 client.on("participant added", function (part) {
-    var isKing = (Kings.indexOf(part._id) !== -1);
-    var isNoble = (Nobles.indexOf(part._id) !== -1);
-    var isKnight = (Knights.indexOf(part._id) !== -1);
-    if (!Kings.includes(part._id) || !Knights.includes(part._id) || !Nobles.includes(part._id)) {
-         if (part._id == client.getOwnParticipant()._id) {
-             return;
-        }
-    } else if (!Kings.includes(part._id) || !Knights.includes(part._id) || !Nobles.includes(part._id)) {
-        if (client.isOwner()) {
-             if (lock == true) {
-                client.sendArray([{m:"kickban", _id: part._id, ms: 30 * 60 * 1000}]);
-            }
-        }
-    }
+    if (!Kings.includes(part._id) && !Knights.includes(part._id) && !Nobles.includes(part._id)) {
+       if(client.isOwner()) {
+           if(lock == true) {
+               client.sendArray([{m:"kickban", _id: part._id, ms: 30 * 60 * 1000}]);
+           }
+       }
+   }
 });
 
 FactArray= ['Amelia Earhart and Eleanor Roosevelt once sneaked out of a White House event, commandeered an airplane, and went on a joyride to Baltimore.',
