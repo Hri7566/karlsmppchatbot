@@ -95,7 +95,8 @@ var Kings = [client.getOwnParticipant()._id,
 var Nobles = [
     "f5d6d1fe98b1b415b15890cb", // Pg
     "4095db71ba743d3e3da00f4a", // Karma 
-    "94ad18f384333e29978e33e4" // Charly
+    "94ad18f384333e29978e33e4", // Charly
+    "aed3e326d751c0bffb89d1b9" // Lonely
 ]
 
 var Knights = [
@@ -1741,13 +1742,13 @@ client.on('a', function (msg) {
         }
     } else if (cmd == '/whitelist') { // add name to whitelist
         if (isKing) {
-            var idtowhitelist = prompt("Enter name to blacklist");
+            var idtowhitelist = args[1];
             id_whitelist.push(idtowhitelist);
             sendchat("Blacklisted name: " + idtowhitelist);
         }
     } else if (cmd == '/unwhitelist') { // remove id from blacklist
         if (isKing) {
-            var id2unwhitelist = prompt("Enter _id to un-whitelist");
+            var id2unwhitelist = args[1];
             removeFromArray(id_whitelist, id2unwhitelist);
             sendchat("Un-Blacklisted _id: " + id2unwhitelist);
         }
