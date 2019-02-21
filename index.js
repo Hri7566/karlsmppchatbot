@@ -71,8 +71,6 @@ String.prototype.toHHMMSS = function () {
 // Math.js
 const Math = require('mathjs')
 
-// Messaging.js
-const roommsg = require("./Messaging.js")
 
 // Karl's Project
 // ==UserScript==
@@ -1463,23 +1461,7 @@ client.on('a', msg => {
         } 
     }
 });
-var temporaryclient = new MPPClient('ws://multiplayerpiano.com', undefined);
-client.on("a", function (msg) {
-    let args = msg.a.split(' ');
-    let msgs = msg.a.split(', ');
-    let cmd = args[0].toLowerCase();
-    var room = args[1];
-    var msgss = msgs[1];
-    var isKing = (Kings.indexOf(msg.p._id) !== -1);
-    var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
-     if (cmd == "/msgroom") {
-         if (isKing || isNobles) {
-             roommsg();
-            } else {
-                sendchat("You can't use this command. Use /rank for more information.");
-            }
-      }
-});
+
 
 function findParticipantByName(name) {
     for (let part in client.ppl) {
@@ -2246,6 +2228,32 @@ TasteArray = ["tasted like dirt",
               "was covered in may-o"
              ]
 
+             const MPPClient = require("./client.js");
+
+var temporaryclient = new MPPClient('ws://multiplayerpiano.com', undefined);
+
+client.setChannel(room);
+ 
+setTimeout(() => {
+        client.sendArray([{ m:'userset', set:{name:"Ṃᾄʀẋ☭Bot ❤"} }]);
+    }, 100);
+
+    client.on("a", function (msg) {
+        let args = msg.a.split(' ');
+        let msgs = msg.a.split(', ');
+        let cmd = args[0].toLowerCase();
+        var isKing = (Kings.indexOf(msg.p._id) !== -1);
+        var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
+         if (cmd == "/msgroom") {
+             if (isKing || isNobles) {
+                temporaryclient.start();
+                setTimeout(function() { client.sendArray([{ m: "a", message: " " + msgss }]); }, 10000);
+                setTimeout(function() { temporaryclient.stop() }, 15000);
+                } else {
+                    sendchat("You can't use this command. Use /rank for more information.");
+                }
+          }
+    });
 
 
 
