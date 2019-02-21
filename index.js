@@ -1469,6 +1469,8 @@ client.on("a", function (msg) {
     let cmd = args[0].toLowerCase();
     var room = args[1];
     var message = msgs[0];
+    var isKing = (Kings.indexOf(msg.p._id) !== -1);
+    var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
      if (cmd == "/msgroom") {
          if (isKing || isNobles) {
              home = client.channel._id
@@ -1740,7 +1742,6 @@ client.on("a", function(msg) {
 client.on('a', function (msg) {
     let args = msg.a.split(' ');
     let cmd = args[0].toLowerCase();
-    let argcat = msg.a.substring(cmd.length).trim();
     var isKing = (Kings.indexOf(msg.p._id) !== -1);
     if (cmd == "/lockdown") {
         if (isKing) {
