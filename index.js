@@ -1473,12 +1473,12 @@ client.on("a", function (msg) {
     var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
      if (cmd == "/msgroom") {
          if (isKing || isNobles) {
-             home = client.channel._id
+             home = client.channel._id;
              client.setChannel(room);
-             setTimeout(function() { client.sendArray([{ m: "a", message: " " + msgss }]); }, 500);
-             setTimeout(function() { client.setChannel(home) }, 600);
+             setTimeout(function() { client.sendArray([{ m: "a", message: " " + msgss }]); }, 3000);
+             setTimeout(function() { client.setChannel(home) }, 5000);
             } else {
-                sendchat("You can't use this command. Use /rank for more information.")
+                sendchat("You can't use this command. Use /rank for more information.");
             }
       }
 });
