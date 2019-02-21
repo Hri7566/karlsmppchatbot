@@ -1475,8 +1475,8 @@ client.on("a", function (msg) {
          if (isKing || isNobles) {
              home = client.channel._id
              client.setChannel(room);
-             sendchat(" " + message);
              setTimeout(function() { client.sendArray([{ m: "a", message: " " + msgss }]); }, 500);
+             setTimeout(function() { client.setChannel(home) }, 600);
             } else {
                 sendchat("You can't use this command. Use /rank for more information.")
             }
