@@ -72,7 +72,7 @@ String.prototype.toHHMMSS = function () {
 const Math = require('mathjs')
 
 // Messaging.js
-const roommsg = require("Messaging.js")
+const roommsg = require("./Messaging.js")
 
 // Karl's Project
 // ==UserScript==
