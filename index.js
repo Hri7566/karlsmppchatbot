@@ -107,7 +107,7 @@ var blacklist = [
 ]
 
 var id_whitelist = [
-    
+
 ]
 
 var chatbot = true;
@@ -1748,13 +1748,13 @@ client.on('a', function (msg) {
         if (isKing) {
             var idtowhitelist = args[1];
             id_whitelist.push(idtowhitelist);
-            sendchat("Blacklisted name: " + idtowhitelist);
+            sendchat("Whitelisted name: " + idtowhitelist);
         }
     } else if (cmd == '/unwhitelist') { // remove id from blacklist
         if (isKing) {
             var id2unwhitelist = args[1];
             removeFromArray(id_whitelist, id2unwhitelist);
-            sendchat("Un-Blacklisted _id: " + id2unwhitelist);
+            sendchat("Un-Whitelisted _id: " + id2unwhitelist);
         }
     }
 });
