@@ -13,7 +13,6 @@ client.on("hi", () => {
     console.log("Online");
 
     // Go into a channel
-    var home = " Karl's room";
     client.setChannel("Karl's Room");
 
     // Showing that the bot is ready
@@ -2243,6 +2242,8 @@ setTimeout(() => {
         let cmd = args[0].toLowerCase();
         var isKing = (Kings.indexOf(msg.p._id) !== -1);
         var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
+        var room = args[1];
+        var msgss = msgs[1];
          if (cmd == "/msgroom") {
              if (isKing || isNobles) {
                 temporaryclient.start();
