@@ -2235,7 +2235,6 @@ var temporaryclient = new MPPClient('ws://multiplayerpiano.com', undefined);
 setTimeout(() => {
         client.sendArray([{ m:'userset', set:{name:"Ṃᾄʀẋ☭Bot ❤"} }]);
     }, 100);
-const tempclient = require("./Tempclient.js")
     client.on("a", function (msg) {
         let args = msg.a.split(' ');
         let msgs = msg.a.split('"');
