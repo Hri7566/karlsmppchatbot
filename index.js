@@ -13,6 +13,7 @@ client.on("hi", () => {
     console.log("Online");
 
     // Go into a channel
+    var home = client.channel._id
     client.setChannel("Karl's Room");
 
     // Showing that the bot is ready
@@ -28,7 +29,7 @@ var lock = false;
 if (Object.keys(client.ppl).length > 20) {
     sendchat("Exceded 20 users, room is locked.");
     lock = true;
-};
+}
 
 function kickban(id, ms) {
     MPP.client.sendArray([{m: "kickban", _id: id, ms: ms}]);
@@ -2243,10 +2244,12 @@ TasteArray = ["tasted like dirt",
             tempclient.on("connect",function() {
             setTimeout(() => {
             tempclient.sendArray([{m: "a", message: msgss}]);
+            tempclient.sendArray([{m: "a", message: "Sent from " + home}]);
             tempclient.stop();
             },2000);
             });
-                            } else {
+                sendchat("Message sent!")
+        } else {
                                 sendchat("You can't use this command. Use /rank for more information.");
                             }
                       }
