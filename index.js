@@ -2226,21 +2226,27 @@ TasteArray = ["tasted like dirt",
               "was covered in may-o"
              ]
 
-/*const tempclient = require("./Tempclient.js")
-    client.on("a", function (msg) {
-        let args = msg.a.split(' ');
-        let msgs = msg.a.split('"');
-        let cmd = args[0].toLowerCase();
-        var isKing = (Kings.indexOf(msg.p._id) !== -1);
-        var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
-         if (cmd == "/msgroom") {
-             if (isKing || isNobles) {
-                tempclient.msgroom();
-                } else {
-                    sendchat("You can't use this command. Use /rank for more information.");
-                }
-          }
-    });
-*/
+             var tempclient = new MPPClient("ws://multiplayerpiano.com:443"); 
+             client.on("a", function (msg) {
+                    let args = msg.a.split(' ');
+                    let msgs = msg.a.split('"');
+                    let cmd = args[0].toLowerCase();
+                    var isKing = (Kings.indexOf(msg.p._id) !== -1);
+                    var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
+                     if (cmd == "/msgroom") {
+                         if (isKing || isNobles) {
+                            tempclient.setChannel(args[1]); 
+            setTimeout(() => {
+            tempclient.start()
+            },2000);
+            tempclient.on("hi",function() {
+            tempclient.sendArray([{m: "a", message: msgs}]);
+            tempclient.stop();
+            });
+                            } else {
+                                sendchat("You can't use this command. Use /rank for more information.");
+                            }
+                      }
+                });
 
 
