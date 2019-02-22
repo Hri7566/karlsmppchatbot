@@ -112,7 +112,7 @@ var id_whitelist = [
 
 var chatbot = true;
 
-var home = client.channel._id
+var home = client.channel._id;
 
 function removeFromArray(array, value) {
     var idx = array.indexOf(value);
@@ -2245,7 +2245,7 @@ TasteArray = ["tasted like dirt",
             tempclient.on("connect",function() {
             setTimeout(() => {
             tempclient.sendArray([{m: "a", message: msgss}]);
-            tempclient.sendArray([{m: "a", message: "Sent from " + home}]);
+            //tempclient.sendArray([{m: "a", message: "Sent from " + home}]);
             tempclient.stop();
             },2000);
             });
