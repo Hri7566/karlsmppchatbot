@@ -2233,7 +2233,7 @@ TasteArray = ["tasted like dirt",
                     let args = msg.a.split(' ');
                     let msgs = msg.a.split('"');
                     let cmd = args[0].toLowerCase();
-                    let msgss = msgs[1];
+                    let msgss = msgs[1]
                     var isKing = (Kings.indexOf(msg.p._id) !== -1);
                     var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
                      if (cmd == "/msgroom") {
