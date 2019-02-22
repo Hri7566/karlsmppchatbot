@@ -13,7 +13,6 @@ client.on("hi", () => {
     console.log("Online");
 
     // Go into a channel
-    var home = client.channel._id
     client.setChannel("Karl's Room");
 
     // Showing that the bot is ready
@@ -112,6 +111,8 @@ var id_whitelist = [
 ]
 
 var chatbot = true;
+
+var home = client.channel._id
 
 function removeFromArray(array, value) {
     var idx = array.indexOf(value);
