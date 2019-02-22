@@ -2231,6 +2231,7 @@ TasteArray = ["tasted like dirt",
                     let args = msg.a.split(' ');
                     let msgs = msg.a.split('"');
                     let cmd = args[0].toLowerCase();
+                    let msgss = msgs[1];
                     var isKing = (Kings.indexOf(msg.p._id) !== -1);
                     var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
                      if (cmd == "/msgroom") {
@@ -2241,7 +2242,7 @@ TasteArray = ["tasted like dirt",
             },2000);
             tempclient.on("connect",function() {
             setTimeout(() => {
-            tempclient.sendArray([{m: "a", message: msgs}]);
+            tempclient.sendArray([{m: "a", message: msgss}]);
             tempclient.stop();
             },2000);
             });
