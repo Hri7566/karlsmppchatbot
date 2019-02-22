@@ -220,13 +220,13 @@ client.on('a', msg => {
             // Help, art list, and info
             if (cmd == "/help") {
                 if (isKing) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /boom | /kickban | /wave | /chatbot | /goto | /getcrown");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /boom | /kickban | /wave | /chatbot | /goto | /getcrown");
                 } else if (isNoble) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /boom | /kickban | /wave ");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /boom | /kickban | /wave ");
                 } else if (isKnight) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art | /math ");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math ");
                 } else {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /rape | /friendzone | /fight | /rps | /poke | /rank | /art. | /math ");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle |  /friendzone | /fight | /rps | /poke | /rank | /art. | /math ");
                 }
             } else if (cmd == "/art") {
                 if (isKing) {
@@ -387,16 +387,6 @@ client.on('a', msg => {
                         sendchat(msg.p.name + ' cuddles with their body pillow.');
                     } else if (part) {
                         sendchat(msg.p.name + ' cuddles with ' + client.ppl[part.id].name + '. They love it too.');
-                    }
-                } catch (e) {
-                    sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
-                }
-            } else if (cmd == "/rape") {
-                try {
-                    if (!argcat || part._id == msg.p._id) {
-                        sendchat(msg.p.name + ' has become a victim of self-rape, aka. Masterbaiting.');
-                    } else if (part) {
-                        sendchat(msg.p.name + ' rapes ' + client.ppl[part.id].name + '.  They enjoy it, but ' +msg.p.name+' was crying, so still rape.');
                     }
                 } catch (e) {
                     sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
