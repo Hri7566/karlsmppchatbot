@@ -2239,9 +2239,11 @@ TasteArray = ["tasted like dirt",
             setTimeout(() => {
             tempclient.start()
             },2000);
-            tempclient.on("hi",function() {
+            tempclient.on("connect",function() {
+            setTimeout(() => {
             tempclient.sendArray([{m: "a", message: msgs}]);
             tempclient.stop();
+            },2000);
             });
                             } else {
                                 sendchat("You can't use this command. Use /rank for more information.");
