@@ -2234,7 +2234,7 @@ TasteArray = ["tasted like dirt",
                     var isKing = (Kings.indexOf(msg.p._id) !== -1);
                     var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
                      if (cmd == "/msgroom") {
-                         if (isKing || isNobles) {
+                         if (isKing || isNoble) {
                             tempclient.setChannel(args[1]); 
             setTimeout(() => {
             tempclient.start()
