@@ -112,7 +112,7 @@ var id_whitelist = [
 
 var chatbot = true;
 
-var home = client.channel._id;
+//var home = client.channel._id;
 
 function removeFromArray(array, value) {
     var idx = array.indexOf(value);
