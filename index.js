@@ -2228,14 +2228,14 @@ TasteArray = ["tasted like dirt",
               "was covered in may-o"
              ]
 
-             var tempclient = new MPPClient("ws://multiplayerpiano.com:443"); 
+             var tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
              client.on("a", function (msg) {
                     let args = msg.a.split(' ');
                     let msgs = msg.a.split('"');
                     let cmd = args[0].toLowerCase();
                     let msgss = msgs[1]
-                    var isKing = (Kings.indexOf(msg.p._id) !== -1);
-                    var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
+                    let isKing = (Kings.indexOf(msg.p._id) !== -1);
+                    let isNoble = (Nobles.indexOf(msg.p._id) !== -1);
                      if (cmd == "/msgroom") {
                          if (isKing || isNoble) {
                             tempclient.setChannel(args[1]); 
