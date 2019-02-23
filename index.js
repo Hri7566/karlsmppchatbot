@@ -1448,7 +1448,7 @@ client.on('a', msg => {
                 var now = new Date();
                 var time = process.uptime();
                 var uptime = (time + "").toHHMMSS();
-                sendchat("This is a chat made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿. A big thanks to lighning, BluestaR, Lamp, and Charly.");
+                sendchat("This is a chat made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿. A big thanks to lighning, BluestaR, Lamp, Charly, and Bop-it.");
                 sendchat(now + " || Uptime: " + uptime);
             } else if (cmd == "/loss") {
                 sendchat('I II');
@@ -2228,32 +2228,30 @@ TasteArray = ["tasted like dirt",
               "was covered in may-o"
              ]
 
-             var tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
-             client.on("a", function (msg) {
-                    let args = msg.a.split(' ');
-                    let msgs = msg.a.split('"');
-                    let cmd = args[0].toLowerCase();
-                    let msgss = msgs[1]
-                    let isKing = (Kings.indexOf(msg.p._id) !== -1);
-                    let isNoble = (Nobles.indexOf(msg.p._id) !== -1);
-                     if (cmd == "/msgroom") {
-                         if (isKing || isNoble) {
-                            tempclient.setChannel(args[1]); 
+var tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
+client.on("a", function (msg) {
+    let args = msg.a.split(' ');
+    let msgs = msg.a.split('"');
+    let cmd = args[0].toLowerCase();
+    let msgss = msgs[1]
+    let isKing = (Kings.indexOf(msg.p._id) !== -1);
+    let isNoble = (Nobles.indexOf(msg.p._id) !== -1);
+    if (cmd == "/msgroom") {
+        if (isKing || isNoble) {
+            tempclient.setChannel(args[1]);
             setTimeout(() => {
-            tempclient.start()
+                tempclient.start()
             },2000);
             tempclient.on("connect",function() {
-            setTimeout(() => {
-            tempclient.sendArray([{m: "a", message: msgss}]);
-            //tempclient.sendArray([{m: "a", message: "Sent from " + home}]);
-            tempclient.stop();
-            },2000);
+                setTimeout(() => {
+                    tempclient.sendArray([{m: "a", message: msgss}]);
+                    //tempclient.sendArray([{m: "a", message: "Sent from " + home}]);
+                    tempclient.stop();
+                },2000);
             });
-                sendchat("Message sent!")
+            sendchat("Message sent!")
         } else {
-                                sendchat("You can't use this command. Use /rank for more information.");
-                            }
-                      }
-                });
-
-
+            sendchat("You can't use this command. Use /rank for more information.");
+        }
+    }
+});             
