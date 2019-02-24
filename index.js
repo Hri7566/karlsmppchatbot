@@ -2232,26 +2232,32 @@ TasteArray = ["tasted like dirt",
 var tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
 client.on("a", function (msg) {
     let args = msg.a.split(' ');
-    let msgs = msg.a.toLowerCase().split("msg:");
     let cmd = args[0].toLowerCase();
+    let argcat = msg.a.substring(cmd.length).trim();
     let isKing = (Kings.indexOf(msg.p._id) !== -1);
     let isNoble = (Nobles.indexOf(msg.p._id) !== -1);
     if (cmd == "/msgroom") {
+        let user = msg.p.name
         if (isKing || isNoble) {
-            tempclient.setChannel(args[1]);
-            setTimeout(() => {
-                tempclient.start()
-            },2000);
-            tempclient.on("connect",function() {
-                setTimeout(() => {
-                    tempclient.sendArray([{m: "a", message: " " + msgs[1]}]);
+            sendchat("What's the message you'd like to send? /msg [message]");
+        } if (cmd == "/msg") {
+             if (msg.p.name == user) {
+                 tempclient.setChannel(args[1]);
+                 setTimeout(() => {
+                 tempclient.start()
+              },2000);
+                  tempclient.on("connect",function() {
+                  setTimeout(() => {
+                    tempclient.sendArray([{m: "a", message: " " + argcat}]);
                     //tempclient.sendArray([{m: "a", message: "Sent from " + home}]);
                     tempclient.stop();
                 },2000);
+            
             });
             sendchat("Message sent!");
         } else {
             sendchat("You can't use this command. Use /rank for more information.");
         }
     }
+}
 });
