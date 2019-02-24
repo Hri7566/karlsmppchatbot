@@ -2231,15 +2231,16 @@ TasteArray = ["tasted like dirt",
 
 client.on("a", function (msg) {
     let args = msg.a.split(' ');
-    let msgs = msg.a.toLowerCase().split("msg:");
     let cmd = args[0].toLowerCase();
+    let argcat = msg.a.substring(cmd.length).trim();
+    let msgs = argcat.split("msg: ");
     let isKing = (Kings.indexOf(msg.p._id) !== -1);
     let isNoble = (Nobles.indexOf(msg.p._id) !== -1);
     if (cmd == "/msgroom") {
         if (isKing || isNoble) {
             let tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
             tempclient.start();
-            tempclient.setChannel(args[1]);
+            tempclient.setChannel(msgs[0]);
             tempclient.on("hi", function() {
                 setTimeout(() => {
                     tempclient.sendArray([{m: "a", message: msgs[1]}]);
