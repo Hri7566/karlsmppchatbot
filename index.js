@@ -2255,3 +2255,50 @@ client.on("a", function (msg) {
         }
     }
 });
+
+client.on('a', function (msg) {
+ 
+    // simple JavaScript evaluater in chat - meow :3
+     
+    if (typeof gScriptLoaded === "undefined") {
+        gScriptLoaded = true;
+     
+        var args;
+        var cmd;
+        var input;
+        var isAdmin;
+        var admins = [MPP.client.user._id]; // you're added by default.
+                                            // If you want to add more preople use |js admins.push(their_id_here)
+                                            // this will allow them to use |js too. But be careful who you trust!
+        var cmdChar = "/"; // you can change this to any single character :3
+        var pf = cmdChar;
+     
+     
+        Object.prototype.toString = function() {
+            return JSON.stringify(this);
+        };
+     
+        MPP.client.on("a", function (msg) {
+            args = msg.a.split(' ');
+            cmd = args[0];
+            input = msg.a.substring(cmd.length).trim();
+     
+            isAdmin = false; // this will remain false if the below check fails
+                             // if this isAdmin is manually set to true anyone
+                             // will be able to use !js. This is very bad
+            if (admins.indexOf(msg.p._id) != -1) isAdmin = true; // makes you admin if you're in admins
+     
+            // anything inside this block will run if the user is an admin
+            if (isAdmin) {
+                if (cmd == cmdChar+"js") {
+                    try {   /*jshint -W061 */
+                        sendChat("Console: " + eval(input));
+                    } catch (err) {
+                        sendChat('Console: '+err);
+                    }
+                }
+            } // else they're not admin
+        });
+    } else {
+        console.warn("You've already pasted the script!\nRefresh the page then paste it again");
+    }});
