@@ -1557,7 +1557,7 @@ client.on("a", function(msg) {
         } else if(!a || !b || isNaN(a) || isNaN(b)) {
             sendchat("Invalid Usage. Need help? Use /pow help");
         } else {
-            sendchat(`Answer: ${Math.pow(parseInt(a) + parseInt(b))}`);
+            sendchat(`Answer: ${(parseInt(a) ** parseInt(b))}`);
         }
     } else if (cmd == '/atan2') {
         let a = args[1]
