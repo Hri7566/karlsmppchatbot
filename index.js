@@ -223,21 +223,21 @@ client.on('a', msg => {
             // Help, art list, and info
             if (cmd == "/help") {
                 if (isKing) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /boom | /kickban | /wave | /chatbot | /goto | /getcrown");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /boom | /kickban | /wave | /chatbot | /goto | /getcrown | /js | /MsgRoom [room name] msg: [message]");
                 } else if (isNoble) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /boom | /kickban | /wave ");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /boom | /kickban | /wave | /MsgRoom [room name] msg: [message]");
                 } else if (isKnight) {
                     sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math ");
                 } else {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle |  /friendzone | /fight | /rps | /poke | /rank | /art. | /math ");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle |  /friendzone | /fight | /rps | /poke | /rank | /art | /math ");
                 }
             } else if (cmd == "/art") {
                 if (isKing) {
                     sendchat("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance || Small Art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music");
-                    sendchat("|| Large Arts (Crown needed): /scream | /fuckmyass | /home |, /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.");
+                    sendchat("|| Large Arts (Crown needed): /scream | /fuckmyass | /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.");
                 } else if (isNoble) {
                     sendchat("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance || Small Art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music");
-                    sendchat("|| Large Arts (Crown needed): /scream | /fuckmyass | /home |, /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.");
+                    sendchat("|| Large Arts (Crown needed): /scream | /fuckmyass | /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.");
                 } else if (isKnight) {
                     sendchat("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance || Small Art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music");
                 } else {
