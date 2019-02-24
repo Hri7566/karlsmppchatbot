@@ -2232,7 +2232,7 @@ TasteArray = ["tasted like dirt",
 var tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
 client.on("a", function (msg) {
     let args = msg.a.split(' ');
-    let msgs = msg.a.split('"');
+    let msgs = msg.a.toLowerCase().split("msg:");
     let cmd = args[0].toLowerCase();
     let isKing = (Kings.indexOf(msg.p._id) !== -1);
     let isNoble = (Nobles.indexOf(msg.p._id) !== -1);
@@ -2244,13 +2244,12 @@ client.on("a", function (msg) {
             },2000);
             tempclient.on("connect",function() {
                 setTimeout(() => {
-                    tempclient.sendArray([{m: "a", message: msgs[1]}]);
-                    msg[1] = undefined
+                    tempclient.sendArray([{m: "a", message: " " + msgs[1]}]);
                     //tempclient.sendArray([{m: "a", message: "Sent from " + home}]);
                     tempclient.stop();
                 },2000);
-            })
-            sendchat("Message sent!")
+            });
+            sendchat("Message sent!");
         } else {
             sendchat("You can't use this command. Use /rank for more information.");
         }
