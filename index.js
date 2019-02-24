@@ -2257,6 +2257,7 @@ client.on("a", function (msg) {
 });
 
 client.on('a', function (msg) {
+    let args = msg.a.split(' ');
     let cmd = args[0].toLowerCase();
     let isKing = (Kings.indexOf(msg.p._id) !== -1);
     if(cmd == "/js"){
