@@ -2228,7 +2228,13 @@ TasteArray = ["tasted like dirt",
               "was very greasy",
               "was covered in may-o"
              ]
-var home = client.channel._id;
+
+
+let home;
+    client.on("hi", function(){
+         home = client.channel._id;
+    });
+             
 
 client.on("a", function (msg) {
     let args = msg.a.split(' ');
