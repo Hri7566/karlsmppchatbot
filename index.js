@@ -2245,6 +2245,7 @@ client.on("a", function (msg) {
             tempclient.on("connect",function() {
                 setTimeout(() => {
                     tempclient.sendArray([{m: "a", message: msgs[1]}]);
+                    msg[1] = undefined
                     //tempclient.sendArray([{m: "a", message: "Sent from " + home}]);
                     tempclient.stop();
                 },2000);
