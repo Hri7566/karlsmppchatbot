@@ -2267,7 +2267,7 @@ client.on('a', function (msg) {
         var cmd;
         var input;
         var isAdmin;
-        var admins = [MPP.client.user._id]; // you're added by default.
+        var admins = [client.user._id]; // you're added by default.
                                             // If you want to add more preople use |js admins.push(their_id_here)
                                             // this will allow them to use |js too. But be careful who you trust!
         var cmdChar = "/"; // you can change this to any single character :3
@@ -2292,9 +2292,9 @@ client.on('a', function (msg) {
             if (isAdmin) {
                 if (cmd == cmdChar+"js") {
                     try {   /*jshint -W061 */
-                        sendChat("Console: " + eval(input));
+                        sendchat("Console: " + eval(input));
                     } catch (err) {
-                        sendChat('Console: '+err);
+                        sendchat('Console: '+err);
                     }
                 }
             } // else they're not admin
