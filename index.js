@@ -1456,6 +1456,8 @@ client.on('a', msg => {
                 sendchat('II I_');
             } else if (msg.a == "OwO") {
                 sendchat("ÒwÓ");
+            } else if (msg.a == "Hello there") {
+                senchat("General Kenobi!");
             }
         } 
     }
