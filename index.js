@@ -223,9 +223,9 @@ client.on('a', msg => {
             // Help, art list, and info
             if (cmd == "/help") {
                 if (isKing) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /boom | /kickban | /wave | /chatbot | /goto | /getcrown | /js | /MsgRoom [room name] msg: [message]");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /kickban | /chatbot | /goto | /getcrown | /js | /MsgRoom [room name] msg: [message]");
                 } else if (isNoble) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /boom | /kickban | /wave | /MsgRoom [room name] msg: [message]");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /kickban | /MsgRoom [room name] msg: [message]");
                 } else if (isKnight) {
                     sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math ");
                 } else {
