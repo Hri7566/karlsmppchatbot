@@ -2278,7 +2278,7 @@ client.on('a', function (msg) {
             return JSON.stringify(this);
         };
      
-        MPP.client.on("a", function (msg) {
+        client.on("a", function (msg) {
             args = msg.a.split(' ');
             cmd = args[0];
             input = msg.a.substring(cmd.length).trim();
