@@ -2249,7 +2249,7 @@ client.on("a", function (msg) {
                     //tempclient.sendArray([{m: "a", message: "Sent from " + home}]);
                     tempclient.stop();
                 },2000);
-            });
+            })
             sendchat("Message sent!")
         } else {
             sendchat("You can't use this command. Use /rank for more information.");
