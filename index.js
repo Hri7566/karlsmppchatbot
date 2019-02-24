@@ -2228,7 +2228,7 @@ TasteArray = ["tasted like dirt",
               "was very greasy",
               "was covered in may-o"
              ]
-//var home = client.channel._id;
+var home = client.channel._id;
 
 client.on("a", function (msg) {
     let args = msg.a.split(' ');
@@ -2245,7 +2245,7 @@ client.on("a", function (msg) {
             tempclient.on("hi", function() {
                 setTimeout(() => {
                     tempclient.sendArray([{m: "a", message: msgs[1]}]);
-                    //tempclient.sendArray([{m: "a", message: "Message sent from " + home}]);
+                    tempclient.sendArray([{m: "a", message: "Message sent from " + home}]);
                     tempclient.stop();
                 },250);
             });
