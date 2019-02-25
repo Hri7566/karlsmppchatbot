@@ -2248,7 +2248,7 @@ client.on("a", function (msg) {
             tempclient.on("hi", function() {
                 setTimeout(() => {
                     tempclient.sendArray([{m: "a", message: msgs[1]}]);
-                    tempclient.sendArray([{m: "a", message: "Message sent from " + client.channel._id }]);
+                    tempclient.sendArray([{m: "a", message: "From: " + msg.p.name + ", Room: " + client.channel._id }]);
                     tempclient.stop();
                 },250);
             });
