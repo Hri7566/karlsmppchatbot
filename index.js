@@ -2254,7 +2254,8 @@ client.on("a", function (msg) {
                 },250);
             });
             sendchat("Message sent!");
-        } else sendchat("You didn't give a message, Usage: /msgroom [room name] msg: [message]")
+        } else { sendchat("You didn't give a message, Usage: /msgroom [room name] msg: [message]");
+    }
         } else {
             sendchat("You can't use this command. Use /rank for more information.");
         }
