@@ -2238,8 +2238,6 @@ client.on("a", function (msg) {
     let cmd = args[0].toLowerCase();
     let argcat = msg.a.substring(cmd.length).trim();
     let msgs = argcat.split("msg: ");
-    let isKing = (Kings.indexOf(msg.p._id) !== -1);
-    let isNoble = (Nobles.indexOf(msg.p._id) !== -1);
     if (cmd == "/msgroom") {
         if (msgs.length == 0) {
             let tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
