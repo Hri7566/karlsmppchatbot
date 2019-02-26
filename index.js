@@ -2240,6 +2240,8 @@ client.on("a", function (msg) {
     let msgs = argcat.split("msg: ");
     if (cmd == "/msgroom") {
         if (msgs.length == 0) {
+            sendchat("You didn't give a message, Usage: /msgroom [room name] msg: [message]");
+        } else {
             let tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
             tempclient.start();
             tempclient.setChannel(msgs[0]);
@@ -2251,8 +2253,6 @@ client.on("a", function (msg) {
                 },250);
             });
             sendchat("Message sent!");
-        } else { 
-            sendchat("You didn't give a message, Usage: /msgroom [room name] msg: [message]");
          }
     }
 });
