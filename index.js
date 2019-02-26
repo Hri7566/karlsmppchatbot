@@ -2242,6 +2242,7 @@ client.on("a", function (msg) {
     let isNoble = (Nobles.indexOf(msg.p._id) !== -1);
     if (cmd == "/msgroom") {
         if (isKing || isNoble) {
+        if (!msgs.length == 0) {
             let tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
             tempclient.start();
             tempclient.setChannel(msgs[0]);
@@ -2253,6 +2254,7 @@ client.on("a", function (msg) {
                 },250);
             });
             sendchat("Message sent!");
+        } else sendchat("You didn't give a message, Usage: /msgroom [room name] msg: [message]")
         } else {
             sendchat("You can't use this command. Use /rank for more information.");
         }
