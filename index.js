@@ -2286,6 +2286,12 @@ client.on("a", function (msg) {
             hostclient.setChannel(argcat);
             hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
             hostclient.on("a", function(msg) {
+                let args = msg.a.split(' ');
+                let cmd = args[0].toLowerCase();
+                let argcat = msg.a.substring(cmd.length).trim();
+                setTimeout(() => {
+                    hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
+                },250);
                 if (cmd == "/closeroom") {
                     hostclient.sendArray([{m: "a", message: "Goodbye."}]);
                     hostclient.stop();
