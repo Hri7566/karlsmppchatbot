@@ -2272,3 +2272,25 @@ client.on('a', function (msg) {
         }
     }
 });
+
+client.on("a", function (msg) {
+    let args = msg.a.split(' ');
+    let cmd = args[0].toLowerCase();
+    let argcat = msg.a.substring(cmd.length).trim();
+        if (cmd == "/host") {
+            if (argcat.length == 0) {
+                sendchat("You need to list a room to join. /host [room name]");
+            } else {
+            let hostclient = new MPPClient('ws://multiplayerpiano.com', undefined);
+            hostclient.setChannel(argcat);
+            sendchat("Hello!, I'm your host.");
+            hostclient.on("a", function(msg) {
+                if (cmd == "/closeroom") {
+                    sendchat("Goodbye.");
+                    hostclient.stop();
+                }
+
+            });
+        }
+    }
+});
