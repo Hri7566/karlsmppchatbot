@@ -2283,10 +2283,10 @@ client.on("a", function (msg) {
             } else {
             let hostclient = new MPPClient('ws://multiplayerpiano.com', undefined);
             hostclient.setChannel(argcat);
-            sendchat("Hello!, I'm your host.");
+            hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
             hostclient.on("a", function(msg) {
                 if (cmd == "/closeroom") {
-                    sendchat("Goodbye.");
+                    hostclient.sendArray([{m: "a", message: "Goodbye."}]);
                     hostclient.stop();
                 }
 
