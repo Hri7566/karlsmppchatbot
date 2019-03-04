@@ -2282,6 +2282,7 @@ client.on("a", function (msg) {
                 sendchat("You need to list a room to join. /host [room name]");
             } else {
             let hostclient = new MPPClient('ws://multiplayerpiano.com', undefined);
+            hostclient.start();
             hostclient.setChannel(argcat);
             hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
             hostclient.on("a", function(msg) {
