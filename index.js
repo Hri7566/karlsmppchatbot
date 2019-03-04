@@ -2273,6 +2273,9 @@ client.on('a', function (msg) {
     }
 });
 
+var admin = [
+
+]
 client.on("a", function (msg) {
     let args = msg.a.split(' ');
     let cmd = args[0].toLowerCase();
@@ -2281,23 +2284,38 @@ client.on("a", function (msg) {
             if (argcat.length == 0) {
                 sendchat("You need to list a room to join. /host [room name]");
             } else {
+                 admin.push(msg.p._id);
+                
             let hostclient = new MPPClient('ws://multiplayerpiano.com', undefined);
+
             hostclient.start();
+
             hostclient.setChannel(argcat);
-            hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
+            if (hostclient.isOwner()) {
+
             hostclient.on("a", function(msg) {
                 let args = msg.a.split(' ');
                 let cmd = args[0].toLowerCase();
                 let argcat = msg.a.substring(cmd.length).trim();
+                let isAdmin = (admin.indexOf(msg.p._id) !== -1);
                 setTimeout(() => {
                     hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
                 },250);
                 if (cmd == "/closeroom") {
+                    if (isAdmin){
                     hostclient.sendArray([{m: "a", message: "Goodbye."}]);
                     hostclient.stop();
+                    }
                 }
-
+            
             });
+        } else {
+          hostclient.stop();
+          sendchat("That room already exist.")
         }
     }
+    }
+
+
+
 });
