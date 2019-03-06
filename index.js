@@ -2291,13 +2291,13 @@ client.on("a", function (msg) {
             hostclient.start();
 
             hostclient.setChannel(argcat);
-            if (hostclient.isOwner()) {
 
             hostclient.on("a", function(msg) {
                 let args = msg.a.split(' ');
                 let cmd = args[0].toLowerCase();
                 let argcat = msg.a.substring(cmd.length).trim();
                 let isAdmin = (admin.indexOf(msg.p._id) !== -1);
+                if (hostclient.isOwner()) {
                 setTimeout(() => {
                     hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
                 },250);
@@ -2306,12 +2306,13 @@ client.on("a", function (msg) {
                     hostclient.sendArray([{m: "a", message: "Goodbye."}]);
                     hostclient.stop();
                     }
-                }
+                } 
+            } else {        hostclient.stop();
+                sendchat("That room already exist.")
+            }
             
             });
-        } else {
-          hostclient.stop();
-          sendchat("That room already exist.")
+
         }
     }
     }
