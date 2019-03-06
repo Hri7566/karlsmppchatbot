@@ -2292,14 +2292,15 @@ client.on("a", function (msg) {
 
             hostclient.setChannel(argcat);
 
+            setTimeout(() => {
+                hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
+            },250);
+
             hostclient.on("a", function(msg) {
                 let args = msg.a.split(' ');
                 let cmd = args[0].toLowerCase();
                 let argcat = msg.a.substring(cmd.length).trim();
                 let isAdmin = (admin.indexOf(msg.p._id) !== -1);
-                setTimeout(() => {
-                    hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
-                },250);
                 if (hostclient.isOwner()) {
                     if (cmd == "/closeroom") {
                         if (isAdmin){
