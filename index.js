@@ -2282,7 +2282,7 @@ client.on("a", function (msg) {
     let argcat = msg.a.substring(cmd.length).trim();
     let isKing = (Kings.indexOf(msg.p._id) !== -1);
     if (cmd == "/host") {
-        if (isKing)
+        if (isKing) {
         if (argcat.length == 0) {
             sendchat("You need to list a room to join. /host [room name]");
         } else {
@@ -2318,4 +2318,5 @@ client.on("a", function (msg) {
 
         }
     }
+}
 });
