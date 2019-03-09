@@ -1429,7 +1429,7 @@ client.on('a', msg => {
                 if (argcat.length = 0) {
                     sendchat("You need to ask a question to hear the all powerfull words of the 8 ball."); 
                 } else {
-                    sendchat(msg.p.name + ", your anwser is " + BallArray[Math.floor(Math.random()*BallArray.length)]);
+                    sendchat(msg.p.name + ", your anwser is: " + BallArray[Math.floor(Math.random()*BallArray.length)]);
                 }
             } else if (cmd == "/rur") {
                 var math = Math.random();
