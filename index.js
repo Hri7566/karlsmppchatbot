@@ -168,7 +168,7 @@ client.on('a', msg => {
                 sendchat("I don't have the crown.");
             }
         } else {
-            sendchat("You can't use this command. Use/rank for more information");
+            sendchat("You can't use this command. Use /rank for more information");
         }
     } else if (cmd == '/kings+') { // add id to Kings
         if (isKing) {
@@ -223,13 +223,13 @@ client.on('a', msg => {
             // Help, art list, and info
             if (cmd == "/help") {
                 if (isKing) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /kickban | /chatbot | /goto | /getcrown | /js | /MsgRoom [room name] msg: [message]");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /kickban | /chatbot | /goto | /getcrown | /js | /MsgRoom [room name] msg: [message] | /8ball");
                 } else if (isNoble) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /kickban | /MsgRoom [room name] msg: [message]");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /clearchat | /kickban | /MsgRoom [room name] msg: [message] | /8ball");
                 } else if (isKnight) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math ");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /math | /MsgRoom [room name] msg: [message] | /8ball");
                 } else {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle |  /friendzone | /fight | /rps | /poke | /rank | /art | /math ");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle |  /friendzone | /fight | /rps | /poke | /rank | /art | /math | /MsgRoom [room name] msg: [message] | /8ball");
                 }
             } else if (cmd == "/art") {
                 if (isKing) {
@@ -1425,6 +1425,12 @@ client.on('a', msg => {
                 } else {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
+            } else if (cmd == "/8ball") {
+                if (argcat.length > 0) {
+sendchat("You need to ask a question to hear the all powerfull words of the 8 ball."); 
+                } else {
+                    sendchat(msg.p.name + ", your anwser is " + BallArray[Math.floor(Math.random()*BallArray.length)]);
+                }
             } else if (cmd == "/rur") {
                 var math = Math.random();
                 if (math < .167) {
@@ -2165,6 +2171,28 @@ rps=['Rock!',
      'Paper!',
      'Scissors!'
     ]
+
+BallArray = ["It is certain.",
+    "It is decidedly so.",
+    "Without a doubt.",
+    "Yes - definitely.",
+    "You may rely on it.",
+    "As I see it, yes.",
+    "Most likely.",
+    "Outlook good.",
+    "Yes.",
+"Signs point to yes.",
+    "Reply hazy, try again.",
+    "Ask again later.",
+    "Better not tell you now.",
+ "Cannot predict now.",
+"Concentrate and ask again.",
+    "Don't count on it.",
+     "My reply is no.",
+     "My sources say no.",
+     "Outlook not so good.",
+     "Very doubtful."
+]
 
 /*WelcomeArray=[' walks in with a big smile. Unfortunately, their pants are unzipped.',
               ' flies through the door, destroying the thriving weed farm. This is the third time this week...',
