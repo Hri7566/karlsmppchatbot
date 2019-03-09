@@ -1426,8 +1426,8 @@ client.on('a', msg => {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == "/8ball") {
-                if (argcat.length > 0) {
-sendchat("You need to ask a question to hear the all powerfull words of the 8 ball."); 
+                if (argcat.length = 0) {
+                    sendchat("You need to ask a question to hear the all powerfull words of the 8 ball."); 
                 } else {
                     sendchat(msg.p.name + ", your anwser is " + BallArray[Math.floor(Math.random()*BallArray.length)]);
                 }
@@ -2173,26 +2173,26 @@ rps=['Rock!',
     ]
 
 BallArray = ["It is certain.",
-    "It is decidedly so.",
-    "Without a doubt.",
-    "Yes - definitely.",
-    "You may rely on it.",
-    "As I see it, yes.",
-    "Most likely.",
-    "Outlook good.",
-    "Yes.",
-"Signs point to yes.",
-    "Reply hazy, try again.",
-    "Ask again later.",
-    "Better not tell you now.",
- "Cannot predict now.",
-"Concentrate and ask again.",
-    "Don't count on it.",
-     "My reply is no.",
-     "My sources say no.",
-     "Outlook not so good.",
-     "Very doubtful."
-]
+             "It is decidedly so.",
+             "Without a doubt.",
+             "Yes - definitely.",
+             "You may rely on it.",
+             "As I see it, yes.",
+             "Most likely.",
+             "Outlook good.",
+             "Yes.",
+             "Signs point to yes.",
+             "Reply hazy, try again.",
+             "Ask again later.",
+             "Better not tell you now.",
+             "Cannot predict now.",
+             "Concentrate and ask again.",
+             "Don't count on it.",
+             "My reply is no.",
+             "My sources say no.",
+             "Outlook not so good.",
+             "Very doubtful."
+            ]
 
 /*WelcomeArray=[' walks in with a big smile. Unfortunately, their pants are unzipped.',
               ' flies through the door, destroying the thriving weed farm. This is the third time this week...',
@@ -2259,7 +2259,7 @@ TasteArray = ["tasted like dirt",
               "was covered in may-o"
              ]
 
-            
+
 
 client.on("a", function (msg) {
     let args = msg.a.split(' ');
@@ -2281,7 +2281,7 @@ client.on("a", function (msg) {
                 },250);
             });
             sendchat("Message sent!");
-         }
+        }
     }
 });
 
@@ -2291,12 +2291,12 @@ client.on('a', function (msg) {
     let isKing = (Kings.indexOf(msg.p._id) !== -1);
     if(cmd == "/js"){
         if (isKing) {
-        let i = msg.a.substring(msg.a.split(" ")[0].length+1);
-        try{
-            sendchat("Console: "+eval(i.toString()));
-        }catch(e){
-            sendchat(e+".");
-        }
+            let i = msg.a.substring(msg.a.split(" ")[0].length+1);
+            try{
+                sendchat("Console: "+eval(i.toString()));
+            }catch(e){
+                sendchat(e+".");
+            }
         }
     }
 });
@@ -2311,40 +2311,40 @@ client.on("a", function (msg) {
     let isKing = (Kings.indexOf(msg.p._id) !== -1);
     if (cmd == "/host") {
         if (isKing) {
-        if (argcat.length == 0) {
-            sendchat("You need to list a room to join. /host [room name]");
-        } else {
-            admin.push(msg.p._id);
+            if (argcat.length == 0) {
+                sendchat("You need to list a room to join. /host [room name]");
+            } else {
+                admin.push(msg.p._id);
 
-            let hostclient = new MPPClient('ws://multiplayerpiano.com', undefined);
+                let hostclient = new MPPClient('ws://multiplayerpiano.com', undefined);
 
-            hostclient.start();
+                hostclient.start();
 
-            hostclient.setChannel(argcat);
+                hostclient.setChannel(argcat);
 
-            setTimeout(() => {
-                hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
-            },250);
+                setTimeout(() => {
+                    hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
+                },250);
 
-            hostclient.on("a", function(msg) {
-                let args = msg.a.split(' ');
-                let cmd = args[0].toLowerCase();
-                let argcat = msg.a.substring(cmd.length).trim();
-                let isAdmin = (admin.indexOf(msg.p._id) !== -1);
-                if (hostclient.isOwner()) {
-                    if (cmd == "/closeroom") {
-                        if (isAdmin){
-                            hostclient.sendArray([{m: "a", message: "Goodbye."}]);
-                            hostclient.stop();
+                hostclient.on("a", function(msg) {
+                    let args = msg.a.split(' ');
+                    let cmd = args[0].toLowerCase();
+                    let argcat = msg.a.substring(cmd.length).trim();
+                    let isAdmin = (admin.indexOf(msg.p._id) !== -1);
+                    if (hostclient.isOwner()) {
+                        if (cmd == "/closeroom") {
+                            if (isAdmin){
+                                hostclient.sendArray([{m: "a", message: "Goodbye."}]);
+                                hostclient.stop();
+                            }
                         }
-                    }
-                } else {        hostclient.stop();
-                        sendchat("That room already exist.");
-                       }
+                    } else {        hostclient.stop();
+                            sendchat("That room already exist.");
+                           }
 
-            });
+                });
 
+            }
         }
     }
-}
 });
