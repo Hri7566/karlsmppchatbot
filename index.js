@@ -1510,6 +1510,8 @@ client.on("a", function(msg) {
     let cmd = args[0].toLowerCase();
     let argcat = msg.a.substring(cmd.length).trim();
     let a,b;
+    if (chatbot == true) {
+        if (!isBlocked) {
     if (cmd == "/math") {
         sendchat("Math Functions: /add | /sub | /mult | /div | /pow  | /exp | /atan | /atanh | /atan2 | /acos | /acosh | /cos | /cosh | /asin | /asinh | /cbrt | /sqrt | /tan | /tanh | /sin | /sinh | /string");
         sendchat("Math Key: /e | /pi ");
@@ -1728,6 +1730,8 @@ client.on("a", function(msg) {
         sendchat(" " + Math.E);
     } else if (cmd == "/pi") {
         sendchat(" " + Math.PI);
+    }
+}
     }
 });
 
@@ -2266,6 +2270,8 @@ client.on("a", function (msg) {
     let cmd = args[0].toLowerCase();
     let argcat = msg.a.substring(cmd.length).trim();
     let msgs = argcat.split("msg: ");
+    if (chatbot == true) {
+        if (!isBlocked) {
     if (cmd == "/msgroom") {
         if (msgs.length == 0) {
             sendchat("You didn't give a message, Usage: /msgroom [room name] msg: [message]");
@@ -2282,6 +2288,8 @@ client.on("a", function (msg) {
             });
             sendchat("Message sent!");
         }
+    }
+}
     }
 });
 
