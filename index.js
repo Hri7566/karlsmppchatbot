@@ -1510,6 +1510,7 @@ client.on("a", function(msg) {
     let cmd = args[0].toLowerCase();
     let argcat = msg.a.substring(cmd.length).trim();
     let a,b;
+    var isBlocked = (blacklist.indexOf(msg.p._id) !== -1);
     if (chatbot == true) {
         if (!isBlocked) {
     if (cmd == "/math") {
@@ -2270,6 +2271,7 @@ client.on("a", function (msg) {
     let cmd = args[0].toLowerCase();
     let argcat = msg.a.substring(cmd.length).trim();
     let msgs = argcat.split("msg: ");
+    var isBlocked = (blacklist.indexOf(msg.p._id) !== -1);
     if (chatbot == true) {
         if (!isBlocked) {
     if (cmd == "/msgroom") {
