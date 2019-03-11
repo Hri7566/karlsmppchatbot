@@ -245,13 +245,13 @@ client.on('a', msg => {
                 }
             } else if (cmd == "/rank") {
                 if (isKing) {
-                    sendchat("Ranks are classed into three types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is King.")
+                    sendchat("Ranks are classed into four types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is King.")
                 } else if (isNoble) {
-                    sendchat("Ranks are classed into three types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is Noble.")
+                    sendchat("Ranks are classed into four types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is Noble.")
                 } else if (isKnight) {
-                    sendchat("Ranks are classed into three types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is  Knight.")
+                    sendchat("Ranks are classed into four types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is  Knight.")
                 } else {
-                    sendchat("Ranks are classed into three types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is Peasants.")
+                    sendchat("Ranks are classed into four types, Kings, Nobles, Knights, and Peasants. King being the highest with all commands, and peasants being the lowest with only basic commands. " + msg.p.name + ", your rank is Peasants.")
                 }
                 //command [user] stuff
             } else if (cmd == "/eat") {
@@ -2275,8 +2275,8 @@ client.on("a", function (msg) {
     if (chatbot == true) {
         if (!isBlocked) {
     if (cmd == "/msgroom") {
-        if (msgs.length == 0) {
-            sendchat("You didn't give a message, Usage: /msgroom [room name] msg: [message]");
+        if (msgs[1].length == 0  || msgs[0].length == 0) {
+            sendchat("Improper usage. Usage: /msgroom [room name] msg: [message]");
         } else {
             let tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
             tempclient.start();
