@@ -89,7 +89,7 @@ function sendchat(string){
 
 var Kings = [client.getOwnParticipant()._id,
              "0236f354fc5685c5bd18f152", // Karl Marx
-             "29587fe40f6bd85fc757cc2d" // hri
+             "470ba9eaa66583fb5ee24f67" // hri
             ]
 
 var Nobles = [
@@ -106,7 +106,10 @@ var Knights = [
 
 var blacklist = [
 ]
- 
+
+var id_whitelist = [
+
+]
 
 var chatbot = true;
 
