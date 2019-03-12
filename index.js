@@ -1652,7 +1652,9 @@ client.on("a", function(msg) {
         }
     } else if (cmd == '/exp') {
         let a = args[1]
-        if (args[1] == "help") {
+            if (args[1] == "help") {
+
+                
             sendchat("	Returns the value of E^x. Usage : /exp x");
         } else if(!a || isNaN(a)) {
             sendchat("Invalid Usage. Need help? Use /exp help");
@@ -2275,7 +2277,7 @@ client.on("a", function (msg) {
     if (chatbot == true) {
         if (!isBlocked) {
     if (cmd == "/msgroom") {
-        if (msgs[1].length == 0  || msgs[0].length == 0) {
+        if (msgs.legnth = 0 || args.length == 0) {
             sendchat("Improper usage. Usage: /msgroom [room name] msg: [message]");
         } else {
             let tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
