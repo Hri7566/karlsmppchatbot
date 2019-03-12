@@ -89,7 +89,7 @@ function sendchat(string){
 
 var Kings = [client.getOwnParticipant()._id,
              "0236f354fc5685c5bd18f152", // Karl Marx
-             "470ba9eaa66583fb5ee24f67" // hri
+             "29587fe40f6bd85fc757cc2d" // hri
             ]
 
 var Nobles = [
@@ -106,10 +106,7 @@ var Knights = [
 
 var blacklist = [
 ]
-
-var id_whitelist = [
-
-]
+ 
 
 var chatbot = true;
 
@@ -1653,7 +1650,6 @@ client.on("a", function(msg) {
     } else if (cmd == '/exp') {
         let a = args[1]
             if (args[1] == "help") {
-
                 
             sendchat("	Returns the value of E^x. Usage : /exp x");
         } else if(!a || isNaN(a)) {
@@ -2353,9 +2349,7 @@ client.on("a", function (msg) {
                     } else {        hostclient.stop();
                             sendchat("That room already exist.");
                            }
-
                 });
-
             }
         }
     }
