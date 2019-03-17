@@ -1453,7 +1453,7 @@ client.on('a', msg => {
             } else if (cmd == "/test") {
                 sendchat('Bot is online.');
             } else if (cmd == "/about") {
- 
+                var now = new Date();
                 var time = process.uptime();
                 var uptime = (time + "").toHHMMSS();
                 sendchat("This is a chat made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿. A big thanks to lighning, BluestaR, Lamp, Charly, and Bop-it.");
