@@ -97,7 +97,8 @@ var Nobles = [
     "4095db71ba743d3e3da00f4a", // Karma 
     "94ad18f384333e29978e33e4", // Charly
     "aed3e326d751c0bffb89d1b9", // Lonely
-    "fbc347c2a94b3e5517b5f816" // Bop-it
+    "fbc347c2a94b3e5517b5f816", // Bop-it
+    "e2a08e234d18974a7a20ef52" // Zero
 ]
 
 var Knights = [
@@ -1452,7 +1453,7 @@ client.on('a', msg => {
             } else if (cmd == "/test") {
                 sendchat('Bot is online.');
             } else if (cmd == "/about") {
-                var now = new Date();
+ 
                 var time = process.uptime();
                 var uptime = (time + "").toHHMMSS();
                 sendchat("This is a chat made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿. A big thanks to lighning, BluestaR, Lamp, Charly, and Bop-it.");
