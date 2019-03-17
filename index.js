@@ -2343,16 +2343,17 @@ client.on("a", function (msg) {
                     let cmd = args[0].toLowerCase();
                     let argcat = msg.a.substring(cmd.length).trim();
                     let isAdmin = (admin.indexOf(msg.p._id) !== -1);
-                    if (hostclient.isOwner()) {
+                    if (hostclient.isOwner() == false) {
+                        hostclient.stop();
+                        sendchat("That room already exist.");
+                        } else {
                         if (cmd == "/closeroom") {
                             if (isAdmin){
                                 hostclient.sendArray([{m: "a", message: "Goodbye."}]);
                                 hostclient.stop();
                             }
                         }
-                    } else {        hostclient.stop();
-                            sendchat("That room already exist.");
-                           }
+                    }
                 });
             }
         }
