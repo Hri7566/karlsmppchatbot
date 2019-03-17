@@ -2334,10 +2334,6 @@ client.on("a", function (msg) {
 
                 hostclient.setChannel(argcat);
 
-                setTimeout(() => {
-                    hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
-                },250);
-
                 hostclient.on("a", function(msg) {
                     let args = msg.a.split(' ');
                     let cmd = args[0].toLowerCase();
@@ -2347,6 +2343,10 @@ client.on("a", function (msg) {
                         hostclient.stop();
                         sendchat("That room already exist.");
                         } else {
+                            setTimeout(() => {
+                                hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
+                            },250);
+                            
                         if (cmd == "/closeroom") {
                             if (isAdmin){
                                 hostclient.sendArray([{m: "a", message: "Goodbye."}]);
