@@ -2277,6 +2277,7 @@ client.on("a", function (msg) {
     if (chatbot == true) {
         if (!isBlocked) {
     if (cmd == "/msgroom") {
+        if (!msg.a.contains("msg: ")) {
         if (msgs.legnth = 0 || args.length == 0) {
             sendchat("Improper usage. Usage: /msgroom [room name] msg: [message]");
         } else {
@@ -2294,6 +2295,7 @@ client.on("a", function (msg) {
         }
     }
 }
+        }
     }
 });
 
@@ -2313,48 +2315,3 @@ client.on('a', function (msg) {
     }
 });
 
-var admin = [
-
-]
-client.on("a", function (msg) {
-    let args = msg.a.split(' ');
-    let cmd = args[0].toLowerCase();
-    let argcat = msg.a.substring(cmd.length).trim();
-    let isKing = (Kings.indexOf(msg.p._id) !== -1);
-    if (cmd == "/host") {
-        if (isKing) {
-            if (argcat.length == 0) {
-                sendchat("You need to list a room to join. /host [room name]");
-            } else {
-                admin.push(msg.p._id);
-
-                let hostclient = new MPPClient('ws://multiplayerpiano.com', undefined);
-
-                hostclient.start();
-
-                hostclient.setChannel(argcat);
-
-                if (hostclient.isOwner() == false) {
-                    hostclient.stop();
-                    sendchat("That room already exist.");
-                }
-
-                setTimeout(() => {
-                    hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
-                },250)};
-
-                hostclient.on("a", function(msg) {
-                    let args = msg.a.split(' ');
-                    let cmd = args[0].toLowerCase();
-                    let argcat = msg.a.substring(cmd.length).trim();
-                    let isAdmin = (admin.indexOf(msg.p._id) !== -1);
-                        if (cmd == "/closeroom") {
-                            if (isAdmin){
-                                hostclient.sendArray([{m: "a", message: "Goodbye."}]);
-                                hostclient.stop();
-                            }
-                        }
-                });
-            }
-        }
-});
