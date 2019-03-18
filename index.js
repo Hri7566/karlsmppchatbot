@@ -2355,4 +2355,5 @@ client.on("a", function (msg) {
                 });
             }
         }
+    }
 });
