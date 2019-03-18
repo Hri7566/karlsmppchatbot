@@ -2337,9 +2337,11 @@ client.on("a", function (msg) {
                 if (hostclient.isOwner() == false) {
                     hostclient.stop();
                     sendchat("That room already exist.");
-                }
-                    
+                };
+
+                setTimeout(() => {
                     hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
+                },250)};
 
                 hostclient.on("a", function(msg) {
                     let args = msg.a.split(' ');
@@ -2355,5 +2357,4 @@ client.on("a", function (msg) {
                 });
             }
         }
-    }
 });
