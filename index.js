@@ -1514,227 +1514,227 @@ client.on("a", function(msg) {
     var isBlocked = (blacklist.indexOf(msg.p._id) !== -1);
     if (chatbot == true) {
         if (!isBlocked) {
-    if (cmd == "/math") {
-        sendchat("Math Functions: /add | /sub | /mult | /div | /pow  | /exp | /atan | /atanh | /atan2 | /acos | /acosh | /cos | /cosh | /asin | /asinh | /cbrt | /sqrt | /tan | /tanh | /sin | /sinh | /string");
-        sendchat("Math Key: /e | /pi ");
-    }
+            if (cmd == "/math") {
+                sendchat("Math Functions: /add | /sub | /mult | /div | /pow  | /exp | /atan | /atanh | /atan2 | /acos | /acosh | /cos | /cosh | /asin | /asinh | /cbrt | /sqrt | /tan | /tanh | /sin | /sinh | /string");
+                sendchat("Math Key: /e | /pi ");
+            }
 
-    if (cmd == '/add'){
-        let a = args[1]
-        let b = args[2]
-        if (args[1] == "help") {
-            sendchat("Adds two numbers together. Usage : /add x y");
-        } else if(!a || !b || isNaN(a) || isNaN(b)) {
-            sendchat("Invalid Usage. Need help? Use /add help");
-        } else {
-            sendchat(`Answer: ${parseInt(a) + parseInt(b)}`);
-        }
-    } else if (cmd == '/sub'){
-        let a = args[1]
-        let b = args[2]
-        if (args[1] == "help") {
-            sendchat("Subtracts two numbers together. Usage : /sub x y");
-        } else if(!a || !b || isNaN(a) || isNaN(b)) {
-            sendchat("Invalid Usage. Need help? Use /sub help");
-        } else {
-            sendchat(`Answer: ${parseInt(a) - parseInt(b)}`);
-        }
-    } else if (cmd == '/div') {
-        let a = args[1]
-        let b = args[2]
-        if (args[1] == "help") {
-            sendchat("Divides two numbers from eachother. Usage : /div x y");
-        } else  if(!a || !b || isNaN(a) || isNaN(b)) {
-            sendchat("Invalid Usage. Need help? Use /div help");
-        } else {
-            sendchat(`Answer: ${parseInt(a) / parseInt(b)}`);
-        }
-    } else if (cmd == '/mult') {
-        let a = args[1]
-        let b = args[2]
-        if (args[1] == "help") {
-            sendchat("Multiples two numbers together. Usage : /mult x y");
-        } else if(!a || !b || isNaN(a) || isNaN(b)) {
-            sendchat("Invalid Usage. Need help? Use /mult help");
-        } else {
-            sendchat(`Answer: ${parseInt(a) * parseInt(b)}`);
-        }
-    } else if (cmd == '/pow') {
-        let a = args[1]
-        let b = args[2]
-        if (args[1] == "help") {
-            sendchat("	Returns the value of x to the power of y. Usage : /pow x y");
-        } else if(!a || !b || isNaN(a) || isNaN(b)) {
-            sendchat("Invalid Usage. Need help? Use /pow help");
-        } else {
-            sendchat(`Answer: ${(parseInt(a) ** parseInt(b))}`);
-        }
-    } else if (cmd == '/atan2') {
-        let a = args[1]
-        let b = args[2]
-        if (args[1] == "help") {
-            sendchat("	Returns the arctangent of the quotient of its arguments. Usage : /atan2 x y");
-        } else if(!a || !b || isNaN(a) || isNaN(b)) {
-            sendchat("Invalid Usage. Need help? Use /atan2 help");
-        } else {
-            sendchat(`Answer: ${Math.atan2(parseInt(a) + parseInt(b))}`);
-        }
-    } else if (cmd == '/acos') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat("Returns the arccosine of x, in radians. Restrictions: x must be less then or equal to 1  Usage : /acos x");
-        } else if(!a || isNaN(a) || a > 1) {
-            sendchat("Invalid Usage. Need help? Use /acos help");
-        } else {
-            sendchat(`Answer: ${Math.acos(parseInt(a))}`);
-        }
-    } else if (cmd == '/asin') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat("The asin() method returns the arcsine of a number as a value between -PI/2 and PI/2 radians. Restrictions: x must be within the range -1, 1  Usage : /acos x");
-        } else if(!a || isNaN(a) || a > 1 || a < -1) {
-            sendchat("Invalid Usage. Need help? Use /acos help");
-        } else {
-            sendchat(`Answer: ${Math.asin(parseInt(a))}`);
-        }
-    } else if (cmd == '/asinh') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat("	Returns the hyperbolic arcsine of x. Usage : /acos x");
-        } else if(!a || isNaN(a)) {
-            sendchat("Invalid Usage. Need help? Use /asinh help");
-        } else {
-            sendchat(`Answer: ${Math.asinh(parseInt(a))}`);
-        }
-    } else if (cmd == '/atan') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat(" Returns the arctangent of a number as a value between -PI/2 and PI/2 radians. Usage : /atan x");
-        } else if(!a || isNaN(a)) {
-            sendchat("Invalid Usage. Need help? Use /atan help");
-        } else {
-            sendchat(`Answer: ${Math.atan(parseInt(a))}`);
-        }
-    } else if (cmd == '/atanh') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat("Returns the hyperbolic arctangent of x. Restrictions: x must be within the range -1, 1 Usage : /atanh x");
-        } else if(!a || isNaN(a) || a > 1 || a < -1) {
-            sendchat("Invalid Usage. Need help? Use /atanh help");
-        } else {
-            sendchat(`Answer: ${Math.atanh(parseInt(a))}`);
-        }
-    } else if (cmd == '/cbrt') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat("Returns the cubic root of x. Usage : /cbrt x");
-        } else if(!a || isNaN(a)) {
-            sendchat("Invalid Usage. Need help? Use /cbrt help");
-        } else {
-            sendchat(`Answer: ${Math.cbrt(parseInt(a))}`);
-        }
-    } else if (cmd == '/cos') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat("	Returns the cosine of x (x is in radians). Usage : /cos x");
-        } else if(!a || isNaN(a)) {
-            sendchat("Invalid Usage. Need help? Use /cos help");
-        } else {
-            sendchat(`Answer: ${Math.cos(parseInt(a))}`);
-        }
-    } else if (cmd == '/cosh') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat("	Returns the hyperbolic cosine of x. Usage : /cosh x");
-        } else  if(!a || isNaN(a)) {
-            sendchat("Invalid Usage. Need help? Use /cosh help");
-        } else {
-            sendchat(`Answer: ${Math.cosh(parseInt(a))}`);
-        }
-    } else if (cmd == '/exp') {
-        let a = args[1]
-            if (args[1] == "help") {
-                
-            sendchat("	Returns the value of E^x. Usage : /exp x");
-        } else if(!a || isNaN(a)) {
-            sendchat("Invalid Usage. Need help? Use /exp help");
-        } else {
-            sendchat(`Answer: ${Math.exp(parseInt(a))}`);
-        }
-    } else if (cmd == '/log') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat("Returns the natural logarithm (base E) of x. Usage : /log x");
-        } else if(!a || isNaN(a)) {
-            sendchat("Invalid Usage. Need help? Use /log help");
-        } else {
-            sendchat(`Answer: ${Math.log(parseInt(a))}`);
-        }
-    } else if (cmd == '/sin') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat("	Returns the sine of x (x is in radians). Usage : /sin x");
-        } else if(!a || isNaN(a)) {
-            sendchat("Invalid Usage. Need help? Use /sin help");
-        } else {
-            sendchat(`Answer: ${Math.sin(parseInt(a))}`);
-        }
-    } else if (cmd == '/sinh') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat("	Returns the hyperbolic sine of x. Usage : /sinh x");
-        } else if(!a || isNaN(a)) {
-            sendchat("Invalid Usage. Need help? Use /sinh help");
-        } else {
-            sendchat(`Answer: ${Math.sinh(parseInt(a))}`);
-        }
-    } else if (cmd == '/sqrt') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat("	Returns the square root of x. Usage : /sqrt x");
-        } else if(!a || isNaN(a)) {
-            sendchat("Invalid Usage. Need help? Use /sqrt help");
-        } else {
-            sendchat(`Answer: ${Math.sqrt(parseInt(a))}`);
-        }
-    } else if (cmd == '/tan') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat("	Returns the tangent of an angle. Usage : /tan x");
-        } else if(!a || isNaN(a)) {
-            sendchat("Invalid Usage. Need help? Use /tan help");
-        } else {
-            sendchat(`Answer: ${Math.tan(parseInt(a))}`);
-        }
-    } else if (cmd == '/tanh') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat("	Returns the hyperbolic tangent of a number. Usage : /tanh x");
-        } else if(!a || isNaN(a)) {
-            sendchat("Invalid Usage. Need help? Use /tanh help");
-        } else {
-            sendchat(`Answer: ${Math.tanh(parseInt(a))}`);
-        }
-    } else if (cmd == '/string') {
-        let a = args[1]
-        if (args[1] == "help") {
-            sendchat("Solves strings, such as (1+2(2*2)). Usage : /string x");
-        } else if(!a) {
-            sendchat("Invalid Usage. Need help? Use /string help");
-        } else {
-            try{
-                sendchat(`Answer: ${Math.eval(argcat)}`);
+            if (cmd == '/add'){
+                let a = args[1]
+                let b = args[2]
+                if (args[1] == "help") {
+                    sendchat("Adds two numbers together. Usage : /add x y");
+                } else if(!a || !b || isNaN(a) || isNaN(b)) {
+                    sendchat("Invalid Usage. Need help? Use /add help");
+                } else {
+                    sendchat(`Answer: ${parseInt(a) + parseInt(b)}`);
+                }
+            } else if (cmd == '/sub'){
+                let a = args[1]
+                let b = args[2]
+                if (args[1] == "help") {
+                    sendchat("Subtracts two numbers together. Usage : /sub x y");
+                } else if(!a || !b || isNaN(a) || isNaN(b)) {
+                    sendchat("Invalid Usage. Need help? Use /sub help");
+                } else {
+                    sendchat(`Answer: ${parseInt(a) - parseInt(b)}`);
+                }
+            } else if (cmd == '/div') {
+                let a = args[1]
+                let b = args[2]
+                if (args[1] == "help") {
+                    sendchat("Divides two numbers from eachother. Usage : /div x y");
+                } else  if(!a || !b || isNaN(a) || isNaN(b)) {
+                    sendchat("Invalid Usage. Need help? Use /div help");
+                } else {
+                    sendchat(`Answer: ${parseInt(a) / parseInt(b)}`);
+                }
+            } else if (cmd == '/mult') {
+                let a = args[1]
+                let b = args[2]
+                if (args[1] == "help") {
+                    sendchat("Multiples two numbers together. Usage : /mult x y");
+                } else if(!a || !b || isNaN(a) || isNaN(b)) {
+                    sendchat("Invalid Usage. Need help? Use /mult help");
+                } else {
+                    sendchat(`Answer: ${parseInt(a) * parseInt(b)}`);
+                }
+            } else if (cmd == '/pow') {
+                let a = args[1]
+                let b = args[2]
+                if (args[1] == "help") {
+                    sendchat("	Returns the value of x to the power of y. Usage : /pow x y");
+                } else if(!a || !b || isNaN(a) || isNaN(b)) {
+                    sendchat("Invalid Usage. Need help? Use /pow help");
+                } else {
+                    sendchat(`Answer: ${(parseInt(a) ** parseInt(b))}`);
+                }
+            } else if (cmd == '/atan2') {
+                let a = args[1]
+                let b = args[2]
+                if (args[1] == "help") {
+                    sendchat("	Returns the arctangent of the quotient of its arguments. Usage : /atan2 x y");
+                } else if(!a || !b || isNaN(a) || isNaN(b)) {
+                    sendchat("Invalid Usage. Need help? Use /atan2 help");
+                } else {
+                    sendchat(`Answer: ${Math.atan2(parseInt(a) + parseInt(b))}`);
+                }
+            } else if (cmd == '/acos') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("Returns the arccosine of x, in radians. Restrictions: x must be less then or equal to 1  Usage : /acos x");
+                } else if(!a || isNaN(a) || a > 1) {
+                    sendchat("Invalid Usage. Need help? Use /acos help");
+                } else {
+                    sendchat(`Answer: ${Math.acos(parseInt(a))}`);
+                }
+            } else if (cmd == '/asin') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("The asin() method returns the arcsine of a number as a value between -PI/2 and PI/2 radians. Restrictions: x must be within the range -1, 1  Usage : /acos x");
+                } else if(!a || isNaN(a) || a > 1 || a < -1) {
+                    sendchat("Invalid Usage. Need help? Use /acos help");
+                } else {
+                    sendchat(`Answer: ${Math.asin(parseInt(a))}`);
+                }
+            } else if (cmd == '/asinh') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("	Returns the hyperbolic arcsine of x. Usage : /acos x");
+                } else if(!a || isNaN(a)) {
+                    sendchat("Invalid Usage. Need help? Use /asinh help");
+                } else {
+                    sendchat(`Answer: ${Math.asinh(parseInt(a))}`);
+                }
+            } else if (cmd == '/atan') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat(" Returns the arctangent of a number as a value between -PI/2 and PI/2 radians. Usage : /atan x");
+                } else if(!a || isNaN(a)) {
+                    sendchat("Invalid Usage. Need help? Use /atan help");
+                } else {
+                    sendchat(`Answer: ${Math.atan(parseInt(a))}`);
+                }
+            } else if (cmd == '/atanh') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("Returns the hyperbolic arctangent of x. Restrictions: x must be within the range -1, 1 Usage : /atanh x");
+                } else if(!a || isNaN(a) || a > 1 || a < -1) {
+                    sendchat("Invalid Usage. Need help? Use /atanh help");
+                } else {
+                    sendchat(`Answer: ${Math.atanh(parseInt(a))}`);
+                }
+            } else if (cmd == '/cbrt') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("Returns the cubic root of x. Usage : /cbrt x");
+                } else if(!a || isNaN(a)) {
+                    sendchat("Invalid Usage. Need help? Use /cbrt help");
+                } else {
+                    sendchat(`Answer: ${Math.cbrt(parseInt(a))}`);
+                }
+            } else if (cmd == '/cos') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("	Returns the cosine of x (x is in radians). Usage : /cos x");
+                } else if(!a || isNaN(a)) {
+                    sendchat("Invalid Usage. Need help? Use /cos help");
+                } else {
+                    sendchat(`Answer: ${Math.cos(parseInt(a))}`);
+                }
+            } else if (cmd == '/cosh') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("	Returns the hyperbolic cosine of x. Usage : /cosh x");
+                } else  if(!a || isNaN(a)) {
+                    sendchat("Invalid Usage. Need help? Use /cosh help");
+                } else {
+                    sendchat(`Answer: ${Math.cosh(parseInt(a))}`);
+                }
+            } else if (cmd == '/exp') {
+                let a = args[1]
+                if (args[1] == "help") {
+
+                    sendchat("	Returns the value of E^x. Usage : /exp x");
+                } else if(!a || isNaN(a)) {
+                    sendchat("Invalid Usage. Need help? Use /exp help");
+                } else {
+                    sendchat(`Answer: ${Math.exp(parseInt(a))}`);
+                }
+            } else if (cmd == '/log') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("Returns the natural logarithm (base E) of x. Usage : /log x");
+                } else if(!a || isNaN(a)) {
+                    sendchat("Invalid Usage. Need help? Use /log help");
+                } else {
+                    sendchat(`Answer: ${Math.log(parseInt(a))}`);
+                }
+            } else if (cmd == '/sin') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("	Returns the sine of x (x is in radians). Usage : /sin x");
+                } else if(!a || isNaN(a)) {
+                    sendchat("Invalid Usage. Need help? Use /sin help");
+                } else {
+                    sendchat(`Answer: ${Math.sin(parseInt(a))}`);
+                }
+            } else if (cmd == '/sinh') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("	Returns the hyperbolic sine of x. Usage : /sinh x");
+                } else if(!a || isNaN(a)) {
+                    sendchat("Invalid Usage. Need help? Use /sinh help");
+                } else {
+                    sendchat(`Answer: ${Math.sinh(parseInt(a))}`);
+                }
+            } else if (cmd == '/sqrt') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("	Returns the square root of x. Usage : /sqrt x");
+                } else if(!a || isNaN(a)) {
+                    sendchat("Invalid Usage. Need help? Use /sqrt help");
+                } else {
+                    sendchat(`Answer: ${Math.sqrt(parseInt(a))}`);
+                }
+            } else if (cmd == '/tan') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("	Returns the tangent of an angle. Usage : /tan x");
+                } else if(!a || isNaN(a)) {
+                    sendchat("Invalid Usage. Need help? Use /tan help");
+                } else {
+                    sendchat(`Answer: ${Math.tan(parseInt(a))}`);
+                }
+            } else if (cmd == '/tanh') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("	Returns the hyperbolic tangent of a number. Usage : /tanh x");
+                } else if(!a || isNaN(a)) {
+                    sendchat("Invalid Usage. Need help? Use /tanh help");
+                } else {
+                    sendchat(`Answer: ${Math.tanh(parseInt(a))}`);
+                }
+            } else if (cmd == '/string') {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("Solves strings, such as (1+2(2*2)). Usage : /string x");
+                } else if(!a) {
+                    sendchat("Invalid Usage. Need help? Use /string help");
+                } else {
+                    try{
+                        sendchat(`Answer: ${Math.eval(argcat)}`);
+                    }
+                    catch(err) { 
+                        sendchat("Invalid Usage. Need help? Use /string help");
+                    }
+                }
+            } else if (cmd == "/e") {
+                sendchat(" " + Math.E);
+            } else if (cmd == "/pi") {
+                sendchat(" " + Math.PI);
             }
-            catch(err) { 
-                sendchat("Invalid Usage. Need help? Use /string help");
-            }
         }
-    } else if (cmd == "/e") {
-        sendchat(" " + Math.E);
-    } else if (cmd == "/pi") {
-        sendchat(" " + Math.PI);
-    }
-}
     }
 });
 
@@ -2276,25 +2276,25 @@ client.on("a", function (msg) {
     var isBlocked = (blacklist.indexOf(msg.p._id) !== -1);
     if (chatbot == true) {
         if (!isBlocked) {
-    if (cmd == "/msgroom") {
-        if (!msg.a.contains("msg: ")) {
-        if (msgs.legnth = 0 || args.length == 0) {
-            sendchat("Improper usage. Usage: /msgroom [room name] msg: [message]");
-        } else {
-            let tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
-            tempclient.start();
-            tempclient.setChannel(msgs[0]);
-            tempclient.on("hi", function() {
-                setTimeout(() => {
-                    tempclient.sendArray([{m: "a", message: msgs[1]}]);
-                    tempclient.sendArray([{m: "a", message: "From: " + msg.p.name + ", Room: " + client.channel._id }]);
-                    tempclient.stop();
-                },250);
-            });
-            sendchat("Message sent!");
-        }
-    }
-}
+            if (cmd == "/msgroom") {
+               // if (!msg.a.contains("msg: ")) {
+                    if (msgs.legnth = 0 || args.length == 0) {
+                        sendchat("Improper usage. Usage: /msgroom [room name] msg: [message]");
+                    } else {
+                        let tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
+                        tempclient.start();
+                        tempclient.setChannel(msgs[0]);
+                        tempclient.on("hi", function() {
+                            setTimeout(() => {
+                                tempclient.sendArray([{m: "a", message: msgs[1]}]);
+                                tempclient.sendArray([{m: "a", message: "From: " + msg.p.name + ", Room: " + client.channel._id }]);
+                                tempclient.stop();
+                            },250);
+                        });
+                        sendchat("Message sent!");
+                    }
+                //}
+            }
         }
     }
 });
