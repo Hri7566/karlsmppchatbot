@@ -1427,7 +1427,7 @@ client.on('a', msg => {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == "/8ball") {
-                if (argcat.length = 0) {
+                if (argcat.length == 0) {
                     sendchat("You need to ask a question to hear the all powerfull words of the 8 ball."); 
                 } else {
                     sendchat(msg.p.name + ", your anwser is: " + BallArray[Math.floor(Math.random()*BallArray.length)]);
@@ -2339,7 +2339,7 @@ client.on("a", function (msg) {
                     hostclient.stop();
                     sendchat("That room already exist.");
                 } else {
-
+                    
                     hostclient.sendArray([{m: "a", message: "Hello!, I'm your host."}]);
                 }
                 },250)};
