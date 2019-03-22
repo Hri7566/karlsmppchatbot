@@ -1742,7 +1742,7 @@ client.on("a", function(msg) {
                     sendchat("Invalid Usage. Need help? Use /catyears help");
                 } else if (a > 50) {
                     sendchat("Old af");
-                    sendchat(`${parseInt(((a)-2)*4+(2*12))} cat years.`);
+                    sendchat(`${parseInt((a)-2)*4+(2*12)} cat years.`);
                 }
             } else if (cmd == "/dogyears") {
                 let a = args[1]
@@ -1753,7 +1753,7 @@ client.on("a", function(msg) {
                 } else if (a > 50) {
                     sendchat("Old af");
                 } else if (a <= 50) {
-                    sendchat(`${parseInt((a)-2)*4+(2*10.4)} cat years.`);
+                    sendchat(`${parseInt((a)-2)*4+(2*10.4)} dog years.`);
                 }
             }
         }
