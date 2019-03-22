@@ -2321,12 +2321,18 @@ client.on("a", function(msg) {
     let argcat = msg.a.substring(cmd.length).trim();
     if (cmd == "/catyears") {
         let a = args[1]
-        if (a <= 1) {
-            sendchat("15");
-        } else if (a <= 2 && a > 1) {
-            sendchat("24");
-        } else if (a > 2) {
-            sendchat(`${parseInt(((((a)-2)*4)+24))}`);
+        if (args[1] == "help") {
+            sendchat("Turns human years into cat years. Usage: /catyears x");
+        } else if(!a || isNaN(a)) {
+            sendchat("Invalid Usage. Need help? Use /catyears help");
+        } else {
+            if (a <= 1) {
+                sendchat("15");
+            } else if (a <= 2 && a > 1) {
+                sendchat("24");
+            } else if (a > 2) {
+                sendchat(`${parseInt(((((a)-2)*4)+24))} cat years.`);
+            }
         }
     }
 });
