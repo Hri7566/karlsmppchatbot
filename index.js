@@ -1742,6 +1742,7 @@ client.on("a", function(msg) {
                     sendchat("Invalid Usage. Need help? Use /catyears help");
                 } else if (a > 50) {
                     sendchat("Old af");
+                } else if (a <= 50) {
                     sendchat(`${parseInt((a)-2)*4+(2*12)} cat years.`);
                 }
             } else if (cmd == "/dogyears") {
