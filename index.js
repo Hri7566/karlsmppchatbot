@@ -31,7 +31,7 @@ if (Object.keys(client.ppl).length > 20) {
 }
 
 function kickban(id, ms) {
-    MPP.client.sendArray([{m: "kickban", _id: id, ms: ms}]);
+    client.sendArray([{m: "kickban", _id: id, ms: ms}]);
 };
 
 // Error catch
@@ -2292,22 +2292,22 @@ client.on("a", function (msg) {
     if (chatbot == true) {
         if (!isBlocked) {
             if (cmd == "/msgroom") {
-               // if (!msg.a.contains("msg: ")) {
-                    if (msgs.legnth = 0 || args.length == 0) {
-                        sendchat("Improper usage. Usage: /msgroom [room name] msg: [message]");
-                    } else {
-                        let tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
-                        tempclient.start();
-                        tempclient.setChannel(msgs[0]);
-                        tempclient.on("hi", function() {
-                            setTimeout(() => {
-                                tempclient.sendArray([{m: "a", message: msgs[1]}]);
-                                tempclient.sendArray([{m: "a", message: "From: " + msg.p.name + ", Room: " + client.channel._id }]);
-                                tempclient.stop();
-                            },250);
-                        });
-                        sendchat("Message sent!");
-                    }
+                // if (!msg.a.contains("msg: ")) {
+                if (msgs.legnth = 0 || args.length == 0) {
+                    sendchat("Improper usage. Usage: /msgroom [room name] msg: [message]");
+                } else {
+                    let tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
+                    tempclient.start();
+                    tempclient.setChannel(msgs[0]);
+                    tempclient.on("hi", function() {
+                        setTimeout(() => {
+                            tempclient.sendArray([{m: "a", message: msgs[1]}]);
+                            tempclient.sendArray([{m: "a", message: "From: " + msg.p.name + ", Room: " + client.channel._id }]);
+                            tempclient.stop();
+                        },250);
+                    });
+                    sendchat("Message sent!");
+                }
                 //}
             }
         }
