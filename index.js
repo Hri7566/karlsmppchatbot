@@ -2315,3 +2315,18 @@ client.on('a', function (msg) {
     }
 });
 
+client.on("a", function(msg) {
+    let args = msg.a.split(' ');
+    let cmd = args[0].toLowerCase();
+    let argcat = msg.a.substring(cmd.length).trim();
+    if (cmd == "/catyears") {
+        let a = args[1]
+        if (a <= 1) {
+            sendchat("15");
+        } else if (a <= 2 && a > 1) {
+            sendchat("24");
+        } else if (a > 2) {
+            sendchat(`${parseInt(((((a)-2)*4)+24))}`);
+        }
+    }
+});
