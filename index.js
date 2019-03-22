@@ -153,10 +153,11 @@ client.on('a', msg => {
             }
         }
     } else if (cmd == "/goto") {
-        if (isKing) {
+        if (argcat.length == 0) {
+            sendchat("You need to list a room to move to.")
+        } else if (isKing) {
             sendchat("Moving to room: \"" + argcat + "\"");
             client.setChannel(argcat);
-            home = argcat;
         } else {
             sendchat("You can't use this command. Use /rank for more information.");
         }
@@ -224,13 +225,13 @@ client.on('a', msg => {
             // Help, art list, and info
             if (cmd == "/help") {
                 if (isKing) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /catyears | /math | /clearchat | /kickban | /chatbot | /goto | /getcrown | /js | /MsgRoom [room name] msg: [message] | /8ball");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /catyears | /dogyears | /math | /clearchat | /kickban | /chatbot | /goto | /getcrown | /js | /MsgRoom [room name] msg: [message] | /8ball");
                 } else if (isNoble) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /catyears | /math | /clearchat | /kickban | /MsgRoom [room name] msg: [message] | /8ball");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /catyears | /dogyears | /math | /clearchat | /kickban | /MsgRoom [room name] msg: [message] | /8ball");
                 } else if (isKnight) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /catyears | /math | /MsgRoom [room name] msg: [message] | /8ball");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /catyears | /dogyears | /math | /MsgRoom [room name] msg: [message] | /8ball");
                 } else {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /catyears | /math | /MsgRoom [room name] msg: [message] | /8ball");
+                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /catyears | /dogyears | /math | /MsgRoom [room name] msg: [message] | /8ball");
                 }
             } else if (cmd == "/art") {
                 if (isKing) {
@@ -1737,16 +1738,22 @@ client.on("a", function(msg) {
                 let a = args[1]
                 if (args[1] == "help") {
                     sendchat("Turns human years into cat years. Usage: /catyears x");
-                } else if(!a || isNaN(a) || a == 0) {
+                } else if (!a || isNaN(a)) {
                     sendchat("Invalid Usage. Need help? Use /catyears help");
-                } else {
-                    if (a <= 1) {
-                        sendchat("15");
-                    } else if (a <= 2 && a > 1) {
-                        sendchat("24");
-                    } else if (a > 2) {
-                        sendchat(`${parseInt(((((a)-2)*4)+24))} cat years.`);
-                    }
+                } else if (a > 50) {
+                    sendchat("Old af");
+                    sendchat(`${parseInt(((a)-2)*4+(2*12))} cat years.`);
+                }
+            } else if (cmd == "/dogyears") {
+                let a = args[1]
+                if (args[1] == "help") {
+                    sendchat("Converts human years into dog years. Usage: /dogyears x");
+                } else if (!a || isNaN(a)) {
+                    sendchat("Invalid Usage. Need help? Use /dogyears help");
+                } else if (a > 50) {
+                    sendchat("Old af");
+                } else if (a <= 50) {
+                    sendchat(`${parseInt((a)-2)*4+(2*10.4)} cat years.`);
                 }
             }
         }
