@@ -148,6 +148,12 @@ client.on('a', msg => {
     var Noblescmds = "Nobles Commands: /kickban | /clearchat";
 
     var Peasantcmds = "Commands: /help | /about | /rank | /qoute | /fact | /8ball | /math | /art | /eat | /kill | /stab | /hug | /shoot | /slap | / cuddle | /friendzone | /fight | /tickle | /roast | /poke | /catyears | /dogyears | /rps";
+
+    var Peasantart = "Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance";
+
+    var Knightart = "Knight rank art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music";
+
+    var Nobleart = "Noble rank art: /scream | /fuckmyass | /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.";
     // bot toggle
     if (cmd == "/chatbot") {
         if (isKing) {
@@ -246,16 +252,20 @@ client.on('a', msg => {
                     sendchat(Kingcmds);
                 }
             } else if (cmd == "/art") {
-                if (isKing) {
-                    sendchat("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance || Small Art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music");
-                    sendchat("|| Large Arts (Crown needed): /scream | /fuckmyass | /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.");
-                } else if (isNoble) {
-                    sendchat("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance || Small Art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music");
-                    sendchat("|| Large Arts (Crown needed): /scream | /fuckmyass | /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.");
-                } else if (isKnight) {
-                    sendchat("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance || Small Art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music");
+                if (!client.isOwner()) {
+                    sendchat(Peasantart);
+                    sendchat("More art commands will be listed if you give me the crown and you have a rank.");
+                } else if (!isNoble) {
+                    if (!isKnight) {
+                        sendchat(Peasantart);
+                    } else {
+                        sendchat(Peasantart);
+                        sendchat(Knightart);
+                    }
                 } else {
-                    sendchat("Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance");
+                    sendchat(Peasantart);
+                    sendchat(Knightart);
+                    sendchat(Nobleart);
                 }
             } else if (cmd == "/rank") {
                 if (isKing) {
