@@ -94,7 +94,7 @@ var Kings = [client.getOwnParticipant()._id,
 
 var Nobles = [
     "f5d6d1fe98b1b415b15890cb", // Pg
-    "4095db71ba743d3e3da00f4a", // Karma 
+    "4095db71ba743d3e3da00f4a", // Karma
     "94ad18f384333e29978e33e4", // Charly
     "aed3e326d751c0bffb89d1b9", // Lonely
     "fbc347c2a94b3e5517b5f816", // Bop-it
@@ -151,6 +151,13 @@ client.on('a', msg => {
                 chatbot = true
                 sendchat("The chat-bot is now on.");
             }
+        }
+    } else if (cmd == "/botoff") {
+        if (isKing) {
+            sendchat("Goodbye");
+            client.stop();
+        } else {
+            sendchat("You can't use this command. Use /rank for more information.");
         }
     } else if (cmd == "/goto") {
         if (argcat.length == 0) {
@@ -1429,7 +1436,7 @@ client.on('a', msg => {
                 }
             } else if (cmd == "/8ball") {
                 if (argcat.length == 0) {
-                    sendchat("You need to ask a question to hear the all powerfull words of the 8 ball."); 
+                    sendchat("You need to ask a question to hear the all powerfull words of the 8 ball.");
                 } else {
                     sendchat(msg.p.name + ", your anwser is: " + BallArray[Math.floor(Math.random()*BallArray.length)]);
                 }
@@ -1467,7 +1474,7 @@ client.on('a', msg => {
             } else if (msg.a == "Hello there") {
                 sendchat("General Kenobi!");
             }
-        } 
+        }
     }
 });
 
@@ -1726,7 +1733,7 @@ client.on("a", function(msg) {
                     try{
                         sendchat(`Answer: ${Math.eval(argcat)}`);
                     }
-                    catch(err) { 
+                    catch(err) {
                         sendchat("Invalid Usage. Need help? Use /string help");
                     }
                 }
@@ -1803,7 +1810,7 @@ client.on("participant added", function (part) {
 });
 
 FactArray= ['Amelia Earhart and Eleanor Roosevelt once sneaked out of a White House event, commandeered an airplane, and went on a joyride to Baltimore.',
-            'If you have the feeling youÃ¢â‚¬â„¢ve experienced an event before in real life, call it \u0064\u0065\u00cc\u006a\u0061\u00cc \u0076\u0075. If you feel like you\'ve previously experienced an event in a dream instead, thereÃ¢â‚¬â„¢s a different term for it: d\u00E9j\u00E0 r\u00EAv\u00E9.',
+            'If you have the feeling you\'ve experienced an event before in real life, call it \u0064\u0065\u00cc\u006a\u0061\u00cc \u0076\u0075. If you feel like you\'ve previously experienced an event in a dream instead, thereÃ¢â‚¬â„¢s a different term for it: d\u00E9j\u00E0 r\u00EAv\u00E9.',
             'During Prohibition, moonshiners would wear "cow shoes." The fancy footwear left hoofprints instead of footprints, helping distillers and smugglers evade police.',
             'Since founding the Imagination Library in 1995, Dolly Parton has donated 100 million books to children.',
             'The 100 folds in a chef\'s toque are said to represent 100 ways to cook an egg.',
@@ -2300,8 +2307,7 @@ client.on("a", function (msg) {
     if (chatbot == true) {
         if (!isBlocked) {
             if (cmd == "/msgroom") {
-                // if (!msg.a.contains("msg: ")) {
-                if (msgs.legnth = 0 || args.length == 0) {
+                if (msgs.legnth = 0 || args.length == 0 || argcat.includes("msg: ") == false) {
                     sendchat("Improper usage. Usage: /msgroom [room name] msg: [message]");
                 } else {
                     let tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
@@ -2316,7 +2322,6 @@ client.on("a", function (msg) {
                     });
                     sendchat("Message sent!");
                 }
-                //}
             }
         }
     }
