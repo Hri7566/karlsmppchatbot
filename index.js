@@ -255,7 +255,7 @@ client.on('a', msg => {
                 if (!client.isOwner()) {
                     sendchat(Peasantart);
                     sendchat("More art commands will be listed if you give me the crown and you have a rank.");
-                } else if (!isNoble) {
+                } else if (!isNoble || !isKing) {
                     if (!isKnight) {
                         sendchat(Peasantart);
                     } else {
