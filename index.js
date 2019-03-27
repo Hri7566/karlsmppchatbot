@@ -152,14 +152,6 @@ client.on('a', msg => {
                 sendchat("The chat-bot is now on.");
             }
         }
-    } else if (cmd == "/restart") {
-        if (isKing) {
-            sendchat("Goodbye");
-            client.stop();
-            client.start();
-        } else {
-            sendchat("You can't use this command. Use /rank for more information.");
-        }
     } else if (cmd == "/goto") {
         if (argcat.length == 0) {
             sendchat("You need to list a room to move to.")
