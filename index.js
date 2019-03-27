@@ -98,7 +98,8 @@ var Nobles = [
     "94ad18f384333e29978e33e4", // Charly
     "aed3e326d751c0bffb89d1b9", // Lonely
     "fbc347c2a94b3e5517b5f816", // Bop-it
-    "e2a08e234d18974a7a20ef52" // Zero
+    "e2a08e234d18974a7a20ef52", // Zero
+    "c31b870e9e9a917b640921fd" // Hue
 ]
 
 var Knights = [
@@ -141,6 +142,12 @@ client.on('a', msg => {
     var isNoble = (Nobles.indexOf(msg.p._id) !== -1);
     var isKnight = (Knights.indexOf(msg.p._id) !== -1);
     var isBlocked = (blacklist.indexOf(msg.p._id) !== -1);
+
+    var Kingcmds = "King Commands: /chatbot | /goto | /getcrown| /js";
+
+    var Noblescmds = "Nobles Commands: /kickban | /clearchat";
+
+    var Peasantcmds = "Commands: /help | /about | /rank | /qoute | /fact | /8ball | /math | /art | /eat | /kill | /stab | /hug | /shoot | /slap | / cuddle | /friendzone | /fight | /tickle | /roast | /poke | /catyears | /dogyears | /rps";
     // bot toggle
     if (cmd == "/chatbot") {
         if (isKing) {
@@ -224,14 +231,19 @@ client.on('a', msg => {
         if (!isBlocked) {
             // Help, art list, and info
             if (cmd == "/help") {
-                if (isKing) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /catyears | /dogyears | /math | /clearchat | /kickban | /chatbot | /goto | /getcrown | /js | /MsgRoom [room name] msg: [message] | /8ball");
-                } else if (isNoble) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /catyears | /dogyears | /math | /clearchat | /kickban | /MsgRoom [room name] msg: [message] | /8ball");
-                } else if (isKnight) {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /catyears | /dogyears | /math | /MsgRoom [room name] msg: [message] | /8ball");
+                if (!isKing) {
+                    if (!isNoble) {
+                        if (!isKnight) {
+                            sendchat(Peasantcmds);
+                        }
+                    } else {
+                        sendchat(Peasantcmds);
+                        sendchat(Noblescmds);
+                    }
                 } else {
-                    sendchat("Commands are listed to fit your rank. Use /rank to learn more. Commands: /help | /test | /about | /rip | /quote | /test | /fact | /loss | /eat | /tickle | /roast | /kill | /stab | /hug | /shoot | /slap | /cuddle | /friendzone | /fight | /rps | /poke | /rank | /art | /catyears | /dogyears | /math | /MsgRoom [room name] msg: [message] | /8ball");
+                    sendchat(Peasantcmds);
+                    sendchat(Noblescmds);
+                    sendchat(Kingcmds);
                 }
             } else if (cmd == "/art") {
                 if (isKing) {
