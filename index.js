@@ -1485,7 +1485,7 @@ client.on('a', msg => {
                 var now = new Date();
                 var time = process.uptime();
                 var uptime = (time + "").toHHMMSS();
-                sendchat("This is a chat made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿. A big thanks to lighning, BluestaR, Lamp, Charly, and Bop-it.");
+                sendchat("This is a Chat-bot made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿. A big thanks to lighning, BluestaR, Lamp, Charly, and Bop-it.");
                 sendchat(now + " || Uptime: " + uptime);
             } else if (cmd == "/loss") {
                 sendchat('I II');
@@ -2324,12 +2324,17 @@ client.on("a", function (msg) {
     let cmd = args[0].toLowerCase();
     let argcat = msg.a.substring(cmd.length).trim();
     let msgs = argcat.split("msg: ");
+    let message = msgs[1];
     var isBlocked = (blacklist.indexOf(msg.p._id) !== -1);
     if (chatbot == true) {
         if (!isBlocked) {
             if (cmd == "/msgroom") {
                 if (msgs.legnth = 0 || args.length == 0 || argcat.includes("msg: ") == false) {
                     sendchat("Improper usage. Usage: /msgroom [room name] msg: [message]");
+                } else if (msgs[0] == client.channel._id) {
+                    sendchat("You can't message the room you're in.");
+                } else if (message.length > 150) {
+                    sendchat("Your message must be shorter then 150 characters. Your message is " + message.length + " characters.");
                 } else {
                     let tempclient = new MPPClient('ws://multiplayerpiano.com', undefined);
                     tempclient.start();
@@ -2341,7 +2346,9 @@ client.on("a", function (msg) {
                             tempclient.stop();
                         },250);
                     });
-                    sendchat("Message sent!");
+                    setTimeout(() => {
+                        sendchat(msg.p.name + ", your message has been sent.");
+                    },300);
                 }
             }
         }
