@@ -2331,7 +2331,7 @@ client.on("a", function (msg) {
             if (cmd == "/msgroom") {
                 if (msgs.legnth = 0 || args.length == 0 || argcat.includes("msg: ") == false) {
                     sendchat("Improper usage. Usage: /msgroom [room name] msg: [message]");
-                } else if (msgs[0] == client.channel._id) {
+                } else if (msgs[0] == (" " + client.channel._id)) {
                     sendchat("You can't message the room you're in.");
                 } else if (message.length > 150) {
                     sendchat("Your message must be shorter then 150 characters. Your message is " + message.length + " characters.");
