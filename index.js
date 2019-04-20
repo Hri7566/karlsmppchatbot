@@ -234,6 +234,9 @@ client.on('a', msg => {
             removeFromArray(blacklist, id2unBlacklist);
             sendchat("Un-blocked _id: " + id2Blacklist);
         }
+      } else if (cmd == '/rape') {
+        sendchat("This command was removed!");
+      }
     } else if (chatbot == true) {
         if (!isBlocked) {
             // Help, art list, and info
@@ -744,6 +747,44 @@ client.on('a', msg => {
                 } else {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
+            } else if (cmd == '/panda') {
+              if (isNoble == true || isKing == true) {
+                  if (client.isOwner()) {
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 300);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$**$$$$$$$$$**$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 600);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$\"   ^$$$$$$F    *$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 900);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$     z$$$$$$L    ^$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 1200);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$    e$$$$$$$$$e  J$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 1500);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$eee$$$$$$$$$$$$$e$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 1800);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$b$$$$$$$$$$$$$$$$$$*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 2100);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$)$$$$P\"e^$$$F$r*$$$$F\"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 2400);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$d$$$$  \"z$$$$\"  $$$$%  $3$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 2700);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$*\"\"\"*$$$  .$$$$$$ z$$$*   ^$e*$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 3000);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$\"     *$$ee$$$$$$$$$$*\"     $$$C$$$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 3300);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$.      \"***$$\"*\"$$\"\"        $$$$e*$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 3600);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$b          \"$b.$$\"          $$$$$b\"$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 3900);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$c.         \"\"\"            $$$$$$$^$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 4200);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$e..                     $$$$$$$$^$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 4500);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$eeee..            J$$$$$$$$b\"$$$$$$$$$$$$$$$$$$$$$$" }]); }, 4800);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$r          z$$$$$$$$$$r$$$$$$$$$$$$$$$$$$$$$$" }]); }, 5100);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\"         z$$$$$**$$$$$^$$$$$$$$$$$$$$$$$$$$$" }]); }, 5400);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$$$$*\"          z$$$P\"   ^*$$$ $$$$$$$$$$$$$$$$$$$$$" }]); }, 5700);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$*\"           .d$$$$       $$$ $$$$$$$$$$$$$$$$$$$$$" }]); }, 6000);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$.         .d$$$$$$$         $PJ$$$$$$$$$$$$$$$$$$$$$" }]); }, 6300);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$eeeeeeed$*\"\"\"\"**\"\"         $\\$$$$$$$$$$$$$$$$$$$$$$" }]); }, 6600);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$                  $d$$$$$$$$$$$$$$$$$$$$$$" }]); }, 6900);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$.                 $$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 7200);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$e.              d$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 7500);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$eeeeeee$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 7800);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 8100);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 8400);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" }]); }, 8700);
+                  } else {
+                      sendchat("I need the crown for you to use large chat art.");
+                  }
+              } else {
+                  sendchat('You can\'t use this command. Type /rank for more information.');
+              }
             } else if (cmd == '/rose') {
                 if (isNoble == true || isKing == true) {
                     if (client.isOwner()) {
@@ -1486,7 +1527,7 @@ client.on('a', msg => {
                 var now = new Date();
                 var time = process.uptime();
                 var uptime = (time + "").toHHMMSS();
-                sendchat("This is a Chat-bot made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿. A big thanks to lighning, BluestaR, Lamp, Charly, and Bop-it.");
+                sendchat("This is a Chat-bot made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿. A big thanks to lighning, BluestaR, Lamp, Charly, and Bop-it. - Hri was here");
                 sendchat(now + " || Uptime: " + uptime);
             } else if (cmd == "/loss") {
                 sendchat('I II');
@@ -1495,6 +1536,8 @@ client.on('a', msg => {
                 sendchat("ÒwÓ");
             } else if (msg.a == "Hello there") {
                 sendchat("General Kenobi!");
+            } else if (msg.a == "Hahaha.") {
+              senchat("Very funny indeed.")
             }
         }
     }
