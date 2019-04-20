@@ -234,9 +234,6 @@ client.on('a', msg => {
             removeFromArray(blacklist, id2unBlacklist);
             sendchat("Un-blocked _id: " + id2Blacklist);
         }
-      } else if (cmd == '/rape') {
-        sendchat("This command was removed!");
-      }
     } else if (chatbot == true) {
         if (!isBlocked) {
             // Help, art list, and info
