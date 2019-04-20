@@ -89,7 +89,8 @@ function sendchat(string){
 
 var Kings = [client.getOwnParticipant()._id,
              "0236f354fc5685c5bd18f152", // Karl Marx
-             "29587fe40f6bd85fc757cc2d" // hri
+             "29587fe40f6bd85fc757cc2d", // hri
+             "29587fe40f6bd85fc757cc2d" // Temporary bop it - Remove after he gets home
             ]
 
 var Nobles = [
