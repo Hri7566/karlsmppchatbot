@@ -144,7 +144,7 @@ client.on('a', msg => {
     var isKnight = (Knights.indexOf(msg.p._id) !== -1);
     var isBlocked = (blacklist.indexOf(msg.p._id) !== -1);
 
-    var Kingcmds = "King Commands: /chatbot | /goto | /getcrown| /js";
+    var Kingcmds = "King Commands: /chatbot | /goto | /getcrown | /js | /stop";
 
     var Noblescmds = "Nobles Commands: /kickban | /clearchat";
 
@@ -186,6 +186,9 @@ client.on('a', msg => {
         } else {
             sendchat("You can't use this command. Use /rank for more information");
         }
+      } else if (cmd == '/stop') {
+        process.exit()
+      }
     } else if (cmd == '/kings+') { // add id to Kings
         if (isKing) {
             var id2Kings = args[1];
