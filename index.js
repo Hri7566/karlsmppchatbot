@@ -673,7 +673,7 @@ client.on('a', msg => {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
               } else if (cmd == '/nyan') {
-                  if (isNoble == true || isKing == true) {
+                  if (isKnight == true || isNoble == true || isKing == true) { // didn't feel like moving to the knight section, go ahead if you want to
                       if (client.isOwner()) {
                           setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░░▄▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▄░░░░░░" }]); }, 300);
                           setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░█░░▄▀▀▀▀▀▀▀▀▀▀▀▀▀▄░░█░░░░░" }]); }, 600);
