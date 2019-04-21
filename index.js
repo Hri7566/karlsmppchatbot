@@ -672,6 +672,27 @@ client.on('a', msg => {
                 } else {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
+              } else if (cmd == '/nyan') {
+                  if (isNoble == true || isKing == true) {
+                      if (client.isOwner()) {
+                          setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░░▄▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▄░░░░░░" }]); }, 300);
+                          setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░█░░▄▀▀▀▀▀▀▀▀▀▀▀▀▀▄░░█░░░░░" }]); }, 600);
+                          setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░█░█░▀░░░░░▀░░▀░░░░█░█░░░░░" }]); }, 900);
+                          setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░█░█░░░░░░░░▄▀▀▄░▀░█░█▄▀▀▄░" }]); }, 1200);
+                          setTimeout(function() { client.sendArray([{ m: "a", message: "█▀▀█▄░█░█░░▀░░░░░█░░░▀▄▄█▄▀░░░█░" }]); }, 1500);
+                          setTimeout(function() { client.sendArray([{ m: "a", message: "▀▄▄░▀██░█▄░▀░░░▄▄▀░░░░░░░░░░░░▀▄" }]); }, 1800);
+                          setTimeout(function() { client.sendArray([{ m: "a", message: "░░▀█▄▄█░█░░░░▄░░█░░░▄█░░░▄░▄█░░█" }]); }, 2100);
+                          setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░▀█░▀▄▀░░░░░█░██░▄░░▄░░▄░███" }]); }, 2400);
+                          setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░▄█▄░░▀▀▀▀▀▀▀▀▄░░▀▀▀▀▀▀▀░▄▀░" }]); }, 2700);
+                          setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░█░░▄█▀█▀▀█▀▀▀▀▀▀█▀▀█▀█▀▀█░░░" }]); }, 3000);
+                          setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░▀▀▀▀░░▀▀▀░░░░░░░░▀▀▀░░▀▀░░░░" }]); }, 3300);
+                      } else {
+                          sendchat("I need the crown for you to use large chat art.");
+                      }
+                  } else {
+                      sendchat('You can\'t use this command. Type /rank for more information.');
+                  }
+              }
             } else if (cmd == '/largelenny') {
                 if (isNoble == true || isKing == true) {
                     if (client.isOwner()) {
