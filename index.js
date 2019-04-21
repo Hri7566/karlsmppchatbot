@@ -1534,7 +1534,7 @@ client.on('a', msg => {
             } else if (msg.a == "Hello there") {
                 sendchat("General Kenobi!");
             } else if (msg.a == "Hahaha.") {
-              senchat("Very funny indeed.")
+              sendchat("Very funny indeed.")
             }
         }
     }
