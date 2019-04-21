@@ -188,7 +188,6 @@ client.on('a', msg => {
         }
       } else if (cmd == '/stop') {
         process.exit();
-      }
     } else if (cmd == '/kings+') { // add id to Kings
         if (isKing) {
             var id2Kings = args[1];
