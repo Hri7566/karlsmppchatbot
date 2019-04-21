@@ -692,7 +692,6 @@ client.on('a', msg => {
                   } else {
                       sendchat('You can\'t use this command. Type /rank for more information.');
                   }
-              }
             } else if (cmd == '/largelenny') {
                 if (isNoble == true || isKing == true) {
                     if (client.isOwner()) {
