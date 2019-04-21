@@ -152,9 +152,9 @@ client.on('a', msg => {
 
     var Peasantart = "Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance";
 
-    var Knightart = "Knight rank art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music";
+    var Knightart = "Knight rank art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music | /nyan";
 
-    var Nobleart = "Noble rank art: /scream | /fuckmyass | /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.";
+    var Nobleart = "Noble rank art: /scream | /panda | /fuckmyass | /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.";
     // bot toggle
     if (cmd == "/chatbot") {
         if (isKing) {
