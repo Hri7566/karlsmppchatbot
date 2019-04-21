@@ -187,7 +187,7 @@ client.on('a', msg => {
             sendchat("You can't use this command. Use /rank for more information");
         }
       } else if (cmd == '/stop') {
-        process.exit()
+        process.exit();
       }
     } else if (cmd == '/kings+') { // add id to Kings
         if (isKing) {
