@@ -148,7 +148,7 @@ client.on('a', msg => {
 
     var Noblescmds = "Nobles Commands: /kickban | /clearchat";
 
-    var Peasantcmds = "Commands: /help | /about | /rank | /qoute | /fact | /8ball | /math | /art | /eat | /kill | /stab | /hug | /shoot | /slap | / cuddle | /friendzone | /fight | /tickle | /roast | /poke | /catyears | /dogyears | /rps";
+    var Peasantcmds = "Commands: /help | /about | /rank | /quote | /fact | /8ball | /math | /art | /eat | /kill | /stab | /hug | /shoot | /slap | / cuddle | /friendzone | /fight | /tickle | /roast | /poke | /catyears | /dogyears | /rps";
 
     var Peasantart = "Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance";
 
