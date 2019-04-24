@@ -152,9 +152,9 @@ client.on('a', msg => {
 
     var Peasantart = "Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance";
 
-    var Knightart = "Knight rank art: /piano | /bob | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music | /nyan";
+    var Knightart = "Knight rank art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music | /nyan";
 
-    var Nobleart = "Noble rank art: /scream | /panda | /fuckmyass | /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.";
+    var Nobleart = "Noble rank art: /scream | /anonymous | /bob | /panda | /fuckmyass | /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.";
     // bot toggle
     if (cmd == "/chatbot") {
         if (isKing) {
@@ -1389,6 +1389,40 @@ client.on('a', msg => {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111111111¶¶11¶¶111111111¶¶11¶¶111111" }]); }, 8100);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111111111¶¶1¶¶1111111111¶¶1¶¶¶111111" }]); }, 8400);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "111111111111111111111111111111111111111111111" }]); }, 8700);
+                    } else {
+                        sendchat("I need the crown for you to use large chat art.");
+                    }
+                } else {
+                    sendchat('You can\'t use this command. Type /rank for more information.');
+                }
+              } else if (cmd == '/anonymous') {
+                if (isNoble == true || isKing == true) {
+                    if (client.isOwner()) {
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "███████▓█████▓▓╬╬╬╬╬╬╬╬▓███▓╬╬╬╬╬╬╬▓╬╬▓█ " }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "████▓▓▓▓╬╬▓█████╬╬╬╬╬╬███▓╬╬╬╬╬╬╬╬╬╬╬╬╬█ " }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "███▓▓▓▓╬╬╬╬╬╬▓██╬╬╬╬╬╬▓▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓█ " }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "████▓▓▓╬╬╬╬╬╬╬▓█▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓█ " }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "███▓█▓███████▓▓███▓╬╬╬╬╬╬▓███████▓╬╬╬╬▓█ " }]); }, 1500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "████████████████▓█▓╬╬╬╬╬▓▓▓▓▓▓▓▓╬╬╬╬╬╬╬█ " }]); }, 1800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "███▓▓▓▓▓▓▓╬╬▓▓▓▓▓█▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓█ " }]); }, 2100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "████▓▓▓╬╬╬╬▓▓▓▓▓▓█▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓█ " }]); }, 2400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "███▓█▓▓▓▓▓▓▓▓▓▓▓▓▓▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓█ " }]); }, 2700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "█████▓▓▓▓▓▓▓▓█▓▓▓█▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓█  " }]); }, 3000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "█████▓▓▓▓▓▓▓██▓▓▓█▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬██ " }]); }, 3300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "█████▓▓▓▓▓████▓▓▓█▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬██ " }]); }, 3600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "████▓█▓▓▓▓██▓▓▓▓██╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬██ " }]); }, 3900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "████▓▓███▓▓▓▓▓▓▓██▓╬╬╬╬╬╬╬╬╬╬╬╬█▓╬▓╬╬▓██ " }]); }, 4200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "█████▓███▓▓▓▓▓▓▓▓████▓▓╬╬╬╬╬╬╬█▓╬╬╬╬╬▓██ " }]); }, 4500);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "█████▓▓█▓███▓▓▓████╬▓█▓▓╬╬╬▓▓█▓╬╬╬╬╬╬███ " }]); }, 4800);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "██████▓██▓███████▓╬╬╬▓▓╬▓▓██▓╬╬╬╬╬╬╬▓███ " }]); }, 5100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "███████▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓╬╬╬╬╬╬╬╬╬╬╬████ " }]); }, 5400);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "███████▓▓██▓▓▓▓▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓████ " }]); }, 5700);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "████████▓▓▓█████▓▓╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬▓█████ " }]); }, 6000);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "█████████▓▓▓█▓▓▓▓▓███▓╬╬╬╬╬╬╬╬╬╬╬▓██████ " }]); }, 6300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "██████████▓▓▓█▓▓▓╬▓██╬╬╬╬╬╬╬╬╬╬╬▓███████ " }]); }, 6600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "███████████▓▓█▓▓▓▓███▓╬╬╬╬╬╬╬╬╬▓████████ " }]); }, 6900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "██████████████▓▓▓███▓▓╬╬╬╬╬╬╬╬██████████ " }]); }, 7100);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "███████████████▓▓▓██▓▓╬╬╬╬╬╬▓███████████" }]); }, 7500);
                     } else {
                         sendchat("I need the crown for you to use large chat art.");
                     }
