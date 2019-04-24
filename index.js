@@ -1518,7 +1518,7 @@ client.on('a', msg => {
                 }
             } else if (cmd == "/8ball") {
                 if (argcat.length == 0) {
-                    sendchat("You need to ask a question to hear the all powerfull words of the 8 ball.");
+                    sendchat("You need to ask a question to hear the all powerfull words of the Magic 8 ball.");
                 } else {
                     sendchat(msg.p.name + ", your answer is: " + BallArray[Math.floor(Math.random()*BallArray.length)]);
                 }
@@ -1534,7 +1534,7 @@ client.on('a', msg => {
                     sendchat(msg.p.name + ", you lived.");
                 } else {
                     client.sendArray([{m:"kickban", _id: msg.p._id, ms: 0}]);
-                    sendchat(msg.p.name + " died playing Russian Rulette");
+                    sendchat(msg.p.name + " died playing Russian Roulette");
                 }
             } else if (cmd == "/fact") {
                 sendchat("Random Fact: " + FactArray[Math.floor(Math.random()*FactArray.length)]);
@@ -1546,7 +1546,7 @@ client.on('a', msg => {
                 var now = new Date();
                 var time = process.uptime();
                 var uptime = (time + "").toHHMMSS();
-                sendchat("This is a Chat-bot made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿. A big thanks to lighning, BluestaR, Lamp, Charly, and Bop-it. - Hri was here");
+                sendchat("This is a Chat-bot made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿. A big thanks to lighning, BluestaR, Lamp, Charly, and Bop-it. Development continued by Hri7566.");
                 sendchat(now + " || Uptime: " + uptime);
             } else if (cmd == "/loss") {
                 sendchat('I II');
