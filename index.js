@@ -89,15 +89,14 @@ function sendchat(string){
 
 var Kings = [client.getOwnParticipant()._id,
              "0236f354fc5685c5bd18f152", // Karl Marx
-             "29587fe40f6bd85fc757cc2d", // hri
-             "29587fe40f6bd85fc757cc2d" // Temporary bop it - Remove after he gets home
+             "29587fe40f6bd85fc757cc2d" // hri
             ]
 
 var Nobles = [
     "f5d6d1fe98b1b415b15890cb", // Pg
     "4095db71ba743d3e3da00f4a", // Karma
     "94ad18f384333e29978e33e4", // Charly
-    "aed3e326d751c0bffb89d1b9", // Lonely
+    "aed3e326d751c0bffb89d1b9", // Lonely - who is apparently Sindall now
     "fbc347c2a94b3e5517b5f816", // Bop-it
     "e2a08e234d18974a7a20ef52", // Zero
     "c31b870e9e9a917b640921fd" // Hue
@@ -108,6 +107,7 @@ var Knights = [
 ]
 
 var blacklist = [
+  // note to self - put blobek-lady2013 here
 ]
 
 var id_whitelist = [
@@ -1898,6 +1898,7 @@ FactArray= ['Amelia Earhart and Eleanor Roosevelt once sneaked out of a White Ho
             'During Prohibition, moonshiners would wear "cow shoes." The fancy footwear left hoofprints instead of footprints, helping distillers and smugglers evade police.',
             'Since founding the Imagination Library in 1995, Dolly Parton has donated 100 million books to children.',
             'The 100 folds in a chef\'s toque are said to represent 100 ways to cook an egg.',
+            'No other words in the English language rhyme with the words \'nothing\' and \'orange\'.',
             'In curling, good sportsmanship and politeness are essential. Congratulating opponents and abstaining from trash talk are part of what\'s known as the Spirit of Curling.',
             'In 1974, the Journal of Applied Behavior Analysis published a paper titled "The Unsuccessful Self-Treatment of a Case of \'Writer\'s Block.\'" It contained a total of zero words.',
             'Guinness estimates that 93,000 liters of beer are lost in facial hair each year in the UK alone.',
@@ -1957,7 +1958,7 @@ FactArray= ['Amelia Earhart and Eleanor Roosevelt once sneaked out of a White Ho
             'Peter Durand patented the tin can in 1810. Ezra Warner patented a can opener in 1858. In between, people used chisels and hammers.',
             'There are 71 streets in Atlanta with "Peachtree" in their name.',
             'Goats have rectangular pupils.',
-            'The bend in a flamingo\'s leg isn\'t a knee-it\'s an ankle.',
+            'The bend in a flamingo\'s leg isn\'t a knee - it\'s an ankle.',
             'In 1946, Boston owner Walter Brown chose the nickname Celtics over Whirlwinds, Olympians, and Unicorns.',
             'After It\'s the Great Pumpkin, Charlie Brown aired, Charles Schulz was overwhelmed with candy shipments sent from kids who were concerned for Charlie, who got rocks instead of treats in his Halloween sack.',
             'One of the world\'s largest stockpiles of nuclear weapons in a U.S. Navy base near Seattle is partially defended by trained dolphins.',
@@ -1978,6 +1979,7 @@ FactArray= ['Amelia Earhart and Eleanor Roosevelt once sneaked out of a White Ho
             '"Bloodcurdling" isn\'t just an expression: Research shows that watching horror movies can increase a certain clotting protein in our bloodstreams.',
             'An episode of Peppa Pig was pulled from Australian television for teaching children not to fear spiders.',
             'A group of pugs is called a grumble.',
+            'Cleopatra was closer to the first Pizza Hut being built than the construction of the Great Pyramids of Giza.',
             'Before he wrote Goosebumps, R.L. Stine wrote the jokes for Bazooka Joe wrappers.',
             'In 1998, the U.S. Army tried developing a telepathic ray gun "where words could be transmitted to be heard like the spoken word, except that it could only be heard within a personâ€™s head."',
             'In 1967, the Nigerian Civil War ground to a halt for two days because both sides wanted to watch PelÃ© play in an exhibition soccer match.',
@@ -1988,10 +1990,10 @@ FactArray= ['Amelia Earhart and Eleanor Roosevelt once sneaked out of a White Ho
             'In colonial America, lobster wasn\'t exactly a delicacy. It was so cheap and plentiful it was often served to prisoners.',
             'Crayola means "oily chalk." The name combines craie (French for "chalk") and ola (short for "oleaginous," or "oily").',
             'Truman Show Delusion is a mental condition marked by a patient\'s belief that he or she is the star of an imaginary reality show.',
-            'Cookie Monster is not changing his name. In a 2012 episode he said, "We\'ve got to stop this Veggie Monster rumor before me reputation ruined."',
+            'Cookie Monster is not changing his name. In a 2012 episode he said, "We\'ve got to stop this Veggie Monster rumor before me reputation ruined." His real name is indeed Sid, confirmed multiple times in the series and multiple YouTube videos.',
             'Google\'s founders were willing to sell to Excite for under $1 million in 1999â€”but Excite turned them down.',
-            'The medical term for ice cream headaches is sphenopalatine ganglioneuralgia.',
-            'lthough Dr. James Naismith invented basketball, he\'s the only Kansas Jayhawks basketball coach with a losing record.',
+            'The medical term for ice cream headaches or \'brainfreeze\'is sphenopalatine ganglioneuralgia.',
+            'Although Dr. James Naismith invented basketball, he\'s the only Kansas Jayhawks basketball coach with a losing record.',
             'Wisconsin is the Badger State because the area\'s lead miners used to spend winters in tunnels burrowed into hills. Like badgers.',
             'In 1999, the U.S. government paid the Zapruder family $16 million for the film of JFK\'s assassination.',
             'Before he became president, Abraham Lincoln was wrestling champion of his county. He fought in nearly 300 matches and lost only one.',
@@ -2024,6 +2026,7 @@ FactArray= ['Amelia Earhart and Eleanor Roosevelt once sneaked out of a White Ho
             'In The Empire Strikes Back, an extra can be seen running with what appears to be an ice cream maker. The character became legendary among fans, and was eventually given a name (Willrow Hood) and a backstory.',
             'Salvador Dali avoided paying restaurant tabs by using checks. He would draw on the back as the waiter watched, knowing no one would ever cash the art.',
             'China owns all of the pandas in the world. They rent them out for about $1 million a year.',
+            'Pandas are not bears.',
             'In season two of The Joy of Painting, Bob Ross created a monochromatic landscape for a viewer who was worried that his color blindness would prevent him from being able to paint.',
             'Bones found at Seymour Island indicate that at one time, 37 to 40 million years ago, penguins stood at a formidable 6 feet tall and weighed 250 pounds.']
 
@@ -2189,7 +2192,13 @@ pokearray=['arm.',
            'ear.',
            'foot.',
            'chest.',
-           'ass.'
+           'ass.',
+           'forehead.',
+           'crotch. What a pervert!',
+           'knee.',
+           'shoulder.',
+           'mouth.',
+           'ankle.'
           ]
 
 kills=['a screw',
