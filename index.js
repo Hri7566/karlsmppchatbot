@@ -152,7 +152,7 @@ client.on('a', msg => {
 
     var Peasantart = "Lennys: /lenny | /guns | /bear2 | /army | /hug2 | /magic | /sneak | /table | /table2 | /hearteyes | /trump | /butterfly | /wink | /blush | /smile | /smile2 | /smile3 | /smile4 | /dance";
 
-    var Knightart = "Knight rank art: /piano | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music | /nyan";
+    var Knightart = "Knight rank art: /piano | /bob | /hateme | /sunglasses | /tank | /bear | /cat | /gun | /music | /nyan";
 
     var Nobleart = "Noble rank art: /scream | /panda | /fuckmyass | /largelenny | /pinkiepie | /rarity | /applejack | /fluttershy | /rainbowdash | /twilightsparkle (down for fixing) | /rose | /dinkaleberg | /pikachu | /cat2 | /shibe | /butterfly2 | /elk | /mario.";
     // bot toggle
@@ -909,6 +909,19 @@ client.on('a', msg => {
                 } else {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
+            } else if (cmd == '/bob') {
+              if (isNoble == true || isKing == true) {
+                  if (client.isOwner()) {
+                      setTimeout(function() { client.sendArray([{ m: "a", message: " ░░░░░░███████ ]▄▄▄▄▄▄▄▄            Bob is building an army." }]); }, 300);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "▂▄▅█████████▅▄▃▂           ☻/   This tank & Bob are against Google+" }]); }, 600);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "███████████████████].         /▌    Copy and Paste this all over " }]); }, 900);
+                      setTimeout(function() { client.sendArray([{ m: "a", message: "◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤..      / \\    Youtube if you are with us﻿" }]); }, 1200);
+                  } else {
+                      sendchat("I need the crown for you to use large chat art.");
+                  }
+              } else {
+                  sendchat('You can\'t use this command. Type /rank for more information.');
+              }
             } else if (cmd == '/dickbutt') {
                 if (isNoble == true || isKing == true) {
                     if (client.isOwner()) {
