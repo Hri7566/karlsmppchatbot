@@ -2489,3 +2489,53 @@ client.on('a', function (msg) {
         }
     }
 });
+
+host = new MPPClient('ws://multiplayerpiano.com', undefined);
+
+host.start();
+
+host.setChannel("RP Room");
+ 
+Admin = ["c629dec0b652f86a8c31a160",
+        "0236f354fc5685c5bd18f152",
+        "c90a351b611861f7f70f53f2",
+        "830b52ae1ee8b08e73b9acd5"
+    ]
+
+host.on("a", function(msg) {
+    let args = msg.a.split(' ');
+    let cmd = args[0].toLowerCase();
+    var isAdmin = (Admin.indexOf(msg.p._id) !== -1);
+    if (cmd == ".host") {
+        if(args[1] == "help") {
+            sendchat("Room commands: .host help | .host kickban example_name | .host move example_room | .host admin example_name | .host unadmin example_name");
+        } else if (args[1] == "admin") {
+            if (isAdmin) {
+            var id2Admin = args[2];
+            Admin.push(id2Admin);
+            sendchat("Admined _id: " + id2Admin);
+            }
+        } else if (args[1] == "unadmin") {
+            if (isAdmin) {
+                    var id2unAdmin = args[2];
+                    removeFromArray(Admin, id2unAdmin);
+                    sendchat("Un-Admin _id: " + id2unAdmin);
+            }
+        } else if (args[1] == "kickban") {
+            if (isAdmin) {
+    if(Admin.includes(msg.p._id)) {
+        var input = msg.a.split(" ").slice(2).join(" ");
+        if (!input) return sendchat("Kickban who?");
+        var target = client.ppl[input] || findParticipantByName(input);
+        if (!target) return sendchat("Person not found.");
+        client.sendArray([{m:"kickban", _id: target._id, ms: 20 * 60 * 1000}]);
+    }
+            }
+        } else if (args[1] == "move") {
+            if(isAdmin) {
+                var room = msg.a.split("move ");
+                host.setChannel(room[1]);
+            }
+        }
+    }
+});
