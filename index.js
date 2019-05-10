@@ -2534,7 +2534,6 @@ host.on("a", function(msg) {
             if(isAdmin) {
                 var room = msg.a.split("move ");
                 host.setChannel(room[1]);
-            }
         }
     }
 });
