@@ -2494,7 +2494,7 @@ function chat(string){
     host.sendArray([{ m:'a', message:string }]);
 }
 
-host = new MPPClient('ws://multiplayerpiano.com', undefined);
+let host = new MPPClient('ws://multiplayerpiano.com', undefined);
 
 host.start();
 
