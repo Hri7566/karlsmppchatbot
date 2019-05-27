@@ -2490,6 +2490,7 @@ client.on('a', function (msg) {
     }
 });
 
+/*
 function chat(string){
     host.sendArray([{ m:'a', message:string }]);
 }
@@ -2552,3 +2553,4 @@ host.on("a", function(msg) {
         }
     }
 });
+*/
