@@ -903,7 +903,7 @@ client.on('a', msg => {
                 if (isNoble == true || isKing == true) {
                     if (client.isOwner()) {
                         setTimeout(function() { client.sendArray([{ m: "a", message: " ░░░░░░███████ ]▄▄▄▄▄▄▄▄ \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc Bob is building an army." }]); }, 300);
-                        setTimeout(function() { client.sendArray([{ m: "a", message: "▂▄▅█████████▅▄▃▂ \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc ☻/ \ufffc \ufffc This tank & Bob are against Google+" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "▂▄▅█████████▅▄▃▂ \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc ☻/ \ufffc \ufffc This tank & Bob are against Google+" }]); }, 600);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "███████████████████]. \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc /▌ \ufffc \ufffc \ufffc Copy and Paste this all over " }]); }, 900);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤.. \ufffc \ufffc \ufffc \ufffc \ufffc / \\ \ufffc \ufffc \ufffc Youtube if you are with us﻿" }]); }, 1200);
                     } else {
