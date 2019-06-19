@@ -89,16 +89,15 @@ function sendchat(string){
 
 var Kings = [client.getOwnParticipant()._id,
              "0236f354fc5685c5bd18f152", // Karl Marx
-             "29587fe40f6bd85fc757cc2d", // hri
-             "99da8b2e9735a34da6d2ac35" // Bop-it
-
+             "29587fe40f6bd85fc757cc2d"// hri
+              // Bop-it - Removed for safety
             ]
 
 var Nobles = [
     "f5d6d1fe98b1b415b15890cb", // Pg
     "4095db71ba743d3e3da00f4a", // Karma
     "94ad18f384333e29978e33e4", // Charly
-    "aed3e326d751c0bffb89d1b9", // Lonely - who is apparently Sindall now
+    "aed3e326d751c0bffb89d1b9", // Lonely - Dynamic IP?
     "fbc347c2a94b3e5517b5f816", // Bop-it
     "e2a08e234d18974a7a20ef52", // Zero
     "c31b870e9e9a917b640921fd" // Hue
@@ -675,7 +674,7 @@ client.on('a', msg => {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
             } else if (cmd == '/nyan') {
-                if (isKnight == true || isNoble == true || isKing == true) { // didn't feel like moving to the knight section, go ahead if you want to
+                if (isKnight == true || isNoble == true || isKing == true) {
                     if (client.isOwner()) {
                         setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░░▄▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▄░░░░░░" }]); }, 300);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "░░░░░░█░░▄▀▀▀▀▀▀▀▀▀▀▀▀▀▄░░█░░░░░" }]); }, 600);
@@ -914,10 +913,10 @@ client.on('a', msg => {
             } else if (cmd == '/bob') {
                 if (isNoble == true || isKing == true) {
                     if (client.isOwner()) {
-                        setTimeout(function() { client.sendArray([{ m: "a", message: " ░░░░░░███████ ]▄▄▄▄▄▄▄▄            Bob is building an army." }]); }, 300);
-                        setTimeout(function() { client.sendArray([{ m: "a", message: "▂▄▅█████████▅▄▃▂           ☻/   This tank & Bob are against Google+" }]); }, 600);
-                        setTimeout(function() { client.sendArray([{ m: "a", message: "███████████████████].         /▌    Copy and Paste this all over " }]); }, 900);
-                        setTimeout(function() { client.sendArray([{ m: "a", message: "◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤..      / \\    Youtube if you are with us﻿" }]); }, 1200);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ░░░░░░███████ ]▄▄▄▄▄▄▄▄ \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc Bob is building an army." }]); }, 300);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "▂▄▅█████████▅▄▃▂ \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc ☻/ \ufffc \ufffc This tank & Bob are against Google+" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "███████████████████]. \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc /▌ \ufffc \ufffc \ufffc Copy and Paste this all over " }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤.. \ufffc \ufffc \ufffc \ufffc \ufffc / \\ \ufffc \ufffc \ufffc Youtube if you are with us﻿" }]); }, 1200);
                     } else {
                         sendchat("I need the crown for you to use large chat art.");
                     }
@@ -2514,7 +2513,7 @@ host.on("a", function(msg) {
     let cmd = args[0].toLowerCase();
     var isAdmin = (Admin.indexOf(msg.p._id) !== -1);
     if(cmd == ".help") {
-        if(isAdmin) {  
+        if(isAdmin) {
             chat("Room commands:  .help | .kickban example_name | .move example_room | .admin example_name | .unadmin example_name | .getcrown");
         }
     } else if (cmd == ".admin") {
