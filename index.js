@@ -438,6 +438,22 @@ client.on('a', msg => {
                 } catch (e) {
                     sendchat("The user '"+argcat+"' was not found.  Try using part of their username.");
                 }
+            } else if (cmd == '/wendys') {
+              sendchat("Welcome to Wendy's! Here is the menu:");
+              sendchat("1. Homestyle Avocado BLT Chicken Sandwich");
+              sendchat("2. Spicy Barbecue Chicken Sandwich");
+              sendchat("3. 10 Piece Crispy Chicken Nuggets");
+              sendchat("4. Crispy Chicken BLT");
+              sendchat("5. Spicy Chicken Wrap");
+              sendchat("6. Barbecue Cheeseburger");
+              sendchat("7. Barbecue Cheeseburger Triple");
+              sendchat("8. Baconator");
+              sendchat("9. Son of Baconator");
+              sendchat("10. Jr. Bacon Cheeseburger");
+              sendchat("11. Double Chocolate Chip Cookie");
+              sendchat("12. Sausage, Egg & Swiss Croissant");
+              sendchat("13. Breakfast Baconator");
+            }
                 // Lennys
             } else if (cmd == '/lenny') {
                 sendchat('( ͡° ͜ʖ ͡°)');
@@ -903,8 +919,8 @@ client.on('a', msg => {
                 if (isNoble == true || isKing == true) {
                     if (client.isOwner()) {
                         setTimeout(function() { client.sendArray([{ m: "a", message: " ░░░░░░███████ ]▄▄▄▄▄▄▄▄ \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc Bob is building an army." }]); }, 300);
-                        setTimeout(function() { client.sendArray([{ m: "a", message: "▂▄▅█████████▅▄▃▂ \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc ☻/ \ufffc \ufffc This tank & Bob are against Google+" }]); }, 600);
-                        setTimeout(function() { client.sendArray([{ m: "a", message: "███████████████████]. \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc /▌ \ufffc \ufffc \ufffc Copy and Paste this all over " }]); }, 900);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: " ▂▄▅█████████▅▄▃▂ \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc ☻/ \ufffc \ufffc This tank & Bob are against Google+" }]); }, 600);
+                        setTimeout(function() { client.sendArray([{ m: "a", message: "[███████████████████]. \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc \ufffc /▌ \ufffc \ufffc \ufffc Copy and Paste this all over " }]); }, 900);
                         setTimeout(function() { client.sendArray([{ m: "a", message: "◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤.. \ufffc \ufffc \ufffc \ufffc \ufffc / \\ \ufffc \ufffc \ufffc Youtube if you are with us﻿" }]); }, 1200);
                     } else {
                         sendchat("I need the crown for you to use large chat art.");
