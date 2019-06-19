@@ -1594,7 +1594,7 @@ client.on('a', msg => {
                 var now = new Date();
                 var time = process.uptime();
                 var uptime = (time + "").toHHMMSS();
-                sendchat("This is a Chat-bot made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿. A big thanks to lighning, BluestaR, Lamp, Charly, and Bop-it. Development continued by Hri7566.");
+                sendchat("This is a Chat-bot made by ✿🌿❤ ๖ۣۜḰᾄʀł☭Ṃᾄʀẋ ❤🌾✿. A big thanks to lighning, BluestaR, Lamp, Charly, Bop-it, and Hri7566.");
                 sendchat(now + " || Uptime: " + uptime);
             } else if (cmd == "/loss") {
                 sendchat('I II');
