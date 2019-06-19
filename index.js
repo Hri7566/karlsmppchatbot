@@ -542,17 +542,6 @@ client.on('a', msg => {
                 } else {
                     sendchat('You can\'t use this command. Type /rank for more information.');
                 }
-            } else if (cmd == '/artlist') {
-                if (isKnight == true || isNoble == true || isKing == true) {
-                    if (client.isOwner()) {
-                        sendchat('Type for text art: /piano, /hateme, /sunglasses, /tank, /bear, /cat, /gun, /music');
-                        sendchat('Type for text art, input need: /love');
-                    } else {
-                        sendchat("I need the crown for you to use large chat art.");
-                    }
-                } else {
-                    sendchat('You can\'t use this command. Type /rank for more information.');
-                }
             } else if (cmd ==  '/cat') {
                 if (isKnight == true || isNoble == true || isKing == true) {
                     if (client.isOwner()) {
