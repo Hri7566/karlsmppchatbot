@@ -453,7 +453,6 @@ client.on('a', msg => {
               sendchat("11. Double Chocolate Chip Cookie");
               sendchat("12. Sausage, Egg & Swiss Croissant");
               sendchat("13. Breakfast Baconator");
-            }
                 // Lennys
             } else if (cmd == '/lenny') {
                 sendchat('( ͡° ͜ʖ ͡°)');
